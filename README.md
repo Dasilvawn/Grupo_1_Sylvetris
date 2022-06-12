@@ -16,7 +16,7 @@
   
   Hola, mi nombre es Hernan Moneta, tengo 40 años. Soy estudiante del curso de programación web full stack. Me apasiona viajar, conocer lugares y en mis tiempos libres corro maratones. En un futuro cercano me gustaría trabajar de programador, ya que es mi pasion desde muy chico.
 
-- **Walter Da Silva**:
+- **Walter Da Silva** :
 
   Tengo 35 años, vivo en San Miguel, prov. de Bs. As. y me inscribi al curso para ser programador y poder mejorar el nivel de vida económico de mi familia y dedicarle más tiempo.
 
