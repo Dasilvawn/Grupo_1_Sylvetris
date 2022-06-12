@@ -16,10 +16,16 @@
   
   Hola, mi nombre es Hernan Moneta, tengo 40 años. Soy estudiante del curso de programación web full stack. Me apasiona viajar, conocer lugares y en mis tiempos libres corro maratones. En un futuro cercano me gustaría trabajar de programador, ya que es mi pasion desde muy chico.
 
-- **Walter Da Silva**
+- **Walter Da Silva**:
 
-   Tengo 35 años, vivo en San Miguel, prov. de Bs. As. y me inscribi al curso para ser programador y poder mejorar el nivel de vida económico de mi familia y dedicarle más tiempo.
+  Tengo 35 años, vivo en San Miguel, prov. de Bs. As. y me inscribi al curso para ser programador y poder mejorar el nivel de vida económico de mi familia y dedicarle más tiempo.
 
-- Jon Ybarra
-- Daniela Fernandez
+- **Jon Ybarra** :
+  
+  Hola, mi nombre es Jon Ybarra, tengo 31 años. Soy estudiante de Tecnicatura Superior en Desarrollo de Software y además Full Stack Node.js web development student.
+  Me gusta todo lo relacionado con la tecnología y más si es aplicada a los vehiculos de combustión interna o autos electricos, cuando puedo me gusta viajar conocer nuevos lugares,mi deporte favortio es el futbol.
+  Estoy aprendiendo programación porque siento mucha curiosidad por el detras de escena, por aprender como se hacen todos esas herramientas que tanto usamos día a día y también porque me permitiría tener un trabajo estable y un ingreso por encima de la media.
+  
+  
+  - Daniela Fernandez
 
