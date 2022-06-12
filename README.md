@@ -8,7 +8,10 @@
 - [Vivero Agronomia](https://viveroagronomia.com.ar/) -> (Seccion con imagenes de instagram)
 - [Vivero verde vida](https://viveroverdevida.com.ar/) -> (El slider con productos destacados)
 ### **Integrantes**
-- Hernan Moneta
+- **Hernan Moneta** :
+  
+  Hola, mi nombre es Hernan Moneta, tengo 40 años. Soy estudiante del curso de programación web full stack. Me apasiona viajar, conocer lugares y en mis tiempos libres corro maratones. En un futuro cercano me gustaría trabajar de programador, ya que es mi pasion desde muy chico.
+
 - Jon Ybarra
 - Daniela Fernandez
 - Walter Da Silva
