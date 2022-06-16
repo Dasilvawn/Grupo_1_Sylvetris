@@ -25,7 +25,5 @@
   Hola, mi nombre es Jon Ybarra, tengo 31 años. Soy estudiante de Tecnicatura Superior en Desarrollo de Software y además Full Stack Node.js web development student.
   Me gusta todo lo relacionado con la tecnología y más si es aplicada a los vehiculos de combustión interna o autos electricos, cuando puedo me gusta viajar conocer nuevos lugares,mi deporte favortio es el futbol.
   Estoy aprendiendo programación porque siento mucha curiosidad por el detras de escena, por aprender como se hacen todos esas herramientas que tanto usamos día a día y también porque me permitiría tener un trabajo estable y un ingreso por encima de la media.
-  
-  
-  - Daniela Fernandez
+
 
