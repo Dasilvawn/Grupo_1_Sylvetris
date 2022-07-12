@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+.home__header__container{
+    background-color: #ededdd;
+    width: 100%;
+    height: 80px;
+    color: #A05841;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 43px;
+    font-family: 'Roboto';
+}
