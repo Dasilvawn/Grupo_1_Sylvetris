@@ -2,8 +2,8 @@
 
 @import './general.css';
 
-@import './camponents/navbar.css';
-@import './camponents/footer.css';
+@import './components/navbar.css';
+@import './components/footer.css';
 
 @import './pages/home.css';
 @import './pages/login.css';
