@@ -1,6 +1,6 @@
 .header__container {
   align-items: center;
-  background-color:var(--color-light-grey);
+  background-color:#EDEDEE;
   color: #a05841;
   display: flex;
   height: 60px;
@@ -53,6 +53,11 @@
     outline: none;
     padding: 5px;
     width: 120px;
+    color: var(--color-brown);
+  }
+  .header__nav__right form input::placeholder {
+    
+    color: var(--color-brown);
   }
   .header__nav__right form button {
     background-color: transparent;
