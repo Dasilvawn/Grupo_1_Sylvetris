@@ -65,7 +65,13 @@
     position: absolute;
     right: 0;
     top: 3px;
+    cursor: pointer;
   }
+  .header__nav__right__icon_container ul{
+    display: flex;
+    gap: 20px;
+  }
+  
 }
 @media (min-width: 1024px) {
   .header__container {
