@@ -1,0 +1,56 @@
+.footer__container {
+  width: 100%;
+  background-color: var(--color-light-grey);
+  color: var(--color-white);
+  text-align: center;
+  
+}
+.footer__bg__container {
+  background-color: var(--color-dark-green);
+  padding: 20px;
+}
+.footer__section__info {
+  padding: 20px;
+  line-height: 22px;
+}
+.footer__section__info h4 {
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+}
+.footer__section__info ul {
+  list-style: none;
+}
+.footer__section__info ul a {
+  list-style: none;
+  text-decoration: none;
+  color: var(--color-white);
+}
+.footer__section__suscribete form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+}
+.footer__section__suscribete form input {
+  padding: 10px;
+  border: 1px solid var(--color-white);
+  background-color: transparent;
+  color: var(--color-white);
+  outline-color: var(--color-white);
+}
+.footer__section__suscribete form button {
+  padding: 10px;
+}
+.footer__section__redes {
+  margin-top: 30px;
+}
+.footer__section__redes ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.footer__copy {
+  color: var(--color-brown);
+  padding: 10px;
+}

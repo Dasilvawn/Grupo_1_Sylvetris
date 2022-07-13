@@ -1,6 +1,6 @@
 .header__container {
   align-items: center;
-  background-color: #ededdd;
+  background-color:var(--color-light-grey);
   color: #a05841;
   display: flex;
   height: 60px;
@@ -8,6 +8,7 @@
   padding: 0 10px;
   position: relative;
   width: 100%;
+  box-shadow: 0 3px 5px #ccc;
 }
 .header__logo {
   left: 50%;
