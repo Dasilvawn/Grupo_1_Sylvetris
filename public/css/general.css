@@ -1,5 +1,22 @@
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+:root{
+    --color-brown:#A05841;
+    --color-dark-green:#123132;
+    --color-light-grey:#EDEDEE;
+    --color-white:#fff;
+    --color-balck:#2F2F30;
+
+    --font-1:'Roboto'
+}
+
+
+
+body{
+    font-family: var(--font-1);
 }
