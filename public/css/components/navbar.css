@@ -1,12 +1,108 @@
+.header__container {
+  align-items: center;
+  background-color:#EDEDEE;
+  color: #a05841;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 10px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 3px 5px #ccc;
+}
+.header__logo {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 128px;
+}
+.header__logo img {
+  width: 100%;
+}
 
-.home__header__container{
-    background-color: #ededdd;
-    width: 100%;
-    height: 80px;
-    color: #A05841;
+.header__nav {
+  display: none;
+}
+.header__nav__right {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header__container {
+    height: 75px;
+    padding: 0 20px;
+  }
+  .header__logo {
+    width: 156px;
+  }
+  .header__cart {
+    display: none;
+  }
+  .header__nav__right {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 43px;
-    font-family: 'Roboto';
+    gap: 15px;
+  }
+  .header__nav__right form {
+    position: relative;
+  }
+  .header__nav__right form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-brown);
+    outline: none;
+    padding: 5px;
+    width: 120px;
+    color: var(--color-brown);
+  }
+  .header__nav__right form input::placeholder {
+    
+    color: var(--color-brown);
+  }
+  .header__nav__right form button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 3px;
+    cursor: pointer;
+  }
+  .header__nav__right__icon_container ul{
+    display: flex;
+    gap: 20px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .header__container {
+    height: 80px;
+    padding: 0 40px;
+  }
+  .header__hamburger {
+    display: none;
+  }
+  .header__logo {
+    left: 0px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-60%);
+  }
+  .header__nav {
+    display: block;
+  }
+  .header__nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+  .header__nav ul li a {
+    color: var(--color-brown);
+    display: block;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+  .header__nav ul li a:hover {
+    transform: scale(1.04);
+  }
 }

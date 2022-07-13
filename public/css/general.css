@@ -20,3 +20,10 @@
 body{
     font-family: var(--font-1);
 }
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
