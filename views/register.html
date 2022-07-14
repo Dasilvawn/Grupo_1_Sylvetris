@@ -58,13 +58,23 @@
     </header>
     <!-- ----------Fin de header----------- -->
     <!-- ----------Inicio de main----------- -->
-    <main class="home__main__container">
-        <form action="" method="">
-            <input type="text" placeholder="Buscar" name="buscar" />
-            <button type="submit">
-              <img src="./images/iconos/search.png" alt="search icon" />
-            </button>
-          </form>
+    <main class="register__main">
+        <section class="register__main__container">
+            <h1>REGÍSTRATE</h1>
+            <div class="register__main__container__text">
+                <p>¿Ya tenes un perfil profesional?</p>
+                <a href="/login.html">Iniciar Sesión</a>
+            </div>
+            <form action="" method="">
+                <label for="">Email</label>
+                <input type="text" placeholder="miEmail@hola.com" name="email" />
+                <label for="">Contraseña</label>
+                <input type="password" placeholder="************" name="contrasenia" />
+                <button class="registrarse__button" type="submit">Registrarse</button>
+            </form>
+            <p id="register__Google">O Regístrate con</p>
+            <button class="google__button"><img src="/images/iconos/google.png" alt="icono google"> Google</button>
+        </section>
     </main>
     <!-- ----------Fin de main----------- -->
     <!-- ----------Inicio de footer----------- -->
@@ -73,4 +83,5 @@
     </footer>
     <!-- ----------Fin de footer----------- -->
 </body>
+
 </html>
