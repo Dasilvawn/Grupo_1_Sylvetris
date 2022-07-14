@@ -1,0 +1,9 @@
+.header__nav__right form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-brown);
+    outline: none;
+    padding: 5px;
+    width: 120px;
+    color: var(--color-brown);
+}
