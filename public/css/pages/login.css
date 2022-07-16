@@ -1,0 +1,65 @@
+.login_main{
+    color: #A05841;
+    height: 450px;
+    line-height: 40px;
+}
+
+.login_main_inicio{
+    display: flex;
+    justify-content: center;
+    font-weight: 20px;
+    padding: 20px;
+}
+
+.login_main_nuevo{
+    display: flex;
+    justify-content: center;
+}
+
+.login_main_register{
+   justify-content: flex-start;
+  padding: 10px 0;
+   text-align: left;
+}
+
+.login_main_olvidocontraseña{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.login_main_iniciosesion button{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    background-color: #A05841;
+    color: white;
+    padding: 10px;  
+    border: solid 1px #A05841;
+}
+
+.login_main_contactate{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+}
+
+.login_main_usargoogle{
+    border: solid 1px #A05841;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    align-items: center;
+}
+.login_main_usargoogle i{
+    padding: 10px;
+    font-size: 20px;
+}
+
+@media (min-width: 768px){
+    
+
+}

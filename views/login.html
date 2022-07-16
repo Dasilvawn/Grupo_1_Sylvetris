@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <title>Sylvestris - Login - </title>
+    <script src="https://kit.fontawesome.com/30ca11b4d7.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="header__container">
         <div class="header__hamburger">
           <img src="./images/iconos/h_menu.png" alt="menu icono" />
         </div>
-  
+
         <div class="header__logo">
           <img src="./images/logo/Logo.png" alt="logo" />
         </div>
@@ -59,7 +60,49 @@
       </header>
       <!--**************************** FIN DEL HEADE *************************** -->
       <!-- *************************** INICIO DEL MAIN ************************* -->
+         <main class="login_main">
+            <div class="login_main_inicio"> 
+                <h2>INICIO DE SESION</h2>
+             </div>
 
+             <div class="login_main_nuevo"> 
+                <p>¿Eres nuevo en este sitio? Registrate</p>
+            </div>
+
+            <div class="login_main_register"> 
+
+            <form action="register.html" method="post">
+                <label for="register">Email
+                </label>
+                <input type="register" name="usuario" id="Register"><br>
+
+                <label for="password">Contraseña</label>
+                <input type="password" name="clave" id="password">
+         </form>
+        </div>
+
+         <div class="login_main_olvidocontraseña">
+
+            <p>¿Olvidaste tu contraseña?</p>
+         </div>
+
+        <div class="login_main_iniciosesion">
+
+            <button>Iniciar sesión</button>
+        </div>
+
+        <div class="login_main_contactate">
+            <p>O contactate con</p>
+        </div>
+
+        <div class="login_main_usargoogle">
+            <i class="fa-brands fa-google"></i>
+
+            <a href="conctar con Google">Conectar con Google</a>
+        </div>
+
+         </main>
+        
       <!-- *************************** FIN DEL MAIN **************************** -->
       <!-- *************************** INICIO DEL FOOTER *********************** -->
       <footer class="footer__container">
