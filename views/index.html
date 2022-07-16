@@ -1,137 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <title>Sylvestris - Home -</title>
-  </head>
-  <body>
-    <!-- ----------Inicio de header----------- -->
 
-    <header class="header__container">
-      <div class="header__hamburger">
-        <img src="./images/iconos/h_menu.png" alt="menu icono" />
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <title>Sylvestris - Home -</title>
+</head>
 
-      <div class="header__logo">
-        <img src="./images/logo/Logo.png" alt="logo" />
-      </div>
+<body>
+  <!-- ----------Inicio de header----------- -->
 
-      <div class="header__cart">
-        <img src="./images/iconos/cart_m.png" alt="" />
-      </div>
+  <header class="header__container">
+    <div class="header__hamburger">
+      <img src="./images/iconos/h_menu.png" alt="menu icono" />
+    </div>
 
-      <nav class="header__nav">
-        <ul class="header__nav__categorias">
-          <li>
-            <a href="#">Categoria 1</a>
+    <div class="header__logo">
+      <img src="./images/logo/Logo.png" alt="logo" />
+    </div>
+
+    <div class="header__cart">
+      <img src="./images/iconos/cart_m.png" alt="" />
+    </div>
+
+    <nav class="header__nav">
+      <ul class="header__nav__categorias">
+        <li>
+          <a href="#">Categoria 1</a>
+        </li>
+        <li>
+          <a href="#">Categoria 2</a>
+        </li>
+        <li>
+          <a href="#">Categoria 3</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__nav__right">
+      <form action="" method="">
+        <input type="text" placeholder="Buscar" name="buscar" />
+        <button type="submit">
+          <img src="./images/iconos/search.png" alt="search icon" />
+        </button>
+      </form>
+      <nav class="header__nav__right__icon_container">
+        <ul>
+          <li class="header__nav__right__icon">
+            <a href="#"><img src="./images/iconos/user.png" alt="user icon" /></a>
           </li>
-          <li>
-            <a href="#">Categoria 2</a>
-          </li>
-          <li>
-            <a href="#">Categoria 3</a>
+          <li class="header__nav__right__icon">
+            <a href="#"><img src="./images/iconos/cart.png" alt="cart icon" /></a>
           </li>
         </ul>
       </nav>
-      <div class="header__nav__right">
-        <form action="" method="">
-          <input type="text" placeholder="Buscar" name="buscar" />
-          <button type="submit">
-            <img src="./images/iconos/search.png" alt="search icon" />
-          </button>
-        </form>
-        <nav class="header__nav__right__icon_container">
-          <ul>
-            <li class="header__nav__right__icon">
-              <a href="#"
-                ><img src="./images/iconos/user.png" alt="user icon"
-              /></a>
-            </li>
-            <li class="header__nav__right__icon">
-              <a href="#"
-                ><img src="./images/iconos/cart.png" alt="cart icon"
-              /></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- ----------Fin de header----------- -->
-    <!-- ----------Inicio de main----------- -->
-    <main class="home__main__container"></main>
-    <!-- ----------Fin de main----------- -->
-    <!-- ----------Inicio de footer----------- -->
-    <footer class="footer__container">
-      <div class="footer__bg__container">
-        <div class="footer__section__info__container">
-          <section class="footer__section__info">
-            <h4>TIENDA</h4>
-            <p>Dirección: Calle falsa 123, Springfield</p>
-            <p>Teléfono: 914-123-456</p>
-            <p>Email: cantacto@sylvestris.com</p>
-          </section>
-          <section class="footer__section__info">
-            <h4>HORARIOS</h4>
-            <p>Lun-Vie: 7:00-22:00</p>
-            <p>Sábados: 8:00-22:00</p>
-            <p>Domingos: 8:00-12:00</p>
-          </section>
-          <section class="footer__section__info">
-            <h4>AYUDA</h4>
-            <nav>
-              <ul>
-                <li>
-                  <a href="">Envios y devoluciones</a>
-                </li>
-                <li>
-                  <a href="">Politicas de privacidad</a>
-                </li>
-                <li>
-                  <a href="">FAQ</a>
-                </li>
-              </ul>
-            </nav>
-          </section>
+  <!-- ----------Fin de header----------- -->
+  <!-- ----------Inicio de main----------- -->
+  <main class="home__main__container">
+    <section class="home__section__banner home_sec_margin">
+      <div class="home__section__banner-bg-dark"></div>
+
+      <picture class="home__section__banner__img-logo">
+        <source srcset="./images/logo/banner_logo.png" media="(min-width:700px)" />
+        <img src="./images/logo/logo_banner_mobile.png" alt="logo banner mobile" />
+      </picture>
+      <button class="home__section__banner--btn">Comprar online</button>
+    </section>
+    <section class="home__section__categorias home_sec_margin">
+      <article class="home__section__categorias__card">
+        <h3>Captus</h3>
+
+        <picture class="home__section__categorias__card--img">
+          <source srcset="./images/categorias/cat1.webp" media="(min-width:1440px)" />
+          <img src="/images/categorias/cat1.jpg" alt="categoria 1" />
+        </picture>
+      </article>
+      <article class="home__section__categorias__card">
+        <h3>Plantas</h3>
+        <picture class="home__section__categorias__card--img">
+          <source srcset="./images/categorias/cat2.webp" media="(min-width:1440px)" />
+          <img src="/images/categorias/cat2.jpg" alt="categoria 2" />
+          </pictu>
+      </article>
+      <article class="home__section__categorias__card">
+        <h3>Suculentas</h3>
+        <picture class="home__section__categorias__card--img">
+          <source srcset="./images/categorias/cat3.webp" media="(min-width:1440px)" />
+          <img src="/images/categorias/cat3.jpg" alt="categoria 3" />
+        </picture>
+      </article>
+    </section>
+    <section class="home__section__destacados home_sec_margin">
+      <h2 class="home__title">Productos destacados</h2>
+      <div  class="home__section__destacados__products__container">
+
+        <article class="product__card">
+            <div class="product__card__img_container">
+              <img src="/images/products/interior/begonia-rex-rondeau_1.png" alt="begonia rex rondeau">
+            </div>
+            <div class="product__card__info">
+              <h4>Begonia Rex Rondeau</h4>
+              <p>$1.500,00</p>
+            </div>
+        </article>
+        <article class="product__card">
+            <div class="product__card__img_container">
+              <img src="/images/products/suculentas/tradescantia-albiflora_1.png" alt="Tradescantia">
+            </div>
+            <div class="product__card__info">
+              <h4>Tradescantia</h4>
+              <p>$1.800,00</p>
+            </div>
+        </article>
+        <article class="product__card">
+            <div class="product__card__img_container">
+              <img src="/images/products/suculentas/aeonium-diplocyclum_1.png" alt="Aeonium diplocyclum">
+            </div>
+            <div class="product__card__info">
+              <h4>Aeonium diplocyclum</h4>
+              <p>$1.200,00</p>
+            </div>
+        </article> 
+        <article class="product__card">
+            <div class="product__card__img_container">
+              <img src="/images/products/suculentas/gasteria-hippo_1.png" alt="Gasteria hippo">
+            </div>
+            <div class="product__card__info">
+              <h4>Gasteria hippo</h4>
+              <p>$1.900,00</p>
+            </div>
+        </article> 
+        <i class="fa-solid fa-circle-arrow-left"></i>
+        <i class="fa-solid fa-circle-arrow-right"></i>
+      </div>
+      <ul class="slider__puntos">
+        <li class="slider__punto activo"></li>
+        <li class="slider__punto"></li>
+        <li class="slider__punto"></li>
+    </ul>
+      
+    
+    
+    
+    
+    </section>
+    <section class="home__section__about home_sec_margin">
+      <article class="home__section__about__description">
+        <div class="home__section__about__text__container">
+          <h2>QUIÉNES SOMOS</h2>
+          <p>
+            Somos apasionados de la naturaleza que desde hace más de veinte años nos dedicamos al mundo de las plantas.
+            Día a día nuestra tarea es seguir aprendiendo y transmitiendo nuestro conocimiento sobre el cuidado de los
+            árboles, las plantas y las flores, desde sus orígenes hasta su desarrollo más óptimo, teniendo en cuenta sus
+            ciclos y su asombrosa capacidad de adaptación.
+          </p>
+          <p>
+            Queremos contagiar nuestro entusiasmo porque estamos convencidos de que las plantas mejoran nuestra calidad
+            de vida y nos sensibilizan de un modo único, nos otorgan paz, alegría y concentración.
+          </p>
         </div>
 
-        <section class="footer__section__suscribete">
-          <h4>SUSCRIBETE</h4>
-          <form action="" method="">
-            <label for="correo">Ingresa tu email aqui</label>
-            <div class="footer__flex">
-              <input type="text" id="correo" name="correo" />
-              <button type="submit">Unirse</button>
-            </div>
-          </form>
+
+        <picture class="home__section__about__img__container">
+          <source srcset="./images/banners/about1_1024.jpg" media="(min-width:1440px)" />
+          <source srcset="./images/banners/about1_768.jpg" media="(min-width:768px)" />
+          <img class="about1_img" src="/images/banners/about1_320.jpg" alt="imagen del vivero uno">
+        </picture>
+
+      </article>
+
+
+
+      <article class="home__section__about__description">
+
+        <picture class="home__section__about__img__container">
+
+          <source srcset="./images/banners/about2_1024.jpg" media="(min-width:1440px)" />
+          <source srcset="./images/banners/about2_768.jpg" media="(min-width:768px)" />
+          <img src="/images/banners/about2_320.jpg" alt="imagen del vivero uno">
+        </picture>
+
+        <div class="home__section__about__text__container offer">
+          <h2> -10% EN COMPRAS ONLINE </h2>
+          <button>Comprar Online</button>
+        </div>
+
+      </article>
+    </section>
+    <section class="home__section__instagram home_sec_margin">
+      <h2 class="home__title">Sumate a nuestra comunidad en Instagram<i class="fa-brands fa-instagram"></i></h2>
+      <div class="home__section__instagram__card__container">
+
+        <picture class="home__section__instagram__card">
+          <img src="/images/instagram/instagram1.jpg" alt="imagen de instagram">
+        </picture>
+        <picture class="home__section__instagram__card">
+          <img src="/images/instagram/instagram2.jpg" alt="imagen de instagram">
+        </picture>
+        <picture class="home__section__instagram__card">
+          <img src="/images/instagram/instagram3.jpg" alt="imagen de instagram">
+        </picture>
+      </div>
+    </section>
+  </main>
+  <!-- ----------Fin de main----------- -->
+  <!-- ----------Inicio de footer----------- -->
+  <footer class="footer__container">
+    <div class="footer__bg__container">
+      <div class="footer__section__info__container">
+        <section class="footer__section__info">
+          <h4>TIENDA</h4>
+          <p>Dirección: Calle falsa 123, Springfield</p>
+          <p>Teléfono: 914-123-456</p>
+          <p>Email: cantacto@sylvestris.com</p>
         </section>
-        <section class="footer__section__redes">
-          <ul>
-            <li>
-              <a href="#"
-                ><img src="./images/iconos/face.png" alt="icono facebook"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="./images/iconos/pin.png" alt="icono pinteres"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img
-                  src="./images/iconos/instagram.png"
-                  alt="icono instragram"
-              /></a>
-            </li>
-          </ul>
+        <section class="footer__section__info">
+          <h4>HORARIOS</h4>
+          <p>Lun-Vie: 7:00-22:00</p>
+          <p>Sábados: 8:00-22:00</p>
+          <p>Domingos: 8:00-12:00</p>
+        </section>
+        <section class="footer__section__info">
+          <h4>AYUDA</h4>
+          <nav>
+            <ul>
+              <li>
+                <a href="">Envios y devoluciones</a>
+              </li>
+              <li>
+                <a href="">Politicas de privacidad</a>
+              </li>
+              <li>
+                <a href="">FAQ</a>
+              </li>
+            </ul>
+          </nav>
         </section>
       </div>
-      <p class="footer__copy">© 2022 Creado por Equipo 1</p>
-    </footer>
-    <!-- ----------Fin de footer----------- -->
-  </body>
+
+      <section class="footer__section__suscribete">
+        <h4>SUSCRIBETE</h4>
+        <form action="" method="">
+          <label for="correo">Ingresa tu email aqui</label>
+          <div class="footer__flex">
+            <input type="text" id="correo" name="correo" />
+            <button type="submit">Unirse</button>
+          </div>
+        </form>
+      </section>
+      <section class="footer__section__redes">
+        <ul>
+          <li>
+            <a href="#"><img src="./images/iconos/face.png" alt="icono facebook" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./images/iconos/pin.png" alt="icono pinteres" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./images/iconos/instagram.png" alt="icono instragram" /></a>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <p class="footer__copy">© 2022 Creado por Equipo 1</p>
+  </footer>
+  <!-- ----------Fin de footer----------- -->
+</body>
+
 </html>
