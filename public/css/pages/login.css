@@ -2,6 +2,8 @@
     color: #A05841;
     height: 450px;
     line-height: 40px;
+    /* background-color: yellow; */
+    display: block;
 }
 
 .login_main_inicio{
@@ -9,17 +11,24 @@
     justify-content: center;
     font-weight: 20px;
     padding: 20px;
+    
 }
 
 .login_main_nuevo{
     display: flex;
     justify-content: center;
+   
 }
 
-.login_main_register{
+.login_main_email{
    justify-content: flex-start;
   padding: 10px 0;
    text-align: left;
+   margin: auto;
+}
+
+.login_main_register form label register{
+      margin: 30px;
 }
 
 .login_main_olvidocontraseña{
@@ -31,7 +40,7 @@
 .login_main_iniciosesion button{
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 85%;
     margin: auto;
     background-color: #A05841;
     color: white;
@@ -51,15 +60,34 @@
     margin: auto;
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 85%;
     align-items: center;
 }
+
 .login_main_usargoogle i{
     padding: 10px;
     font-size: 20px;
 }
 
 @media (min-width: 768px){
-    
+    .login_main{
+         /* background-color: red; */
+      margin: 30px 200px;   
+    } 
+    .login_main_email{
+        margin-left: 50px;
+    }
 
+    .footer__bg__container{
+         margin-top:50px ;
+    }
+}
+
+@media (min-width: 1024px){
+    .login_main{
+        margin: 100px 200px;
+    }
+    .login_main_email{
+        margin-left: 190px;
+    }
 }
