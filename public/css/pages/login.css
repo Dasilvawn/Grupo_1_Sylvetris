@@ -4,13 +4,15 @@
     line-height: 40px;
     /* background-color: yellow; */
     display: block;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .login_main_inicio{
     display: flex;
     justify-content: center;
     font-weight: 20px;
-    padding: 20px;
+    padding: 15px;
     
 }
 
@@ -27,14 +29,47 @@
    margin: auto;
 }
 
-.login_main_register form label register{
-      margin: 30px;
+.login_main_email input{
+    margin-left: 25px;
+    padding-left: 50px;
+}
+
+.login_main_email input#password{
+    margin-left: 15px;
+    padding: 1px 9px;
+}
+
+.login_main_recordarpregunta{
+    width: 100%;
+    display: flex;
+}
+.login_main_recordarme{
+    width: 35%;
+}
+
+.login_main_recordarme input{
+    margin-left: 21px;
+    padding: 2px 35px;
+}
+
+.login_main_recordarme input#password{
+    padding: 2px 20px;
+    margin-left: 10px;
+}
+
+.login_main_recordarme input#recordarme {
+    margin-left: 0px;
 }
 
 .login_main_olvidocontraseña{
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
+    width: 60%;
+}
+
+.login_main_olvidocontraseña p{
+    font-size: 95%;
 }
 
 .login_main_iniciosesion button{
@@ -51,8 +86,7 @@
 .login_main_contactate{
     display: flex;
     justify-content: center;
-    padding: 10px;
-    
+    padding: 10px;  
 }
 
 .login_main_usargoogle{
@@ -69,13 +103,28 @@
     font-size: 20px;
 }
 
+/* +++++++++++768+++++++++++++ */
+
 @media (min-width: 768px){
     .login_main{
          /* background-color: red; */
-      margin: 30px 200px;   
+      margin: 20px 200px;   
     } 
     .login_main_email{
         margin-left: 50px;
+    }
+
+    .login_main_email form{
+        margin-left: -40px;
+    }
+
+    
+    .login_main_email label{
+         margin-left: 20px;
+    }
+
+    .login_main_recordarpregunta{
+        padding-left: 30px;
     }
 
     .footer__bg__container{
@@ -83,11 +132,24 @@
     }
 }
 
+/* ++++++++++++++1024+++++++++ */
+
+
 @media (min-width: 1024px){
     .login_main{
-        margin: 100px 200px;
+        margin: 100px 300px;
     }
     .login_main_email{
-        margin-left: 190px;
+        margin-left: 13%;
+    }
+     
+    .login_main_email input{   
+    margin-left: 15px;
+    padding: 2px 57px;
+    }
+    
+    .login_main_email input#password{    
+        margin-left: 15px;
+        padding: 2px 35px;
     }
 }
