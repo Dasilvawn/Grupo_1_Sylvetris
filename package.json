@@ -1,0 +1,27 @@
+{
+  "name": "sylvetris",
+  "version": "1.0.0",
+  "description": "- La pagina que desarrollamos contiene los productos necesarios para generar un e-commerce de altura en donde el producto mostrara la decoración que quieras darle a tu hogar. Plantas para interiores, exteriores y articulos, los cuales el usuario quiera que sus clientes vean.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dasilvawn/Grupo_1_Sylvetris.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dasilvawn/Grupo_1_Sylvetris/issues"
+  },
+  "homepage": "https://github.com/Dasilvawn/Grupo_1_Sylvetris#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
