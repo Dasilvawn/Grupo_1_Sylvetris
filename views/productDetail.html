@@ -21,7 +21,10 @@
         </div>
 
         <div class="header__logo">
-            <img src="./images/logo/Logo.png" alt="logo" />
+            <a href="/">
+                <img src="./images/logo/Logo.png" alt="logo" />
+
+            </a>
         </div>
 
         <div class="header__cart">
@@ -51,10 +54,10 @@
             <nav class="header__nav__right__icon_container">
                 <ul>
                     <li class="header__nav__right__icon">
-                        <a href="#"><img src="./images/iconos/user.png" alt="user icon" /></a>
+                        <a href="/login"><img src="./images/iconos/user.png" alt="user icon" /></a>
                     </li>
                     <li class="header__nav__right__icon">
-                        <a href="#"><img src="./images/iconos/cart.png" alt="cart icon" /></a>
+                        <a href="carrito"><img src="./images/iconos/cart.png" alt="cart icon" /></a>
                     </li>
                 </ul>
             </nav>
@@ -65,91 +68,66 @@
 
     <!-- ----------Inicio de main----------- -->
     <main class="producto__main__container">
-        <div>
-            <nav class="producto_main_section_nav">
-                <div class="producto_main_section_ruta">
-                    <a href="#">Inicio</a>&nbsp/&nbsp<a href="#">Suculentas</a>&nbsp/&nbsp<a href="#">Tradescantia Albiflora</a>
-                </div>
-                <div class="producto_main_section_prev_next">
-                    <a href="#">Previo</a>&nbsp/&nbsp<a href="#">Próximo</a>
-                </div>
-            </nav>
-        </div>
-        <section class="producto__section__categorias producto_sec_margin">
-            <article class="producto__section__categorias__article">
+        <nav class="producto_main_section_nav">
+            <div class="producto_main_section_ruta">
+                <a href="#">Inicio</a>&nbsp/&nbsp<a href="#">Suculentas</a>&nbsp/&nbsp<a href="#">Echeveria Taurus</a>
+            </div>
+            <!--  <div class="producto_main_section_prev_next">
+          <a href="#">Previo</a>&nbsp/&nbsp<a href="#">Próximo</a>
+        </div> -->
+        </nav>
 
-                <picture class="producto__section__categorias__article--img">
-                    <source srcset="./images/categorias/cat1.webp" media="(min-width:1440px)" />
+        <section class="producto__section__categorias">
+            <div class="producto__section__izquierda">
+                <div class="producto__section__categorias__article--img">
                     <img src="/images/products/suculentas/tradescantia-albiflora_2.png" alt="tradescantia-albiflora" />
-                </picture>
-                <h5>Descripción del producto. Ideal para agregar más información sobre tu producto: tamaño, materiales,
-                    instrucciones de uso y mantenimiento.</h5>
-            </article>
-            <article class="producto__section__categorias__article">
-                <h1>Tradescantia Albiflora</h1>
-                <p>SKU: 0017</p>
-                <p>$1500,00</p>
-                <label for="cantidad">CANTIDAD:</label>
-                <input type="number" id="cantidad" name="cantidad" min="1" max="999">
-                <div class="producto__section__categorias__button">
-                    <button class="button_agregar" type="submit">
-                        Agregar al carrito
-                    </button>
-                    <button>
-                        <img src="/images/iconos/icono_favorito.png" alt="fav">
-                    </button>
                 </div>
-                <button class="button__compra" type="submit">Realizar Compra</button>
-                <div>
-                    <ul class="menu-horizontal">
-                        <li>
-                            <h4>INFORMACIÓN DEL PRODUCTO</h4>
-                            <ul class="menu-vertical">
-                                <p>Detalles del producto. Es el lugar ideal para agregar más información sobre tu
-                                    producto
-                                    como su
-                                    tamaño, materiales, instrucciones de uso y mantenimiento. También es un buen espacio
-                                    para explicar
-                                    lo especial que es tu producto y sus beneficios.</p>
-                            </ul>
-                        </li>
-                        <li>
-                            <h4>POLÍTICA DE DEVOLUCIÓN Y REEMBOLSO</h4>
-                            <ul class="menu-vertical">
-                                <p>Política de devolución y reembolso. Usa este espacio para explicar a tus clientes qué
-                                    hacer en caso
-                                    de no estar satisfechos con su compra. Ofrecer una política de reembolso clara y
-                                    sencilla genera
-                                    confianza y credibilidad en tus clientes, pues saben que en tu tienda pueden comprar
-                                    de
-                                    forma
-                                    segura.</p>
-                            </ul>
-                        </li>
-                        <li>
-                            <h4>POLÍTICA DE ENVÍOS</h4>
-                            <ul class="menu-vertical">
-                                <p>Política de envíos. Es el lugar indicado para agregar más información sobre tus
-                                    métodos de envío, embalaje y gastos de envío. Tener una política clara y
-                                    transparente al respecto es una gran manera de generar confianza y garantizar que
-                                    tus clientes compren con seguridad.</p>
-                            </ul>
-                        </li>
-                    </ul>
+                <p>
+                    Como la mayoría de las echeverias, no saturar el sustrato, dejando
+                    secar ligeramente entre riegos. No tolera el frío, mejor sol de
+                    mañana. evitar fuerte insolación. En interior mucha luz.
+                </p>
+            </div>
+            <div class="producto__section__derecha">
+                <h1>Echeveria Taurus</h1>
+                <p class="smart">SKU: 0017</p>
+                <div class="producto__precio">
+                    <p class="smart">Precio</p>
+                    <h4>$1500,00</h4>
                 </div>
-                <!-- RELLENAR -->
 
-            </article>
+                <p class="smart">CANTIDAD:</p>
+                <div class="producto__cantidad">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+                <div class="producto__section__categorias__button">
+                    <button class="button_agregar">Agregar al carrito</button>
+                    <button class="button_favoritos">
+                        <img src="/images/iconos/icono_favorito.png" alt="fav" />
+                    </button>
+                </div>
+                <button class="button__compra">Realizar Compra</button>
+                <h4 class="detalles">DETALLES DEL PRODUCTO</h4>
+                <p class="detalles">
+                    Cultivar de echeveria, con hojas triangulares de color rojizo, de
+                    roseta compacta, con flores amarillas. Muy estética por su
+                    coloración, de color rojo-verdoso.
+                </p>
+                <h5>Altura/anchura estimada: 9 cm.</h5>
+                <h5>Presentación en maceta de 8.5cm</h5>
+                <!-- RELLENAR -->
+            </div>
 
             <!-- CARRUSEL -->
         </section>
-        <section class="producto__section__destacados producto_sec_margin">
-            <h2 class="producto__title">PRODUCTOS RELACIONADOS</h2>
-            <div class="producto__section__destacados__products__container">
-
+        <section class="home__section__destacados home_sec_margin">
+            <h2 class="productos_relacionados">Productos relacionados</h2>
+            <div class="home__section__destacados__products__container">
                 <article class="product__card">
                     <div class="product__card__img_container">
-                        <img src="/images/products/interior/begonia-rex-rondeau_1.png" alt="begonia rex rondeau">
+                        <img src="/images/products/interior/begonia-rex-rondeau_1.png" alt="begonia rex rondeau" />
                     </div>
                     <div class="product__card__info">
                         <h4>Begonia Rex Rondeau</h4>
@@ -158,7 +136,7 @@
                 </article>
                 <article class="product__card">
                     <div class="product__card__img_container">
-                        <img src="/images/products/suculentas/tradescantia-albiflora_1.png" alt="Tradescantia">
+                        <img src="/images/products/suculentas/tradescantia-albiflora_1.png" alt="Tradescantia" />
                     </div>
                     <div class="product__card__info">
                         <h4>Tradescantia</h4>
@@ -167,7 +145,7 @@
                 </article>
                 <article class="product__card">
                     <div class="product__card__img_container">
-                        <img src="/images/products/suculentas/aeonium-diplocyclum_1.png" alt="Aeonium diplocyclum">
+                        <img src="/images/products/suculentas/aeonium-diplocyclum_1.png" alt="Aeonium diplocyclum" />
                     </div>
                     <div class="product__card__info">
                         <h4>Aeonium diplocyclum</h4>
@@ -176,7 +154,7 @@
                 </article>
                 <article class="product__card">
                     <div class="product__card__img_container">
-                        <img src="/images/products/suculentas/gasteria-hippo_1.png" alt="Gasteria hippo">
+                        <img src="/images/products/suculentas/gasteria-hippo_1.png" alt="Gasteria hippo" />
                     </div>
                     <div class="product__card__info">
                         <h4>Gasteria hippo</h4>
