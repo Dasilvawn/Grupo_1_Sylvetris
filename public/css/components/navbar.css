@@ -6,9 +6,11 @@
   height: 60px;
   justify-content: space-between;
   padding: 0 10px;
-  position: relative;
+  position: sticky;
   width: 100%;
-  box-shadow: 0 3px 5px #ccc;
+  *box-shadow: 0 3px 5px #ccc;
+  top: 0;
+  z-index: 10;
 }
 .header__logo {
   left: 50%;
