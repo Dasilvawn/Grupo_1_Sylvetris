@@ -1,7 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = 3030;
+
 
 app.use(express.static('public'));
 
@@ -15,6 +16,6 @@ app.get('/prueba', (req, res) => {res.sendFile( path.join(__dirname, 'views', 'p
 
 
 //iniciar servidor
-app.listen(port, () => {
-    console.log( `Servidor iniciado en puerto ${port}` );
+app.listen(process.env.PORT || 3030, () => {
+    console.log(`Servidor iniciado en puerto http://localhost: ${process.env.PORT || 3030}`);
 });
