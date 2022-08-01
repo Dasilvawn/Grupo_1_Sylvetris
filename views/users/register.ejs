@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <%- include('../partials/head') %>
+
+<body>
+    <!-- ----------Inicio de header----------- -->
+    <header class="header__container">
+        <div class="header__hamburger">
+            <img src="./images/iconos/h_menu.png" alt="menu icono" />
+        </div>
+
+        <div class="header__logo">
+            <a href="/"><img src="./images/logo/Logo.png" alt="logo" /></a>
+        </div>
+
+        <div class="header__cart">
+            <a href="/carrito">
+              <img src="./images/iconos/cart_m.png" alt="" />
+            </a>
+          </div>
+
+        <nav class="header__nav">
+            <ul class="header__nav__categorias">
+                <li>
+                    <a href="#">Categoria 1</a>
+                </li>
+                <li>
+                    <a href="#">Categoria 2</a>
+                </li>
+                <li>
+                    <a href="#">Categoria 3</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header__nav__right">
+            <form action="" method="">
+                <input type="text" placeholder="Buscar" name="buscar" />
+                <button type="submit">
+                    <img src="./images/iconos/search.png" alt="search icon" />
+                </button>
+            </form>
+            <nav class="header__nav__right__icon_container">
+                <ul>
+                    <li class="header__nav__right__icon">
+                        <a href="#"><img src="./images/iconos/user.png" alt="user icon" /></a>
+                    </li>
+                    <li class="header__nav__right__icon">
+                        <a href="#"><img src="./images/iconos/cart.png" alt="cart icon" /></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="register__main">
+        <section class="register__main__container">
+            <h1>REGÍSTRATE</h1>
+            <div class="register__main__container__text">
+                <p>¿Ya tenes un perfil profesional?</p>
+                <a href="/usuario/login">Iniciar Sesión</a>
+            </div>
+            <form action="" method="">
+                <label for="">Email</label>
+                <input type="email" placeholder="miEmail@correo.com" name="email" />
+                <label for="">Contraseña</label>
+                <input type="password" placeholder="************" name="contrasenia" />
+                <label for="">Repetir contraseña</label>
+                <input type="password" placeholder="************" name="re-contrasenia" />
+                <button class="registrarse__button" type="submit">Registrarse</button>
+            </form>
+            <p id="register__Google">O Regístrate con</p>
+            <button class="google__button"><img src="/images/iconos/google.png" alt="icono google"> Google</button>
+        </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+    <!-- ----------Inicio de footer----------- -->
+    <footer class="footer__container">
+        <p class="footer__copy">© 2022 Creado por Equipo 1</p>
+    </footer>
+    <!-- ----------Fin de footer----------- -->
+</body>
+
+</html>

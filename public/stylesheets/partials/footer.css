@@ -1,0 +1,110 @@
+.footer__container {
+    width: 100%;
+    background-color: var(--color-light-grey);
+    color: var(--color-white);
+    text-align: center;
+    
+  }
+  .footer__bg__container {
+    background-color: var(--color-dark-green);
+    padding: 20px;
+  }
+  .footer__section__info {
+    padding: 20px;
+    line-height: 25px;
+    min-width: 280px;
+  }
+  .footer__section__info h4 {
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+    font-weight: 400;
+  }
+  .footer__section__info ul {
+    list-style: none;
+  }
+  .footer__section__info ul a {
+    list-style: none;
+    text-decoration: none;
+    color: var(--color-white);
+  }
+  .footer__section__suscribete{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   
+    
+  }
+  .footer__section__suscribete h4{
+   margin: 15px;
+   letter-spacing: 5px;
+   font-weight: 400;
+   
+    
+  }
+  .footer__section__suscribete form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+    width: 25vw;
+    max-width: 500px;
+    min-width: 300px;
+    
+  }
+  .footer__section__suscribete form input {
+    padding: 10px;
+    border: 1px solid var(--color-white);
+    background-color: transparent;
+    color: var(--color-white);
+    outline-color: var(--color-white);
+  }
+  .footer__section__suscribete form button {
+    padding: 10px;
+  }
+  .footer__section__redes {
+    margin-top: 30px;
+  }
+  .footer__section__redes ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+  }
+  .footer__copy {
+    color: var(--color-brown);
+    padding: 10px;
+    font-size: 14px;
+  }
+  .footer__section__info__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+  } 
+  .footer__flex{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  @media (min-width: 768px) {
+    .footer__flex{
+      display: flex;
+      flex-direction: row;
+    }
+    .footer__flex input{
+      width: 70%;
+    }
+    .footer__flex button{
+      width: 30%;
+    }
+    .footer__bg__container {
+     margin: 0 20px;
+    }
+  }
+  @media (min-width: 1014px) {
+    
+    .footer__bg__container {
+     margin: 0 30px;
+    }
+  }

@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color-brown: #a05841;
+  --color-dark-green: #123132;
+  --color-light-grey: #ededee;
+  --color-white: #fff;
+  --color-black: #2f2f30;
+
+  --font-1: "Roboto";
+}
+
+
+body {
+  font-family: var(--font-1);
+}
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
