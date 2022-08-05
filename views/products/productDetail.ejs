@@ -5,7 +5,7 @@
 
 <body>
     <!-- ----------Inicio de header----------- -->
-    <%- include('../partials/navbar') %>
+    <%- include('../partials/header') %>
 
     <!-- <header class="header__container">
         <div class="header__hamburger">
@@ -113,10 +113,16 @@
                 <h5>Presentación en maceta de 8.5cm</h5>
                 <!-- RELLENAR -->
             </div>
+        </section>
 
             <!-- CARRUSEL -->
-        </section>
-        <section class="home__section__destacados home_sec_margin">
+
+        <%- ('..views/users/carrusel') %> 
+            <!-- ***************************************************************** -->
+        
+
+
+        <!-- <section class="home__section__destacados home_sec_margin">
             <h2 class="productos_relacionados">Productos relacionados</h2>
             <div class="home__section__destacados__products__container">
                 <article class="product__card">
@@ -163,12 +169,14 @@
                 <li class="slider__punto"></li>
                 <li class="slider__punto"></li>
             </ul>
-        </section>
+        </section> -->
+
     </main>
     <!-- ----------Fin de main----------- -->
 
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/footer') %>
+
    <!--  <footer class="footer__container">
         <div class="footer__bg__container">
             <div class="footer__section__info__container">
