@@ -1,4 +1,3 @@
-
 module.exports = {
   
     editProduct : (req, res) => {
@@ -8,10 +7,10 @@ module.exports = {
         title: "Sylvestris | Editar producto",
       });
     },
-    // // productCart: (req, res) => {
-    // //   return res.render("products/productCart", {
-    // //     title: "Sylvestris | Carrito",
-    // //   });
-    // },
+    createProduct: (req, res) => {
+      return res.render("adm/createProduct", {
+        title: "Sylvestris | Crear producto",
+      });
+    },
   };
   
