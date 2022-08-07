@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+
+<body>
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/header') %>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="register__main">
+                <section class="register__main__container">
+                    <h1>REGÍSTRATE</h1>
+                    <div class="register__main__container__text">
+                        <p>¿Ya tienes un perfil personal?</p>
+                        <a href="/usuario/login">Iniciar Sesión</a>
+                    </div>
+                    <form action="" method="">
+                        <label for="">Email</label>
+                        <input type="email" placeholder="miEmail@correo.com" name="email" />
+                        <label for="">Contraseña</label>
+                        <input type="password" placeholder="************" name="contrasenia" />
+                        <label for="">Repetir contraseña</label>
+                        <input type="password" placeholder="************" name="re-contrasenia" />
+                        <button class="registrarse__button" type="submit">Registrarse</button>
+                    </form>
+                    <p id="register__Google">O Regístrate con</p>
+                    <button class="google__button"><img src="/images/iconos/google.png" alt="icono google">
+                        Google</button>
+                </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+    <!-- ----------Inicio de footer----------- -->
+    <%- include('../partials/miniFooter') %>
+    <!-- ----------Fin de footer----------- -->
+</body>
+
+</html>

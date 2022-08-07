@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head') %>
+
+<body class="body">
+    <!-- ----------Inicio de header----------- -->
+    <%- include('./partials/header') %>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="home__main__container">
+        <section class="home__section__banner home_sec_margin">
+          <div class="home__section__banner-bg-dark"></div>
+          <picture class="home__section__banner__img-logo">
+            <source srcset="./images/logo/banner_logo.png" media="(min-width:700px)" />
+            <img src="./images/logo/logo_banner_mobile.png" alt="logo banner mobile" />
+          </picture>
+          <button class="home__section__banner--btn">Comprar online</button>
+        </section>
+        <section class="home__section__categorias home_sec_margin">
+          <% categorias.forEach(categoria=> { %>
+            <article class="home__section__categorias__card">
+              <h3>
+                <%= categoria.name %>
+              </h3>
+              <picture class="home__section__categorias__card--img">
+                <source srcset=<%=categoria.img1 %>
+                media="(min-width:1440px)"
+                />
+                <img src=<%=categoria.img2 %> alt=<%= categoria.name %> />
+              </picture>
+            </article>
+            <% }) %>
+        </section>
+        <%- include('./partials/carrusel') %>
+          <section class="home__section__about home_sec_margin">
+            <article class="home__section__about__description">
+              <div class="home__section__about__text__container">
+                <h2>QUIÉNES SOMOS</h2>
+                <p>
+                  Somos apasionados de la naturaleza que desde hace más de veinte
+                  años nos dedicamos al mundo de las plantas. Día a día nuestra
+                  tarea es seguir aprendiendo y transmitiendo nuestro conocimiento
+                  sobre el cuidado de los árboles, las plantas y las flores, desde
+                  sus orígenes hasta su desarrollo más óptimo, teniendo en cuenta
+                  sus ciclos y su asombrosa capacidad de adaptación.
+                </p>
+                <p>
+                  Queremos contagiar nuestro entusiasmo porque estamos convencidos
+                  de que las plantas mejoran nuestra calidad de vida y nos
+                  sensibilizan de un modo único, nos otorgan paz, alegría y
+                  concentración.
+                </p>
+              </div>
+              <picture class="home__section__about__img__container">
+                <source srcset="./images/banners/about1_1024.jpg" media="(min-width:1440px)" />
+                <source srcset="./images/banners/about1_768.jpg" media="(min-width:768px)" />
+                <img class="about1_img" src="/images/banners/about1_320.jpg" alt="imagen del vivero uno" />
+              </picture>
+            </article>
+            <article class="home__section__about__description">
+              <picture class="home__section__about__img__container">
+                <source srcset="./images/banners/about2_1024.jpg" media="(min-width:1440px)" />
+                <source srcset="./images/banners/about2_768.jpg" media="(min-width:768px)" />
+                <img src="/images/banners/about2_320.jpg" alt="imagen del vivero uno" />
+              </picture>
+              <div class="home__section__about__text__container offer">
+                <h2>-10% EN COMPRAS ONLINE</h2>
+                <button>Comprar Online</button>
+              </div>
+            </article>
+          </section>
+          <section class="home__section__instagram home_sec_margin">
+            <h2 class="home__title">
+              Sumate a nuestra comunidad en Instagram<i class="fa-brands fa-instagram"></i>
+            </h2>
+            <div class="home__section__instagram__card__container">
+              <picture class="home__section__instagram__card">
+                <img src="/images/instagram/instagram1.jpg" alt="imagen de instagram" />
+              </picture>
+              <picture class="home__section__instagram__card">
+                <img src="/images/instagram/instagram2.jpg" alt="imagen de instagram" />
+              </picture>
+              <picture class="home__section__instagram__card">
+                <img src="/images/instagram/instagram3.jpg" alt="imagen de instagram" />
+              </picture>
+            </div>
+          </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+    <!-- ----------Inicio de footer----------- -->
+    <%- include('./partials/footer') %>
+    <!-- ----------Fin de footer----------- -->
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body>
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/header') %>
+
+    <!-- ----------Fin de header----------- -->
+
+    <!-- ----------Inicio de main----------- -->
+    <main class="producto__main__container">
+      <nav class="producto_main_section_nav">
+        <div class="producto_main_section_ruta">
+          <a href="#">Inicio</a>&nbsp/&nbsp<a href="#">Suculentas</a
+          >&nbsp/&nbsp<a href="#">Echeveria Taurus</a>
+        </div>
+      </nav>
+
+      <section class="producto__section__categorias">
+        <div class="producto__section__izquierda">
+          <div class="producto__section__categorias__article--img">
+            <img
+              src="/images/products/suculentas/tradescantia-albiflora_2.png"
+              alt="tradescantia-albiflora"
+            />
+          </div>
+          <p>
+            Como la mayoría de las echeverias, no saturar el sustrato, dejando
+            secar ligeramente entre riegos. No tolera el frío, mejor sol de
+            mañana. evitar fuerte insolación. En interior mucha luz.
+          </p>
+        </div>
+        <div class="producto__section__derecha">
+          <h1>Echeveria Taurus</h1>
+          <p class="smart">SKU: 0017</p>
+          <div class="producto__precio">
+            <p class="smart">Precio</p>
+            <h4>$1500,00</h4>
+          </div>
+
+          <p class="smart">CANTIDAD:</p>
+          <div class="producto__cantidad">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+          </div>
+          <div class="producto__section__categorias__button">
+            <button class="button_agregar">Agregar al carrito</button>
+            <button class="button_favoritos">
+              <img src="/images/iconos/icono_favorito.png" alt="fav" />
+            </button>
+          </div>
+          <button class="button__compra">Realizar Compra</button>
+          <h4 class="detalles">DETALLES DEL PRODUCTO</h4>
+          <p class="detalles">
+            Cultivar de echeveria, con hojas triangulares de color rojizo, de
+            roseta compacta, con flores amarillas. Muy estética por su
+            coloración, de color rojo-verdoso.
+          </p>
+          <h5>Altura/anchura estimada: 9 cm.</h5>
+          <h5>Presentación en maceta de 8.5cm</h5>
+        </div>
+      </section>
+
+      <%- include('../partials/carrusel') %>
+    </main>
+    <!-- ----------Fin de main----------- -->
+
+    <!-- ----------Inicio de footer----------- -->
+    <%- include('../partials/footer') %>
+
+
+    <!-- ----------Fin de footer----------- -->
+  </body>
+</html>

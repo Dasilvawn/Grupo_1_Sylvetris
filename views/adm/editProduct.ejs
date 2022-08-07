@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+
+    <body>
+        <!-- ----------Inicio de header----------- -->
+        <%- include('../partials/header') %>
+            <!-- ----------Fin de header----------- -->
+            <!-- ----------Inicio de main----------- -->
+            <main class="login__main">
+                <section class="login__main__container">
+                    <h1>EDITAR PRODUCTOS</h1>
+                    <div class="register__main__container__text">
+                        <p>¿Quieres crear un producto?</p>
+                        <a href="/admin/createProduct">Ir al Panel de Creación</a>
+                    </div>
+                    <form action="" method="">
+                        <label for="">Nombre del producto</label>
+                        <input type="text" name="nombre del producto" />
+
+                        <label for="">Descripción del producto</label>
+                        <input type="text" name="descripcion" />
+
+                        <label for="">Categoria</label>
+                        <input type="text" name="categoria" />
+
+                        <label for="">Color</label>
+                        <input type="text" name="color" />
+
+                        <label for="">Tamaño</label>
+                        <input type="text" name="tamanio" />
+
+                        <label for="">Precio</label>
+                        <input type="number" name="precio" />
+
+                        <label for="">Cargar imagen del producto</label>
+                        <input type="file" name="imagen" />
+                        <button class="registrarse__button" type="submit">EDITAR</button>
+                    </form>
+                </section>
+            </main>
+            <!-- ----------Fin de main----------- -->
+            <!-- ----------Inicio de footer----------- -->
+            <%- include('../partials/miniFooter') %>
+            <!-- ----------Fin de footer----------- -->
+    </body>
+
+</html>
