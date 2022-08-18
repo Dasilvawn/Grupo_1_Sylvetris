@@ -12,8 +12,8 @@
     <main class="producto__main__container">
       <nav class="producto_main_section_nav">
         <div class="producto_main_section_ruta">
-          <a href="#">Inicio</a>&nbsp/&nbsp<a href="#">Suculentas</a
-          >&nbsp/&nbsp<a href="#">Echeveria Taurus</a>
+          <a href="#">Inicio</a>&nbsp/&nbsp<a href="#"><%= product.categoria %></a
+          >&nbsp/&nbsp<a href="#"><%= product.nombre %></a>
         </div>
       </nav>
 
@@ -21,22 +21,20 @@
         <div class="producto__section__izquierda">
           <div class="producto__section__categorias__article--img">
             <img
-              src="/images/products/suculentas/tradescantia-albiflora_2.png"
-              alt="tradescantia-albiflora"
+              src="<%= product.imagen[0] %> "
+              alt="<%= product.nombre %>"
             />
           </div>
           <p>
-            Como la mayoría de las echeverias, no saturar el sustrato, dejando
-            secar ligeramente entre riegos. No tolera el frío, mejor sol de
-            mañana. evitar fuerte insolación. En interior mucha luz.
+            <%= product.cuidados %>
           </p>
         </div>
         <div class="producto__section__derecha">
-          <h1>Echeveria Taurus</h1>
-          <p class="smart">SKU: 0017</p>
+          <h1><%= product.nombre %></h1>
+          <p class="smart">SKU: <%= product.id %></p>
           <div class="producto__precio">
             <p class="smart">Precio</p>
-            <h4>$1500,00</h4>
+            <h4><%= formatPrice( product.precio ) %></h4>
           </div>
 
           <p class="smart">CANTIDAD:</p>
@@ -54,12 +52,10 @@
           <button class="button__compra">Realizar Compra</button>
           <h4 class="detalles">DETALLES DEL PRODUCTO</h4>
           <p class="detalles">
-            Cultivar de echeveria, con hojas triangulares de color rojizo, de
-            roseta compacta, con flores amarillas. Muy estética por su
-            coloración, de color rojo-verdoso.
+            <%= product.descripcion %>
           </p>
-          <h5>Altura/anchura estimada: 9 cm.</h5>
-          <h5>Presentación en maceta de 8.5cm</h5>
+          <h5><%= product.descripcion_altura %></h5>
+          <h5><%= product.descripcion_maceta %></h5>
         </div>
       </section>
 
