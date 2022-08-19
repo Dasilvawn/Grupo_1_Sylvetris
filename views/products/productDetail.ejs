@@ -12,8 +12,8 @@
     <main class="producto__main__container">
       <nav class="producto_main_section_nav">
         <div class="producto_main_section_ruta">
-          <a href="#">Inicio</a>&nbsp/&nbsp<a href="#"><%= product.categoria %></a
-          >&nbsp/&nbsp<a href="#"><%= product.nombre %></a>
+          <a href="/">Inicio</a>&nbsp/&nbsp<a href="/productos/<%= product.categoria %>"><%= product.categoria %></a
+          >&nbsp/&nbsp<a href="/productos/detalle/<%= product.id %>"><%= product.nombre %></a>
         </div>
       </nav>
 
@@ -31,7 +31,7 @@
         </div>
         <div class="producto__section__derecha">
           <h1><%= product.nombre %></h1>
-          <p class="smart">SKU: <%= product.id %></p>
+          <p class="smart">SKU: 00<%= product.id %></p>
           <div class="producto__precio">
             <p class="smart">Precio</p>
             <h4><%= formatPrice( product.precio ) %></h4>
@@ -59,7 +59,7 @@
         </div>
       </section>
 
-      <%- include('../partials/carrusel') %>
+      <%- include('../partials/carrusel', {productsByFeatured: productsByFeatured}) %>
     </main>
     <!-- ----------Fin de main----------- -->
 

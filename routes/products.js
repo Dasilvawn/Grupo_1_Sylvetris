@@ -3,15 +3,19 @@ const router = express.Router();
 const {
   productDetail,
   productCart,
-  products
+  products,
+  productCategory
 } = require("../controllers/productCotroller");
 
 /* /productos */
 
-/*** todos los productos ***/
+/* todos los productos */
 router.get("/", products);
 
-/*** un producto ***/
+/*por catogoria */
+router.get("/:categoria", productCategory);
+
+/* un producto */
 router.get("/detalle/:id", productDetail);
 
 router.get("/carrito", productCart);

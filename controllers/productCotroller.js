@@ -19,11 +19,27 @@ module.exports = {
     const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
     const product = products.find((product) => product.id === +req.params.id);
+    const productsByFeatured = products.filter((product) => product.destacado);
     
     return res.render("products/productDetail", {
-      title: `Sylvestris | Detalle producto X`,
+      title: `Sylvestris | ${product.name}`,
       product,
       formatPrice,
+      productsByFeatured
+    });
+  },
+  productCategory: (req, res) => {
+    const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
+
+    const categoria = req.params.categoria
+
+    const productsByCategory = products.filter((product) => product.categoria === categoria);
+    
+    return res.render("products/products", {
+      title: `Sylvestris | Categoria X`,
+      products: productsByCategory,
+      formatPrice,
+      categoria
     });
   },
   productCart: (req, res) => {

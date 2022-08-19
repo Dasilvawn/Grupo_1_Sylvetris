@@ -18,20 +18,23 @@
         </section>
         <section class="home__section__categorias home_sec_margin">
           <% categorias.forEach(categoria=> { %>
+            
             <article class="home__section__categorias__card">
-              <h3>
-                <%= categoria.name %>
-              </h3>
-              <picture class="home__section__categorias__card--img">
-                <source srcset=<%=categoria.img1 %>
-                media="(min-width:1440px)"
-                />
-                <img src=<%=categoria.img2 %> alt=<%= categoria.name %> />
-              </picture>
-            </article>
+                <a href="/productos/<%= categoria.name %> ">
+                <h3>
+                  <%= categoria.name %>
+                </h3>
+                <picture class="home__section__categorias__card--img">
+                  <source srcset=<%=categoria.img1 %>
+                  media="(min-width:1440px)"
+                  />
+                  <img src=<%=categoria.img2 %> alt=<%= categoria.name %> />
+                </picture>
+              </a>
+              </article>
             <% }) %>
         </section>
-        <%- include('./partials/carrusel') %>
+        <%- include('./partials/carrusel', {productsByFeatured: productsByFeatured}) %> 
           <section class="home__section__about home_sec_margin">
             <article class="home__section__about__description">
               <div class="home__section__about__text__container">

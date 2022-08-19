@@ -178,8 +178,10 @@
 .product__card {
   text-align: center;
   max-width: 500px;
-  min-width: 300px;
+  min-width: 450px;
+ 
   height: auto;
+  
 }
 .product__card__img_container {
   max-width: 650px;

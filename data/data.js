@@ -1,19 +1,19 @@
 const categorias = [ 
     {
         id:1,
-        name: "Suculentas",
+        name: "suculentas",
         img1: '/images/categorias/cat1.webp',
         img2: '/images/categorias/cat1.jpg'
     },
     {
         id:2,
-        name: "Plantas",
+        name: "plantas",
         img1: '/images/categorias/cat2.webp',
         img2: '/images/categorias/cat2.jpg'
     },
     {
         id:3,
-        name: "Captus",
+        name: "captus",
         img1: '/images/categorias/cat3.webp',
         img2: '/images/categorias/cat3.jpg'
     },

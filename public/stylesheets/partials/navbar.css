@@ -102,7 +102,7 @@
       display: block;
       font-size: 20px;
       text-decoration: none;
-      text-transform: capitalize;
+      
     }
     .header__nav ul li a:hover {
       transform: scale(1.04);

@@ -35,6 +35,7 @@
 
 .producto__section__categorias__article--img img {
     width: 100%;
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.5));
 }
 
 .producto__section__derecha h1 {

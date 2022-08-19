@@ -13,9 +13,15 @@
     <main class="products__main__container">
       <section class="products__section__banner home_sec_margin">
         <div class="home__section__banner-bg-dark"></div>
+        <h1>TODO LO QUE CRECE EN NUESTRO VIVERO</h1>
+        <p>Cuidamos las plantas desde el vivero a tu hogar</p>
       </section>
       <section class="products__section__products home_sec_margin">
-        <h2 class="home__title">Nuestros productos</h2>
+        <h2 class="home__title capitalize">
+          <% if (locals.categoria) { %> <%= categoria %> <% } else { %> "Nuestros
+          productos" <% } %>
+        </h2>
+
         <div class="products__section__grid">
           <% products.forEach(product => { %>
           <article class="product__card__container">
