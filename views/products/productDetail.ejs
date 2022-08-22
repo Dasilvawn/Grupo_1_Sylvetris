@@ -64,6 +64,11 @@
       </section>
 
       <%- include('../partials/carrusel') %>
+
+      <a href="/adm/"<%= id %> class="main_delete">Eliminar Producto</a>
+						<form action="/routes/adm/delete <%= id %>?_method=DELETE" method="POST"  //style="display: inline-flex">
+							<button type="submit" class="main_button_delete">ELIMINAR</button>
+						</form>
     </main>
     <!-- ----------Fin de main----------- -->
 

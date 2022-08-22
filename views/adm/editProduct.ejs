@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <%- include('../partials/head') %>
 
     <body>
@@ -9,33 +10,79 @@
             <!-- ----------Inicio de main----------- -->
             <main class="login__main">
                 <section class="login__main__container">
-                    <h1>EDITAR PRODUCTOS</h1>
-                    <div class="register__main__container__text">
-                        <p>¿Quieres crear un producto?</p>
-                        <a href="/admin/createProduct">Ir al Panel de Creación</a>
-                    </div>
-                    <form action="" method="">
-                        <label for="">Nombre del producto</label>
-                        <input type="text" name="nombre del producto" />
+                    <h1>EDITAR PRODUCTO</h1>
+                              
+                    <form action="/admin/update/<%= producto.id %>?_method=PUT" method="POST">
+                        
+                            <label for="<%= producto.nombre %>"></label>
+                            <input type="text" name="nombre" value="<%= producto.nombre %>">                 
+                       
 
-                        <label for="">Descripción del producto</label>
-                        <input type="text" name="descripcion" />
+                        
+                            <label for="<%= producto.sub_titulo %> "></label>
+                            <input type="text" name="sub_titulo" value="<%= producto.sub_titulo%>">                 
+                       
 
-                        <label for="">Categoria</label>
-                        <input type="text" name="categoria" />
+                        
+                            <label for="<%= producto.slug %> "></label>
+                            <input type="text" name="slug" value="<%= producto.slug %>">                 
+                        
 
-                        <label for="">Color</label>
-                        <input type="text" name="color" />
+                        
+                            <label for="<%= producto.categoria %>"></label>
+                            <input type="text"  name="categoria" value="<%= producto.categoria %>">                 
+                        
+                      
+                    
+                        <label for="<%= producto.stock %>"></label>
+                        <input type="number" name="stock" value="<%= producto.stock %>"/>
+                    
 
-                        <label for="">Tamaño</label>
-                        <input type="text" name="tamanio" />
+                    
+                        <label for="<%= producto.destacado %>" class="login_register_edit_destacado"></label>
+                        <input type="text" id="destacado" name="destacado" value="<%= producto.destacado %>"/>
+                    
+                        
+                   
+                        <label for="<%= producto.descripcion %>" class="login_register_edit_descripcion"></label>
+                        <input type="textarea" id="descripcion" name="descripcion" value="<%= producto.descripcion %>"/>
+                    
+                        
+                   
+                        <label for="<%= producto.descripcion_altura %>" class="login_register_edit_descripcion_altura"></label>
+                        <input type="texarea" id="descripcion_altura" name="descripcion_altura"  value="<%= producto.descripcion_altura %>"/>
+                    
+                 
+                     
+                        <label for="<%= producto.descripcion_maceta %>" class="login_register_edit_descripcion_maceta"></label>
+                        <input type="texarea" id="descripcion_maceta" name="descripcion_maceta" value="<%= producto.descripcion_maceta %>"/>
+                          
 
-                        <label for="">Precio</label>
-                        <input type="number" name="precio" />
+                       
+                            <label for="<%= producto.precio %>" class="login_register_edit_precio"></label>
+                        <input type="number" id="precio" name="precio" value="<%= producto.precio %>" />
+                       
 
+                      
+                        <label for="<%= producto.cuidados %>" class="login_register_edit_cuidados"></label>
+                        <input type="text" id="cuidados" name="cuidados" value="<%= producto.cuidados %>"/>
+                      
+                        
+                      
+                        <label for="<%= producto.agua %>" class="login_register_edit_agua"></label>
+                        <input type="number" id="agua" name="agua" value="<%= producto.agua %>"/>
+                      
+
+                       
+                        <label for="<%= producto.luz %>" class="login_register_edit_luz"></label>
+                        <input type="number" id="luz" name="luz" value="<%= producto.luz %>"/>
+                      
+
+                       
                         <label for="">Cargar imagen del producto</label>
-                        <input type="file" name="imagen" />
-                        <button class="registrarse__button" type="submit">EDITAR</button>
+                        <input type="file" name="imagen" class="login_register_edit_imagen"/>
+                        <button class="login_register_edit_imagen_button" type="submit">EDITAR</button>
+                                           
                     </form>
                 </section>
             </main>
