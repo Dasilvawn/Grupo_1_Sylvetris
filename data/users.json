@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "firstname": "Eric",
+        "lastname": "Mena",
+        "email": "ericmena0@mail.com",
+        "password": "SqNU2meyyE",
+        "city": "San Miguel",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 2,
+        "firstname": "Emanuel",
+        "lastname": "Arroyo",
+        "email": "emanuelarroyo@mail.com",
+        "password": "vKpumL5njfR",
+        "city": "San Miguel",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 3,
+        "firstname": "Hernan",
+        "lastname": "Moneta",
+        "email": "hernanmoneta@mail.com",
+        "password": "1qbsrLrEReh",
+        "city": "Rosario",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 4,
+        "firstname": "Walter",
+        "lastname": "Da Silva",
+        "email": "walterdasilva@mail.com",
+        "password": "brhopxTt",
+        "city": "San Miguel",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 5,
+        "firstname": "Juan",
+        "lastname": "Vieyra",
+        "email": "juanvieyra@mail.com",
+        "password": "jUwDmqZY3Vb",
+        "city": "CABA",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 6,
+        "firstname": "Victoria",
+        "lastname": "Fornieles",
+        "email": "vickyfornieles@mail.com",
+        "password": "z7w4KqT4Dow",
+        "city": "CABA",
+        "gender": "Femenino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 7,
+        "firstname": "Rabbi",
+        "lastname": "Kevane",
+        "email": "rkevane6@mail.com",
+        "password": "PeGpsL",
+        "city": "Avellaneda",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 8,
+        "firstname": "Benedicto",
+        "lastname": "Dickins",
+        "email": "bdickins@mail.com",
+        "password": "KWl5FCuydffS",
+        "city": "Roma",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 9,
+        "firstname": "Susana",
+        "lastname": "Gimenez",
+        "email": "susimez8@mail.com",
+        "password": "Mr4nsdx",
+        "city": "La Plata",
+        "gender": "Femenino",
+        "category": "usuario",
+        "image": "default.jpg"
+    },
+    {
+        "id": 10,
+        "firstname": "Sirius",
+        "lastname": "Black",
+        "email": "siblack@blogs.com",
+        "password": "TJWmYrDjNf",
+        "city": "Asgard",
+        "gender": "Masculino",
+        "category": "usuario",
+        "image": "default.jpg"
+    }
+]

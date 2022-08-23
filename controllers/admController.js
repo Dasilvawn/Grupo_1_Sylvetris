@@ -1,3 +1,5 @@
+const {loadProducts, storeProducts} = require('../data/productsModule');
+const { nextTick } = require('process');
 const fs = require("fs");
 const path = require("path");
 
@@ -104,7 +106,33 @@ module.exports = {
 
     return res.redirect("/admin/products");
   },
- 
+  store: (req, res) => {
+    const {nombre, sub_titulo, slug, categoria, stock, destacado, descripcion, descripcion_altura, descripcion_maceta, precio, cuidados, agua, luz} = req.body
+    const products = loadProducts();
+    const newProduct = {
+      id : (products[products.length - 1].id + 1),
+      nombre : nombre.trim(),
+      sub_titulo : sub_titulo.trim(),
+      slug : slug.trim(),
+      categoria : categoria.trim(),
+      stock : +stock,
+      destacado : destacado === "true" ? true : false,
+      descripcion : descripcion.trim(),
+      descripcion_altura : descripcion_altura.trim(),
+      descripcion_maceta : descripcion_maceta.trim(),
+      precio : +precio,
+      cuidados : cuidados.trim(),
+      agua : +agua,
+      luz : +luz,
+      imagen : [
+        "https://ik.imagekit.io/lg7lefujn/default-product-image_Ls9VPJ06t.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661146388770",
+        "https://ik.imagekit.io/lg7lefujn/default-product-image_Ls9VPJ06t.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661146388770"
+     ],
+    }
+    const productsModify = [...products, newProduct];
+    storeProducts(productsModify);
+    return res.redirect('/productos')
+  },
 };
 
   

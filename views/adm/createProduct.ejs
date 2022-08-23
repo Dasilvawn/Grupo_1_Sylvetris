@@ -10,28 +10,48 @@
             <main class="login__main">
                 <section class="login__main__container">
                     <h1>CREAR PRODUCTOS</h1>
-                    <div class="register__main__container__text">
-                        <p>¿Quieres editar un producto?</p>
-                        <a href="/admin/editProduct">Ir al Panel de Edición</a>
-                    </div>
-                    <form action="" method="">
+                    <form action="/admin/store" method="POST">
                         <label for="">Nombre del producto</label>
-                        <input type="text" name="nombre del producto" />
+                        <input type="text" name="nombre" />
+
+                        <label for="">Subtítulo</label>
+                        <input type="text" name="sub_titulo" />
+
+                        <label for="">Slug</label>
+                        <input type="text" name="slug" />
+
+                        <label for="">Categoría</label>
+                        <input type="text" name="categoria" />
+
+                        <label for="">Stock</label>
+                        <input type="number" name="stock" placeholder="0" step="1" min="0">
+
+                        <label for="">Destacado</label>
+                        <label for="">Sí<input type="radio" name="destacado" value= "true"/></label>
+                        <label for="">No<input type="radio" name="destacado" value= "false"/></label>
+
 
                         <label for="">Descripción del producto</label>
                         <input type="text" name="descripcion" />
 
-                        <label for="">Categoria</label>
-                        <input type="text" name="categoria" />
+                        <label for="">Descripción altura del producto</label>
+                        <input type="text" name="descripcion_altura" />
 
-                        <label for="">Color</label>
-                        <input type="text" name="color" />
-
-                        <label for="">Tamaño</label>
-                        <input type="text" name="tamanio" />
+                        <label for="">Descripción maceta del producto</label>
+                        <input type="text" name="descripcion_maceta" />
 
                         <label for="">Precio</label>
-                        <input type="number" name="precio" />
+                        <input type="number" name="precio" placeholder="0" step="0.01" min="0" />
+
+                        <label for="">Cuidados</label>
+                        <input type="text" name="cuidados" />
+
+                        <label for="">Agua</label>
+                        <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5" />
+
+                        <label for="">Luz</label>
+                        <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5" />
+
 
                         <label for="">Cargar imagen del producto</label>
                         <input type="file" name="imagen" />
@@ -42,7 +62,7 @@
             <!-- ----------Fin de main----------- -->
             <!-- ----------Inicio de footer----------- -->
             <%- include('../partials/miniFooter') %>
-            <!-- ----------Fin de footer----------- -->
+                <!-- ----------Fin de footer----------- -->
     </body>
 
 </html>
