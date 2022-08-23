@@ -24,3 +24,7 @@ ul {
 a {
   text-decoration: none;
 }
+
+input[type="radio"]{
+  accent-color: var(--color-brown);
+}

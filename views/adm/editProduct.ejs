@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <%- include('../partials/head') %>
 
     <body>
@@ -9,87 +8,93 @@
             <!-- ----------Fin de header----------- -->
             <!-- ----------Inicio de main----------- -->
             <main class="login__main">
-                <section class="login__main__container">
+                <section class="login__main__container admin__form__container">
                     <h1>EDITAR PRODUCTO</h1>
                     <div class="register__main__container__text">
                         <a href="/admin/products">Ir al Panel de Administración</a>
-                    </div><br>
-                    <form action="/admin/update/<%= producto.id %>?_method=PUT" method="POST">
-                        
-                            <label for="<%= producto.nombre %>"></label>
-                            <input type="text" name="nombre" value="<%= producto.nombre %>">                 
-                       
+                    </div>
+                    <br />
+                    <form action="/admin/update/<%= producto.id %>?_method=PUT" method="POST" class="admin__form">
+                        <div class="col">
 
-                        
-                            <label for="<%= producto.sub_titulo %> "></label>
-                            <input type="text" name="sub_titulo" value="<%= producto.sub_titulo%>">                 
-                       
+                            <label for="">Nombre del producto</label>
+                            <input type="text" name="nombre" value="<%= producto.nombre %>" class="input__admin" />
 
-                        
-                            <label for="<%= producto.slug %> "></label>
-                            <input type="text" name="slug" value="<%= producto.slug %>">                 
-                        
+                            <label for="">Subtítulo</label>
+                            <input type="text" name="sub_titulo" value="<%= producto.sub_titulo%>"
+                                class="input__admin" />
 
-                        
-                            <label for="<%= producto.categoria %>"></label>
-                            <input type="text"  name="categoria" value="<%= producto.categoria %>">                 
-                        
-                      
-                    
-                        <label for="<%= producto.stock %>"></label>
-                        <input type="number" name="stock" value="<%= producto.stock %>"/>
-                    
+                            <label for="">Slug</label>
+                            <input type="text" name="slug" value="<%= producto.slug %>" class="input__admin" />
 
-                    
-                        <label for="<%= producto.destacado %>"></label>
-                        <input type="text"  name="destacado" value="<%= producto.destacado %>"/>
-                    
-                        
-                   
-                        <label for="<%= producto.descripcion %>" class="login_register_edit_descripcion"></label>
-                        <input type="textarea" id="descripcion" name="descripcion" value="<%= producto.descripcion %>"/>
-                    
-                        
-                   
-                        <label for="<%= producto.descripcion_altura %>"></label>
-                        <input type="texarea" name="descripcion_altura"  value="<%= producto.descripcion_altura %>"/>
-                    
-                 
-                     
-                        <label for="<%= producto.descripcion_maceta %>"></label>
-                        <input type="texarea"  name="descripcion_maceta" value="<%= producto.descripcion_maceta %>"/>
-                          
+                            <label for="">Categoría</label>
+                            <input type="text" name="categoria" value="<%= producto.categoria %>"
+                                class="input__admin" />
 
-                       
-                            <label for="<%= producto.precio %>"></label>
-                        <input type="number" name="precio" value="<%= producto.precio %>" />
-                       
+                            <label for="">Stock</label>
+                            <input type="number" name="stock" value="<%= producto.stock %>" class="input__admin" />
 
-                      
-                        <label for="<%= producto.cuidados %>"></label>
-                        <input type="text" name="cuidados" value="<%= producto.cuidados %>"/>
-                      
-                        
-                      
-                        <label for="<%= producto.agua %>"></label>
-                        <input type="number" name="agua" value="<%= producto.agua %>"/>
-                      
+                            <label for="">Destacado</label>
+                            <div class="row">
 
-                       
-                        <label for="<%= producto.luz %>"></label>
-                        <input type="number" name="luz" value="<%= producto.luz %>"/>
-                      
-                        <label for="">Cargar imagen del producto</label>
-                        <input type="file" name="imagen" />
-                        <button class="registrarse__button" type="submit">EDITAR</button>
-                                            
+                                <label for="">Sí<input type="radio" name="destacado" value="true"
+                                        class="radio__admin" <%= producto.destacado === "true" && 'checked' %>/></label>
+                                <label for="">No<input type="radio" name="destacado" value="false"
+                                        class="radio__admin" <%= producto.destacado === "false" && 'checked' %>/></label>
+                            </div>
+
+                            <label for="">Descripción del producto</label>
+                            <textarea  name="descripcion" class="input__admin" rows="10" cols="120"
+                                style="margin-bottom: 20px;" /><%= producto.descripcion %></textarea>
+
+                        </div>
+                        <div class="col">
+
+
+
+                            <label for="">Descripción altura del producto</label>
+                            <input type="texarea" name="descripcion_altura" value="<%= producto.descripcion_altura %>"
+                                class="input__admin" />
+
+                            <label for="">Descripción maceta del producto</label>
+                            <input type="texarea" name="descripcion_maceta" value="<%= producto.descripcion_maceta %>"
+                                class="input__admin" />
+
+                            <label for="">Precio</label>
+                            <input type="number" name="precio" value="<%= producto.precio %>" class="input__admin" />
+
+                            <label for="">Cuidados</label>
+
+
+                            <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120"
+                                style="margin-bottom: 20px" value="<%= producto.cuidados %>" /><%=
+                                producto.cuidados %>"</textarea>
+
+                                <div class="row">
+                                    <div class="col-50">
+
+                                        <label for="">Agua</label>
+                                        <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5"
+                                            class="input__admin col-50" value="<%= producto.agua %>" />
+                                    </div>
+                                    <div class="col-50">
+
+                                        <label for="">Luz</label>
+                                        <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5"
+                                            class="input__admin col-50" value="<%= producto.luz %>" />
+                                    </div>
+                                </div>
+                                <label for="">Cargar imagen del producto</label>
+                                <input type="file" name="imagen" class="input__admin" />
+                                <button class="registrarse__button admin__btn" type="submit">EDITAR</button>
+                        </div>
                     </form>
                 </section>
             </main>
             <!-- ----------Fin de main----------- -->
             <!-- ----------Inicio de footer----------- -->
             <%- include('../partials/miniFooter') %>
-            <!-- ----------Fin de footer----------- -->
+                <!-- ----------Fin de footer----------- -->
     </body>
 
 </html>

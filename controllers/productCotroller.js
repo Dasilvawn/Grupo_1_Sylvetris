@@ -35,8 +35,8 @@ module.exports = {
 
     const productsByCategory = products.filter((product) => product.categoria === categoria);
     
-    return res.render("products/products", {
-      title: `Sylvestris | Categoria X`,
+    return res.render("products/categories", {
+      title: `Sylvestris | ${categoria}`,
       products: productsByCategory,
       formatPrice,
       categoria

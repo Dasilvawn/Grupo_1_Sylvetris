@@ -131,7 +131,7 @@ module.exports = {
     }
     const productsModify = [...products, newProduct];
     storeProducts(productsModify);
-    return res.redirect('/productos')
+    return res.redirect('/admin/products')
   },
 };
 
