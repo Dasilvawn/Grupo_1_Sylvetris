@@ -9,7 +9,10 @@
             <!-- ----------Inicio de main----------- -->
             <main class="login__main">
                 <section class="login__main__container">
-                    <h1>CREAR PRODUCTOS</h1>
+                    <h1>CREAR PRODUCTO</h1>
+                    <div class="register__main__container__text">
+                        <a href="/admin/products">Ir al Panel de Administración</a>
+                    </div><br>
                     <form action="/admin/store" method="POST">
                         <label for="">Nombre del producto</label>
                         <input type="text" name="nombre" />
@@ -26,9 +29,9 @@
                         <label for="">Stock</label>
                         <input type="number" name="stock" placeholder="0" step="1" min="0">
 
-                        <label for="">Destacado</label>
-                        <label for="">Sí<input type="radio" name="destacado" value= "true"/></label>
-                        <label for="">No<input type="radio" name="destacado" value= "false"/></label>
+                        <label for="">Destacado:</label><br>
+                        <label for=""><input type="radio" name="destacado" value= "true"/>   Sí</label>
+                        <label for=""><input type="radio" name="destacado" value= "false"/>   No</label>
 
 
                         <label for="">Descripción del producto</label>

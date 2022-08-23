@@ -11,6 +11,7 @@ const {
 
 /* todos los productos */
 router.get("/", products);
+router.get("/carrito", productCart);
 
 /*por catogoria */
 router.get("/:categoria", productCategory);
@@ -18,7 +19,6 @@ router.get("/:categoria", productCategory);
 /* un producto */
 router.get("/detalle/:id", productDetail);
 
-router.get("/carrito", productCart);
 
 
 module.exports = router;

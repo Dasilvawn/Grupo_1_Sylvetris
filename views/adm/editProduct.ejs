@@ -11,7 +11,9 @@
             <main class="login__main">
                 <section class="login__main__container">
                     <h1>EDITAR PRODUCTO</h1>
-                              
+                    <div class="register__main__container__text">
+                        <a href="/admin/products">Ir al Panel de Administración</a>
+                    </div><br>
                     <form action="/admin/update/<%= producto.id %>?_method=PUT" method="POST">
                         
                             <label for="<%= producto.nombre %>"></label>
