@@ -22,11 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(methodOverride('_method')); //para pisar el method post en el form por put y delete
+
 app.use('/', indexRouter);
 app.use('/productos', productsRouter);
 app.use('/usuario', usersRouter);
 app.use('/admin', admRouter);
-app.use(methodOverride('_method')); //para pisar el method post en el form por put y delete
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

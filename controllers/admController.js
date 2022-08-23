@@ -1,29 +1,55 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const productosFilePath = path.join(__dirname, '..', 'data', 'products.json');
+const productosFilePath = path.join(__dirname, "..", "data", "products.json");
 
 module.exports = {
-
   edit: (req, res) => {
-
-    const productos = JSON.parse(fs.readFileSync(productosFilePath, 'utf-8'));
-    const producto = productos.find(producto => producto.id === +req.params.id);
+    const productos = JSON.parse(fs.readFileSync(productosFilePath, "utf-8"));
+    const producto = productos.find(
+      (producto) => producto.id === +req.params.id
+    );
 
     // return res.send(producto)
-    return res.render('adm/editProduct', {
+    return res.render("adm/editProduct", {
       producto,
       title: "Sylvestris | Editar producto",
     });
   },
   update: (req, res) => {
-    const { id, nombre, sub_titulo, slug, categoria, stock, destacado, descripcion, descripcion_altura, descripcion_maceta, precio, cuidados, agua, luz } = req.body;
-       return res.send(body)
-    const editProducto = productos.map(producto => {
+    const {
+      id,
+      nombre,
+      sub_titulo,
+      slug,
+      categoria,
+      stock,
+      destacado,
+      descripcion,
+      descripcion_altura,
+      descripcion_maceta,
+      precio,
+      cuidados,
+      agua,
+      luz,
+      imagen,
+    } = req.body;
+
+    const productos = JSON.parse(fs.readFileSync(productosFilePath, "utf-8"));
+    const producto = productos.find(
+      (producto) => producto.id === +req.params.id
+    );
+
+    const editImagen = producto.imagen;
+
+    if (imagen) {
+      editImagen = [...editImagen, imagen];
+    }
+
+    const editProducto = productos.map((producto) => {
       if (producto.id === +req.params.id) {
         return {
-          ...producto,
-          id: +id,
+          id: producto.id,
           nombre: nombre.trim(),
           sub_titulo: sub_titulo.trim(),
           slug: slug.trim(),
@@ -37,14 +63,18 @@ module.exports = {
           cuidados: cuidados.trim(),
           agua: +agua,
           luz: +luz,
-          imagen: imagen,
-        }
+          imagen: editImagen,
+        };
       } else {
-        return producto
+        return producto;
       }
-    })
-    fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'), JSON.stringify(editProducto, null, 3), 'utf-8')
-    return res.redirect('/');
+    });
+    fs.writeFileSync(
+      path.join(__dirname, "..", "data", "products.json"),
+      JSON.stringify(editProducto, null, 3),
+      "utf-8"
+    );
+    return res.redirect("/");
   },
 
   createProduct: (req, res) => {
@@ -56,9 +86,9 @@ module.exports = {
   delete: (req, res) => {
     const { id } = req.params;
     const productos = arrayProducts();
-    const productosDelete = productos.filter(producto => producto.id !== +id);
+    const productosDelete = productos.filter((producto) => producto.id !== +id);
 
     guardarProductos(productosDelete);
-    return res.redirect('/editProduct');
-  }
-}
+    return res.redirect("/editProduct");
+  },
+};
