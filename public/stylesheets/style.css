@@ -1,13 +1,13 @@
-@import './general.css';
+@import "./general.css";
 
-@import './partials/navbar.css';
-@import './partials/footer.css';
+@import "./partials/navbar.css";
+@import "./partials/footer.css";
 
-@import './pages/home.css';
-@import './pages/login.css';
-@import './pages/register.css';
-@import './pages/carrito.css';
-@import './pages/producto.css';
-@import './pages/productos.css';
+@import "./pages/home.css";
+@import "./pages/login.css";
+@import "./pages/register.css";
+@import "./pages/carrito.css";
+@import "./pages/producto.css";
+@import "./pages/productos.css";
 
-
+@import "./pages/admin/productos.css";
