@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body>
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/header') %>
+
+    <!-- ----------Fin de header----------- -->
+
+    <!-- ----------Inicio de main----------- -->
+
+    <main class="products__main__container">
+      <!-- <section class="products__section__banner home_sec_margin">
+        <div class="home__section__banner-bg-dark"></div>
+        <h1>TODO LO QUE CRECE EN NUESTRO VIVERO</h1>
+        <p>Cuidamos las plantas desde el vivero a tu hogar</p>
+      </section> -->
+      <section class="products__section__products home_sec_margin">
+        <h2 class="home__title capitalize">
+          Resultado de la búsqueda: <%= keywords %>
+        </h2>
+
+        <div class="products__section__grid">
+          <% if (result.length > 0) { %> <% result.forEach(product => { %>
+          <article class="product__card__container">
+            <a href="/productos/detalle/<%= product.id %>">
+              <div class="product__card__img">
+                <img
+                  class="product__card__img__1"
+                  src="<%= product.imagen[0] %> "
+                  alt="<%= product.nombre %>"
+                />
+                <img
+                  class="product__card__img__2"
+                  src="<%= product.imagen[1] %> "
+                  alt="<%= product.nombre %>"
+                />
+              </div>
+            </a>
+            <div class="product__card__text">
+              <p><%= product.nombre %></p>
+              <p><%= formatPrice(product.precio) %></p>
+            </div>
+            <button class="product__card__btn">Agregar al carrito</button>
+          </article>
+          <% }) %> <% }else{ %>
+          <p style="font-size:28px ; margin: 80px;">No hay resultados</p>
+         
+          <% } %>
+         
+        </div>
+        <%- include('../partials/carrusel', {productsByFeatured: productsByFeatured}) %> 
+      </section>
+     
+    </main>
+
+    <!-- ----------Fin de main----------- -->
+
+    <!-- ----------Inicio de footer----------- -->
+    <%- include('../partials/footer') %>
+
+    <!-- ----------Fin de footer----------- -->
+  </body>
+</html>

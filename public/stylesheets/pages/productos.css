@@ -35,8 +35,9 @@ font-size: clamp(18px, 3vw, 30px);
 margin-top: 20px;
 }
 .products__section__products {
-  margin-top: 2rem;
+  padding-top: 2rem;
   text-align: center;
+ min-height: 100vh;
 
 }
 

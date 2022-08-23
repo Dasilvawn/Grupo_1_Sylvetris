@@ -178,10 +178,9 @@
 .product__card {
   text-align: center;
   max-width: 500px;
-  min-width: 450px;
- 
+  min-width: 300px;
+
   height: auto;
-  
 }
 .product__card__img_container {
   max-width: 650px;
@@ -257,6 +256,9 @@
 @media (min-width: 1024px) {
   .home__section__destacados {
     margin: 0 2.5rem;
+  }
+  .product__card {
+    min-width: 450px;
   }
 }
 
