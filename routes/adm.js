@@ -1,11 +1,15 @@
 const express = require("express");
+const admController = require("../controllers/admController");
 const router = express.Router();
-const { editProduct, createProduct, getProducts, deleteProducts } = require("../controllers/admController");
+const { edit, update, createProduct, getProducts, deleteProducts } = require("../controllers/admController");
 
 /* /admin */
-router.get("/editProduct", editProduct);
 router.get("/createProduct", createProduct);
 router.get("/products", getProducts);
+
+/*** editar productos***/ 
+router.get('/editProduct/:id', edit); 
+router.put('/update/:id', update); 
 
 router.delete("/deleteProduct/:id", deleteProducts);
 

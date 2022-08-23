@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const methodOverride = require('method-override'); //para usar put y delete
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,10 +24,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+app.use(methodOverride('_method')); //para pisar el method post en el form por put y delete
+
 app.use('/', indexRouter);
 app.use('/productos', productsRouter);
 app.use('/usuario', usersRouter);
 app.use('/admin', admRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

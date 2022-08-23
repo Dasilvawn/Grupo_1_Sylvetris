@@ -13,8 +13,10 @@ module.exports = {
     return res.render("index", {
       title: "Sylvestris | Home", 
       categorias,
+
       productsByFeatured,
-      formatPrice
+      formatPrice,
+      instagram,
     });
   },
 };

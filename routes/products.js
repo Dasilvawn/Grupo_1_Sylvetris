@@ -20,4 +20,5 @@ router.get("/detalle/:id", productDetail);
 
 router.get("/carrito", productCart);
 
+
 module.exports = router;
