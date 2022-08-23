@@ -1,4 +1,4 @@
-const {categorias} = require('../data/data')
+const {categorias,instagram} = require('../data/data')
 const fs = require("fs");
 const path = require("path");
 const { formatPrice } = require('../utils/moneda');

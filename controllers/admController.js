@@ -74,7 +74,7 @@ module.exports = {
       JSON.stringify(editProducto, null, 3),
       "utf-8"
     );
-    return res.redirect("/");
+    return res.redirect("/admin/products");
   },
 
   createProduct: (req, res) => {
