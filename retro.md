@@ -7,4 +7,4 @@
 ## Sprint 3:
 ![retro 1](./images-retros/Retro-Sprint-3.jpg)
 ## Sprint 4:
-![retro 1](./images-retros/retroSprin4.png)
+![retro 1](./images-retros/Retro Sprint 4.jpg)
