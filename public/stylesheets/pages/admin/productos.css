@@ -60,7 +60,7 @@
   }
 }
 .responsive-table thead th {
-  background-color: var(--color-brown);
+  background-color: var(--color-dark-green1);
   *border: 1px solid var(--color-gr);
   font-weight: normal;
   text-align: center;
@@ -152,7 +152,7 @@
 }
 @media (min-width: 48em) {
   .responsive-table tbody tr:nth-of-type(even) {
-    background-color: #c7cce0a6;
+    background-color: var(--color-dark-green2);
   }
 }
 .responsive-table tbody th[scope="row"] {
@@ -214,13 +214,15 @@
   border-radius: 5px;
   border: none;
   margin-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 .btn__editar {
   background-color: transparent;
   color: #0ea0f5;
   border: 1px solid #0ea0f5;
   font-weight: 700;
+  width: 70px;
+  
 }
 .btn__borrar {
   
@@ -228,6 +230,7 @@
   color: #f50e67;
   border: 1px solid #f50e67;
   font-weight: 700;
+  width: 70px;
 }
 .btn__crear {
   padding: 8px 15px;

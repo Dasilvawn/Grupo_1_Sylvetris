@@ -12,10 +12,10 @@
 
       <table class="responsive-table">
         <div class="admin__products__header">
-          <h2>Lista de productos</h2>
+          <h2>Lista de usuarios</h2>
           <a href="/admin/createProduct"
             ><button class="btn__crear">
-              <i class="bx bx-message-square-add"></i> Agregar Producto
+              <i class="bx bx-message-square-add"></i> Agregar Usuario
             </button></a
           >
         </div>
@@ -25,36 +25,36 @@
             <th scope="col">Id</th>
             <th scope="col">Imagen</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Descripcion</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Ciudad</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
 
         <tbody>
-          <% productos.forEach(producto => { %>
+          <% users.forEach(user => { %>
 
           <tr>
-            <td data-title="Id"><%= producto.id %></td>
-            <th scope="row">
-              <img width="60" src="<%= producto.imagen[1] %>" alt="" />
-            </th>
-            <th scope="row"><%= producto.nombre %></th>
-            <td data-title="Stock"><%= producto.stock %></td>
-            <td data-title="Precio">$<%= producto.precio %></td>
-            <td data-title="Categoria"><%= producto.categoria %></td>
-            <td data-title="Descripcion"><%= producto.descripcion %></td>
+            <td data-title="Id"><%= user.id %></td>
+            <td scope="row">
+              <img width="50" src="/images/iconos/<%= user.image %>" alt="" />
+            </td>
+            <td data-title="firstname"><%= user.firstname %></td>
+            <td data-title="lastname"><%= user.lastname %></td>
+            <td data-title="email"><%= user.email %></td>
+            <td data-title="rol"><%= user.category %></td>
+            <td data-title="Descripcion"><%= user.city %></td>
             <td data-title="Acciones">
-              <a href="/admin/editProduct/<%= producto.id %>"
+              <a href="/admin/editProduct/<%= user.id %>"
                 ><button class="btn__editar">
                   <i class="bx bx-edit"></i> Editar
                 </button></a
               >
 
               <form
-                action="/admin/deleteProduct/<%= producto.id %>?_method=DELETE"
+                action="/admin/deleteProduct/<%= user.id %>?_method=DELETE"
                 method="POST"
               >
                 <button type="submit" class="btn__borrar">

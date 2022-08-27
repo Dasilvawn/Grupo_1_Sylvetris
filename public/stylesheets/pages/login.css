@@ -59,7 +59,7 @@
 }
 .login__main__container form input {
   padding: 10px 3px;
-  margin-bottom: 23px;
+  margin-bottom: 20px;
   border: none;
   border-bottom: 1px solid var(--color-brown);
   outline: none;
@@ -175,7 +175,7 @@
 }
 .admin__form__container {
   max-width: 900px;
-  background-color: #f0f0f0;
+  background-color: #f8f7f7;
   border-radius: 20px;
   margin: 2rem 0;
   box-shadow: 3px 3px 6px #ccc, -3px -3px 6px #ccc;
@@ -186,6 +186,7 @@
 .registrarse__button.admin__btn {
   margin-top: 10px;
   width: 100%;
+  background-color: var(--color-dark-green1);
 }
 
 #add__products {

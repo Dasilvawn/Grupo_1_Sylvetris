@@ -5,10 +5,14 @@
         "lastname": "Mena",
         "email": "ericmena0@mail.com",
         "password": "SqNU2meyyE",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "San Miguel",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 2,
@@ -16,10 +20,14 @@
         "lastname": "Arroyo",
         "email": "emanuelarroyo@mail.com",
         "password": "vKpumL5njfR",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "San Miguel",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 3,
@@ -27,10 +35,14 @@
         "lastname": "Moneta",
         "email": "hernanmoneta@mail.com",
         "password": "1qbsrLrEReh",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "Rosario",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 4,
@@ -38,10 +50,14 @@
         "lastname": "Da Silva",
         "email": "walterdasilva@mail.com",
         "password": "brhopxTt",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "San Miguel",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 5,
@@ -49,10 +65,14 @@
         "lastname": "Vieyra",
         "email": "juanvieyra@mail.com",
         "password": "jUwDmqZY3Vb",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "CABA",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 6,
@@ -60,10 +80,14 @@
         "lastname": "Fornieles",
         "email": "vickyfornieles@mail.com",
         "password": "z7w4KqT4Dow",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "CABA",
         "gender": "Femenino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 7,
@@ -71,10 +95,14 @@
         "lastname": "Kevane",
         "email": "rkevane6@mail.com",
         "password": "PeGpsL",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "Avellaneda",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 8,
@@ -82,10 +110,14 @@
         "lastname": "Dickins",
         "email": "bdickins@mail.com",
         "password": "KWl5FCuydffS",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "Roma",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 9,
@@ -93,10 +125,14 @@
         "lastname": "Gimenez",
         "email": "susimez8@mail.com",
         "password": "Mr4nsdx",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "La Plata",
         "gender": "Femenino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     },
     {
         "id": 10,
@@ -104,9 +140,13 @@
         "lastname": "Black",
         "email": "siblack@blogs.com",
         "password": "TJWmYrDjNf",
+        "state": "Provicia",
+        "country": "Argentina",
+        "address":"calle 1234",
         "city": "Asgard",
         "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
+        "rol": "usuario",
+        "image": "user_default.png",
+        "cp": 2356
     }
 ]
