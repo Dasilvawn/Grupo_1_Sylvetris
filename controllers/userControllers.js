@@ -21,7 +21,7 @@ module.exports = {
   postRegister: (req, res) => {
     
     let errors = validationResult(req);
-    
+    //return res.send(errors)
     if(errors.isEmpty()){
         const {name,surname,email,password,username} = req.body;
         let users = loadUsers();
@@ -29,22 +29,21 @@ module.exports = {
         let newUser = {
             id : users.length > 0 ? users[users.length - 1].id + 1 : 1,
             name :name.trim(),
-            surname : surname.trim(),
+            lastname : surname.trim(),
             email : email.trim(),
             password : bcryptjs.hashSync(password,12),
-            username : username.trim(),
             rol : 'user',
-            avatar : null
+            image : null
         }
 
         let usersModify = [...users, newUser];
 
         storeUsers(usersModify);
 
-        return res.redirect('/users/login');
+        return res.redirect('/usuario/login');
     }else{
-        return res.render('register',{
-            title: 'Register',
+        return res.render('users/register',{
+          title: "Sylvestris | Register",
             errors : errors.mapped(),
             old : req.body
         })
