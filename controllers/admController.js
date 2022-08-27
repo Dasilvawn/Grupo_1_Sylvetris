@@ -6,6 +6,16 @@ const path = require("path");
 const productosFilePath = path.join(__dirname, "..", "data", "products.json");
 
 module.exports = {
+  dashboard: (req, res) => {
+    const productos = JSON.parse(fs.readFileSync(productosFilePath, "utf-8"));
+    return res.render("adm/dashboard", {
+      title: "Sylvestris | Panel de administracion",
+      productos,
+    });
+  },
+  
+  
+  
   edit: (req, res) => {
     const productos = JSON.parse(fs.readFileSync(productosFilePath, "utf-8"));
     const producto = productos.find(

@@ -2,17 +2,16 @@
 <html lang="es">
 <%- include('../partials/head') %>
 
-    <body>
+<body class="admin__dashboard">
         <!-- ----------Inicio de header----------- -->
-        <%- include('../partials/header') %>
+        <%- include('../partials/sidebar') %>
             <!-- ----------Fin de header----------- -->
             <!-- ----------Inicio de main----------- -->
-            <main class="login__main">
+            <main class="home-section "  id="add__products">
+                <%- include('../partials/navbarAdmin') %>
                 <section class="login__main__container admin__form__container">
                     <h1>EDITAR PRODUCTO</h1>
-                    <div class="register__main__container__text">
-                        <a href="/admin/products">Ir al Panel de Administración</a>
-                    </div>
+                   
                     <br />
                     <form action="/admin/update/<%= producto.id %>?_method=PUT" method="POST" class="admin__form">
                         <div class="col">
@@ -92,9 +91,7 @@
                 </section>
             </main>
             <!-- ----------Fin de main----------- -->
-            <!-- ----------Inicio de footer----------- -->
-            <%- include('../partials/miniFooter') %>
-                <!-- ----------Fin de footer----------- -->
+          
     </body>
 
 </html>

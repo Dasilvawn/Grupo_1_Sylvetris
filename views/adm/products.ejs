@@ -2,18 +2,24 @@
 <html lang="es">
   <%- include('../partials/head') %>
 
-  <body>
+  <body class="admin__dashboard">
     <!-- ----------Inicio de header----------- -->
-    <%- include('../partials/header') %>
+    <%- include('../partials/sidebar') %>
     <!-- ----------Fin de header----------- -->
     <!-- ----------Inicio de main----------- -->
-    <div class="admin__products__container">
+    <section class="home-section">
+
+      <%- include('../partials/navbarAdmin') %>
+      
+     
+      
       <table class="responsive-table">
         <div class="admin__products__header">
           <h2>Lista de productos</h2>
-          <a href="/admin/createProduct"><button class="btn__crear">Agregar Producto</button></a>
+          <a href="/admin/createProduct"><button class="btn__crear"><i class='bx bx-message-square-add' ></i> Agregar Producto</button></a>
           
         </div>
+       
         <thead>
           <tr>
             <th scope="col">Nombre</th>
@@ -38,24 +44,23 @@
             <td data-title="Descripcion"><%= producto.descripcion %></td>
             <td data-title="Acciones">
               <a href="/admin/editProduct/<%= producto.id %>"
-                ><button class="btn__editar">Editar</button></a
+                ><button class="btn__editar"><i class='bx bx-edit'></i> Editar</button></a
               >
 
               <form
                 action="/admin/deleteProduct/<%= producto.id %>?_method=DELETE"
                 method="POST"
               >
-                <button type="submit" class="btn__borrar">Borrar</button>
+                <button type="submit" class="btn__borrar"><i class='bx bx-trash'></i>Borrar</button>
               </form>
             </td>
           </tr>
           <% }) %>
         </tbody>
       </table>
-    </div>
+    
+    </section>
     <!-- ----------Fin de main----------- -->
-    <!-- ----------Inicio de footer----------- -->
-    <%- include('../partials/miniFooter') %>
-    <!-- ----------Fin de footer----------- -->
+    
   </body>
 </html>
