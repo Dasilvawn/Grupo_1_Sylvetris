@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head') %>
+  <%- include('../partials/head') %>
 
-<body>
+  <body>
     <!-- ----------Inicio de header----------- -->
     <%- include('../partials/header') %>
     <!-- ----------Fin de header----------- -->
     <!-- ----------Inicio de main----------- -->
     <main class="login__main">
-                <section class="login__main__container">
-                    <h1>INGRESA</h1>
-                    <div class="login__main__container__text">
-                        <p>¿No estás registrado?</p>
-                        <a href="/usuario/register">Registrarse</a>
-                    </div>
-                    <form action="" method="">
-                        <label for="">Email</label>
-                        <input type="email" placeholder="miEmail@correo.com" name="email" />
-                        <label for="">Contraseña</label>
-                        <input type="password" placeholder="************" name="contrasenia" />
-                        <div class="login_main_recordarme">
-                            <div class="login_main_recordarchecbox">
-                                <label for="">Recordarme</label>
-                                <input type="checkbox" name="recordarme" id="recordarme">
+      <section class="login__main__container">
+        <h1>INGRESA</h1>
+        <div class="login__main__container__text">
+          <p>¿No estás registrado?</p>
+          <a href="/usuario/register">Registrarse</a>
+        </div>
+        <form action="" method="">
+          <div class="form__field">
+            <label for="">Email</label>
+            <input type="email" name="email" />
+            <p class="form__error">El nombre es requerido</p>
+          </div>
+          <div class="form__field">
+            <label for="">Contraseña</label>
+            <input type="password" name="contrasenia" />
+            <p class="form__error">El nombre es requerido</p>
+          </div>
+          <div class="login_main_recordarme">
+            <div class="login_main_recordarchecbox">
+              <label for="">Recordarme</label>
+              <input type="checkbox" name="recordarme" id="recordarme" />
+            </div>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+          <button class="registrarse__button" type="submit">Ingresar</button>
+        </form>
+        <p id="login__Google">O ingresa con</p>
 
-                            </div>
-                            <a href="#">¿Olvidaste tu contraseña?</a>
-
-                        </div>
-                        <button class="registrarse__button" type="submit">Ingresar</button>
-                    </form>
-                    <p id="login__Google">O ingresa con</p>
-
-                    <button class="google__button"><img src="/images/iconos/google.png" alt="icono google">
-                        Google</button>
-                </section>
+        <button class="google__button">
+          <img src="/images/iconos/google.png" alt="icono google" /> Google
+        </button>
+      </section>
     </main>
     <!-- ----------Fin de main----------- -->
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/miniFooter') %>
     <!-- ----------Fin de footer----------- -->
-</body>
-
+  </body>
 </html>
