@@ -1,7 +1,7 @@
 const express = require("express");
 const admController = require("../controllers/admController");
 const router = express.Router();
-const { store, edit, update, createProduct, getProducts, deleteProducts, passnot } = require("../controllers/admController");
+const { store, edit, update, createProduct, getProducts, deleteProducts, passnot, administradores } = require("../controllers/admController");
 
 const admPass = require('../middlewares/accessAdm')
 
@@ -10,6 +10,7 @@ router.get("/createProduct", createProduct);
 router.get("/products", getProducts);
 
 router.get('/passnot', passnot);
+router.get('/administradores', administradores);
 
 /*** editar productos***/ 
 router.get('/editProduct/:id', edit); 

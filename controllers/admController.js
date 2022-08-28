@@ -83,7 +83,9 @@ module.exports = {
   passnot : (req,res)=>{
     return res.render('passnot');
   },
-  
+  administradores : (req,res)=>{
+    return res.render('administradores');
+  },
 
   createProduct: (req, res) => {
     return res.render("adm/createProduct", {
