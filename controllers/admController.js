@@ -79,6 +79,12 @@ module.exports = {
     return res.redirect("/admin/products");
   },
 
+
+  passnot : (req,res)=>{
+    return res.render('passnot');
+  },
+  
+
   createProduct: (req, res) => {
     return res.render("adm/createProduct", {
       title: "Sylvestris | Crear producto",

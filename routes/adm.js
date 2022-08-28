@@ -1,11 +1,15 @@
 const express = require("express");
 const admController = require("../controllers/admController");
 const router = express.Router();
-const { store, edit, update, createProduct, getProducts, deleteProducts } = require("../controllers/admController");
+const { store, edit, update, createProduct, getProducts, deleteProducts, passnot } = require("../controllers/admController");
+
+const admPass = require('../middlewares/accessAdm')
 
 /* /admin */
 router.get("/createProduct", createProduct);
 router.get("/products", getProducts);
+
+router.get('/passnot', passnot);
 
 /*** editar productos***/ 
 router.get('/editProduct/:id', edit); 
