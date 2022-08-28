@@ -17,18 +17,18 @@
         <form action="/usuario/register" method="POST">
           <div class="form__field">
             <label for="name">Nombre/s</label>
-            <input type="text" id="name" name="name" />
+            <input type="text" id="name" name="name" value="<%= locals.old && old.name ? old.name : null %>"/>
             <p class="form__error"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
           </div>
 
           <div class="form__field">
             <label for="lastname">Apellido</label>
-            <input type="text" id="lastname" name="lastname" />
+            <input type="text" id="lastname" name="lastname" value="<%= locals.old && old.lastname ? old.lastname : null %>"/>
             <p class="form__error"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
           </div>
           <div class="form__field">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" value="<%= locals.old && old.email ? old.email : null %>"/>
             <p class="form__error"><%= locals.errors && errors.email ? errors.email.msg : null%></p>
           </div>
           <div class="form__field">

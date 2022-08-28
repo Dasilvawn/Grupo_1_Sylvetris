@@ -171,5 +171,61 @@
       "city": "",
       "cp": null,
       "image": null
+   },
+   {
+      "id": 13,
+      "name": "Hernan Pablo",
+      "lastname": "Moneta",
+      "email": "hernan00661@gmail.com",
+      "password": "$2a$12$Oec6FA/KBlszl3B/Lti56u8nZIXr3fly8nu6ttJ9WPo1/2EFYps8q",
+      "rol": "usuario",
+      "address": "",
+      "country": "",
+      "state": "",
+      "city": "",
+      "cp": null,
+      "image": "user_default.png"
+   },
+   {
+      "id": 14,
+      "name": "Hernan Pablo",
+      "lastname": "Moneta",
+      "email": "hernan00662@gmail.com",
+      "password": "$2a$12$UmwUpvaxMZILlU4VnjXXlO532kWN8arCBp.wCEhYnafP7DcxtcD1y",
+      "rol": "usuario",
+      "address": "",
+      "country": "",
+      "state": "",
+      "city": "",
+      "cp": null,
+      "image": "user_default.png"
+   },
+   {
+      "id": 15,
+      "name": "Hernan Pablo",
+      "lastname": "Moneta",
+      "email": "hernan00663@gmail.com",
+      "password": "$2a$12$cZ7iR1e.JvUwV/k4OckFLuu0XBnG7HGKlpFCiffYRHeE6DXJJKrW6",
+      "rol": "usuario",
+      "address": "",
+      "country": "",
+      "state": "",
+      "city": "",
+      "cp": null,
+      "image": "user_default.png"
+   },
+   {
+      "id": 16,
+      "name": "Hernan Pablo",
+      "lastname": "Moneta",
+      "email": "hernan00666@gmail.com",
+      "password": "$2a$12$hrAHedwN4aP4mRqkH9GRPOIG83Y7uIIapiexuwX3Vf5IXCYGkfpZ.",
+      "rol": "usuario",
+      "address": "",
+      "country": "",
+      "state": "",
+      "city": "",
+      "cp": null,
+      "image": "user_default.png"
    }
 ]
