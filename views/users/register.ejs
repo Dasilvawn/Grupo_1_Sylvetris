@@ -16,7 +16,7 @@
         </div>
         <form action="/usuario/register" method="POST">
           <div class="form__field">
-            <label for="name">Nombre</label>
+            <label for="name">Nombre/s</label>
             <input type="text" id="name" name="name" />
             <p class="form__error"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
           </div>
@@ -34,12 +34,12 @@
           <div class="form__field">
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" />
-        
+            <p class="form__error"><%= locals.errors && errors.password ? errors.password.msg : null%>
           </div>
           <div class="form__field">
-            <label for="re-password">Repetir contraseña</label>
-            <input type="password" id="re-password" name="re-password" />
-          
+            <label for="password2">Repetir contraseña</label>
+            <input type="password" id="password2" name="password2" />
+           <p class="form__error"><%= locals.errors && errors.password2 ? errors.password2.msg : null%></p> 
           </div>
           <button class="registrarse__button" type="submit">Registrarse</button>
         </form>
