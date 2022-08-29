@@ -1,7 +1,7 @@
 [
    {
       "id": 1,
-      "firstname": "Eric",
+      "name": "Eric",
       "lastname": "Mena",
       "email": "ericmena0@mail.com",
       "password": "SqNU2meyyE",
@@ -12,11 +12,12 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 2,
-      "firstname": "Emanuel",
+      "name": "Emanuel",
       "lastname": "Arroyo",
       "email": "emanuelarroyo@mail.com",
       "password": "vKpumL5njfR",
@@ -27,26 +28,27 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 3,
-      "firstname": "Hernan",
+      "name": "Hernan Pablo",
       "lastname": "Moneta",
-      "email": "hernanmoneta@mail.com",
-      "password": "1qbsrLrEReh",
-      "state": "Provicia",
+      "email": "hernan0066@gmail.com",
+      "password": "$2a$12$Fjq.RgsgRPawQlng5I2RCOd0tLvE6yr2fyIhQMNYqEhI139fOF5Ni",
+      "rol": "admin",
+      "address": "Medrano 2636",
       "country": "Argentina",
-      "address": "calle 1234",
+      "state": "Santa Fe",
       "city": "Rosario",
-      "gender": "Masculino",
-      "rol": "usuario",
+      "cp": 2004,
       "image": "user_default.png",
-      "cp": 2356
+      "phone": "341222222233"
    },
    {
       "id": 4,
-      "firstname": "Walter",
+      "name": "Walter",
       "lastname": "Da Silva",
       "email": "walterdasilva@mail.com",
       "password": "brhopxTt",
@@ -57,11 +59,12 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 5,
-      "firstname": "Juan",
+      "name": "Juan",
       "lastname": "Vieyra",
       "email": "juanvieyra@mail.com",
       "password": "jUwDmqZY3Vb",
@@ -72,11 +75,12 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 6,
-      "firstname": "Victoria",
+      "name": "Victoria",
       "lastname": "Fornieles",
       "email": "vickyfornieles@mail.com",
       "password": "z7w4KqT4Dow",
@@ -87,11 +91,12 @@
       "gender": "Femenino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 7,
-      "firstname": "Rabbi",
+      "name": "Rabbi",
       "lastname": "Kevane",
       "email": "rkevane6@mail.com",
       "password": "PeGpsL",
@@ -102,11 +107,12 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 8,
-      "firstname": "Benedicto",
+      "name": "Benedicto",
       "lastname": "Dickins",
       "email": "bdickins@mail.com",
       "password": "KWl5FCuydffS",
@@ -117,11 +123,12 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 9,
-      "firstname": "Susana",
+      "name": "Susana",
       "lastname": "Gimenez",
       "email": "susimez8@mail.com",
       "password": "Mr4nsdx",
@@ -132,11 +139,12 @@
       "gender": "Femenino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 10,
-      "firstname": "Sirius",
+      "name": "Sirius",
       "lastname": "Black",
       "email": "siblack@blogs.com",
       "password": "TJWmYrDjNf",
@@ -147,85 +155,22 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": "user_default.png",
-      "cp": 2356
+      "cp": 2356,
+      "phone": null
    },
    {
       "id": 11,
-      "name": "Hernan",
-      "lastname": "Moneta",
-      "email": "hernan0066@gmail.com",
-      "password": "$2a$12$wje7MO1NQIkZ903Uyu/WcuB0DD7q4WI6aKRWTV4Z3luCJYWYbDGh6",
-      "rol": "usuario",
-      "image": null
-   },
-   {
-      "id": 12,
       "name": "Hernan Pablo",
       "lastname": "Moneta",
-      "email": "hernan0066@1gmail.com",
-      "password": "$2a$12$inNtrMdAbi4t6LbT7jhz9ufc.Tuhr873I446o11NXKFTMserXXpM6",
-      "rol": "usuario",
-      "address": "",
-      "country": "",
-      "state": "",
-      "city": "",
-      "cp": null,
-      "image": null
-   },
-   {
-      "id": 13,
-      "name": "Hernan Pablo",
-      "lastname": "Moneta",
-      "email": "hernan00661@gmail.com",
-      "password": "$2a$12$Oec6FA/KBlszl3B/Lti56u8nZIXr3fly8nu6ttJ9WPo1/2EFYps8q",
-      "rol": "usuario",
-      "address": "",
-      "country": "",
-      "state": "",
-      "city": "",
-      "cp": null,
-      "image": "user_default.png"
-   },
-   {
-      "id": 14,
-      "name": "Hernan Pablo",
-      "lastname": "Moneta",
-      "email": "hernan00662@gmail.com",
-      "password": "$2a$12$UmwUpvaxMZILlU4VnjXXlO532kWN8arCBp.wCEhYnafP7DcxtcD1y",
-      "rol": "usuario",
-      "address": "",
-      "country": "",
-      "state": "",
-      "city": "",
-      "cp": null,
-      "image": "user_default.png"
-   },
-   {
-      "id": 15,
-      "name": "Hernan Pablo",
-      "lastname": "Moneta",
-      "email": "hernan00663@gmail.com",
-      "password": "$2a$12$cZ7iR1e.JvUwV/k4OckFLuu0XBnG7HGKlpFCiffYRHeE6DXJJKrW6",
-      "rol": "usuario",
-      "address": "",
-      "country": "",
-      "state": "",
-      "city": "",
-      "cp": null,
-      "image": "user_default.png"
-   },
-   {
-      "id": 16,
-      "name": "Hernan Pablo",
-      "lastname": "Moneta",
-      "email": "hernan00666@gmail.com",
-      "password": "$2a$12$hrAHedwN4aP4mRqkH9GRPOIG83Y7uIIapiexuwX3Vf5IXCYGkfpZ.",
-      "rol": "usuario",
-      "address": "",
-      "country": "",
-      "state": "",
-      "city": "",
-      "cp": null,
-      "image": "user_default.png"
+      "email": "hernan99@gmail.com",
+      "password": "$2a$12$TpUjrwIZS51eNskdPqtYcOwq4I4seXv40W98F2oWQXLQk9xqRyd1u",
+      "rol": "admin",
+      "address": "Medrano 2636",
+      "country": "Argentina",
+      "state": "Santa Fe",
+      "city": "Rosario",
+      "cp": 2000,
+      "image": "user_default.png",
+      "phone": "03412728539"
    }
 ]

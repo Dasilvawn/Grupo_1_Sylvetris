@@ -29,26 +29,9 @@ module.exports = [
     .withMessage("*El email es obligatorio")
     .bail()
     .isEmail()
-    .withMessage("*Debe ser un email válido")
-    .bail()
-    .custom((value, { req }) => {
-      let user = users.find((user) => user.email === value.trim());
-      return !!!user;
-    })
-    .withMessage("*El email ya se encuentra registrado"),
-  check("password")
-    .notEmpty()
-    .withMessage("*La contraseña es obligatoria")
-    .bail()
-    .isLength({
-      min: 6,
-      max: 12,
-    })
-    .withMessage("*La contraseña debe tener entre 6 y 12 caracteres"),
+    .withMessage("*Debe ser un email válido"),
+
   body("password2")
-    .notEmpty()
-    .withMessage("*La contraseña es obligatoria")
-    .bail()
     .custom((value, { req }) => {
       if (value !== req.body.password) {
         return false;
@@ -57,8 +40,7 @@ module.exports = [
       }
     })
     .withMessage("Las contraseñas no coinciden"),
-    check('phone')
+  check("phone")
     .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)
     .withMessage("Formato invalido"),
-
 ];

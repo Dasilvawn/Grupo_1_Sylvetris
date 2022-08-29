@@ -1,34 +1,52 @@
 const express = require("express");
-const admController = require("../controllers/admController");
+
 const router = express.Router();
+
+const { getDashboard } = require("../controllers/admin/indexAdminController");
+const {
+  getProducts,
+  getCreateProduct,
+  postCreateProducts,
+  getEditProducts,
+  putEditProducts,
+  deleteProducts,
+} = require("../controllers/admin/productAdminController");
 const {
   getUsers,
-  dashboard,
-  store,
-  edit,
-  update,
-  createProduct,
-  getProducts,
-  deleteProducts,
-} = require("../controllers/admController");
+  getCreateUsers,
+  postCreateUsers,
+  putEditUsers,
+  getEditUsers,
+  deleteUsers,
+} = require("../controllers/admin/userAdminController");
+const editUserValidator = require("../validations/editUserValidator");
+
+const registerValidator = require("../validations/registerValidator");
 
 /* /admin */
 
-router.get("/", dashboard);
+router.get("/", getDashboard);
 
-router.get("/createProduct", createProduct);
+//products
 router.get("/products", getProducts);
 
-/*** editar productos***/
-router.get("/editProduct/:id", edit);
-router.put("/update/:id", update);
+router.get("/products/create_product", getCreateProduct);
+router.post("/products/create_product", postCreateProducts);
 
-/* Formulario de creación de productos */
-router.post("/store", store);
+router.get("/products/edit_product/:id", getEditProducts);
+router.put("/products/edit_product/:id", putEditProducts);
 
-router.delete("/deleteProduct/:id", deleteProducts);
+router.delete("/products/delete_product/:id", deleteProducts);
 
 //users
 router.get("/users", getUsers);
+
+router.get("/users/create_user", getCreateUsers);
+router.post("/users/create_user", registerValidator, postCreateUsers);
+
+router.get("/users/edit_user/:id", getEditUsers);
+router.put("/users/edit_user/:id", editUserValidator, putEditUsers);
+
+router.delete("/users/delete_user/:id", deleteUsers);
 
 module.exports = router;
