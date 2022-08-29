@@ -32,10 +32,12 @@ module.exports = {
         state,
         city,
         cp,
-        image,
-        phone
+        phone,
       } = req.body;
       const users = loadUsers();
+
+      let image = req.files.map((file) => file.filename);
+
       const newUser = {
         id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
         name: name.trim(),
@@ -48,8 +50,8 @@ module.exports = {
         state: state ? state : "",
         city: city ? city.trim() : "",
         cp: +cp,
-        image: image? image: "user_default.png",
-        phone: phone
+        image: image ? image : "user_default.png",
+        phone: phone,
       };
       let usersModify = [...users, newUser];
       storeUsers(usersModify);
@@ -88,7 +90,7 @@ module.exports = {
         city,
         cp,
         image,
-        phone
+        phone,
       } = req.body;
       const users = loadUsers();
 
@@ -108,8 +110,8 @@ module.exports = {
             state: state ? state : "",
             city: city ? city.trim() : "",
             cp: +cp,
-            image: userOriginal.image? userOriginal.image : image,
-            phone: phone
+            image: userOriginal.image ? userOriginal.image : image,
+            phone: phone,
           };
         } else {
           return user;
@@ -122,18 +124,15 @@ module.exports = {
         title: "Sylvestris | Editar Usuario",
         errors: errors.mapped(),
         old: req.body,
-        id : req.params.id,
-        user: req.body
-       
+        id: req.params.id,
+        user: req.body,
       });
     }
   },
   deleteUsers: (req, res) => {
     const users = loadUsers();
 
-    const usersFilter = users.filter(
-      (user) => user.id !== +req.params.id
-    );
+    const usersFilter = users.filter((user) => user.id !== +req.params.id);
 
     storeUsers(usersFilter);
 

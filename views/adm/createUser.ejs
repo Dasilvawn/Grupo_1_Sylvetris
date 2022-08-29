@@ -12,7 +12,7 @@
       <section class="login__main__container admin__form__container">
         <h1>CREAR USUARIO</h1>
 
-        <form action="/admin/users/create_user" method="POST" class="admin__form">
+        <form action="/admin/users/create_user" method="POST" enctype="multipart/form-data" class="admin__form">
           <div class="col">
             <div class="form__field">
               <label for="">Nombre/s(*)</label>
@@ -83,7 +83,7 @@
 
             <div class="form__field">
               <label for="">Avatar</label>
-              <input type="file" name="imagen" class="input__admin" />
+              <input type="file" name="image" class="input__admin" />
             </div>
             <button class="registrarse__button admin__btn" type="submit">
               CREAR
