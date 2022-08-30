@@ -111,4 +111,28 @@ color: #e30f6b;
    color:#e30f6b ;
    font-weight: 600;
 }
+.profile__main__right__info__rename form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   gap: 1.4rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem auto;
+}
+.registrarse__button.profile__btn {
+    margin-top: 10px;
+    width: 100%;
+    background-color: var(--color-brown);
+  }
+  .input__profile{
+    width: 100%;
+    position: relative;
+   
+  }
+  .input__profile input{
+    width: 100%;
+   padding: 10px;
+   border: 1px solid var(--color-brown);
+  }
 

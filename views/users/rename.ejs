@@ -29,15 +29,20 @@
                 </ul>
             </article>
             <article class="profile__main__right">
-                <h3>MIS DATOS</h3>
-                <div class="profile__main__right__info">
-                    <h4>Información de Contacto</h4>
-                    <p>Hernan Pablo Moneta</p>
-                    <p>hernan0066@gmail.com</p>
-                    <div class="profile__main__right__action">
-                        <a href="/usuario/perfil/cambiar_nombre"><i class='bx bx-edit' ></i>Editar</a>
-                        <a href="/usuario/perfil/cambiar_password"><i class='bx bx-edit' ></i>Cambiar contraseña</a>
+                <h3>Cambiar nombre</h3>
+                <div class="profile__main__right__info__rename">
+                    <form action="" method="POST">
+                        <h4>Ingresa tus nuevos datos</h4>
+                    <div class="input__profile">
+                        <input type="text" name="name" placeholder="Ingresa tu nombre/s">
+                        <p class="form__error"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
                     </div>
+                    <div class="input__profile">
+                        <input type="text" name="lastname" placeholder="Ingresa tu apellido">
+                        <p class="form__error"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
+                    </div>
+                    <button class="registrarse__button profile__btn" type="submit">Cambiar</button>
+                </form>
                 </div>
             </article>
 

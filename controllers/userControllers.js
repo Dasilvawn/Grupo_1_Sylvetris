@@ -74,4 +74,14 @@ module.exports = {
       title: "Sylvestris | Mi perfil",
     });
   },
+  rename: (req, res) => {
+    return res.render("users/rename", {
+      title: "Sylvestris | Cambiar nombre",
+    });
+  },
+  change_password: (req, res) => {
+    return res.render("users/change_password", {
+      title: "Sylvestris | Cambiar contraseña",
+    });
+  },
 };

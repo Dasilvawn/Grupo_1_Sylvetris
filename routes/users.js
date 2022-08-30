@@ -6,6 +6,8 @@ const {
   login,
   register,
   profile,
+  rename,
+  change_password,
 } = require("../controllers/userControllers");
 const publicRoute = require("../middlewares/publicRoute");
 const registerValidator = require("../validations/registerValidator");
@@ -18,5 +20,7 @@ router.get("/register", publicRoute, register);
 router.post("/register", registerValidator, postRegister);
 
 router.get("/perfil", profile);
+router.get("/perfil/cambiar_nombre", rename);
+router.get("/perfil/cambiar_password", change_password);
 
 module.exports = router;
