@@ -69,4 +69,9 @@ module.exports = {
       });
     }
   },
+  profile: (req, res) => {
+    return res.render("users/profile", {
+      title: "Sylvestris | Mi perfil",
+    });
+  },
 };

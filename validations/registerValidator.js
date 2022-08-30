@@ -36,6 +36,7 @@ module.exports = [
       return !!!user;
     })
     .withMessage("*El email ya se encuentra registrado"),
+
   check("password")
     .notEmpty()
     .withMessage("*La contraseña es obligatoria")
@@ -45,6 +46,7 @@ module.exports = [
       max: 12,
     })
     .withMessage("*La contraseña debe tener entre 6 y 12 caracteres"),
+
   body("password2")
     .notEmpty()
     .withMessage("*La contraseña es obligatoria")
@@ -57,8 +59,11 @@ module.exports = [
       }
     })
     .withMessage("Las contraseñas no coinciden"),
-    check('phone')
+
+  check("phone")
     .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)
     .withMessage("Formato invalido"),
 
+  check("address")
+  .isAlpha('es-ES', {ignore: ' '})
 ];

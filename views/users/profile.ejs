@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body>
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/header') %>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="profile__main ">
+        <section class="profile__section ">
+          <h2 id="profile_title" class="home__title">Mi perfil</h2>
+        <div class="profile__main__container">
+            <article class="profile__menu__left">
+                <h3>MENU</h3>
+                <ul>
+                    <li >
+                        <a href="/usuario/perfil" class="menu_profile active"><i class='bx bx-list-ul' ></i> Mis datos</a>
+                    </li>
+                    <li>
+                        <a href="/#" class="menu_profile"><i class='bx bx-shopping-bag' ></i></i> Mis pedidos</a>
+                    </li>
+                    <li>
+                        <a href="/#" class="menu_profile"><i class='bx bx-home' ></i></i> Mi dirección</a>
+                    </li>
+                    <li>
+                        <a href="/#" class="menu_profile"><i class='bx bx-exit'></i> Cerrar sesión</a>
+                    </li>
+                </ul>
+            </article>
+            <article class="profile__main__right">
+                <h3>MIS DATOS</h3>
+                <div class="profile__main__right__info">
+                    <h4>Información de Contacto</h4>
+                    <p>Hernan Pablo Moneta</p>
+                    <p>hernan0066@gmail.com</p>
+                    <div class="profile__main__right__action">
+                        <a href="#"><i class='bx bx-edit' ></i>Editar</a>
+                        <a href="#"><i class='bx bx-edit' ></i>Cambiar contraseña</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+      </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+    <!-- ----------Inicio de footer----------- -->
+    <%- include('../partials/footer') %>
+    <!-- ----------Fin de footer----------- -->
+  </body>
+</html>

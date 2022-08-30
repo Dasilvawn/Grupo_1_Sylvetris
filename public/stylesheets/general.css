@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -7,18 +9,18 @@
   --color-brown: #a05841;
   --color-brown1: #854a36;
   --color-dark-green: #123132;
-  --color-dark-green1:#1c6a6d;
-  --color-dark-green2:#cde0c762;
+  --color-dark-green1: #1c6a6d;
+  --color-dark-green2: #cde0c762;
   --color-light-grey: #ededee;
   --color-white: #fff;
   --color-black: #2f2f30;
 
   --font-1: "Roboto";
+  --font-2: "Poppins";
 }
 
-
 body {
-  font-family: var(--font-1);
+  font-family: var(--font-2);
 }
 ul {
   list-style: none;
@@ -28,6 +30,19 @@ a {
   text-decoration: none;
 }
 
-input[type="radio"]{
+input[type="radio"] {
   accent-color: var(--color-brown);
+}
+
+body {
+  animation: fadein 0.6s ease-in;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
