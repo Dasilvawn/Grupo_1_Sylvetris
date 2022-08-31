@@ -36,7 +36,7 @@ module.exports = {
         state: "",
         city: "",
         cp: null,
-        image: 'user_default.png',
+        image: "user_default.png",
       };
 
       const firstLetterName = newUser.name.split(" ")[0]?.charAt(0);
@@ -49,12 +49,12 @@ module.exports = {
         lastname: newUser.lastname,
         rol: newUser.rol,
         image: newUser.login,
-        iconNavbar: firstLetterName 
+        iconNavbar: firstLetterName,
       };
 
-      res.cookie('sylvestris',req.session.userLogin,{
-        maxAge : 1000 * 60 * 60
-    })
+      res.cookie("sylvestris", req.session.userLogin, {
+        maxAge: 1000 * 60 * 60,
+      });
 
       let usersModify = [...users, newUser];
 
@@ -70,18 +70,77 @@ module.exports = {
     }
   },
   profile: (req, res) => {
+    const users = loadUsers();
+    const user = users.find((user) => user.id === +req.params.id);
     return res.render("users/profile", {
       title: "Sylvestris | Mi perfil",
+      user,
     });
   },
+
   rename: (req, res) => {
+    const users = loadUsers();
+    
     return res.render("users/rename", {
       title: "Sylvestris | Cambiar nombre",
+      user,
     });
   },
+  putRename: (req, res) => {
+    const users = loadUsers();
+
+    const errors = validationResult(req);
+    const user = users.find((user) => user.id === +req.params.id);
+
+    //return res.send(req.files)
+
+    if (errors.isEmpty()) {
+      const { id } = req.params;
+      let { name, lastname } = req.body;
+      let image = req.files.map((file) => file.filename);
+
+      const userModify = users.map((user) => {
+        if (user.id === +id) {
+          return {
+            ...user,
+            name,
+            lastname,
+            image
+          };
+        } else {
+          return user;
+        }
+      });
+
+      storeUsers(userModify);
+      return res.redirect("/usuario/perfil/" + id);
+    } else {
+      return res.render("users/rename", {
+        title: "Sylvestris | Cambiar nombre",
+        old: req.body,
+        id: req.params.id,
+        errors: errors.mapped(),
+        user
+      });
+    }
+  },
+
   change_password: (req, res) => {
     return res.render("users/change_password", {
       title: "Sylvestris | Cambiar contraseña",
+    });
+  },
+  address: (req, res) => {
+    const users = loadUsers();
+    const user = users.find((user) => user.id === +req.params.id);
+    return res.render("users/address", {
+      title: "Sylvestris | Mi direccion",
+      user,
+    });
+  },
+  change_address: (req, res) => {
+    return res.render("users/change_address", {
+      title: "Sylvestris | Cambiar direccion",
     });
   },
 };

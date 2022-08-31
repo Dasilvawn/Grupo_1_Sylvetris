@@ -1,8 +1,8 @@
 [
    {
       "id": 1,
-      "name": "Eric",
-      "lastname": "Mena",
+      "name": "Hernan Pablo",
+      "lastname": "Moneta",
       "email": "ericmena0@mail.com",
       "password": "SqNU2meyyE",
       "state": "Provicia",
@@ -11,9 +11,12 @@
       "city": "San Miguel",
       "gender": "Masculino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "product-1661931292800.jpg"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 2,
@@ -27,9 +30,12 @@
       "city": "San Miguel",
       "gender": "Masculino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 3,
@@ -43,8 +49,11 @@
       "state": "Santa Fe",
       "city": "Rosario",
       "cp": 2004,
-      "image": "user_default.png",
-      "phone": "341222222233"
+      "image": [
+         "user_default.png"
+      ],
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 4,
@@ -58,9 +67,12 @@
       "city": "San Miguel",
       "gender": "Masculino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 5,
@@ -74,9 +86,12 @@
       "city": "CABA",
       "gender": "Masculino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 6,
@@ -90,9 +105,12 @@
       "city": "CABA",
       "gender": "Femenino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 7,
@@ -106,9 +124,12 @@
       "city": "Avellaneda",
       "gender": "Masculino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 8,
@@ -122,9 +143,12 @@
       "city": "Roma",
       "gender": "Masculino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 9,
@@ -138,9 +162,12 @@
       "city": "La Plata",
       "gender": "Femenino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 10,
@@ -154,9 +181,12 @@
       "city": "Asgard",
       "gender": "Masculino",
       "rol": "usuario",
-      "image": "user_default.png",
+      "image": [
+         "user_default.png"
+      ],
       "cp": 2356,
-      "phone": null
+      "phone": "5153141234",
+      "dni": 12345678
    },
    {
       "id": 11,
@@ -170,8 +200,11 @@
       "state": "Santa Fe",
       "city": "Rosario",
       "cp": 2000,
-      "image": "user_default.png",
-      "phone": "03412728539"
+      "image": [
+         "user_default.png"
+      ],
+      "phone": "03412728539",
+      "dni": 12345678
    },
    {
       "id": 12,
@@ -185,8 +218,11 @@
       "state": "Santa Fe",
       "city": "Rosario",
       "cp": 2000,
-      "image": "user_default.png",
-      "phone": "03412728539"
+      "image": [
+         "user_default.png"
+      ],
+      "phone": "03412728539",
+      "dni": 12345678
    },
    {
       "id": 13,
@@ -203,6 +239,7 @@
       "image": [
          "product-1661760355727.jpg"
       ],
-      "phone": "03412728539"
+      "phone": "03412728539",
+      "dni": 12345678
    }
 ]
