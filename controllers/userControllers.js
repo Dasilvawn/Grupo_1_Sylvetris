@@ -80,7 +80,7 @@ module.exports = {
 
   rename: (req, res) => {
     const users = loadUsers();
-    
+    const user = users.find((user) => user.id === +req.params.id);
     return res.render("users/rename", {
       title: "Sylvestris | Cambiar nombre",
       user,
@@ -91,8 +91,6 @@ module.exports = {
 
     const errors = validationResult(req);
     const user = users.find((user) => user.id === +req.params.id);
-
-    //return res.send(req.files)
 
     if (errors.isEmpty()) {
       const { id } = req.params;
@@ -105,7 +103,7 @@ module.exports = {
             ...user,
             name,
             lastname,
-            image
+            image: image ? image : user.image[0],
           };
         } else {
           return user;
@@ -120,15 +118,51 @@ module.exports = {
         old: req.body,
         id: req.params.id,
         errors: errors.mapped(),
-        user
+        user,
       });
     }
   },
 
   change_password: (req, res) => {
+    const users = loadUsers();
+    const user = users.find((user) => user.id === +req.params.id);
     return res.render("users/change_password", {
       title: "Sylvestris | Cambiar contraseña",
+      user,
     });
+  },
+  putChange_password: (req, res) => {
+    const users = loadUsers();
+
+    const errors = validationResult(req);
+    const user = users.find((user) => user.id === +req.params.id);
+
+    if (errors.isEmpty()) {
+      const { id } = req.params;
+      let { password } = req.body;
+
+      const userModify = users.map((user) => {
+        if (user.id === +id) {
+          return {
+            ...user,
+            password: bcryptjs.hashSync(password, 12),
+          };
+        } else {
+          return user;
+        }
+      });
+
+      storeUsers(userModify);
+      return res.redirect("/usuario/perfil/" + id);
+    } else {
+      return res.render("users/change_password", {
+        title: "Sylvestris | Cambiar contraseña",
+        old: req.body,
+        id: req.params.id,
+        errors: errors.mapped(),
+        user,
+      });
+    }
   },
   address: (req, res) => {
     const users = loadUsers();
@@ -139,8 +173,53 @@ module.exports = {
     });
   },
   change_address: (req, res) => {
+    const users = loadUsers();
+    const user = users.find((user) => user.id === +req.params.id);
     return res.render("users/change_address", {
       title: "Sylvestris | Cambiar direccion",
+      user,
     });
+  },
+  putChange_address: (req, res) => {
+    const users = loadUsers();
+
+    const errors = validationResult(req);
+    const user = users.find((user) => user.id === +req.params.id);
+
+    if (errors.isEmpty()) {
+      const { id } = req.params;
+      let { name, lastname, phone, dni, address, floor, dpto, state, city, cp } = req.body;
+
+      const userModify = users.map((user) => {
+        if (user.id === +id) {
+          return {
+            ...user,
+            name: name.trim(),
+            lastname: lastname.trim(),
+            phone: phone.trim(),
+            dni,
+            address: address.trim(),
+            floor: floor ? floor.trim() : "",
+            dpto: dpto ? dpto.trim() : "",
+            state: state.trim(),
+            city: city.trim(),
+            cp
+          };
+        } else {
+          return user;
+        }
+      });
+
+      storeUsers(userModify);
+      return res.redirect("/usuario/perfil/" + id);
+    } else {
+      return res.render("users/change_address", {
+        title: "Sylvestris | Cambiar direccion",
+        old: req.body,
+        id: req.params.id,
+        errors: errors.mapped(),
+        user,
+      });
+    }
   },
 };

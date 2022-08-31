@@ -15,13 +15,13 @@
                 <h3>MENU</h3>
                 <ul>
                     <li >
-                        <a href="/usuario/perfil/1" class="menu_profile"><i class='bx bx-list-ul' ></i> Mis datos</a>
+                        <a href="/usuario/perfil/<%= user.id %>" class="menu_profile"><i class='bx bx-list-ul' ></i> Mis datos</a>
                     </li>
                     <li>
                         <a href="/#" class="menu_profile"><i class='bx bx-shopping-bag' ></i></i> Mis pedidos</a>
                     </li>
                     <li>
-                        <a href="/usuario/perfil/1/direccion" class="menu_profile  active"><i class='bx bx-home' ></i></i> Mi dirección</a>
+                        <a href="/usuario/perfil/<%= user.id %>/direccion" class="menu_profile  active"><i class='bx bx-home' ></i></i> Mi dirección</a>
                     </li>
                     <li>
                         <a href="/#" class="menu_profile"><i class='bx bx-exit'></i> Cerrar sesión</a>
@@ -31,56 +31,56 @@
             <article class="profile__main__right">
                 <h3>Mi direccion</h3>
                 <div class="profile__main__right__info__rename">
-                    <form id="form__change__address" action="" method="POST">
+                    <form id="form__change__address" action="/usuario/perfil/<%= user.id ? user.id : id %>/cambiar_direccion?_method=PUT" method="POST">
                        
                     <div class="col_address">
                         <h4>Información de Contacto</h4>
                    
                         <div class="input__profile">
-                        <input type="text" name="name" placeholder="Ingresa tu nombre/s">
-                        <p class="form__error"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
+                        <input type="text" name="name" placeholder="Ingresa tu nombre/s" value="<%= locals.old && old.name ? old.name : user.name %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
                     </div>
                     <div class="input__profile">
-                        <input type="text" name="lastname" placeholder="Ingresa tu apellido">
-                        <p class="form__error"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
+                        <input type="text" name="lastname" placeholder="Ingresa tu apellido" value="<%= locals.old && old.lastname ? old.lastname : user.lastname %>" >
+                        <p class="form__error error_profile"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
                     </div>
                     <div class="input__profile">
-                        <input type="tel" name="phone" placeholder="Ingresa tu numero de telefono">
-                        <p class="form__error"><%= locals.errors && errors.phone ? errors.phone.msg : null%></p>
+                        <input type="tel" name="phone" placeholder="Ingresa tu numero de telefono" value="<%= locals.old && old.phone ? old.phone : user.phone %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.phone ? errors.phone.msg : null%></p>
                     </div>
                     <div class="input__profile">
-                        <input type="number" name="dni" placeholder="Ingresa tu numero de DNI">
-                        <p class="form__error"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+                        <input type="number" name="dni" placeholder="Ingresa tu numero de DNI" value="<%= locals.old && old.dni ? old.dni : user.dni %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
                     </div>
                 </div>
                 <div class="col_address">
                     <h4>Dirección de envío</h4>
                     <div class="input__profile">
-                        <input type="text" name="address" placeholder="Direccion">
-                        <p class="form__error"><%= locals.errors && errors.address ? errors.address.msg : null%></p>
+                        <input type="text" name="address" placeholder="Direccion" value="<%= locals.old && old.address ? old.address : user.address %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.address ? errors.address.msg : null%></p>
                     </div>
                     <div class="row">
                         <div class="input__profile">
                             <input type="text" name="floor" placeholder="Piso">
-                            <p class="form__error"><%= locals.errors && errors.floor ? errors.floor.msg : null%></p>
+                            <p class="form__error error_profile"><%= locals.errors && errors.floor ? errors.floor.msg : null%></p>
                         </div>
                         <div class="input__profile">
                             <input type="tel" name="dpto" placeholder="Dpto.">
-                            <p class="form__error"><%= locals.errors && errors.dpto ? errors.dpto.msg : null%></p>
+                            <p class="form__error error_profile"><%= locals.errors && errors.dpto ? errors.dpto.msg : null%></p>
                         </div>
 
                     </div>
                     <div class="input__profile">
                         <input type="text" name="state" placeholder="Provincia">
-                        <p class="form__error"><%= locals.errors && errors.state ? errors.state.msg : null%></p>
+                        <p class="form__error error_profile"><%= locals.errors && errors.state ? errors.state.msg : null%></p>
                     </div>
                     <div class="input__profile">
                         <input type="text" name="city" placeholder="Ciudad">
-                        <p class="form__error"><%= locals.errors && errors.city ? errors.city.msg : null%></p>
+                        <p class="form__error error_profile"><%= locals.errors && errors.city ? errors.city.msg : null%></p>
                     </div>
                     <div class="input__profile">
                         <input type="number" name="cp" placeholder="Codigo postal">
-                        <p class="form__error"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+                        <p class="form__error error_profile"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
                     </div>
                     <button class="registrarse__button profile__btn" type="submit">Enviar</button>
                 </div>

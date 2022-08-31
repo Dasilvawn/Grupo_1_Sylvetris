@@ -12,7 +12,7 @@
       "gender": "Masculino",
       "rol": "usuario",
       "image": [
-         "product-1661931292800.jpg"
+         "user_default.png"
       ],
       "cp": 2356,
       "phone": "5153141234",
@@ -42,7 +42,7 @@
       "name": "Hernan Pablo",
       "lastname": "Moneta",
       "email": "hernan0066@gmail.com",
-      "password": "$2a$12$Fjq.RgsgRPawQlng5I2RCOd0tLvE6yr2fyIhQMNYqEhI139fOF5Ni",
+      "password": "$2a$12$FjoXCkhQf2xnvGaz07FFTe4l8sHQ8feV1tA3lJWG0CXNsOYrAblWW",
       "rol": "admin",
       "address": "Medrano 2636",
       "country": "Argentina",
