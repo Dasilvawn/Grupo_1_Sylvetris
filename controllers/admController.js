@@ -4,8 +4,17 @@ const fs = require("fs");
 const path = require("path");
 
 const productosFilePath = path.join(__dirname, "..", "data", "products.json");
+const usersFilePath = path.join(__dirname, "..", "data", "users.json");
 
 module.exports = {
+  dashboard: (req, res) => {
+    const productos = JSON.parse(fs.readFileSync(productosFilePath, "utf-8"));
+    return res.render("adm/dashboard", {
+      title: "Sylvestris | Panel de administracion",
+      productos,
+    });
+  },
+    
   edit: (req, res) => {
     const productos = JSON.parse(fs.readFileSync(productosFilePath, "utf-8"));
     const producto = productos.find(
@@ -79,14 +88,6 @@ module.exports = {
     return res.redirect("/admin/products");
   },
 
-
-  passnot : (req,res)=>{
-    return res.render('passnot');
-  },
-  administradores : (req,res)=>{
-    return res.render('administradores');
-  },
-
   createProduct: (req, res) => {
     return res.render("adm/createProduct", {
       title: "Sylvestris | Crear producto",
@@ -140,6 +141,13 @@ module.exports = {
     const productsModify = [...products, newProduct];
     storeProducts(productsModify);
     return res.redirect('/admin/products')
+  },
+  getUsers: (req, res) => {
+    const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
+    return res.render("adm/users", {
+      title: "Sylvestris | Lista de Usuarios",
+      users,
+    });
   },
 };
 

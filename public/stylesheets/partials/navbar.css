@@ -108,3 +108,19 @@
       transform: scale(1.04);
     }
   }
+  .login__icon{
+    border: 2px solid var(--color-brown);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    color: var(--color-white);
+    background-color: var(--color-brown);
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: 'Poppins'
+  }
