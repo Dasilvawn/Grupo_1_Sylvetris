@@ -37,8 +37,6 @@ app.use(session({
   saveUninitialized : true
 })); 
 
-// app.use(require('./middlewares/userMiddlewares')); //SE REQUIERE Y SE EXPORTA EN LA MISMA LINEA
-
 app.use(cookieCheck);
 
 

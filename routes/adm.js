@@ -2,7 +2,6 @@ const express = require("express");
 const admController = require("../controllers/admController");
 const router = express.Router();
 
-const admPass = require('../middlewares/accessAdm')
 
 const {
   getUsers,
