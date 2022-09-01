@@ -21,8 +21,9 @@ const {
 } = require("../controllers/admin/userAdminController");
 const { uploadImageProduct } = require("../middlewares/uploadFile");
 const editUserValidator = require("../validations/editUserValidator");
+const newUserValidator = require("../validations/newUserValidator");
 
-const registerValidator = require("../validations/registerValidator");
+
 
 /* /admin */
 
@@ -43,7 +44,7 @@ router.delete("/products/delete_product/:id", deleteProducts);
 router.get("/users", getUsers);
 
 router.get("/users/create_user", getCreateUsers);
-router.post("/users/create_user",uploadImageProduct.array('image',1), registerValidator, postCreateUsers);
+router.post("/users/create_user",uploadImageProduct.array('image',1), newUserValidator, postCreateUsers);
 
 router.get("/users/edit_user/:id", getEditUsers);
 router.put("/users/edit_user/:id",uploadImageProduct.array('image',1), editUserValidator, putEditUsers);

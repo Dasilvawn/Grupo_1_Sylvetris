@@ -238,5 +238,19 @@
          "product-1662006366610.jpg"
       ],
       "phone": "03412728539"
+   },
+   {
+      "id": 14,
+      "name": "Hernan Pablo",
+      "lastname": "Moneta",
+      "email": "hernan0066999@gmail.com",
+      "password": "$2a$12$Z6fw37IjD7lE/kxmkWgF0ulf33eID/.aah/e1CPXsTxNz7PTjJJwC",
+      "rol": "usuario",
+      "address": "",
+      "country": "",
+      "state": "",
+      "city": "",
+      "cp": null,
+      "image": "user_default.png"
    }
 ]
