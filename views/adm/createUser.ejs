@@ -48,6 +48,7 @@
                
             </select>
             </div>
+           
             <div class="form__field">
               <label for="">Telefono</label>
               <input type="tel" name="phone" class="input__admin" value="<%= locals.old && old.phone ? old.phone : null %>"/>
@@ -55,6 +56,11 @@
             </div>
           </div>
           <div class="col">
+            <div class="form__field">
+              <label for="">DNI</label>
+              <input type="number" name="dni" class="input__admin" value="<%= locals.old && old.dni ? old.dni : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+            </div>
             <div class="form__field">
               <label for="">Dirección</label>
               <input type="text" name="address" class="input__admin" value="<%= locals.old && old.address ? old.address : null %>"/>

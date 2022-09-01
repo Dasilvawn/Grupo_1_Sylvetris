@@ -211,7 +211,7 @@ module.exports = {
       });
 
       storeUsers(userModify);
-      return res.redirect("/usuario/perfil/" + id);
+      return res.redirect(`/usuario/perfil/${id}/direccion`);
     } else {
       return res.render("users/change_address", {
         title: "Sylvestris | Cambiar direccion",

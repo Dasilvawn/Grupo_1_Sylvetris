@@ -12,7 +12,7 @@
       <section class="login__main__container admin__form__container">
         <h1>EDITAR USUARIO</h1>
 
-        <form action="/admin/users/edit_user/<%= user.id ? user.id : id %>?_method=PUT" method="POST" class="admin__form">
+        <form action="/admin/users/edit_user/<%= user.id ? user.id : id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="admin__form">
           <div class="col">
             <div class="form__field">
               <label for="">Nombre/s(*)</label>
@@ -56,6 +56,11 @@
           </div>
           <div class="col">
             <div class="form__field">
+              <label for="">DNI</label>
+              <input type="number" name="dni" class="input__admin" value="<%= locals.old && old.dni ? old.dni : user.dni %>"/>
+              <p class="form__error"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+            </div>
+            <div class="form__field">
               <label for="">Dirección</label>
               <input type="text" name="address" class="input__admin" value="<%= locals.old && old.address ? old.address : user.address %>"/>
               <p class="form__error"><%= locals.errors && errors.address ? errors.address.msg : null%></p>
@@ -83,7 +88,7 @@
 
             <div class="form__field">
               <label for="">Avatar</label>
-              <input type="file" name="imagen" class="input__admin" />
+              <input type="file" name="image" class="input__admin" />
             </div>
             <button class="registrarse__button admin__btn" type="submit">
               EDITAR

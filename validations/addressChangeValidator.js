@@ -28,8 +28,11 @@ module.exports = [
     .notEmpty()
     .withMessage("*Requerido")
     .bail()
-    .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)
-    .withMessage("Formato invalido"),
+    .isNumeric()
+    .withMessage("*Solo numeros")
+    .bail()
+    .isMobilePhone()
+    .withMessage("*Formato invalido"),
 
   check("dni")
     .notEmpty()
@@ -48,40 +51,31 @@ module.exports = [
     .notEmpty()
     .withMessage("*Requerido")
     .bail()
-    .matches(/^[A-Za-z0-9]+$/g)
-    .withMessage("*Formato invalido"),
+    .isAlphanumeric("es-ES", { ignore: " " })
+    .withMessage("*Solo letras y números"),
 
-  body("floor")
-    .custom((value, { req }) => {
-      const reg = /[a-zA-Z]+.*[0-9]+/i;
-      if (value === null || value === undefined) {
-        return true;
-      } else {
-        return false;
-      }
-    })
-    .withMessage("*Formato invalido"),
+  //body("floor").isAlphanumeric().withMessage("*Formato invalido"),
 
-  check("dpto")
-    .matches(/[a-zA-Z]+.*[0-9]+/i)
-    .withMessage("*Formato invalido"),
+  //check("dpto").isAlphanumeric().withMessage("*Formato invalido"),
 
   check("state")
     .notEmpty()
     .withMessage("*Requerido")
     .bail()
-    .isAlpha("es-ES", { ignore: " " }),
+    .isAlpha("es-ES", { ignore: " " })
+    .withMessage("*Solo letras"),
 
   check("city")
     .notEmpty()
     .withMessage("*Requerido")
     .bail()
-    .isAlpha("es-ES", { ignore: " " }),
+    .isAlpha("es-ES", { ignore: " " })
+    .withMessage("*Solo letras"),
 
   check("cp")
     .notEmpty()
     .withMessage("*Requerido")
     .bail()
     .isNumeric()
-    .withMessage("Solo numeros"),
+    .withMessage("Solo números"),
 ];

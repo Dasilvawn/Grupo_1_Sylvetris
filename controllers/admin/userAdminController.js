@@ -19,6 +19,7 @@ module.exports = {
   },
   postCreateUsers: (req, res) => {
     let errors = validationResult(req);
+    
 
     if (errors.isEmpty()) {
       const {
@@ -33,6 +34,7 @@ module.exports = {
         city,
         cp,
         phone,
+        dni
       } = req.body;
       const users = loadUsers();
 
@@ -52,6 +54,7 @@ module.exports = {
         cp: +cp,
         image: image ? image : "user_default.png",
         phone: phone,
+        dni
       };
       let usersModify = [...users, newUser];
       storeUsers(usersModify);
@@ -89,13 +92,14 @@ module.exports = {
         state,
         city,
         cp,
-        image,
         phone,
       } = req.body;
       const users = loadUsers();
 
       const userOriginal = users.find((user) => user.id === +req.params.id);
 
+      
+      let image = req.files.map((file) => file.filename);
       const editUser = users.map((user) => {
         if (user.id === +req.params.id) {
           return {
@@ -110,7 +114,7 @@ module.exports = {
             state: state ? state : "",
             city: city ? city.trim() : "",
             cp: +cp,
-            image: userOriginal.image ? userOriginal.image : image,
+            image: image ? image : userOriginal.image,
             phone: phone,
           };
         } else {

@@ -46,7 +46,7 @@ router.get("/users/create_user", getCreateUsers);
 router.post("/users/create_user",uploadImageProduct.array('image',1), registerValidator, postCreateUsers);
 
 router.get("/users/edit_user/:id", getEditUsers);
-router.put("/users/edit_user/:id", editUserValidator, putEditUsers);
+router.put("/users/edit_user/:id",uploadImageProduct.array('image',1), editUserValidator, putEditUsers);
 
 router.delete("/users/delete_user/:id", deleteUsers);
 

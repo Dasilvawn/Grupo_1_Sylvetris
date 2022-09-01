@@ -60,10 +60,58 @@ module.exports = [
     })
     .withMessage("Las contraseñas no coinciden"),
 
-  check("phone")
-    .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)
-    .withMessage("Formato invalido"),
+    check("phone")
+    .notEmpty()
+    .withMessage("*Requerido")
+    .bail()
+    .isNumeric()
+    .withMessage("*Solo numeros")
+    .bail()
+    .isMobilePhone()
+    .withMessage("*Formato invalido"),
+
+  check("dni")
+    .notEmpty()
+    .withMessage("*Requerido")
+    .bail()
+    .isNumeric()
+    .withMessage("Solo numeros")
+    .bail()
+    .isLength({
+      min: 7,
+      max: 8,
+    })
+    .withMessage("*Formato invalido"),
 
   check("address")
-  .isAlpha('es-ES', {ignore: ' '})
+    .notEmpty()
+    .withMessage("*Requerido")
+    .bail()
+    .isAlphanumeric("es-ES", { ignore: " " })
+    .withMessage("*Solo letras y números"),
+
+  //body("floor").isAlphanumeric().withMessage("*Formato invalido"),
+
+  //check("dpto").isAlphanumeric().withMessage("*Formato invalido"),
+
+  check("state")
+    .notEmpty()
+    .withMessage("*Requerido")
+    .bail()
+    .isAlpha("es-ES", { ignore: " " })
+    .withMessage("*Solo letras"),
+
+  check("city")
+    .notEmpty()
+    .withMessage("*Requerido")
+    .bail()
+    .isAlpha("es-ES", { ignore: " " })
+    .withMessage("*Solo letras"),
+
+  check("cp")
+    .notEmpty()
+    .withMessage("*Requerido")
+    .bail()
+    .isNumeric()
+    .withMessage("Solo números"),
 ];

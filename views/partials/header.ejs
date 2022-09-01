@@ -60,4 +60,70 @@
       </ul>
     </nav>
   </div>
+  <div class="overlay"></div>
+  <div class="sidebar_menu_mobile">
+    <button class="btn_close"><i class="bx bx-x"></i></button>
+    <h3>Buscar</h3>
+    
+    <div class="sidebar_menu_mobile_search">
+      <form action="/search" method="GET">
+        <input type="text"  name="keywords" minlength="2" />
+        <button type="submit">
+          <i class='bx bx-search-alt-2'></i>
+        </button>
+      </form>
+    </div>
+    <h3>Productos</h3>
+    
+    <ul>
+      <li>
+        <a href=""><i class='bx bxs-florist'></i> Todas las plantas</a>
+      </li>
+      <li>
+        <a href=""><i class='bx bxs-florist'></i> Suculentas</a>
+      </li>
+      <li>
+        <a href=""><i class='bx bxs-florist'></i> Plantas</a>
+      </li>
+      <li>
+        <a href=""><i class='bx bxs-florist'></i> Captus</a>
+      </li>
+    </ul>
+    <h3>Usuario</h3>
+    
+    <ul>
+      <li>
+        <a href="/usuario/login"><i class='bx bx-user-circle' ></i></i> Login</a>
+      </li>
+      <li>
+        <a href="/usuario/perfil"><i class='bx bx-list-ul' ></i> Mi perfil</a>
+      </li>
+      <li>
+        <a href="#"><i class='bx bx-shopping-bag' ></i></i> Mis pedidos</a>
+      </li>
+      <li>
+        <a href="/usuario/perfil/direccion"><i class='bx bx-home' ></i></i> Mi dirección</a>
+      </li>
+      <li>
+        <a href="" style="font-weight:400 ;"><i class='bx bx-exit'></i> Cerrar sesión</a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const open = document.querySelector('.header__hamburger');
+    const close = document.querySelector('.btn_close');
+    const container = document.querySelector('.sidebar_menu_mobile')
+    const overlay = document.querySelector('.overlay')
+
+    open.addEventListener('click', () => {
+    container.classList.add ('show-nav')
+    overlay.classList.add ('show-nav')
+})
+
+
+close.addEventListener('click', () => {
+container.classList.remove ('show-nav')
+overlay.classList.remove ('show-nav')
+})
+  </script>
 </header>

@@ -1,126 +1,206 @@
 .header__container {
-    align-items: center;
-    background-color:#EDEDEE;
-    color: #a05841;
-    display: flex;
-    height: 60px;
-    justify-content: space-between;
-    padding: 0 10px;
-    position: sticky;
-    width: 100%;
-    *box-shadow: 0 3px 5px #ccc;
-    top: 0;
-    z-index: 10;
+  align-items: center;
+  background-color: #ededee;
+  color: #a05841;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 10px;
+  position: sticky;
+  width: 100%;
+  *box-shadow: 0 3px 5px #ccc;
+  top: 0;
+  z-index: 10;
+}
+.header__logo {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 128px;
+}
+.header__logo img {
+  width: 100%;
+}
+
+.header__nav {
+  display: none;
+}
+.header__nav__right {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header__container {
+    height: 75px;
+    padding: 0 20px;
   }
   .header__logo {
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 128px;
+    width: 156px;
   }
-  .header__logo img {
-    width: 100%;
-  }
-  
-  .header__nav {
+  .header__cart {
     display: none;
   }
   .header__nav__right {
+    display: flex;
+    gap: 15px;
+  }
+  .header__nav__right form {
+    position: relative;
+  }
+  .header__nav__right form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-brown);
+    outline: none;
+    padding: 5px;
+    width: 120px;
+    color: var(--color-brown);
+  }
+  .header__nav__right form input::placeholder {
+    color: var(--color-brown);
+  }
+  .header__nav__right form button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 3px;
+    cursor: pointer;
+  }
+  .header__nav__right__icon_container ul {
+    display: flex;
+    gap: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .header__container {
+    height: 80px;
+    padding: 0 40px;
+  }
+  .header__hamburger {
     display: none;
   }
-  
-  @media (min-width: 768px) {
-    .header__container {
-      height: 75px;
-      padding: 0 20px;
-    }
-    .header__logo {
-      width: 156px;
-    }
-    .header__cart {
-      display: none;
-    }
-    .header__nav__right {
-      display: flex;
-      gap: 15px;
-    }
-    .header__nav__right form {
-      position: relative;
-    }
-    .header__nav__right form input {
-      background-color: transparent;
-      border: none;
-      border-bottom: 1px solid var(--color-brown);
-      outline: none;
-      padding: 5px;
-      width: 120px;
-      color: var(--color-brown);
-    }
-    .header__nav__right form input::placeholder {
-      
-      color: var(--color-brown);
-    }
-    .header__nav__right form button {
-      background-color: transparent;
-      border: none;
-      position: absolute;
-      right: 0;
-      top: 3px;
-      cursor: pointer;
-    }
-    .header__nav__right__icon_container ul{
-      display: flex;
-      gap: 20px;
-    }
-    
+  .header__logo {
+    left: 0px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-60%);
   }
-  @media (min-width: 1024px) {
-    .header__container {
-      height: 80px;
-      padding: 0 40px;
-    }
-    .header__hamburger {
-      display: none;
-    }
-    .header__logo {
-      left: 0px;
-      position: relative;
-      top: 50%;
-      transform: translateY(-60%);
-    }
-    .header__nav {
-      display: block;
-    }
-    .header__nav ul {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-    }
-    .header__nav ul li a {
-      color: var(--color-brown);
-      display: block;
-      font-size: 20px;
-      text-decoration: none;
-      
-    }
-    .header__nav ul li a:hover {
-      transform: scale(1.04);
-    }
-  }
-  .login__icon{
-    border: 2px solid var(--color-brown);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+  .header__nav {
     display: block;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    color: var(--color-white);
-    background-color: var(--color-brown);
-    font-size: 20px;
-    text-transform: uppercase;
-    font-family: 'Poppins'
   }
+  .header__nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+  .header__nav ul li a {
+    color: var(--color-brown);
+    display: block;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .header__nav ul li a:hover {
+    transform: scale(1.04);
+  }
+}
+.login__icon {
+  border: 2px solid var(--color-brown);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  color: var(--color-white);
+  background-color: var(--color-brown);
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "Poppins";
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(29, 21, 1, 0.397);
+  z-index: 2;
+  display: none;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.overlay.show-nav {
+  display: block;
+  opacity: 1;
+}
+.sidebar_menu_mobile {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  height: 100vh;
+  width: 280px;
+  background-color: var(--color-white);
+  z-index: 3;
+  padding: 20px 25px;
+  transition: all 0.5s ease;
+  color: var(--color-dark-green1);
+}
+.sidebar_menu_mobile h3 {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-bottom: 1px solid var(--color-dark-green1);
+  margin: 10px 0;
+}
+
+.sidebar_menu_mobile.show-nav {
+  transform: translateX(280px);
+}
+.sidebar_menu_mobile ul li {
+  padding: 10px 0;
+  transition: all 0.5s ease;
+}
+.sidebar_menu_mobile ul li:hover {
+  background-color: rgba(127, 255, 212, 0.308);
+  cursor: pointer;
+}
+.sidebar_menu_mobile ul li a {
+  color: var(--color-dark-green1);
+  letter-spacing: 2px;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(156, 156, 156, 0.774);
+}
+.btn_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  font-size: 35px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-dark-green1);
+}
+.sidebar_menu_mobile_search {
+  position: relative;
+}
+.sidebar_menu_mobile_search form input {
+  width: 100%;
+  padding: 9px;
+  margin: 10px 0;
+  background-color: transparent;
+  border: 1px solid var(--color-dark-green1);
+}
+.sidebar_menu_mobile_search form button {
+  position: absolute;
+  top: 16px;
+  right: 7px;
+  background-color: transparent;
+  border: none;
+  color: var(--color-dark-green1);
+  font-size: 25px;
+}
