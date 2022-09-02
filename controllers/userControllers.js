@@ -8,8 +8,39 @@ module.exports = {
       title: "Sylvestris | Login",
     });
   },
-  postLogin: (req, res) => {
-    //codigo de walter
+  postLogin: (req,res) => {
+      let errors = validationResult(req);
+      // return res.send(errors) 
+      if(errors.isEmpty()){
+
+      let {id,firstname,lastname,email,state,country,address,city,gender,image,cp} = loadUsers().find(user => user.email === req.body.email);
+        //  return res.send(req.body)
+      req.session.userLogin ={
+          id,
+          firstname,
+          lastname,
+          email,
+          state,
+          country,
+          address,
+          city,
+          gender,
+          image,
+          cp,          
+      };
+      //  return res.send(req.session.userLogin)
+      if(req.body.remember){
+          res.cookie('Sylvestris',req.session.userLogin, {
+              maxAge : 1000 * 60 *60 *24
+          })
+      }
+          return res.redirect('/')
+      }else {
+          return res.render("users/login",{
+              title: 'Sylvestris | Login',
+              errors : errors.mapped()
+          })
+      }
   },
 
   register: (req, res) => {

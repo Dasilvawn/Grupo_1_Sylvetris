@@ -10,6 +10,8 @@ const session = require('express-session');
 const localsUserCheck = require('./middlewares/localsUserCheck');
 const cookieCheck = require('./middlewares/cookieCheck');
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
@@ -36,7 +38,7 @@ app.use(session({
 })); 
 
 app.use(cookieCheck);
-app.use(localsUserCheck);
+
 
 app.use('/', indexRouter);
 app.use('/productos', productsRouter);
