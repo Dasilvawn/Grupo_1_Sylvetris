@@ -11,30 +11,7 @@
         <section class="profile__section ">
           <h2 id="profile_title" class="home__title">Mi perfil</h2>
         <div class="profile__main__container">
-            <article class="profile__menu__left">
-                <h3>MENU</h3>
-                <ul>
-                    <li >
-                        <a href="/usuario/perfil/<%= user.id %>" class="menu_profile active"><i class='bx bx-list-ul' ></i> Mis datos</a>
-                    </li>
-                    <li>
-                        <a href="/#" class="menu_profile"><i class='bx bx-shopping-bag' ></i></i> Mis pedidos</a>
-                    </li>
-                    <li>
-                        <a href="/usuario/perfil/<%= user.id %>/direccion" class="menu_profile"><i class='bx bx-home' ></i></i> Mi dirección</a>
-                    </li>
-                    <% if (user.rol === "admin") { %>
-                        
-                        <li>
-                            <a href="/admin" class="menu_profile"><i class='bx bx-shield-alt-2'></i> Administración</a>
-                        </li>
-                     
-                    <% } %>
-                    <li>
-                        <a href="/#" class="menu_profile"><i class='bx bx-exit'></i> Cerrar sesión</a>
-                    </li>
-                </ul>
-            </article>
+            <%- include('../partials/menuProfile') %>
             <article class="profile__main__right">
                 <h3>MIS DATOS</h3>
                 <div class="profile__main__right__container">
@@ -48,8 +25,8 @@
                     <p><%= user.name %>  <%= user.lastname %></p>
                     <p><%= user.email %></p>
                     <div class="profile__main__right__action">
-                        <a href="/usuario/perfil/<%= user.id %>/cambiar_nombre"><i class='bx bx-edit' ></i>Editar</a>
-                        <a href="/usuario/perfil/<%= user.id %>/cambiar_password"><i class='bx bx-edit' ></i>Cambiar contraseña</a>
+                        <a href="/usuario/perfil/cambiar_nombre"><i class='bx bx-edit' ></i>Editar</a>
+                        <a href="/usuario/perfil/cambiar_password"><i class='bx bx-edit' ></i>Cambiar contraseña</a>
                     </div>
                 </div>
                 

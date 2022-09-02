@@ -13,6 +13,7 @@ const {
   putRename,
   register,
   rename,
+  logout,
 } = require("../controllers/userControllers");
 const publicRoute = require("../middlewares/publicRoute");
 const { uploadImageProduct } = require("../middlewares/uploadFile");
@@ -28,30 +29,32 @@ router.post("/login", postLogin);
 router.get("/register", publicRoute, register);
 router.post("/register", registerValidator, postRegister);
 
-router.get("/perfil/:id", profile);
+router.get("/perfil", profile);
 
-router.get("/perfil/:id/cambiar_nombre", rename);
+router.get("/perfil/cambiar_nombre", rename);
 router.put(
-  "/perfil/:id/cambiar_nombre",
+  "/perfil/cambiar_nombre",
   uploadImageProduct.array("image", 1),
   editUserProfileValidator,
   putRename
 );
 
-router.get("/perfil/:id/cambiar_password", change_password);
+router.get("/perfil/cambiar_password", change_password);
 router.put(
-  "/perfil/:id/cambiar_password",
+  "/perfil/cambiar_password",
   passwordChangeValidator,
   putChange_password
 );
 
-router.get("/perfil/:id/direccion", address);
+router.get("/perfil/direccion", address);
 
-router.get("/perfil/:id/cambiar_direccion", change_address);
+router.get("/perfil/cambiar_direccion", change_address);
 router.put(
-  "/perfil/:id/cambiar_direccion",
+  "/perfil/cambiar_direccion",
   addressChangeValidator,
   putChange_address
 );
+
+router.get('/logout',logout)
 
 module.exports = router;

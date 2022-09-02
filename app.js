@@ -38,6 +38,7 @@ app.use(session({
 })); 
 
 app.use(cookieCheck);
+app.use(localsUserCheck);
 
 
 app.use('/', indexRouter);

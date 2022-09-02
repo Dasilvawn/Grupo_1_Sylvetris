@@ -11,35 +11,13 @@
         <section class="profile__section ">
           <h2 id="profile_title" class="home__title">Mi perfil</h2>
         <div class="profile__main__container">
-            <article class="profile__menu__left">
-                <h3>MENU</h3>
-                <ul>
-                    <li >
-                        <a href="/usuario/perfil/<%= user.id %>" class="menu_profile"><i class='bx bx-list-ul' ></i> Mis datos</a>
-                    </li>
-                    <li>
-                        <a href="/#" class="menu_profile"><i class='bx bx-shopping-bag' ></i></i> Mis pedidos</a>
-                    </li>
-                    <li>
-                        <a href="/usuario/perfil/<%= user.id %>/direccion" class="menu_profile  active"><i class='bx bx-home' ></i></i> Mi dirección</a>
-                    </li>
-                   
-                    <% if (user.rol === "admin") { %>
-                        
-                        <li>
-                            <a href="/admin" class="menu_profile"><i class='bx bx-shield-alt-2'></i> Administración</a>
-                        </li>
-                     
-                    <% } %>
-                    <li>
-                        <a href="/#" class="menu_profile"><i class='bx bx-exit'></i> Cerrar sesión</a>
-                    </li>
-                </ul>
-            </article>
+            
+            <%- include('../partials/menuProfile') %>
+            
             <article class="profile__main__right">
                 <h3>Mi direccion</h3>
                 <div class="profile__main__right__info__rename">
-                    <form id="form__change__address" action="/usuario/perfil/<%= user.id ? user.id : id %>/cambiar_direccion?_method=PUT" method="POST">
+                    <form id="form__change__address" action="/usuario/perfil/cambiar_direccion?_method=PUT" method="POST">
                        
                     <div class="col_address">
                         <h4>Información de Contacto</h4>

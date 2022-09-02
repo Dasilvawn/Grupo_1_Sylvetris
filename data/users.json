@@ -251,7 +251,9 @@
       "state": "",
       "city": "",
       "cp": null,
-      "image": "user_default.png"
+      "image": [
+         "user_default.png"
+      ]
    },
    {
       "id": 17,
