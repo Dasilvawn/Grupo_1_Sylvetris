@@ -270,5 +270,25 @@
       "city": "",
       "cp": null,
       "image": "user_default.png"
+   },
+   {
+      "id": 18,
+      "name": "Hernan Pablo",
+      "lastname": "Moneta",
+      "email": "hernan88@gmail.com",
+      "password": "$2a$12$B/T9cYoEYaoHtXwwNy2giuhktndT5g.BkWhuS2MU5FofEKr1X2jA6",
+      "dni": "29481148",
+      "rol": "usuario",
+      "address": "Medrano 2636",
+      "country": "",
+      "state": "Santa Fe",
+      "city": "Rosario",
+      "cp": "2000",
+      "image": [
+         "product-1662146341484.jpg"
+      ],
+      "phone": "03412728539",
+      "floor": "",
+      "dpto": ""
    }
 ]
