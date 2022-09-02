@@ -52,7 +52,7 @@ module.exports = {
         state: state ? state : "",
         city: city ? city.trim() : "",
         cp: +cp,
-        image: image ? image : "user_default.png",
+        image: image ? [...user.image, image] : "user_default.png",
         phone: phone,
         dni
       };

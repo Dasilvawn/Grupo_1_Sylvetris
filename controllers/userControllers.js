@@ -10,13 +10,14 @@ module.exports = {
   },
   postLogin: (req, res) => {
     let errors = validationResult(req);
-    // return res.send(errors)
+
     if (errors.isEmpty()) {
       let {
         id,
         name,
         lastname,
         email,
+        rol,
         state,
         country,
         address,
@@ -33,6 +34,7 @@ module.exports = {
         name,
         lastname,
         email,
+        rol,
         state,
         country,
         address,
@@ -65,7 +67,7 @@ module.exports = {
   },
   postRegister: (req, res) => {
     let errors = validationResult(req);
-    //return res.send(errors)
+
     if (errors.isEmpty()) {
       const { name, lastname, email, password } = req.body;
       let users = loadUsers();
@@ -76,6 +78,7 @@ module.exports = {
         lastname: lastname.trim(),
         email: email.trim(),
         password: bcryptjs.hashSync(password, 12),
+        dni: null,
         rol: "usuario",
         address: "",
         country: "",
@@ -85,21 +88,24 @@ module.exports = {
         image: ["user_default.png"],
       };
 
-      const firstLetterName = newUser.name.split(" ")[0]?.charAt(0);
-      const firstLetterLastname = newUser.lastname.split(" ")[0]?.charAt(0);
-
       // inicio session una vez creado el usuario
       req.session.userLogin = {
         id: newUser.id,
         name: newUser.name,
         lastname: newUser.lastname,
+        dni: newUser.dni,
         rol: newUser.rol,
+        address: newUser.address,
+        country: newUser.country,
+        state: newUser.state,
+        city: newUser.city,
+        cp: newUser.cp,
         image: newUser.login,
-        iconNavbar: firstLetterName,
+        iconNavbar: newUser.name.split(" ")[0]?.charAt(0),
       };
 
       res.cookie("sylvestris", req.session.userLogin, {
-        maxAge: 1000 * 60 * 60,
+        maxAge: 1000 * 60 * 60 * 24,
       });
 
       let usersModify = [...users, newUser];
@@ -123,35 +129,35 @@ module.exports = {
     return res.render("users/profile", {
       title: "Sylvestris | Mi perfil",
       user,
-      session: req.session,
     });
   },
 
   rename: (req, res) => {
     const users = loadUsers();
-    const id = req.session.userLogin?.id;
+    const id = req.session.userLogin.id;
     const user = users.find((user) => user.id === +id);
     return res.render("users/rename", {
       title: "Sylvestris | Cambiar nombre",
       user,
-      session: req.session,
     });
   },
-  putRename: (req, res) => {
-    const users = loadUsers();
-    const id = req.session.userLogin.id;
-    const user = users.find((user) => user.id === +id);
-    
 
-    let errors = validationResult(req);
+  putRename: (req, res) => {
+    const users = loadUsers(); // cargo los usarios de json
+    const id = req.session.userLogin.id; // cargo el id de la session
+    const user = users.find((user) => user.id === +id); // busco al usuario a modificar
+
+    let errors = validationResult(req); // traigo los errores del validador
 
     if (errors.isEmpty()) {
-      const { id } = req.params;
+      // traigo la los datos del formulario
       let { name, lastname } = req.body;
-      let image = req.files.map((file) => file.filename);
-      console.log(req.body)
 
-      const userModify = users.map((user) => {
+      // traigo la imagen de multer
+      let image = req.files.map((file) => file.filename);
+
+      // genero un nuevo array con el usuario modificado
+      const usersModify = users.map((user) => {
         if (user.id === +id) {
           return {
             ...user,
@@ -163,17 +169,31 @@ module.exports = {
           return user;
         }
       });
-      console.log(userModify)
-      storeUsers(userModify);
+
+      // guardo en session los datos actualizados
+      req.session.userLogin = {
+        ...req.session.userLogin,
+        name,
+        lastname,
+        iconNavbar: name.split(" ")[0]?.charAt(0),
+        image: image ? image : user.image[0],
+      };
+
+      //actualizo la cookie
+      req.cookies.sylvestris &&
+        res.cookie("sylvestris", req.session.userLogin, {
+          maxAge: 1000 * 60 * 60 * 24,
+        });
+
+      // actualizo el json
+      storeUsers(usersModify);
       return res.redirect("/usuario/perfil");
     } else {
       return res.render("users/rename", {
         title: "Sylvestris | Cambiar nombre",
         old: req.body,
-        id: req.params.id,
         errors: errors.mapped(),
         user,
-        session: req.session,
       });
     }
   },
@@ -190,13 +210,12 @@ module.exports = {
   },
   putChange_password: (req, res) => {
     const users = loadUsers();
-    const id = req.session.userLogin?.id;
+    const id = req.session.userLogin.id;
     const user = users.find((user) => user.id === +id);
 
     let errors = validationResult(req);
 
     if (errors.isEmpty()) {
-      const { id } = req.params;
       let { password } = req.body;
 
       const userModify = users.map((user) => {
@@ -209,28 +228,25 @@ module.exports = {
           return user;
         }
       });
-
+      // no hay cambios en la session ni en la cookie, solo en el json
       storeUsers(userModify);
-      return res.redirect("/usuario/perfil" );
+      return res.redirect("/usuario/perfil");
     } else {
       return res.render("users/change_password", {
         title: "Sylvestris | Cambiar contraseña",
         old: req.body,
-        id: req.params.id,
         errors: errors.mapped(),
         user,
-        session: req.session,
       });
     }
   },
   address: (req, res) => {
     const users = loadUsers();
-    const id = req.session.userLogin?.id;
+    const id = req.session.userLogin.id;
     const user = users.find((user) => user.id === +id);
     return res.render("users/address", {
       title: "Sylvestris | Mi direccion",
       user,
-      session: req.session,
     });
   },
   change_address: (req, res) => {
@@ -240,18 +256,16 @@ module.exports = {
     return res.render("users/change_address", {
       title: "Sylvestris | Cambiar direccion",
       user,
-      session: req.session,
     });
   },
   putChange_address: (req, res) => {
     const users = loadUsers();
-    const id = req.session.userLogin?.id;
+    const id = req.session.userLogin.id;
     const user = users.find((user) => user.id === +id);
 
     let errors = validationResult(req);
 
     if (errors.isEmpty()) {
-      const { id } = req.params;
       let {
         name,
         lastname,
@@ -284,6 +298,27 @@ module.exports = {
           return user;
         }
       });
+      // guardo en session los datos actualizados
+      req.session.userLogin = {
+        ...req.session.userLogin,
+        name,
+        lastname,
+        phone,
+        dni,
+        address,
+        floor,
+        dpto,
+        state,
+        city,
+        cp,
+        iconNavbar: name.split(" ")[0]?.charAt(0),
+      };
+
+      //actualizo la cookie
+      req.cookies.sylvestris &&
+        res.cookie("sylvestris", req.session.userLogin, {
+          maxAge: 1000 * 60 * 60 * 24,
+        });
 
       storeUsers(userModify);
       return res.redirect(`/usuario/perfil/direccion`);
@@ -291,10 +326,8 @@ module.exports = {
       return res.render("users/change_address", {
         title: "Sylvestris | Cambiar direccion",
         old: req.body,
-        id: req.params.id,
         errors: errors.mapped(),
         user,
-        session: req.session,
       });
     }
   },
