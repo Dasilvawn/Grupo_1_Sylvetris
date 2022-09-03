@@ -1,18 +1,26 @@
-const { loadProducts, storeProducts } = require("../../data/db");
+const { loadProducts, storeProducts, loadUsers } = require("../../data/db");
 const { validationResult } = require("express-validator");
 
 module.exports = {
   getProducts: (req, res) => {
     const productos = loadProducts();
+    const users = loadUsers();
+    const id = req.session.userLogin?.id;
+    const user = users.find((user) => user.id === +id);
     return res.render("adm/products", {
       title: "Sylvestris | Lista de Productos",
       productos,
+      user
     });
   },
 
   getCreateProduct: (req, res) => {
+    const users = loadUsers();
+    const id = req.session.userLogin?.id;
+    const user = users.find((user) => user.id === +id);
     return res.render("adm/createProduct", {
       title: "Sylvestris | Crear producto",
+      user
     });
   },
   postCreateProducts: (req, res) => {
@@ -59,6 +67,9 @@ module.exports = {
   },
   getEditProducts: (req, res) => {
     const productos = loadProducts();
+    const users = loadUsers();
+    const id = req.session.userLogin?.id;
+    const user = users.find((user) => user.id === +id);
     const producto = productos.find(
       (producto) => producto.id === +req.params.id
     );
@@ -66,6 +77,7 @@ module.exports = {
     return res.render("adm/editProduct", {
       producto,
       title: "Sylvestris | Editar producto",
+      user
     });
   },
   putEditProducts: (req, res) => {

@@ -217,3 +217,7 @@
   white-space: nowrap;
 }
 
+input[type="checkbox"]{
+  accent-color: var(--color-brown);
+}
+

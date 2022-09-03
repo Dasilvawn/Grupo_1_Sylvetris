@@ -63,6 +63,10 @@
   <div class="overlay"></div>
   <div class="sidebar_menu_mobile">
     <button class="btn_close"><i class="bx bx-x"></i></button>
+    <div class="header__logo__menu">
+      <a href="/"><img src="/images/logo/Logo.png" alt="logo" /></a>
+    </div>
+    
     <h3>Buscar</h3>
     
     <div class="sidebar_menu_mobile_search">
@@ -77,24 +81,21 @@
     
     <ul>
       <li>
-        <a href=""><i class='bx bxs-florist'></i> Todas las plantas</a>
+        <a href="/productos"><i class='bx bxs-florist'></i> Todas las plantas</a>
       </li>
       <li>
-        <a href=""><i class='bx bxs-florist'></i> Suculentas</a>
+        <a href="/productos/suculentas"><i class='bx bxs-florist'></i> Suculentas</a>
       </li>
       <li>
-        <a href=""><i class='bx bxs-florist'></i> Plantas</a>
+        <a href="/productos/plantas"><i class='bx bxs-florist'></i> Plantas</a>
       </li>
       <li>
-        <a href=""><i class='bx bxs-florist'></i> Captus</a>
+        <a href="/productos/captus"><i class='bx bxs-florist'></i> Captus</a>
       </li>
     </ul>
     <h3>Usuario</h3>
-    
     <ul>
-      <li>
-        <a href="/usuario/login"><i class='bx bx-user-circle' ></i></i> Login</a>
-      </li>
+    <% if (locals.userLogin) { %>
       <li>
         <a href="/usuario/perfil"><i class='bx bx-list-ul' ></i> Mi perfil</a>
       </li>
@@ -104,10 +105,25 @@
       <li>
         <a href="/usuario/perfil/direccion"><i class='bx bx-home' ></i></i> Mi dirección</a>
       </li>
+      <% if (locals.user && user.rol === "admin") { %>
+        <li>
+          <a href="/admin"><i class='bx bx-shield-alt-2'></i> Administración</a>
+        </li>
+      <% } %>
+      
       <li>
-        <a href="" style="font-weight:400 ;"><i class='bx bx-exit'></i> Cerrar sesión</a>
+        <a href="/usuario/logout" style="font-weight:600 ;"><i class='bx bx-exit'></i> Cerrar sesión</a>
       </li>
-    </ul>
+      <% }else{ %>
+        <li>
+          <a href="/usuario/login" style="font-weight:600 ;"><i class='bx bx-user-circle' ></i></i> Ingresar</a>
+        </li>
+      <% } %>
+      </ul>
+    
+    
+      
+     
   </div>
   <script>
     const open = document.querySelector('.header__hamburger');

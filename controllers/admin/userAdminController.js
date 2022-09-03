@@ -5,16 +5,22 @@ const { loadUsers, storeUsers } = require("../../data/db");
 module.exports = {
   getUsers: (req, res) => {
     const users = loadUsers();
+    const id = req.session.userLogin?.id;
+    const user = users.find((user) => user.id === +id);
     return res.render("adm/users", {
       title: "Sylvestris | Lista de Usuarios",
       users,
+      user
     });
   },
   getCreateUsers: (req, res) => {
     const users = loadUsers();
+    const id = req.session.userLogin?.id;
+    const user = users.find((user) => user.id === +id);
     return res.render("adm/createUser", {
       title: "Sylvestris | Crear Usuario",
       users,
+      user
     });
   },
   postCreateUsers: (req, res) => {
@@ -70,11 +76,14 @@ module.exports = {
 
   getEditUsers: (req, res) => {
     const users = loadUsers();
+    const id = req.session.userLogin?.id;
+    const userAdmin = users.find((user) => user.id === +id);
 
     const user = users.find((user) => user.id === +req.params.id);
     return res.render("adm/editUser", {
       title: "Sylvestris | Editar usuario",
       user,
+      userAdmin
     });
   },
   putEditUsers: (req, res) => {
