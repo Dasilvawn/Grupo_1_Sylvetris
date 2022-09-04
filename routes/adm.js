@@ -20,7 +20,7 @@ const {
   deleteUsers,
 } = require("../controllers/admin/userAdminController");
 const adminUserCheck = require("../middlewares/adminUserCheck");
-const { uploadImageProduct } = require("../middlewares/uploadFile");
+const { uploadImageProduct, uploadImageCreateProduct } = require("../middlewares/uploadFile");
 const editUserValidator = require("../validations/editUserValidator");
 const newUserValidator = require("../validations/newUserValidator");
 
@@ -33,11 +33,11 @@ router.get("/", adminUserCheck, getDashboard);
 //products
 router.get("/products",adminUserCheck, getProducts);
 
-router.get("/products/create_product", adminUserCheck, getCreateProduct);
-router.post("/products/create_product", adminUserCheck, postCreateProducts);
+router.get("/products/create_product",adminUserCheck, getCreateProduct);
+router.post("/products/create_product", uploadImageCreateProduct.array('imagen', 2),adminUserCheck, postCreateProducts);
 
 router.get("/products/edit_product/:id", adminUserCheck, getEditProducts);
-router.put("/products/edit_product/:id", adminUserCheck, putEditProducts);
+router.put("/products/edit_product/:id", uploadImageCreateProduct.array('imagen', 2),adminUserCheck, putEditProducts);
 
 router.delete("/products/delete_product/:id", adminUserCheck, deleteProducts);
 

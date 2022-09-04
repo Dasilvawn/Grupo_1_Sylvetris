@@ -14,7 +14,7 @@
 
 
 
-                        <form action="/admin/products/create_product" method="POST" class="admin__form">
+                        <form action="/admin/products/create_product" method="POST" enctype="multipart/form-data" class="admin__form">
                             <div class="col">
 
                                 <div class="form__field">
@@ -55,8 +55,7 @@
 
                                 <div class="form__field">
                                 <label for="">Descripción del producto</label>
-                                <textarea type="textarea" name="descripcion" class="input__admin" rows="10" cols="120"
-                                    style="margin-bottom: 20px" /></textarea>
+                                <textarea type="textarea" name="descripcion" class="input__admin" rows="10" cols="120" style="margin-bottom: 20px"></textarea>
                                 <p class="form__error">El nombre es requerido</p>
                             </div>
                             </div>
@@ -81,7 +80,7 @@
                                 <div class="form__field">
                                 <label for="">Cuidados</label>
                                 <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120"
-                                    style="margin-bottom: 20px" /></textarea>
+                                    style="margin-bottom: 20px"></textarea>
                                 <p class="form__error">El nombre es requerido</p>
                             </div>
                                 <div class="row">
@@ -105,7 +104,7 @@
 
                                 <div class="form__field">
                                     <label for="">Cargar imagen del producto</label>
-                                    <input type="file" name="imagen" class="input__admin" />
+                                    <input type="file" name="imagen" class="input__admin" multiple/>
 
                                 </div>
                                 <button class="registrarse__button admin__btn" type="submit">CREAR</button>
