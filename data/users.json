@@ -205,8 +205,7 @@
       ],
       "phone": "03412728539",
       "dni": 12345678
-<<<<<<< HEAD
-   },
+},
    {
       "id": 12,
       "name": "Hernan Pablo",
@@ -257,21 +256,5 @@
       "image": [
          "user_default.png"
       ]
-   },
-   {
-      "id": 17,
-      "name": "Walter Nahuel",
-      "lastname": "Da Silva",
-      "email": "dasilvawn@gmail.com",
-      "password": "$2a$12$sewouuAJmzRcq.aA0NluQ.tIraGwUAmQUHFDSQ2Jik9Amn5ziGbuq",
-      "rol": "usuario",
-      "address": "",
-      "country": "",
-      "state": "",
-      "city": "",
-      "cp": null,
-      "image": "user_default.png"
-=======
->>>>>>> jon5
    }
 ]
