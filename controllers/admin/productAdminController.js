@@ -1,5 +1,8 @@
+const fs = require('fs');
+const path = require('path');
 const { loadProducts, storeProducts } = require("../../data/db");
 const { validationResult } = require("express-validator");
+//const products = require('../../data/products.json');
 
 module.exports = {
   getProducts: (req, res) => {
@@ -15,7 +18,8 @@ module.exports = {
       title: "Sylvestris | Crear producto",
     });
   },
-  postCreateProducts: (req, res) => {
+  postCreateProducts: (req, res, next) => {
+    let images = req.files.map(file => file.filename);
     const {
       nombre,
       sub_titulo,
@@ -48,13 +52,14 @@ module.exports = {
       cuidados: cuidados.trim(),
       agua: +agua,
       luz: +luz,
-      imagen: [
+      imagen: images ? images : [
         "https://ik.imagekit.io/lg7lefujn/default-product-image_Ls9VPJ06t.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661146388770",
         "https://ik.imagekit.io/lg7lefujn/default-product-image_Ls9VPJ06t.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661146388770",
       ],
     };
 
-    storeProducts(newProduct);
+    let productsNew = [...products, newProduct];
+    storeProducts(productsNew);
     return res.redirect("/admin/products");
   },
   getEditProducts: (req, res) => {
@@ -84,20 +89,11 @@ module.exports = {
       cuidados,
       agua,
       luz,
-      imagen,
     } = req.body;
-
+    let images = req.files.map(file => file.filename);
     const productos = loadProducts();
-    const producto = productos.find(
-      (producto) => producto.id === +req.params.id
-    );
-
-    const editImagen = producto.imagen;
-
-    if (imagen) {
-      editImagen = [...editImagen, imagen];
-    }
-
+    const productoOriginal = productos.find((producto) => producto.id === +req.params.id);
+    //return res.send(images);
     const editProducto = productos.map((producto) => {
       if (producto.id === +req.params.id) {
         return {
@@ -115,7 +111,7 @@ module.exports = {
           cuidados: cuidados.trim(),
           agua: +agua,
           luz: +luz,
-          imagen: editImagen,
+          imagen: images.length === 0 ? productoOriginal.imagen : images,
         };
       } else {
         return producto;

@@ -203,54 +203,5 @@
       ],
       "phone": "03412728539",
       "dni": 12345678
-   },
-   {
-      "id": 12,
-      "name": "Hernan Pablo",
-      "lastname": "Moneta",
-      "email": "hernan9767@gmail.com",
-      "password": "$2a$12$ZZ9LGQEDwTjlZ7J2GpugeuwVs0rS7lkzmj/Jr2NdmTpGzdJr0KyMW",
-      "rol": "usuario",
-      "address": "Medrano 2636",
-      "country": "Argentina",
-      "state": "Santa Fe",
-      "city": "Rosario",
-      "cp": 2000,
-      "image": [
-         "user_default.png"
-      ],
-      "phone": "03412728539",
-      "dni": 12345678
-   },
-   {
-      "id": 13,
-      "name": "Hernan Pablo",
-      "lastname": "Moneta",
-      "email": "hernan0232234@gmail.com",
-      "password": "$2a$12$sEoA8moPrgRVzJ8j7ulHkuAaQz9Lmxm/Fmz6q.uCF4a8BHEJnw2AC",
-      "rol": "usuario",
-      "address": "Medrano 2636",
-      "country": "Argentina",
-      "state": "Santa Fe",
-      "city": "Rosario",
-      "cp": 2000,
-      "image": [
-         "product-1662006366610.jpg"
-      ],
-      "phone": "03412728539"
-   },
-   {
-      "id": 14,
-      "name": "Hernan Pablo",
-      "lastname": "Moneta",
-      "email": "hernan0066999@gmail.com",
-      "password": "$2a$12$Z6fw37IjD7lE/kxmkWgF0ulf33eID/.aah/e1CPXsTxNz7PTjJJwC",
-      "rol": "usuario",
-      "address": "",
-      "country": "",
-      "state": "",
-      "city": "",
-      "cp": null,
-      "image": "user_default.png"
    }
 ]
