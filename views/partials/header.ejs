@@ -105,7 +105,7 @@
       <li>
         <a href="/usuario/perfil/direccion"><i class='bx bx-home' ></i></i> Mi dirección</a>
       </li>
-      <% if (locals.user && user.rol === "admin") { %>
+      <% if (locals.userLogin && userLogin.rol === "admin") { %>
         <li>
           <a href="/admin"><i class='bx bx-shield-alt-2'></i> Administración</a>
         </li>
