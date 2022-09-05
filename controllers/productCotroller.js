@@ -1,12 +1,9 @@
-const fs = require("fs");
-const path = require("path");
+const { loadProducts } = require("../data/db");
 const { formatPrice } = require("../utils/moneda");
-
-const productsFilePath = path.join(__dirname, "../data/products.json");
 
 module.exports = {
   products: (req, res) => {
-    const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
+    const products = loadProducts();
 
     return res.render("products/products", {
       title: "Sylvestris | Productos",
@@ -16,30 +13,32 @@ module.exports = {
   },
 
   productDetail: (req, res) => {
-    const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
+    const products = loadProducts();
 
     const product = products.find((product) => product.id === +req.params.id);
     const productsByFeatured = products.filter((product) => product.destacado);
-    
+
     return res.render("products/productDetail", {
       title: `Sylvestris | ${product.name}`,
       product,
       formatPrice,
-      productsByFeatured
+      productsByFeatured,
     });
   },
   productCategory: (req, res) => {
-    const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
+    const products = loadProducts();
 
-    const categoria = req.params.categoria
+    const categoria = req.params.categoria;
 
-    const productsByCategory = products.filter((product) => product.categoria === categoria);
-    
+    const productsByCategory = products.filter(
+      (product) => product.categoria === categoria
+    );
+
     return res.render("products/categories", {
       title: `Sylvestris | ${categoria}`,
       products: productsByCategory,
       formatPrice,
-      categoria
+      categoria,
     });
   },
   productCart: (req, res) => {

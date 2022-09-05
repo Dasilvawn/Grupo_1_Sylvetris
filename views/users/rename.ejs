@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body>
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/header') %>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="profile__main ">
+        <section class="profile__section ">
+          <h2 id="profile_title" class="home__title">Mi perfil</h2>
+        <div class="profile__main__container">
+            
+            <%- include('../partials/menuProfile') %>
+            
+            <article class="profile__main__right">
+                <h3>Cambiar nombre</h3>
+                <div class="profile__main__right__info__rename">
+                    <form action="/usuario/perfil/cambiar_nombre?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <h4>Ingresa tus nuevos datos</h4>
+                    <div class="input__profile">
+                        <label for="">Nombre/s</label>
+                        <input type="text" name="name"value="<%= locals.old && old.name ? old.name : null %>" >
+                        <p class="form__error error_profile"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
+                    </div>
+                    <div class="input__profile">
+                        <label for="">Apellido</label>
+                        <input type="text" name="lastname" value="<%= locals.old && old.lastname ? old.lastname : null %>" >
+                        <p class="form__error error_profile"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
+                    </div>
+                    <div class="input__profile">
+                        <label for="">Nuevo avatar(opcional)</label>
+                        <input type="file" name="image" >
+                        <p class="form__error error_profile"><%= locals.errors && errors.image ? errors.image.msg : null%></p>
+                    </div>
+                    <button class="registrarse__button profile__btn" type="submit">Cambiar</button>
+                </form>
+                </div>
+            </article>
+
+        </div>
+      </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+    <!-- ----------Inicio de footer----------- -->
+    <%- include('../partials/footer') %>
+    <!-- ----------Fin de footer----------- -->
+  </body>
+</html>

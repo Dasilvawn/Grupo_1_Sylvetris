@@ -2,22 +2,29 @@
 <html lang="es">
   <%- include('../partials/head') %>
 
-  <body>
+  <body class="admin__dashboard">
     <!-- ----------Inicio de header----------- -->
-    <%- include('../partials/header') %>
+    <%- include('../partials/sidebar') %>
     <!-- ----------Fin de header----------- -->
     <!-- ----------Inicio de main----------- -->
-    <div class="admin__products__container">
+    <section class="home-section">
+      <%- include('../partials/navbarAdmin', {user:user}) %>
+
       <table class="responsive-table">
         <div class="admin__products__header">
           <h2>Lista de productos</h2>
-          <a href="/admin/createProduct"><button class="btn__crear">Agregar Producto</button></a>
-          
+          <a href="/admin/products/create_product"
+            ><button class="btn__crear">
+              <i class="bx bx-message-square-add"></i> Agregar Producto
+            </button></a
+          >
         </div>
+
         <thead>
           <tr>
-            <th scope="col">Nombre</th>
             <th scope="col">Id</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Stock</th>
             <th scope="col">Precio</th>
             <th scope="col">Categoria</th>
@@ -30,32 +37,39 @@
           <% productos.forEach(producto => { %>
 
           <tr>
-            <th scope="row"><%= producto.nombre %></th>
             <td data-title="Id"><%= producto.id %></td>
+            <th scope="row">
+              <img width="60" src="/images/products/<%= producto.imagen[1] %>" alt="" />
+            </th>
+            <th scope="row"><%= producto.nombre %></th>
             <td data-title="Stock"><%= producto.stock %></td>
             <td data-title="Precio">$<%= producto.precio %></td>
             <td data-title="Categoria"><%= producto.categoria %></td>
             <td data-title="Descripcion"><%= producto.descripcion %></td>
             <td data-title="Acciones">
-              <a href="/admin/editProduct/<%= producto.id %>"
-                ><button class="btn__editar">Editar</button></a
+              <a href="/admin/products/edit_product/<%= producto.id %>"
+                ><button class="btn__editar">
+                  <i class="bx bx-edit"></i> Editar
+                </button></a
               >
 
               <form
-                action="/admin/deleteProduct/<%= producto.id %>?_method=DELETE"
+                action="/admin/products/delete_product/<%= producto.id %>?_method=DELETE"
                 method="POST"
               >
-                <button type="submit" class="btn__borrar">Borrar</button>
+                <button type="submit" class="btn__borrar">
+                  <i class="bx bx-trash"></i>Borrar
+                </button>
               </form>
             </td>
           </tr>
           <% }) %>
         </tbody>
       </table>
-    </div>
+      <div id="data-container"></div>
+      <div id="pagination-container"></div>
+    </section>
     <!-- ----------Fin de main----------- -->
-    <!-- ----------Inicio de footer----------- -->
-    <%- include('../partials/miniFooter') %>
-    <!-- ----------Fin de footer----------- -->
+   
   </body>
 </html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body class="admin__dashboard">
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/sidebar') %>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="home-section" id="add__products">
+      <%- include('../partials/navbarAdmin', {user:user}) %>
+      <section class="login__main__container admin__form__container">
+        <h1>CREAR USUARIO</h1>
+
+        <form action="/admin/users/create_user" method="POST" enctype="multipart/form-data" class="admin__form">
+          <div class="col">
+            <div class="form__field">
+              <label for="">Nombre/s(*)</label>
+              <input type="text" name="name" class="input__admin" value="<%= locals.old && old.name ? old.name : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Apellido(*)</label>
+              <input type="text" name="lastname" class="input__admin" value="<%= locals.old && old.lastname ? old.lastname : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Email(*)</label>
+              <input type="email" name="email" class="input__admin" value="<%= locals.old && old.email ? old.email : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.email ? errors.email.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Password(*)</label>
+              <input type="password" name="password" class="input__admin" />
+              <p class="form__error"><%= locals.errors && errors.password ? errors.password.msg : null%>
+            </div>
+            <div class="form__field">
+              <label for="">Repetir password(*)</label>
+              <input type="password" name="password2" class="input__admin" />
+              <p class="form__error"><%= locals.errors && errors.password2 ? errors.password2.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="rol">Rol</label>
+              <select name="rol" id="rol" class="input__admin" >
+               
+                <option value="usuario" selected >Usuario</option>
+                <option value="admin" >Administrador</option>
+               
+            </select>
+            </div>
+           
+            <div class="form__field">
+              <label for="">Telefono</label>
+              <input type="tel" name="phone" class="input__admin" value="<%= locals.old && old.phone ? old.phone : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.phone ? errors.phone.msg : null%></p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form__field">
+              <label for="">DNI</label>
+              <input type="number" name="dni" class="input__admin" value="<%= locals.old && old.dni ? old.dni : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Dirección</label>
+              <input type="text" name="address" class="input__admin" value="<%= locals.old && old.address ? old.address : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.address ? errors.address.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Pais</label>
+              <input type="text" name="country" class="input__admin" value="<%= locals.old && old.country ? old.country : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.country ? errors.country.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Provincia</label>
+              <input type="text" name="state" class="input__admin" value="<%= locals.old && old.state ? old.state : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.state ? errors.state.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Ciudad</label>
+              <input type="text" name="city" class="input__admin" value="<%= locals.old && old.city ? old.city : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.city ? errors.city.msg : null%></p>
+            </div>
+            <div class="form__field">
+              <label for="">Codigo Postal</label>
+              <input type="number" name="cp" class="input__admin" value="<%= locals.old && old.cp ? old.cp : null %>"/>
+              <p class="form__error"><%= locals.errors && errors.cp ? errors.cp.msg : null%></p>
+            </div>
+
+            <div class="form__field">
+              <label for="">Avatar</label>
+              <input type="file" name="image" class="input__admin" />
+            </div>
+            <button class="registrarse__button admin__btn" type="submit">
+              CREAR
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+  </body>
+</html>

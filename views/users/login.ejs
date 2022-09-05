@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head') %>
+  <%- include('../partials/head') %>
 
-<body>
+  <body>
     <!-- ----------Inicio de header----------- -->
     <%- include('../partials/header') %>
     <!-- ----------Fin de header----------- -->
-    <!-- ----------Inicio de main----------- -->
+    <!-- ----------Inicio de main----------- -->  
     <main class="login__main">
-                <section class="login__main__container">
-                    <h1>INGRESA</h1>
-                    <div class="login__main__container__text">
-                        <p>¿No estás registrado?</p>
-                        <a href="/usuario/register">Registrarse</a>
-                    </div>
-                    <form action="" method="">
-                        <label for="">Email</label>
-                        <input type="email" placeholder="miEmail@correo.com" name="email" />
-                        <label for="">Contraseña</label>
-                        <input type="password" placeholder="************" name="contrasenia" />
-                        <div class="login_main_recordarme">
-                            <div class="login_main_recordarchecbox">
-                                <label for="">Recordarme</label>
-                                <input type="checkbox" name="recordarme" id="recordarme">
+      <section class="login__main__container">
+        <h1>INGRESA</h1>
+        <div class="login__main__container__text">
+          <p>¿No estás registrado?</p>
+          <a href="/usuario/register">Registrarse</a>
+        </div>
 
-                            </div>
-                            <a href="#">¿Olvidaste tu contraseña?</a>
+        <form action="" method="POST">
 
-                        </div>
-                        <button class="registrarse__button" type="submit">Ingresar</button>
-                    </form>
-                    <p id="login__Google">O ingresa con</p>
+          <div class="form__field">
+            <label for="">Email</label>
+            <input type="email" name="email" />
+            <p class="form__error"><%= locals.errors && errors.email ? errors.email.msg : null %></p>
+          </div>
 
-                    <button class="google__button"><img src="/images/iconos/google.png" alt="icono google">
-                        Google</button>
-                </section>
+          <div class="form__field">
+            <label for="">Contraseña</label>
+            <input type="password" name="password" id=/>
+            <p class="form__error"><%= locals.errors && errors.password ? errors.password.msg : null %></p>
+         </div>
+
+          <div class="login_main_recordarme">
+            <div class="login_main_recordarchecbox">
+              <label for="">Recordarme</label>
+              <input type="checkbox" name="remember" id="recordame"  />
+            </div>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+          <button class="registrarse__button" type="submit">Ingresar</button>
+        </form>
+        <p id="login__Google">O ingresa con</p>
+
+        <button class="google__button">
+          <img src="/images/iconos/google.png" alt="icono google" /> Google
+        </button>
+      </section>
     </main>
     <!-- ----------Fin de main----------- -->
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/miniFooter') %>
     <!-- ----------Fin de footer----------- -->
-</body>
-
+  </body>
 </html>

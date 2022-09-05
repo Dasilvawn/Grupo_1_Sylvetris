@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body>
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/header') %>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="profile__main ">
+        <section class="profile__section ">
+          <h2 id="profile_title" class="home__title">Mi perfil</h2>
+        <div class="profile__main__container">
+            
+            <%- include('../partials/menuProfile') %>
+            
+            <article class="profile__main__right">
+                <h3>Mi direccion</h3>
+                <div class="profile__main__right__info__rename">
+                    <form id="form__change__address" action="/usuario/perfil/cambiar_direccion?_method=PUT" method="POST">
+                       
+                    <div class="col_address">
+                        <h4>Información de Contacto</h4>
+                   
+                        <div class="input__profile">
+                            <label for="">Nombre/s</label>
+                        <input type="text" name="name"  value="<%= locals.old && old.name ? old.name : user.name %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
+                    </div>
+                    <div class="input__profile">
+                        <label for="">Apellido</label>
+                        <input type="text" name="lastname"  value="<%= locals.old && old.lastname ? old.lastname : user.lastname %>" >
+                        <p class="form__error error_profile"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
+                    </div>
+                    <div class="input__profile">
+                        <label for="">Teléfono</label>
+                        <input type="tel" name="phone"  value="<%= locals.old && old.phone ? old.phone : user.phone %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.phone ? errors.phone.msg : null%></p>
+                    </div>
+                    <div class="input__profile">
+                        <label for="">DNI</label>
+                        <input type="number" name="dni"  value="<%= locals.old && old.dni ? old.dni : user.dni %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+                    </div>
+                </div>
+                <div class="col_address">
+                    <h4>Dirección de envío</h4>
+                    <div class="input__profile">
+                        <label for="">Dirección</label>
+                        <input type="text" name="address"  value="<%= locals.old && old.address ? old.address : user.address %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.address ? errors.address.msg : null%></p>
+                    </div>
+                    <div class="row" style="margin-top:0px ; width: 100%;">
+                        <div class="input__profile">
+                            <label for="">Piso</label>
+                            <input type="text" name="floor"  value="<%= locals.old && old.floor ? old.floor : user.floor %>">
+                            <p class="form__error error_profile"><%= locals.errors && errors.floor ? errors.floor.msg : null%></p>
+                        </div>
+                        <div class="input__profile">
+                            <label for="">Dpto.</label>
+                            <input type="tel" name="dpto" value="<%= locals.old && old.dpto ? old.dpto : user.dpto %>">  
+                            <p class="form__error error_profile"><%= locals.errors && errors.dpto ? errors.dpto.msg : null%></p>
+                        </div>
+
+                    </div>
+                    <div class="input__profile">
+                        <label for="">Provincia</label>
+                        <input type="text" name="state"  value="<%= locals.old && old.state ? old.state : user.state %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.state ? errors.state.msg : null%></p>
+                    </div>
+                    <div class="input__profile">
+                        <label for="">Ciudad</label>
+                        <input type="text" name="city"   value="<%= locals.old && old.city ? old.city : user.city %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.city ? errors.city.msg : null%></p>
+                    </div>
+                    <div class="input__profile">
+                        <label for="">Código postal</label>
+                        <input type="number" name="cp"  value="<%= locals.old && old.cp ? old.cp : user.cp %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+                    </div>
+                    <button class="registrarse__button profile__btn" type="submit">Enviar</button>
+                </div>
+                    
+                </form>
+                </div>
+            </article>
+
+        </div>
+      </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+    <!-- ----------Inicio de footer----------- -->
+    <%- include('../partials/footer') %>
+    <!-- ----------Fin de footer----------- -->
+  </body>
+</html>

@@ -2,88 +2,125 @@
 <html lang="es">
 <%- include('../partials/head') %>
 
-    <body>
+    <body class="admin__dashboard">
         <!-- ----------Inicio de header----------- -->
-        <%- include('../partials/header') %>
+        <%- include('../partials/sidebar') %>
             <!-- ----------Fin de header----------- -->
             <!-- ----------Inicio de main----------- -->
-            <main class="login__main">
-                <section class="login__main__container admin__form__container">
-                    <h1>CREAR PRODUCTOS</h1>
-<div class="register__main__container__text">
-                        <a href="/admin/products">Ir al Panel de Administración</a>
-                    </div><br>
-
-                    
-                    <form action="/admin/store" method="POST" class="admin__form">
-                        <div class="col">
-
-                        
-                        <label for="">Nombre del producto</label>
-                        <input type="text" name="nombre" class="input__admin"/>
-
-                        <label for="">Subtítulo</label>
-                        <input type="text" name="sub_titulo" class="input__admin"/>
-
-                        <label for="">Slug</label>
-                        <input type="text" name="slug" class="input__admin"/>
-
-                        <label for="">Categoría</label>
-                        <input type="text" name="categoria" class="input__admin"/>
-
-                        <label for="">Stock</label>
-                        <input type="number" name="stock" placeholder="0" step="1" min="0" class="input__admin">
-
-                        <label for="">Destacado</label>
-                        <div class="row">
-
-                            <label for="">Sí<input type="radio" name="destacado" value= "true" class="radio__admin"/></label>
-                            <label for="">No<input type="radio" name="destacado" value= "false" class="radio__admin"/></label>
-                        </div>
+            <main class="home-section " id="add__products">
+                <%- include('../partials/navbarAdmin') %>
+                    <section class="login__main__container admin__form__container">
+                        <h1>CREAR PRODUCTOS</h1>
 
 
-                        <label for="">Descripción del producto</label>
-                        <textarea type="textarea" name="descripcion" class="input__admin" rows="10" cols="120" style="margin-bottom: 20px"/></textarea>
-                    </div>
-                    <div class="col">
 
-                   
-                        <label for="">Descripción altura del producto</label>
-                        <input type="text" name="descripcion_altura" class="input__admin"/>
+                        <form action="/admin/products/create_product" method="POST" enctype="multipart/form-data" class="admin__form">
+                            <div class="col">
 
-                        <label for="">Descripción maceta del producto</label>
-                        <input type="text" name="descripcion_maceta" class="input__admin"/>
+                                <div class="form__field">
 
-                        <label for="">Precio</label>
-                        <input type="number" name="precio" placeholder="0" step="0.01" min="0" class="input__admin"/>
+                                    <label for="">Nombre del producto</label>
+                                    <input type="text" name="nombre" 
+                                    class="input__admin" value="<%= locals.old && old.nombre ? old.nombre : null %>" />
+                                    <p class="form__error"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Subtítulo</label>
+                                    <input type="text" name="sub_titulo" 
+                                    class="input__admin" value="<%= locals.old && old.sub_titulo ? old.sub_titulo : null %>" />
+                                    <p class="form__error"><%= locals.errors && errors.sub_titulo ? errors.sub_titulo.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Slug</label>
+                                    <input type="text" name="slug" 
+                                    class="input__admin" value="<%= locals.old && old.slug ? old.slug : null %>" />
+                                    <p class="form__error"><%= locals.errors && errors.slug ? errors.slug.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Categoría</label>
+                                    <input type="text" name="categoria" 
+                                    class="input__admin" value="<%= locals.old && old.categoria ? old.categoria : null %>" />
+                                    <p class="form__error"><%= locals.errors && errors.categoria ? errors.categoria.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Stock</label>
+                                    <input type="number" name="stock" placeholder="0" step="1" min="0" 
+                                    class="input__admin" value="<%= locals.old && old.stock ? old.stock : null %>" >
+                                    <p class="form__error"><%= locals.errors && errors.stock ? errors.stock.msg : null %></p>
+                                </div>
+                                <label for="">Destacado</label>
+                                <div class="row">
 
-                        <label for="">Cuidados</label>
-                        <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120" style="margin-bottom: 20px"/></textarea>
-                        <div class="row">
-                            <div class="col-50">
+                                    <label for="">Sí<input type="radio" name="destacado" value="true"
+                                            class="radio__admin" /></label>
+                                    <label for="">No<input type="radio" name="destacado" value="false"
+                                            class="radio__admin" checked/></label>
+                                </div>
 
-                                <label for="">Agua</label>
-                                <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5" class="input__admin col-50" />
+                                <div class="form__field">
+                                <label for="">Descripción del producto</label>
+                                <textarea type="textarea" name="descripcion" class="input__admin" rows="10" cols="120"
+                                    style="margin-bottom: 20px" /><%= locals.old && old.descripcion ? old.descripcion : null %></textarea>
+                                <p class="form__error"><%= locals.errors && errors.descripcion ? errors.descripcion.msg : null %></p>
                             </div>
-                            <div class="col-50">
-
-                                <label for="">Luz</label>
-                                <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5" class="input__admin col-50" />
                             </div>
-                        </div>
+                            <div class="col">
 
+                                <div class="form__field">
+                                <label for="">Descripción altura del producto</label>
+                                <input type="text" name="descripcion_altura" 
+                                class="input__admin" value="<%= locals.old && old.descripcion_altura ? old.descripcion_altura : null %>" />
+                                <p class="form__error"><%= locals.errors && errors.descripcion_altura ? errors.descripcion_altura.msg : null %></p>
+                            </div>
+                                <div class="form__field">
+                                <label for="">Descripción maceta del producto</label>
+                                <input type="text" name="descripcion_maceta" 
+                                class="input__admin" value="<%= locals.old && old.descripcion_maceta ? old.descripcion_maceta : null %>" />
+                                <p class="form__error"><%= locals.errors && errors.descripcion_maceta ? errors.descripcion_maceta.msg : null %></p>
+                            </div>
+                                <div class="form__field">
+                                <label for="">Precio</label>
+                                <input type="number" name="precio" placeholder="0" step="0.01" min="0" 
+                                class="input__admin" value="<%= locals.old && old.precio ? old.precio : null %>" />
+                                <p class="form__error"><%= locals.errors && errors.precio ? errors.precio.msg : null %></p>
+                            </div>
+                                <div class="form__field">
+                                <label for="">Cuidados</label>
+                                <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120"
+                                    style="margin-bottom: 20px" /><%= locals.old && old.cuidados ? old.cuidados : null %></textarea>
+                                <p class="form__error"><%= locals.errors && errors.cuidados ? errors.cuidados.msg : null %></p>
+                            </div>
+                                <div class="row">
+                                    <div class="col-50">
+                                        <div class="form__field">
+                                        <label for="">Agua</label>
+                                        <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5"
+                                            class="input__admin col-50" value="<%= locals.old && old.agua ? old.agua : null %>" />
+                                        <p class="form__error"><%= locals.errors && errors.agua ? errors.agua.msg : null %></p>
+                                    </div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="form__field">
+                                        <label for="">Luz</label>
+                                        <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5"
+                                            class="input__admin col-50" value="<%= locals.old && old.luz ? old.luz : null %>" />
+                                        <p class="form__error"><%= locals.errors && errors.luz ? errors.luz.msg : null %></p>
+                                    </div>
+                                    </div>
+                                </div>
 
-                        <label for="">Cargar imagen del producto</label>
-                        <input type="file" name="imagen" class="input__admin"/>
-                        <button class="registrarse__button admin__btn" type="submit">CREAR</button>
-                    </div>
-                    </form>
-                </section>
+                                <div class="form__field">
+                                    <label for="">Cargar imagen del producto</label>
+                                    <input type="file" name="imagen" class="input__admin" multiple value="<%= locals.old && old.imagen ? old.imagen : null %>"/>
+                                    <p class="form__error"><%= locals.errors && errors.imagen ? errors.imagen.msg : null %></p>
+                                </div>
+                                <button class="registrarse__button admin__btn" type="submit">CREAR</button>
+                            </div>
+                        </form>
+                    </section>
             </main>
             <!-- ----------Fin de main----------- -->
-            <!-- ----------Inicio de footer----------- -->
-            <%- include('../partials/miniFooter') %>
-                <!-- ----------Fin de footer----------- -->
+
     </body>
 
 </html>

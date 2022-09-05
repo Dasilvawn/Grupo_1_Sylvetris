@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <%- include('../partials/head') %>
+  <body class="admin__dashboard">
+    <%- include('../partials/sidebar') %>
+
+    <section class="home-section">
+      <%- include('../partials/navbarAdmin', {user:user}) %>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Ordenes</div>
+              <div class="number">263</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">En subida</span>
+              </div>
+            </div>
+            <i class="bx bx-cart-alt cart"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Ventas</div>
+              <div class="number">433</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">En subida</span>
+              </div>
+            </div>
+            <i class="bx bxs-cart-add cart two"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Ganacias</div>
+              <div class="number">$7,876</div>
+              <div class="indicator">
+                <i class="bx bx-down-arrow-alt down"></i>
+                <span class="text">Bajo desde ayer</span>
+              </div>
+            </div>
+            <i class="bx bx-cart cart three"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Usuarios</div>
+              <div class="number">154</div>
+              <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">En subida</span>
+              </div>
+            </div>
+            <i class="bx bxs-user-pin cart four"></i>
+            <!--  <i class='bx bxs-cart-download cart four' ></i> -->
+          </div>
+        </div>
+
+        <div class="sales-boxes">
+          <div class="recent-sales box">
+            <div class="title">Ventas recientes</div>
+            <div class="sales-details">
+              <ul class="details">
+                <li class="topic">Fecha</li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+                <li><a href="#">02 Sep 2022</a></li>
+               
+                
+              </ul>
+              <ul class="details">
+                <li class="topic">Cliente</li>
+                <li><a href="#">Alex Doe</a></li>
+                <li><a href="#">David Mart</a></li>
+                <li><a href="#">Roe Parter</a></li>
+                <li><a href="#">Diana Penty</a></li>
+                <li><a href="#">Martin Paw</a></li>
+                <li><a href="#">Doe Alex</a></li>
+                <li><a href="#">Aiana Lexa</a></li>
+                <li><a href="#">Rexel Mags</a></li>
+                <li><a href="#">Tiana Loths</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Estado</li>
+                <li><a href="#">Entregado</a></li>
+                <li><a href="#">Pendiente</a></li>
+                <li><a href="#">Cancelado</a></li>
+                <li><a href="#">Entregado</a></li>
+                <li><a href="#">Pendiente</a></li>
+                <li><a href="#">Cancelado</a></li>
+                <li><a href="#">Entregado</a></li>
+                <li><a href="#">Pendiente</a></li>
+                <li><a href="#">Entregado</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Total</li>
+                <li><a href="#">$204.98</a></li>
+                <li><a href="#">$24.55</a></li>
+                <li><a href="#">$25.88</a></li>
+                <li><a href="#">$170.66</a></li>
+                <li><a href="#">$56.56</a></li>
+                <li><a href="#">$44.95</a></li>
+                <li><a href="#">$67.33</a></li>
+                <li><a href="#">$23.53</a></li>
+                <li><a href="#">$46.52</a></li>
+              </ul>
+            </div>
+            <div class="button">
+              <a href="#">Ver todos</a>
+            </div>
+          </div>
+          <div class="top-sales box">
+            <div class="title">Top Productos Vendidos</div>
+            <ul class="top-sales-details">
+              <li>
+                <a href="#">
+                  <!--<img src="images/sunglasses.jpg" alt="">-->
+                  <span class="product">Adromischus Cooperii</span>
+                </a>
+                <span class="price">$2100</span>
+              </li>
+              <li>
+                <a href="#">
+                  <!--<img src="images/jeans.jpg" alt="">-->
+                  <span class="product">Aeonium Diplocyclum</span>
+                </a>
+                <span class="price">$1560</span>
+              </li>
+              <li>
+                <a href="#">
+                  <!-- <img src="images/nike.jpg" alt="">-->
+                  <span class="product">Cereus Forbesii</span>
+                </a>
+                <span class="price">$1230</span>
+              </li>
+              <li>
+                <a href="#">
+                  <!--<img src="images/scarves.jpg" alt="">-->
+                  <span class="product">Echeveria Runyonii</span>
+                </a>
+                <span class="price">$1200</span>
+              </li>
+              <li>
+                <a href="#">
+                  <!--<img src="images/blueBag.jpg" alt="">-->
+                  <span class="product">Gasteria Hippo</span>
+                </a>
+                <span class="price">$1115</span>
+              </li>
+              <li>
+                <a href="#">
+                  <!--<img src="images/bag.jpg" alt="">-->
+                  <span class="product">Glandulicactus Mathssonii</span>
+                </a>
+                <span class="price">$2345</span>
+              </li>
+
+              <li>
+                <a href="#">
+                  <!--<img src="images/addidas.jpg" alt="">-->
+                  <span class="product">Frailea Pygmaea	</span>
+                </a>
+                <span class="price">$2345</span>
+              </li>
+              <li>
+                <a href="#">
+                  <!--<img src="images/shirt.jpg" alt="">-->
+                  <span class="product">Begonia Rex</span>
+                </a>
+                <span class="price">$1245</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+  </body>
+</html>

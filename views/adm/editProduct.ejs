@@ -2,99 +2,127 @@
 <html lang="es">
 <%- include('../partials/head') %>
 
-    <body>
+    <body class="admin__dashboard">
         <!-- ----------Inicio de header----------- -->
-        <%- include('../partials/header') %>
+        <%- include('../partials/sidebar') %>
             <!-- ----------Fin de header----------- -->
             <!-- ----------Inicio de main----------- -->
-            <main class="login__main">
-                <section class="login__main__container admin__form__container">
-                    <h1>EDITAR PRODUCTO</h1>
-                    <div class="register__main__container__text">
-                        <a href="/admin/products">Ir al Panel de Administración</a>
-                    </div>
-                    <br />
-                    <form action="/admin/update/<%= producto.id %>?_method=PUT" method="POST" class="admin__form">
-                        <div class="col">
+            <main class="home-section " id="add__products">
+                <%- include('../partials/navbarAdmin', {user:user}) %>
+                    <section class="login__main__container admin__form__container">
+                        <h1>EDITAR PRODUCTO</h1>
 
-                            <label for="">Nombre del producto</label>
-                            <input type="text" name="nombre" value="<%= producto.nombre %>" class="input__admin" />
+                        <br />
+                        <form action="/admin/products/edit_product/<%= producto.id? producto.id: id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="admin__form">
+                            <div class="col">
+                                <div class="form__field">
+                                    <label for="">Nombre del producto</label>
+                                    <input type="text" name="nombre"
+                                        class="input__admin" value="<%= locals.old && old.nombre ? old.nombre : producto.nombre %>" />
+                                        <p class="form__error"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></p>
+                                </div>
 
-                            <label for="">Subtítulo</label>
-                            <input type="text" name="sub_titulo" value="<%= producto.sub_titulo%>"
-                                class="input__admin" />
+                                <div class="form__field">
+                                    <label for="">Subtítulo</label>
+                                    <input type="text" name="sub_titulo"
+                                        class="input__admin" value="<%= locals.old && old.sub_titulo ? old.sub_titulo : producto.sub_titulo %>" />
+                                        <p class="form__error"><%= locals.errors && errors.sub_titulo ? errors.sub_titulo.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Slug</label>
+                                    <input type="text" name="slug"
+                                    class="input__admin" value="<%= locals.old && old.slug ? old.slug : producto.slug %>" />
+                                    <p class="form__error"><%= locals.errors && errors.slug ? errors.slug.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Categoría</label>
+                                    <input type="text" name="categoria"
+                                        class="input__admin" value="<%= locals.old && old.categoria ? old.categoria : producto.categoria %>" />
+                                        <p class="form__error"><%= locals.errors && errors.categoria ? errors.categoria.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Stock</label>
+                                    <input type="number" name="stock"
+                                        class="input__admin" value="<%= locals.old && old.stock ? old.stock : producto.stock %>" />
+                                        <p class="form__error"><%= locals.errors && errors.stock ? errors.stock.msg : null %></p>
+                                </div>
+                                <label for="">Destacado</label>
+                                <div class="row">
 
-                            <label for="">Slug</label>
-                            <input type="text" name="slug" value="<%= producto.slug %>" class="input__admin" />
+                                    <label for="">Sí<input type="radio" name="destacado" value="true"
+                                            class="radio__admin" <%= producto.destacado === "true" && 'checked'
+                                            %>/></label>
+                                    <label for="">No<input type="radio" name="destacado" value="false"
+                                            class="radio__admin" <%= producto.destacado === "false" && 'checked'
+                                            %>/></label>
+                                </div>
+                                <div class="form__field">
+                                    <label for="">Descripción del producto</label>
+                                    <textarea name="descripcion" class="input__admin" rows="10" cols="120"
+                                        style="margin-bottom: 20px;" ><%= locals.old && old.descripcion ? old.descripcion : producto.descripcion %></textarea>
+                                    <p class="form__error"><%= locals.errors && errors.descripcion ? errors.descripcion.msg : null %></p>
 
-                            <label for="">Categoría</label>
-                            <input type="text" name="categoria" value="<%= producto.categoria %>"
-                                class="input__admin" />
+                                </div>
+                            </div>
+                            <div class="col">
 
-                            <label for="">Stock</label>
-                            <input type="number" name="stock" value="<%= producto.stock %>" class="input__admin" />
 
-                            <label for="">Destacado</label>
-                            <div class="row">
-
-                                <label for="">Sí<input type="radio" name="destacado" value="true"
-                                        class="radio__admin" <%= producto.destacado === "true" && 'checked' %>/></label>
-                                <label for="">No<input type="radio" name="destacado" value="false"
-                                        class="radio__admin" <%= producto.destacado === "false" && 'checked' %>/></label>
+                                <div class="form__field">
+                                <label for="">Descripción altura del producto</label>
+                                <input type="texarea" name="descripcion_altura"
+                                    class="input__admin" value="<%= locals.old && old.descripcion_altura ? old.descripcion_altura : producto.descripcion_altura %>" />
+                                    <p class="form__error"><%= locals.errors && errors.descripcion_altura ? errors.descripcion_altura.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                <label for="">Descripción maceta del producto</label>
+                                <input type="texarea" name="descripcion_maceta"
+                                    class="input__admin" value="<%= locals.old && old.descripcion_maceta ? old.descripcion_maceta : producto.descripcion_maceta %>" />
+                                    <p class="form__error"><%= locals.errors && errors.descripcion_maceta ? errors.descripcion_maceta.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                <label for="">Precio</label>
+                                <input type="number" name="precio" step=".01"
+                                    class="input__admin" value="<%= locals.old && old.precio ? old.precio : producto.precio %>" />
+                                    <p class="form__error"><%= locals.errors && errors.precio ? errors.precio.msg : null %></p>
+                                </div>
+                                <div class="form__field">
+                                <label for="">Cuidados</label>
+                                <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120"
+                                    style="margin-bottom: 20px" /><%= locals.old && old.cuidados ? old.cuidados : producto.cuidados %></textarea>
+                                <p class="form__error"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></p>
                             </div>
 
-                            <label for="">Descripción del producto</label>
-                            <textarea  name="descripcion" class="input__admin" rows="10" cols="120"
-                                style="margin-bottom: 20px;" /><%= producto.descripcion %></textarea>
 
-                        </div>
-                        <div class="col">
-
-
-
-                            <label for="">Descripción altura del producto</label>
-                            <input type="texarea" name="descripcion_altura" value="<%= producto.descripcion_altura %>"
-                                class="input__admin" />
-
-                            <label for="">Descripción maceta del producto</label>
-                            <input type="texarea" name="descripcion_maceta" value="<%= producto.descripcion_maceta %>"
-                                class="input__admin" />
-
-                            <label for="">Precio</label>
-                            <input type="number" name="precio" value="<%= producto.precio %>" class="input__admin" />
-
-                            <label for="">Cuidados</label>
-
-
-                            <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120"
-                                style="margin-bottom: 20px" value="<%= producto.cuidados %>" /><%=
-                                producto.cuidados %>"</textarea>
-
-                                <div class="row">
-                                    <div class="col-50">
-
-                                        <label for="">Agua</label>
-                                        <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5"
-                                            class="input__admin col-50" value="<%= producto.agua %>" />
+                                    <div class="row">
+                                        <div class="col-50">
+                                            <div class="form__field">
+                                            <label for="">Agua</label>
+                                            <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5"
+                                                class="input__admin col-50" value="<%= locals.old && old.agua ? old.agua : producto.agua %>" />
+                                                <p class="form__error"><%= locals.errors && errors.agua ? errors.agua.msg : null %></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-50">
+                                            <div class="form__field">
+                                            <label for="">Luz</label>
+                                            <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5"
+                                                class="input__admin col-50" value="<%= locals.old && old.luz ? old.luz : producto.luz %>" />
+                                                <p class="form__error"><%= locals.errors && errors.luz ? errors.luz.msg : null %></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-50">
-
-                                        <label for="">Luz</label>
-                                        <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5"
-                                            class="input__admin col-50" value="<%= producto.luz %>" />
-                                    </div>
+                                    <div class="form__field">
+                                    <label for="">Cargar imagen del producto</label>
+                                    <input type="file" name="imagen" class="input__admin" multiple />
+                                    <p class="form__error"><%= locals.errors && errors.imagen ? errors.imagen.msg : null %></p>
                                 </div>
-                                <label for="">Cargar imagen del producto</label>
-                                <input type="file" name="imagen" class="input__admin" />
-                                <button class="registrarse__button admin__btn" type="submit">EDITAR</button>
-                        </div>
-                    </form>
-                </section>
+                                    <button class="registrarse__button admin__btn" type="submit">EDITAR</button>
+                            </div>
+                        </form>
+                    </section>
             </main>
             <!-- ----------Fin de main----------- -->
-            <!-- ----------Inicio de footer----------- -->
-            <%- include('../partials/miniFooter') %>
-                <!-- ----------Fin de footer----------- -->
+
     </body>
 
 </html>

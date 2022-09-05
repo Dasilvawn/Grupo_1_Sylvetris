@@ -1,112 +1,185 @@
 [
-    {
-        "id": 1,
-        "firstname": "Eric",
-        "lastname": "Mena",
-        "email": "ericmena0@mail.com",
-        "password": "SqNU2meyyE",
-        "city": "San Miguel",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 2,
-        "firstname": "Emanuel",
-        "lastname": "Arroyo",
-        "email": "emanuelarroyo@mail.com",
-        "password": "vKpumL5njfR",
-        "city": "San Miguel",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 3,
-        "firstname": "Hernan",
-        "lastname": "Moneta",
-        "email": "hernanmoneta@mail.com",
-        "password": "1qbsrLrEReh",
-        "city": "Rosario",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 4,
-        "firstname": "Walter",
-        "lastname": "Da Silva",
-        "email": "walterdasilva@mail.com",
-        "password": "brhopxTt",
-        "city": "San Miguel",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 5,
-        "firstname": "Juan",
-        "lastname": "Vieyra",
-        "email": "juanvieyra@mail.com",
-        "password": "jUwDmqZY3Vb",
-        "city": "CABA",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 6,
-        "firstname": "Victoria",
-        "lastname": "Fornieles",
-        "email": "vickyfornieles@mail.com",
-        "password": "z7w4KqT4Dow",
-        "city": "CABA",
-        "gender": "Femenino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 7,
-        "firstname": "Rabbi",
-        "lastname": "Kevane",
-        "email": "rkevane6@mail.com",
-        "password": "PeGpsL",
-        "city": "Avellaneda",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 8,
-        "firstname": "Benedicto",
-        "lastname": "Dickins",
-        "email": "bdickins@mail.com",
-        "password": "KWl5FCuydffS",
-        "city": "Roma",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 9,
-        "firstname": "Susana",
-        "lastname": "Gimenez",
-        "email": "susimez8@mail.com",
-        "password": "Mr4nsdx",
-        "city": "La Plata",
-        "gender": "Femenino",
-        "category": "usuario",
-        "image": "default.jpg"
-    },
-    {
-        "id": 10,
-        "firstname": "Sirius",
-        "lastname": "Black",
-        "email": "siblack@blogs.com",
-        "password": "TJWmYrDjNf",
-        "city": "Asgard",
-        "gender": "Masculino",
-        "category": "usuario",
-        "image": "default.jpg"
-    }
+   {
+      "id": 1,
+      "name": "Eric",
+      "lastname": "Mena",
+      "email": "eric@eric.com",
+      "password": "$2a$12$WXooqCNuLKAhV7uWJ9RQ/u67He6ub8cykgbgFxxRZshEuTl7aD4EC",
+      "rol": "admin",
+      "address": "Calle falsa 123",
+      "country": "Argentina",
+      "state": "Buenos Aires",
+      "city": "San Miguel",
+      "cp": 1234,
+      "image": [
+         "product-1662353868326.jpg"
+      ],
+      "phone": "12323543534",
+      "dni": 12345678
+   },
+   {
+      "id": 2,
+      "name": "Emanuel",
+      "lastname": "Arroyo",
+      "email": "ema@ema.com",
+      "password": "$2a$12$62OQA5D/Gr1n7Se.ITvKieDVXXx7AtRs1ov1mJ2gA2AT2Az8PKcGK",
+      "rol": "admin",
+      "address": "calle 1234",
+      "country": "Argentina",
+      "state": "Provicia",
+      "city": "San Miguel",
+      "cp": 2356,
+      "image": [
+         "product-1662352734441.png"
+      ],
+      "phone": "5153141234",
+      "dni": 12345678
+   },
+   {
+      "id": 3,
+      "name": "Hernan",
+      "lastname": "Moneta",
+      "email": "hernan0066@gmail.com",
+      "password": "$2a$12$CofGJoubbV21VyjOpRsftucjNC8KRtVQx2obW3R8aXaaGWXD8t/fm",
+      "rol": "admin",
+      "address": "Medrano 2636",
+      "country": "Argentina",
+      "state": "Santa Fe",
+      "city": "Rosario",
+      "cp": 2004,
+      "image": [
+         "product-1662353563514.jpg"
+      ],
+      "phone": "5153141234",
+      "dni": 12345678
+   },
+   {
+      "id": 4,
+      "name": "Walter",
+      "lastname": "Da Silva",
+      "email": "walter@walter.com",
+      "password": "$2a$12$oMDaYaiwbcuustEnzdMiQOBTRQGITiIEfsBj92Uymtv7oQanLydXO",
+      "rol": "admin",
+      "address": "calle 1234",
+      "country": "Argentina",
+      "state": "Provicia",
+      "city": "San Miguel",
+      "cp": 2356,
+      "image": [
+         "product-1662353040589.jpg"
+      ],
+      "phone": "5153141234",
+      "dni": 12345678
+   },
+   {
+      "id": 5,
+      "name": "Jon",
+      "lastname": "Ybarra",
+      "email": "jon@jon.com",
+      "password": "$2a$12$E41qJLa4kfiwuM.azlNoCe0BEorCqrse054k0XMuftIf4M1WFuaaq",
+      "rol": "admin",
+      "address": "calle 1234",
+      "country": "Argentina",
+      "state": "Mendoza",
+      "city": "Mendoza",
+      "cp": 2356,
+      "image": [
+         "product-1662354814750.jpg"
+      ],
+      "phone": "5153141234",
+      "dni": 12345678
+   },
+   {
+      "id": 6,
+      "name": "Marcos",
+      "lastname": "Sanhueza",
+      "email": "marcos@marcos.com",
+      "password": "$2a$12$NLqavT.ygdKlbiwggvwNwu1bFzwSpqJolCbNx0.uJcsOpq3uh0z3u",
+      "rol": "admin",
+      "address": "calle 1234",
+      "country": "Argentina",
+      "state": "Provicia",
+      "city": "CABA",
+      "cp": 2356,
+      "image": [
+         "user_default.png"
+      ],
+      "phone": "5153141234"
+   },
+   {
+      "id": 7,
+      "name": "Rabbi",
+      "lastname": "Kevane",
+      "email": "rkevane6@mail.com",
+      "password": "PeGpsL",
+      "state": "Provicia",
+      "country": "Argentina",
+      "address": "calle 1234",
+      "city": "Avellaneda",
+      "gender": "Masculino",
+      "rol": "usuario",
+      "image": [
+         "user_default.png"
+      ],
+      "cp": 2356,
+      "phone": "5153141234",
+      "dni": 12345678
+   },
+   {
+      "id": 8,
+      "name": "Benedicto",
+      "lastname": "Dickins",
+      "email": "bdickins@mail.com",
+      "password": "KWl5FCuydffS",
+      "state": "Provicia",
+      "country": "Argentina",
+      "address": "calle 1234",
+      "city": "Roma",
+      "gender": "Masculino",
+      "rol": "usuario",
+      "image": [
+         "user_default.png"
+      ],
+      "cp": 2356,
+      "phone": "5153141234",
+      "dni": 12345678
+   },
+   {
+      "id": 9,
+      "name": "Susana",
+      "lastname": "Gimenez",
+      "email": "susimez8@mail.com",
+      "password": "Mr4nsdx",
+      "state": "Provicia",
+      "country": "Argentina",
+      "address": "calle 1234",
+      "city": "La Plata",
+      "gender": "Femenino",
+      "rol": "usuario",
+      "image": [
+         "user_default.png"
+      ],
+      "cp": 2356,
+      "phone": "5153141234",
+      "dni": 12345678
+   },
+   {
+      "id": 10,
+      "name": "Sirius",
+      "lastname": "Black",
+      "email": "siblack@blogs.com",
+      "password": "TJWmYrDjNf",
+      "state": "Provicia",
+      "country": "Argentina",
+      "address": "calle 1234",
+      "city": "Asgard",
+      "gender": "Masculino",
+      "rol": "usuario",
+      "image": [
+         "user_default.png"
+      ],
+      "cp": 2356,
+      "phone": "5153141234",
+      "dni": 12345678
+   }
 ]

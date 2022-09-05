@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+
+    <body>
+        <!-- ----------Inicio de header----------- -->
+        <%- include('../partials/header') %>
+            <!-- ----------Fin de header----------- -->
+            <!-- ----------Inicio de main----------- -->
+            <main class="profile__main ">
+                <section class="profile__section ">
+                    <h2 id="profile_title" class="home__title">Mi perfil</h2>
+                    <div class="profile__main__container">
+                        
+                        <%- include('../partials/menuProfile') %>
+                        
+                        <article class="profile__main__right">
+                            <h3>MI DIRECCION</h3>
+                            <% if (locals.user?.address) { %>
+                                <div class="profile__main__right__info">
+                                    <h4>Dirección de envío</h4>
+                                    <p>
+                                        <%= user.name %>
+                                            <%= user.lastname %>
+                                    </p>
+                                    <p>Documento: <%= user.dni %>
+                                    </p>
+                                    <p>Tel: <%= user.phone %>
+                                    </p>
+                                    <p>
+                                        <%= user.address %>
+                                            <%= user.floor && ", piso " + user.floor %>
+                                                <%= user.dpto && ', dpto. ' + user.dpto %>
+                                    </p>
+                                    <p>
+                                        <%= user.city && user.city + ", " %> <%= user.state && user.state + ", " %>, <%= user.cp && "CP " + user.cp %>
+                                    </p>
+                                    <div class="profile__main__right__action">
+                                        <a href="/usuario/perfil/cambiar_direccion"><i class='bx bx-edit'></i>Editar</a>
+
+                                    </div>
+                                </div>
+
+                                <% }else{ %>
+                                    <p>No hay una dirección guardada todavía.</p>
+                                    <div class="profile__main__right__action">
+                                        <a href="/usuario/perfil/cambiar_direccion"><i class='bx bx-edit'></i>Agregar
+                                            dirección</a>
+
+                                    </div>
+                                    <% } %>
+
+                        </article>
+
+                    </div>
+                </section>
+            </main>
+            <!-- ----------Fin de main----------- -->
+            <!-- ----------Inicio de footer----------- -->
+            <%- include('../partials/footer') %>
+                <!-- ----------Fin de footer----------- -->
+    </body>
+
+</html>
