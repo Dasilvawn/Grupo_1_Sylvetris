@@ -17,42 +17,43 @@
                             <div class="col">
                                 <div class="form__field">
                                     <label for="">Nombre del producto</label>
-                                    <input type="text" name="nombre" value="<%= producto.nombre %>"
-                                        class="input__admin" />
+                                    <input type="text" name="nombre"
+                                        class="input__admin" value="<%= locals.old && old.nombre ? old.nombre : producto.nombre %>" />
                                         <p class="form__error">El nombre es requerido</p>
                                 </div>
 
                                 <div class="form__field">
                                     <label for="">Subtítulo</label>
-                                    <input type="text" name="sub_titulo" value="<%= producto.sub_titulo%>"
-                                        class="input__admin" />
+                                    <input type="text" name="sub_titulo"
+                                        class="input__admin" value="<%= locals.old && old.sub_titulo ? old.sub_titulo : producto.sub_titulo %>" />
                                         <p class="form__error">El nombre es requerido</p>
                                 </div>
                                 <div class="form__field">
                                     <label for="">Slug</label>
-                                    <input type="text" name="slug" value="<%= producto.slug %>" class="input__admin" />
+                                    <input type="text" name="slug"
+                                    class="input__admin" value="<%= locals.old && old.slug ? old.slug : producto.slug %>" />
                                     <p class="form__error">El nombre es requerido</p>
                                 </div>
                                 <div class="form__field">
                                     <label for="">Categoría</label>
-                                    <input type="text" name="categoria" value="<%= producto.categoria %>"
-                                        class="input__admin" />
+                                    <input type="text" name="categoria"
+                                        class="input__admin" value="<%= locals.old && old.categoria ? old.categoria : producto.categoria %>" />
                                         <p class="form__error">El nombre es requerido</p>
                                 </div>
                                 <div class="form__field">
                                     <label for="">Stock</label>
-                                    <input type="number" name="stock" value="<%= producto.stock %>"
-                                        class="input__admin" />
+                                    <input type="number" name="stock"
+                                        class="input__admin" value="<%= locals.old && old.stock ? old.stock : producto.stock %>" />
                                         <p class="form__error">El nombre es requerido</p>
                                 </div>
                                 <label for="">Destacado</label>
                                 <div class="row">
 
                                     <label for="">Sí<input type="radio" name="destacado" value="true"
-                                            class="radio__admin" <%=producto.destacado==="true" && 'checked'
+                                            class="radio__admin" <%= producto.destacado === "true" && 'checked'
                                             %>/></label>
                                     <label for="">No<input type="radio" name="destacado" value="false"
-                                            class="radio__admin" <%=producto.destacado==="false" && 'checked'
+                                            class="radio__admin" <%= producto.destacado === "false" && 'checked'
                                             %>/></label>
                                 </div>
                                 <div class="form__field">
@@ -69,19 +70,19 @@
                                 <div class="form__field">
                                 <label for="">Descripción altura del producto</label>
                                 <input type="texarea" name="descripcion_altura"
-                                    value="<%= producto.descripcion_altura %>" class="input__admin" />
+                                    class="input__admin" value="<%= locals.old && old.descripcion_altura ? old.descripcion_altura : producto.descripcion_altura %>" />
                                     <p class="form__error">El nombre es requerido</p>
                                 </div>
                                 <div class="form__field">
                                 <label for="">Descripción maceta del producto</label>
                                 <input type="texarea" name="descripcion_maceta"
-                                    value="<%= producto.descripcion_maceta %>" class="input__admin" />
+                                    class="input__admin" value="<%= locals.old && old.descripcion_maceta ? old.descripcion_maceta : producto.descripcion_maceta %>" />
                                     <p class="form__error">El nombre es requerido</p>
                                 </div>
                                 <div class="form__field">
                                 <label for="">Precio</label>
-                                <input type="number" name="precio" value="<%= producto.precio %>"
-                                    class="input__admin" />
+                                <input type="number" name="precio"
+                                    class="input__admin" value="<%= locals.old && old.precio ? old.precio : producto.precio %>" />
                                     <p class="form__error">El nombre es requerido</p>
                                 </div>
                                 <div class="form__field">
@@ -97,7 +98,7 @@
                                             <div class="form__field">
                                             <label for="">Agua</label>
                                             <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5"
-                                                class="input__admin col-50" value="<%= producto.agua %>" />
+                                                class="input__admin col-50" value="<%= locals.old && old.agua ? old.agua : producto.agua %>" />
                                                 <p class="form__error">El nombre es requerido</p>
                                             </div>
                                         </div>
@@ -105,14 +106,14 @@
                                             <div class="form__field">
                                             <label for="">Luz</label>
                                             <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5"
-                                                class="input__admin col-50" value="<%= producto.luz %>" />
+                                                class="input__admin col-50" value="<%= locals.old && old.luz ? old.luz : producto.luz %>" />
                                                 <p class="form__error">El nombre es requerido</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form__field">
                                     <label for="">Cargar imagen del producto</label>
-                                    <input type="file" name="imagen" class="input__admin" multiple/>
+                                    <input type="file" name="imagen" class="input__admin" multiple />
                                 </div>
                                     <button class="registrarse__button admin__btn" type="submit">EDITAR</button>
                             </div>
