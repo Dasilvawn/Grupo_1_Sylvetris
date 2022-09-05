@@ -10,7 +10,7 @@
       "descripcion": "La Adromischus Cooperi es una suculenta enana, originaria de Sudáfrica, tiene hojas gordas con una textura parecida a la de los huevos de pato, de hecho Huevos de Pato es uno de los nombres coloquiales con la que se la conoce. Crece en forma de mata y no supera los 20 cm de altura. Ideal para rocallas, canteros y macetas",
       "descripcion_altura": "Altura/anchura estimada: 6 cm.",
       "descripcion_maceta": "Presentación en maceta de 10.5cm",
-      "precio": 10.12,
+      "precio": 11,
       "cuidados": "Riegos más seguidos en primavera y verano, preferentemente con agua de lluvia. El sustrato debe drenar a la perfección ya que corren peligro de pudrirse. En macetas, regar por el plato, evitando el agua en la superficie. Resiste hasta 5°",
       "agua": 1,
       "luz": 2,
@@ -237,6 +237,46 @@
       "imagen": [
          "philodendron-scandens-micans_1.png",
          "philodendron-scandens-micans_2.png"
+      ]
+   },
+   {
+      "id": 13,
+      "nombre": "Pilosocereus Azureus",
+      "sub_titulo": "Cardón o Facheiro Azul",
+      "slug": "pilosocereus_azureus",
+      "categoria": "captus",
+      "stock": 10,
+      "destacado": "false",
+      "descripcion": "El Pseudopilocereus Pachycladus o Azureus es un cactus originario del norte de Brasil que se ha hecho endémico a gran parte de Sudamérica. Conocido como cardón, posee flores muy llamativas que florecen de noche y cuya polinización la llevan a cabo animales nocturnos como los murciélagos. A medida que envejece, se va tornando cada vez más azul y en estado óptimo, logra superar el metro y medio de altura. Si eres amante de los cactus, no dudes en tenerlo entre tu colección.",
+      "descripcion_altura": "Altura/anchura estimada: 12 cm.",
+      "descripcion_maceta": "Presentación en maceta de 8.5cm",
+      "precio": 8,
+      "cuidados": "Máxima exposición posible al sol. No tolera heladas ni cambios bruscos de temperatura.",
+      "agua": 2,
+      "luz": 5,
+      "imagen": [
+         "imageproduct1662350881995.png",
+         "imageproduct1662350882006.png"
+      ]
+   },
+   {
+      "id": 14,
+      "nombre": "Trichocereus Peruviana",
+      "sub_titulo": "Antorcha peruana",
+      "slug": "trichocereus_peruviana",
+      "categoria": "captus",
+      "stock": 10,
+      "destacado": false,
+      "descripcion": "Cactus columnar, de buen crecimiento, similar a echinopsis pachanoi. Se diferencia de éste en el número de costillas y espinas, aunque también contiene alcaloides. Color verde intenso, que varía con la edad.",
+      "descripcion_altura": "Altura/anchura estimada: 16 cm.",
+      "descripcion_maceta": "Presentación en maceta de 8 cm",
+      "precio": 9.75,
+      "cuidados": "Luz intensa y brillante, incluso sol directo con aclimatación. Riegos espaciados dejando secar el sustrato casi por completo entre riegos. Tolera el frío y heladas con suelo seco.",
+      "agua": 3,
+      "luz": 4,
+      "imagen": [
+         "imageproduct1662351887009.png",
+         "imageproduct1662351887018.png"
       ]
    }
 ]

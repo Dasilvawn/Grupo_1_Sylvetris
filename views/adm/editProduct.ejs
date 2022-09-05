@@ -13,38 +13,38 @@
                         <h1>EDITAR PRODUCTO</h1>
 
                         <br />
-                        <form action="/admin/products/edit_product/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="admin__form">
+                        <form action="/admin/products/edit_product/<%= producto.id? producto.id: id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="admin__form">
                             <div class="col">
                                 <div class="form__field">
                                     <label for="">Nombre del producto</label>
                                     <input type="text" name="nombre"
                                         class="input__admin" value="<%= locals.old && old.nombre ? old.nombre : producto.nombre %>" />
-                                        <p class="form__error">El nombre es requerido</p>
+                                        <p class="form__error"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></p>
                                 </div>
 
                                 <div class="form__field">
                                     <label for="">Subtítulo</label>
                                     <input type="text" name="sub_titulo"
                                         class="input__admin" value="<%= locals.old && old.sub_titulo ? old.sub_titulo : producto.sub_titulo %>" />
-                                        <p class="form__error">El nombre es requerido</p>
+                                        <p class="form__error"><%= locals.errors && errors.sub_titulo ? errors.sub_titulo.msg : null %></p>
                                 </div>
                                 <div class="form__field">
                                     <label for="">Slug</label>
                                     <input type="text" name="slug"
                                     class="input__admin" value="<%= locals.old && old.slug ? old.slug : producto.slug %>" />
-                                    <p class="form__error">El nombre es requerido</p>
+                                    <p class="form__error"><%= locals.errors && errors.slug ? errors.slug.msg : null %></p>
                                 </div>
                                 <div class="form__field">
                                     <label for="">Categoría</label>
                                     <input type="text" name="categoria"
                                         class="input__admin" value="<%= locals.old && old.categoria ? old.categoria : producto.categoria %>" />
-                                        <p class="form__error">El nombre es requerido</p>
+                                        <p class="form__error"><%= locals.errors && errors.categoria ? errors.categoria.msg : null %></p>
                                 </div>
                                 <div class="form__field">
                                     <label for="">Stock</label>
                                     <input type="number" name="stock"
                                         class="input__admin" value="<%= locals.old && old.stock ? old.stock : producto.stock %>" />
-                                        <p class="form__error">El nombre es requerido</p>
+                                        <p class="form__error"><%= locals.errors && errors.stock ? errors.stock.msg : null %></p>
                                 </div>
                                 <label for="">Destacado</label>
                                 <div class="row">
@@ -59,8 +59,8 @@
                                 <div class="form__field">
                                     <label for="">Descripción del producto</label>
                                     <textarea name="descripcion" class="input__admin" rows="10" cols="120"
-                                        style="margin-bottom: 20px;" ><%= producto.descripcion %></textarea>
-                                    <p class="form__error">El nombre es requerido</p>
+                                        style="margin-bottom: 20px;" ><%= locals.old && old.descripcion ? old.descripcion : producto.descripcion %></textarea>
+                                    <p class="form__error"><%= locals.errors && errors.descripcion ? errors.descripcion.msg : null %></p>
 
                                 </div>
                             </div>
@@ -71,25 +71,25 @@
                                 <label for="">Descripción altura del producto</label>
                                 <input type="texarea" name="descripcion_altura"
                                     class="input__admin" value="<%= locals.old && old.descripcion_altura ? old.descripcion_altura : producto.descripcion_altura %>" />
-                                    <p class="form__error">El nombre es requerido</p>
+                                    <p class="form__error"><%= locals.errors && errors.descripcion_altura ? errors.descripcion_altura.msg : null %></p>
                                 </div>
                                 <div class="form__field">
                                 <label for="">Descripción maceta del producto</label>
                                 <input type="texarea" name="descripcion_maceta"
                                     class="input__admin" value="<%= locals.old && old.descripcion_maceta ? old.descripcion_maceta : producto.descripcion_maceta %>" />
-                                    <p class="form__error">El nombre es requerido</p>
+                                    <p class="form__error"><%= locals.errors && errors.descripcion_maceta ? errors.descripcion_maceta.msg : null %></p>
                                 </div>
                                 <div class="form__field">
                                 <label for="">Precio</label>
-                                <input type="number" name="precio"
+                                <input type="number" name="precio" step=".01"
                                     class="input__admin" value="<%= locals.old && old.precio ? old.precio : producto.precio %>" />
-                                    <p class="form__error">El nombre es requerido</p>
+                                    <p class="form__error"><%= locals.errors && errors.precio ? errors.precio.msg : null %></p>
                                 </div>
                                 <div class="form__field">
                                 <label for="">Cuidados</label>
                                 <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120"
-                                    style="margin-bottom: 20px" value="<%= producto.cuidados %>" /><%= producto.cuidados %>"</textarea>
-                                <p class="form__error">El nombre es requerido</p>
+                                    style="margin-bottom: 20px" /><%= locals.old && old.cuidados ? old.cuidados : producto.cuidados %></textarea>
+                                <p class="form__error"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></p>
                             </div>
 
 
@@ -99,7 +99,7 @@
                                             <label for="">Agua</label>
                                             <input type="number" name="agua" placeholder="0" step="0.5" min="0" max="5"
                                                 class="input__admin col-50" value="<%= locals.old && old.agua ? old.agua : producto.agua %>" />
-                                                <p class="form__error">El nombre es requerido</p>
+                                                <p class="form__error"><%= locals.errors && errors.agua ? errors.agua.msg : null %></p>
                                             </div>
                                         </div>
                                         <div class="col-50">
@@ -107,13 +107,14 @@
                                             <label for="">Luz</label>
                                             <input type="number" name="luz" placeholder="0" step="0.5" min="0" max="5"
                                                 class="input__admin col-50" value="<%= locals.old && old.luz ? old.luz : producto.luz %>" />
-                                                <p class="form__error">El nombre es requerido</p>
+                                                <p class="form__error"><%= locals.errors && errors.luz ? errors.luz.msg : null %></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form__field">
                                     <label for="">Cargar imagen del producto</label>
                                     <input type="file" name="imagen" class="input__admin" multiple />
+                                    <p class="form__error"><%= locals.errors && errors.imagen ? errors.imagen.msg : null %></p>
                                 </div>
                                     <button class="registrarse__button admin__btn" type="submit">EDITAR</button>
                             </div>

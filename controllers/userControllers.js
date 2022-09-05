@@ -46,7 +46,7 @@ module.exports = {
       };
       //  return res.send(req.session.userLogin)
       if (req.body.remember) {
-        res.cookie("Sylvestris", req.session.userLogin, {
+        res.cookie("sylvestris", req.session.userLogin, {
           maxAge: 1000 * 60 * 60 * 24,
         });
       }

@@ -33,7 +33,7 @@
                                 <div class="form__field">
                                     <label for="">Slug</label>
                                     <input type="text" name="slug" 
-                                    class="input__admin" value="<%= locals.old && old.nslug ? old.slug : null %>" />
+                                    class="input__admin" value="<%= locals.old && old.slug ? old.slug : null %>" />
                                     <p class="form__error"><%= locals.errors && errors.slug ? errors.slug.msg : null %></p>
                                 </div>
                                 <div class="form__field">
@@ -60,7 +60,7 @@
                                 <div class="form__field">
                                 <label for="">Descripción del producto</label>
                                 <textarea type="textarea" name="descripcion" class="input__admin" rows="10" cols="120"
-                                    style="margin-bottom: 20px" /></textarea>
+                                    style="margin-bottom: 20px" /><%= locals.old && old.descripcion ? old.descripcion : null %></textarea>
                                 <p class="form__error"><%= locals.errors && errors.descripcion ? errors.descripcion.msg : null %></p>
                             </div>
                             </div>
@@ -87,7 +87,7 @@
                                 <div class="form__field">
                                 <label for="">Cuidados</label>
                                 <textarea type="textarea" name="cuidados" class="input__admin" rows="8" cols="120"
-                                    style="margin-bottom: 20px" /></textarea>
+                                    style="margin-bottom: 20px" /><%= locals.old && old.cuidados ? old.cuidados : null %></textarea>
                                 <p class="form__error"><%= locals.errors && errors.cuidados ? errors.cuidados.msg : null %></p>
                             </div>
                                 <div class="row">

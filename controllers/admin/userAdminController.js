@@ -10,7 +10,7 @@ module.exports = {
     return res.render("adm/users", {
       title: "Sylvestris | Lista de Usuarios",
       users,
-      user
+      user,
     });
   },
   getCreateUsers: (req, res) => {
@@ -20,12 +20,11 @@ module.exports = {
     return res.render("adm/createUser", {
       title: "Sylvestris | Crear Usuario",
       users,
-      user
+      user,
     });
   },
   postCreateUsers: (req, res) => {
     let errors = validationResult(req);
-    
 
     if (errors.isEmpty()) {
       const {
@@ -40,7 +39,7 @@ module.exports = {
         city,
         cp,
         phone,
-        dni
+        dni,
       } = req.body;
       const users = loadUsers();
 
@@ -60,7 +59,7 @@ module.exports = {
         cp: +cp,
         image: image ? [...user.image, image] : "user_default.png",
         phone: phone,
-        dni
+        dni,
       };
       let usersModify = [...users, newUser];
       storeUsers(usersModify);
@@ -83,7 +82,7 @@ module.exports = {
     return res.render("adm/editUser", {
       title: "Sylvestris | Editar usuario",
       user,
-      userAdmin
+      userAdmin,
     });
   },
   putEditUsers: (req, res) => {
@@ -107,7 +106,6 @@ module.exports = {
 
       const userOriginal = users.find((user) => user.id === +req.params.id);
 
-      
       let image = req.files.map((file) => file.filename);
       const editUser = users.map((user) => {
         if (user.id === +req.params.id) {
@@ -123,7 +121,7 @@ module.exports = {
             state: state ? state : "",
             city: city ? city.trim() : "",
             cp: +cp,
-            image: image ? image : userOriginal.image,
+            image: image.length === 0 ? userOriginal.image : image,
             phone: phone,
           };
         } else {
