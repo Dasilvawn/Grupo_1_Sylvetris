@@ -152,13 +152,22 @@
   position: fixed;
   top: 0;
   left: -280px;
-  height: 100vh;
+  min-height: 100vh;
   width: 280px;
   background-color: var(--color-white);
   z-index: 3;
   padding: 20px 25px;
   transition: all 0.5s ease;
   color: var(--color-brown);
+  
+ 
+}
+.sidebar_menu_wrapper{
+  overflow: scroll;
+  height: 90vh;
+}
+.sidebar_menu_wrapper::-webkit-scrollbar {
+  display: none;
 }
 .header__logo__menu{
  margin-left: 20px;
