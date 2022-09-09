@@ -15,40 +15,42 @@ const {
   rename,
   logout,
 } = require("../controllers/userControllers");
+const privateRoute = require("../middlewares/privateRoute");
 const publicRoute = require("../middlewares/publicRoute");
 const { uploadImageProduct } = require("../middlewares/uploadFile");
 const addressChangeValidator = require("../validations/addressChangeValidator");
 const editUserProfileValidator = require("../validations/editUserProfileValidator");
+const loginValidator = require("../validations/loginValidator");
 const passwordChangeValidator = require("../validations/passwordChangeValidator");
 const registerValidator = require("../validations/registerValidator");
 
 /* /usuario */
 router.get("/login", publicRoute, login);
-router.post("/login", postLogin);
+router.post("/login",loginValidator, postLogin);
 
 router.get("/register", publicRoute, register);
 router.post("/register", registerValidator, postRegister);
 
-router.get("/perfil", profile);
+router.get("/perfil", privateRoute, profile);
 
-router.get("/perfil/cambiar_nombre", rename);
+router.get("/perfil/cambiar_nombre",  privateRoute, rename);
 router.put(
   "/perfil/cambiar_nombre",
   uploadImageProduct.array("image", 1),
-  editUserProfileValidator,
+ editUserProfileValidator,
   putRename
 );
 
-router.get("/perfil/cambiar_password", change_password);
+router.get("/perfil/cambiar_password",  privateRoute, change_password);
 router.put(
   "/perfil/cambiar_password",
   passwordChangeValidator,
   putChange_password
 );
 
-router.get("/perfil/direccion", address);
+router.get("/perfil/direccion",  privateRoute, address);
 
-router.get("/perfil/cambiar_direccion", change_address);
+router.get("/perfil/cambiar_direccion",  privateRoute, change_address);
 router.put(
   "/perfil/cambiar_direccion",
   addressChangeValidator,

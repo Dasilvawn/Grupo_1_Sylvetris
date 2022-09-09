@@ -14,7 +14,7 @@
           <p>¿Ya tienes un perfil personal?</p>
           <a href="/usuario/login">Iniciar Sesión</a>
         </div>
-        <form action="/usuario/register" method="POST">
+        <form action="/usuario/register" method="POST" novalidate>
           <div class="form__field">
             <label for="name">Nombre/s</label>
             <input type="text" id="name" name="name" value="<%= locals.old && old.name ? old.name : null %>"/>

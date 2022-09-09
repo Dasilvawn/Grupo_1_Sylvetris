@@ -11,6 +11,8 @@ module.exports = {
   postLogin: (req, res) => {
     let errors = validationResult(req);
 
+    //return res.send(errors)
+
     if (errors.isEmpty()) {
       let {
         id,

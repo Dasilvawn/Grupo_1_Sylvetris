@@ -15,11 +15,11 @@
           <a href="/usuario/register">Registrarse</a>
         </div>
 
-        <form action="" method="POST">
+        <form action="" method="POST" novalidate>
 
           <div class="form__field">
             <label for="">Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email"   />
             <p class="form__error"><%= locals.errors && errors.email ? errors.email.msg : null %></p>
           </div>
 
