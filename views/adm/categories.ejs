@@ -13,7 +13,7 @@
                     <table class="responsive-table">
                         <div class="admin__products__header">
                             <h2>Lista de categorias</h2>
-                            <a href="/admin/users/create_user"><button class="btn__crear">
+                            <a href="/admin/categories/create_category"><button class="btn__crear">
                                     <i class="bx bx-message-square-add"></i> Agregar Categoria
                                 </button></a>
                         </div>
@@ -40,11 +40,11 @@
                                     </td>
 
                                     <td data-title="Acciones">
-                                        <a href="/admin/users/edit_user/<%= category.id %>"><button class="btn__editar">
+                                        <a href="/admin/categories/edit_category/<%= category.id %>"><button class="btn__editar">
                                                 <i class="bx bx-edit"></i> Editar
                                             </button></a>
 
-                                        <form action="/admin/users/delete_user/<%= category.id %>?_method=DELETE"
+                                        <form action="/admin/categories/delete_category/<%= category.id %>?_method=DELETE"
                                             method="POST">
                                             <button type="submit" class="btn__borrar">
                                                 <i class="bx bx-trash"></i>Borrar

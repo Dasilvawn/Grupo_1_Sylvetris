@@ -1,5 +1,7 @@
 const express = require("express");
-const { getCategories } = require("../controllers/admin/categoryAdminController");
+const {
+  getCategories, getCreateCategory, postCreateCategory, getEditCategory, putEditCategory, deleteCategory,
+} = require("../controllers/admin/categoryAdminController");
 
 const router = express.Router();
 
@@ -78,5 +80,13 @@ router.delete("/users/delete_user/:id", adminUserCheck, deleteUsers);
 
 //categories
 router.get("/categories", adminUserCheck, getCategories);
+
+router.get("/categories/create_category", adminUserCheck, getCreateCategory);
+router.post("/categories/create_category", postCreateCategory);
+
+router.get("/categories/edit_category/:id", adminUserCheck, getEditCategory);
+router.put("/categories/edit_category/:id", putEditCategory);
+
+router.delete("/categories/delete_category/:id", adminUserCheck, deleteCategory);
 
 module.exports = router;

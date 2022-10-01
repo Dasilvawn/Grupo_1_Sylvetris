@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body class="admin__dashboard">
+    <!-- ----------Inicio de header----------- -->
+    <%- include('../partials/sidebar') %>
+    <!-- ----------Fin de header----------- -->
+    <!-- ----------Inicio de main----------- -->
+    <main class="home-section" id="add__products">
+      <%- include('../partials/navbarAdmin', {user:user}) %>
+      <section class="login__main__container admin__form__container">
+        <h1>CREAR CATEGORIA</h1>
+
+        <form
+          action="/admin/categories/create_category"
+          method="POST"
+          class="admin__form"
+        >
+          <div class="col">
+            <div class="form__field">
+              <label for="">Nombre</label>
+              <input
+                type="text"
+                name="name"
+                class="input__admin"
+                value="<%= locals.old && old.name ? old.name : null %>"
+              />
+              <p class="form__error">
+                <%= locals.errors && errors.name ? errors.name.msg : null%>
+              </p>
+            </div>
+
+            <button class="registrarse__button admin__btn" type="submit">
+              CREAR
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <!-- ----------Fin de main----------- -->
+  </body>
+</html>

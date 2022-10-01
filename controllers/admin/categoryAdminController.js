@@ -1,83 +1,50 @@
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
 const { loadUsers, storeUsers } = require("../../data/db");
-const db = require('../../database/models');
+const db = require("../../database/models");
 
 module.exports = {
   getCategories: (req, res) => {
-   /*  const users = loadUsers();
-    const id = req.session.userLogin?.id;
-    const user = users.find((user) => user.id === +id);
-    return res.render("adm/categories", {
-      title: "Sylvestris | Lista de Categorias",
-      users,
-      user,
-    }); */
     const id = req.session.userLogin?.id;
     let categories = db.Category.findAll();
     let user = db.User.findByPk(id);
 
-    Promise.all([categories,user])
-        .then(([categories,user]) => {
-            return res.render('adm/categories',{
-                title: "Sylvestris | Lista de Categorias",
-                user,
-                categories
-            })
-        })
-        .catch(error => console.log(error));
+    Promise.all([categories, user])
+      .then(([categories, user]) => {
+        return res.render("adm/categories", {
+          title: "Sylvestris | Lista de Categorias",
+          user,
+          categories,
+        });
+      })
+      .catch((error) => console.log(error));
   },
-  getCreateUsers: (req, res) => {
-    const users = loadUsers();
+  getCreateCategory: (req, res) => {
     const id = req.session.userLogin?.id;
-    const user = users.find((user) => user.id === +id);
-    return res.render("adm/createUser", {
-      title: "Sylvestris | Crear Usuario",
-      users,
-      user,
-    });
+    let categories = db.Category.findAll();
+    let user = db.User.findByPk(id);
+
+    Promise.all([categories, user])
+      .then(([categories, user]) => {
+        return res.render("adm/createCategory", {
+          title: "Sylvestris | Crear Categoria",
+          user,
+          categories,
+        });
+      })
+      .catch((error) => console.log(error));
   },
-  postCreateUsers: (req, res) => {
+  postCreateCategory: (req, res) => {
     let errors = validationResult(req);
 
     if (errors.isEmpty()) {
-      const {
-        name,
-        lastname,
-        email,
-        password,
-        rol,
-        address,
-        country,
-        state,
-        city,
-        cp,
-        phone,
-        dni,
-      } = req.body;
-      const users = loadUsers();
-
-      let image = req.files.map((file) => file.filename);
-
-      const newUser = {
-        id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
-        name: name.trim(),
-        lastname: lastname.trim(),
-        email: email.trim(),
-        password: bcryptjs.hashSync(password, 12),
-        rol: rol,
-        address: address ? address.trim() : "",
-        country: country ? country.trim() : "",
-        state: state ? state : "",
-        city: city ? city.trim() : "",
-        cp: +cp,
-        image: image ? [...user.image, image] : "user_default.png",
-        phone: phone,
-        dni,
-      };
-      let usersModify = [...users, newUser];
-      storeUsers(usersModify);
-      return res.redirect("/admin/users");
+      db.Category.create({
+        name: req.body.name.trim(),
+      })
+        .then((category) => {
+          res.redirect("/admin/categories");
+        })
+        .catch((error) => console.log(error));
     } else {
       return res.render("adm/createUser", {
         title: "Sylvestris | Crear Usuario",
@@ -87,80 +54,51 @@ module.exports = {
     }
   },
 
-  getEditUsers: (req, res) => {
-    const users = loadUsers();
+  getEditCategory: (req, res) => {
     const id = req.session.userLogin?.id;
-    const userAdmin = users.find((user) => user.id === +id);
+    let category = db.Category.findByPk(req.params.id);
+    let user = db.User.findByPk(id);
 
-    const user = users.find((user) => user.id === +req.params.id);
-    return res.render("adm/editUser", {
-      title: "Sylvestris | Editar usuario",
-      user,
-      userAdmin,
-    });
+    Promise.all([category, user])
+      .then(([category, user]) => {
+        return res.render("adm/editCategory", {
+          title: "Sylvestris | Editar Categoria",
+          user,
+          category,
+        });
+      })
+      .catch((error) => console.log(error));
   },
-  putEditUsers: (req, res) => {
+  putEditCategory: (req, res) => {
     let errors = validationResult(req);
 
     if (errors.isEmpty()) {
-      const {
-        name,
-        lastname,
-        email,
-        password,
-        rol,
-        address,
-        country,
-        state,
-        city,
-        cp,
-        phone,
-      } = req.body;
-      const users = loadUsers();
-
-      const userOriginal = users.find((user) => user.id === +req.params.id);
-
-      let image = req.files.map((file) => file.filename);
-      const editUser = users.map((user) => {
-        if (user.id === +req.params.id) {
-          return {
-            id: user.id,
-            name: name.trim(),
-            lastname: lastname.trim(),
-            email: email.trim(),
-            password: bcryptjs.hashSync(password, 12),
-            rol: rol,
-            address: address ? address.trim() : "",
-            country: country ? country.trim() : "",
-            state: state ? state : "",
-            city: city ? city.trim() : "",
-            cp: +cp,
-            image: image.length === 0 ? userOriginal.image : image,
-            phone: phone,
-          };
-        } else {
-          return user;
+      db.Category.update(
+        {
+          name: req.body.name.trim(),
+        },
+        {
+          where: {
+            id: req.params.id,
+          },
         }
-      });
-      storeUsers(editUser);
-      return res.redirect("/admin/users");
+      )
+        .then((category) => {
+          res.redirect("/admin/categories");
+        })
+        .catch((error) => console.log(error));
     } else {
-      return res.render("adm/editUser", {
-        title: "Sylvestris | Editar Usuario",
+      return res.render("adm/editCategory", {
+        title: "Sylvestris | Editar Categoria",
         errors: errors.mapped(),
         old: req.body,
-        id: req.params.id,
-        user: req.body,
       });
     }
   },
-  deleteUsers: (req, res) => {
-    const users = loadUsers();
-
-    const usersFilter = users.filter((user) => user.id !== +req.params.id);
-
-    storeUsers(usersFilter);
-
-    return res.redirect("/admin/users");
+  deleteCategory: (req, res) => {
+    db.Category.destroy({
+      where: { id: req.params.id },
+    });
+    res.redirect("/admin/categories");
   },
 };
