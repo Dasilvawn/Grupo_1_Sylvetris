@@ -1,4 +1,5 @@
 const express = require("express");
+const { getCategories } = require("../controllers/admin/categoryAdminController");
 
 const router = express.Router();
 
@@ -74,5 +75,8 @@ router.put(
 );
 
 router.delete("/users/delete_user/:id", adminUserCheck, deleteUsers);
+
+//categories
+router.get("/categories", adminUserCheck, getCategories);
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const { check, body } = require("express-validator");
+const db = require("../database/models");
 const users = require("../data/db").loadUsers();
 module.exports = [
   check("name")
@@ -29,13 +30,19 @@ module.exports = [
     .withMessage("*El email es obligatorio")
     .bail()
     .isEmail()
-    .withMessage("*Debe ser un email válido")
-    .bail()
-    .custom((value, { req }) => {
-      let user = users.find((user) => user.email === value.trim());
-      return !!!user;
-    })
-    .withMessage("*El email ya se encuentra registrado"),
+    .withMessage("*Debe ser un email válido"),
+
+  body("email").custom((value) => {
+    return db.User.findOne({
+      where: {
+        email: value,
+      },
+    }).then((user) => {
+      if (user) {
+        return Promise.reject("Este email ya está registrado");
+      }
+    });
+  }),
 
   check("password")
     .notEmpty()
@@ -59,6 +66,4 @@ module.exports = [
       }
     })
     .withMessage("Las contraseñas no coinciden"),
-
-    
 ];

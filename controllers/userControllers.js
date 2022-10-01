@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
 const { loadUsers, storeUsers } = require("../data/db");
+const db = require("../database/models");
 
 module.exports = {
   login: (req, res) => {
@@ -9,51 +10,34 @@ module.exports = {
     });
   },
   postLogin: (req, res) => {
+    /////////////////////Login db/////////////////////////
     let errors = validationResult(req);
 
-    //return res.send(errors)
-
     if (errors.isEmpty()) {
-      let {
-        id,
-        name,
-        lastname,
-        email,
-        rol,
-        state,
-        country,
-        address,
-        city,
-        gender,
-        image,
-        cp,
-      } = loadUsers().find((user) => user.email === req.body.email);
+      db.User.findOne({
+        where: {
+          email: req.body.email,
+        },
+      }).then((user) => {
+        const firstLetterName = user.name.split(" ")[0]?.charAt(0);
+        req.session.userLogin = {
+          id: user.id,
+          name: user.name,
+          lastName: user.lastName,
+          email: user.email,
+          rol: user.rolId,
+          avatar: user.avatar,
+          iconNavbar: firstLetterName,
+        };
+        if (req.body.remember) {
+          res.cookie("sylvestris", req.session.userLogin, {
+            maxAge: 1000 * 60 * 60 * 24,
+          });
+        }
+        res.locals.user = req.session.userLogin;
 
-      const firstLetterName = name.split(" ")[0]?.charAt(0);
-
-      req.session.userLogin = {
-        id,
-        name,
-        lastname,
-        email,
-        rol,
-        state,
-        country,
-        address,
-        city,
-        gender,
-        image,
-        cp,
-        iconNavbar: firstLetterName,
-      };
-      //  return res.send(req.session.userLogin)
-      if (req.body.remember) {
-        res.cookie("sylvestris", req.session.userLogin, {
-          maxAge: 1000 * 60 * 60 * 24,
-        });
-      }
-      res.locals.userLogin = req.session.userLogin;
-      return res.redirect("/");
+        res.redirect("/");
+      });
     } else {
       return res.render("users/login", {
         title: "Sylvestris | Login",
@@ -68,55 +52,53 @@ module.exports = {
     });
   },
   postRegister: (req, res) => {
+    
+
+    //////////////////////////Register DB//////////////////////////////
     let errors = validationResult(req);
 
     if (errors.isEmpty()) {
-      const { name, lastname, email, password } = req.body;
-      let users = loadUsers();
-
-      let newUser = {
-        id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
+      let { name, lastname, email, password } = req.body;
+      db.User.create({
         name: name.trim(),
         lastname: lastname.trim(),
         email: email.trim(),
         password: bcryptjs.hashSync(password, 12),
+        rolId: 2,
+        avatar: "user_default.png",
         dni: null,
-        rol: "usuario",
-        address: "",
-        country: "",
-        state: "",
-        city: "",
-        cp: null,
-        image: ["user_default.png"],
-      };
+        phone: null,
+      })
+        .then((user) => {
+          db.Address.create({
+            address: null,
+            dto: null,
+            floor: null,
+            country: null,
+            state: null,
+            city: null,
+            cp: null,
+            userId: user.id,
+          });
+          // inicio session una vez creado el usuario
+          req.session.userLogin = {
+            id: user.id,
+            name: user.name,
+            lastname: user.lastname,
+            rol: user.rolId,
+            avatar: user.avatar,
+            iconNavbar: user.name.split(" ")[0]?.charAt(0),
+          };
 
-      // inicio session una vez creado el usuario
-      req.session.userLogin = {
-        id: newUser.id,
-        name: newUser.name,
-        lastname: newUser.lastname,
-        dni: newUser.dni,
-        rol: newUser.rol,
-        address: newUser.address,
-        country: newUser.country,
-        state: newUser.state,
-        city: newUser.city,
-        cp: newUser.cp,
-        image: newUser.login,
-        iconNavbar: newUser.name.split(" ")[0]?.charAt(0),
-      };
+          res.cookie("sylvestris", req.session.userLogin, {
+            maxAge: 1000 * 60 * 60 * 24,
+          });
 
-      res.cookie("sylvestris", req.session.userLogin, {
-        maxAge: 1000 * 60 * 60 * 24,
-      });
-
-      let usersModify = [...users, newUser];
-
-      storeUsers(usersModify);
-
-      return res.redirect("/");
+          res.redirect("/");
+        })
+        .catch((err) => console.log(err));
     } else {
-      return res.render("users/register", {
+      res.render("users/register", {
         title: "Sylvestris | Register",
         errors: errors.mapped(),
         old: req.body,

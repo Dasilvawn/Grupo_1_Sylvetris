@@ -13,7 +13,6 @@ module.exports = {
     return res.render("index", {
       title: "Sylvestris | Home",
       categorias,
-      
       productsByFeatured,
       formatPrice,
       instagram,
@@ -24,8 +23,10 @@ module.exports = {
     const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
     const productsByFeatured = products.filter((product) => product.destacado);
 
-    let result = products.filter((product) =>
-      product.nombre.toLowerCase().includes(keywords.toLowerCase() ) || product.categoria.toLowerCase().includes(keywords.toLowerCase() )
+    let result = products.filter(
+      (product) =>
+        product.nombre.toLowerCase().includes(keywords.toLowerCase()) ||
+        product.categoria.toLowerCase().includes(keywords.toLowerCase())
     );
     //console.log(result);
     //return res.send(result)
@@ -35,7 +36,7 @@ module.exports = {
       keywords,
       result,
       formatPrice,
-      productsByFeatured
+      productsByFeatured,
     });
   },
 };
