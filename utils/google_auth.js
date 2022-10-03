@@ -25,7 +25,7 @@ passport.use(
             dni: null,
             phone: null,
             rolId: 2,
-            avatar: profile.photos[0].value,
+            avatar: "user_default.png",
             id_social: profile.id,
             social_provider: "google",
           });
