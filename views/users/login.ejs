@@ -6,7 +6,7 @@
     <!-- ----------Inicio de header----------- -->
     <%- include('../partials/header') %>
     <!-- ----------Fin de header----------- -->
-    <!-- ----------Inicio de main----------- -->  
+    <!-- ----------Inicio de main----------- -->
     <main class="login__main">
       <section class="login__main__container">
         <h1>INGRESA</h1>
@@ -16,23 +16,27 @@
         </div>
 
         <form action="" method="POST" novalidate>
-
           <div class="form__field">
             <label for="">Email</label>
-            <input type="email" name="email"   />
-            <p class="form__error"><%= locals.errors && errors.email ? errors.email.msg : null %></p>
+            <input type="email" name="email" />
+            <p class="form__error">
+              <%= locals.errors && errors.email ? errors.email.msg : null %>
+            </p>
           </div>
 
           <div class="form__field">
             <label for="">Contraseña</label>
             <input type="password" name="password" id=/>
-            <p class="form__error"><%= locals.errors && errors.password ? errors.password.msg : null %></p>
-         </div>
+            <p class="form__error">
+              <%= locals.errors && errors.password ? errors.password.msg : null
+              %>
+            </p>
+          </div>
 
           <div class="login_main_recordarme">
             <div class="login_main_recordarchecbox">
               <label for="">Recordarme</label>
-              <input type="checkbox" name="remember" id="recordame"  />
+              <input type="checkbox" name="remember" id="recordame" />
             </div>
             <a href="#">¿Olvidaste tu contraseña?</a>
           </div>
@@ -40,9 +44,11 @@
         </form>
         <p id="login__Google">O ingresa con</p>
 
-        <button class="google__button">
-          <img src="/images/iconos/google.png" alt="icono google" /> Google
-        </button>
+        <a href="/auth/google" style=" display:block; width: 100%">
+          <button class="google__button">
+            <img src="/images/iconos/google.png" alt="icono google" /> Google
+          </button>
+        </a>
       </section>
     </main>
     <!-- ----------Fin de main----------- -->

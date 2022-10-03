@@ -40,7 +40,7 @@
   transition: all 0.6s ease;
 }
 .login__main__container a:hover {
-  transform: scale(1.06);
+
   text-shadow: 2px 2px 2px #ccc;
 }
 /* .header__nav__right form input {
@@ -115,6 +115,8 @@
   background-color: var(--color-brown);
   color: var(--color-white);
   border: none;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 .registrarse__button:hover {
   transform: scale(1.01);
@@ -130,11 +132,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s;
 }
-.google__button:hover {
-  transform: scale(1.01);
-  box-shadow: 2px 2px 5px #444;
+.google__button:hover{
+  transform: scale(1.01) !important;
+  box-shadow: 2px 2px 3px rgba(51, 51, 51, 0.527);
 }
+
 @media (min-width: 768px) {
   .login__main__container p {
     font-size: 16px;

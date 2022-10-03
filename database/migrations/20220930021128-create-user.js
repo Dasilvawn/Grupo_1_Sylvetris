@@ -40,6 +40,12 @@ module.exports = {
       avatar: {
         type: Sequelize.STRING,
       },
+      id_social: {
+        type: Sequelize.STRING,
+      },
+      social_provider: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

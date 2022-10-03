@@ -147,7 +147,7 @@
 }
 .profile__main__right__avatar {
   border-radius: 50%;
-  max-width: 190px;
+  width: 190px;
   *overflow: hidden;
   position: relative;
 }
