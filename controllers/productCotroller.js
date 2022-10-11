@@ -1,44 +1,54 @@
-const { loadProducts } = require("../data/db");
+const db = require("../database/models");
 const { formatPrice } = require("../utils/moneda");
 
 module.exports = {
   products: (req, res) => {
-    const products = loadProducts();
-
-    return res.render("products/products", {
-      title: "Sylvestris | Productos",
-      products,
-      formatPrice,
-    });
+    db.Product.findAll({ include: ["images"] })
+      .then((products) => {
+        return res.render("./products/products", {
+          title: "Sylvestris | Productos",
+          products,
+          formatPrice,
+        });
+      });
   },
 
   productDetail: (req, res) => {
-    const products = loadProducts();
-
-    const product = products.find((product) => product.id === +req.params.id);
-    const productsByFeatured = products.filter((product) => product.destacado);
-
-    return res.render("products/productDetail", {
-      title: `Sylvestris | ${product.name}`,
-      product,
-      formatPrice,
-      productsByFeatured,
+    const id = req.params.id;
+    let product = db.Product.findByPk(id, {
+      include: ["images"],
     });
+    let productsByFeatured = db.Product.findAll({
+      include: ["images"],
+      where: {
+        destacado: 1,
+      },
+    });
+    Promise.all([product, productsByFeatured]).then(
+      ([product, productsByFeatured]) => {
+        res.render("./products/search", {
+          title: `Sylvestris | ${product.name}`,
+          product,
+          formatPrice,
+          productsByFeatured,
+        });
+      }
+    );
   },
   productCategory: (req, res) => {
-    const products = loadProducts();
-
-    const categoria = req.params.categoria;
-
-    const productsByCategory = products.filter(
-      (product) => product.categoria === categoria
-    );
-
-    return res.render("products/categories", {
-      title: `Sylvestris | ${categoria}`,
-      products: productsByCategory,
-      formatPrice,
-      categoria,
+    db.Product.findAll({
+      where: {
+        categoryId: req.params.id,
+      },
+      include: [{ association: "category" }, { association: "images" }],
+    }).then((products) => {
+      const categoria = products[0].category.name;
+      res.render("products/categories", {
+        title: `Sylvestris | ${categoria}`,
+        products,
+        formatPrice,
+        categoria,
+      });
     });
   },
   productCart: (req, res) => {
