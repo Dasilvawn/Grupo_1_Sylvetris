@@ -8,12 +8,12 @@
             <!-- ----------Fin de header----------- -->
             <!-- ----------Inicio de main----------- -->
             <main class="home-section " id="add__products">
-                <%- include('../partials/navbarAdmin', {user:user}) %>
+                <%- include('../partials/navbarAdmin') %>
                     <section class="login__main__container admin__form__container">
                         <h1>EDITAR PRODUCTO</h1>
 
                         <br />
-                        <form action="/admin/products/edit_product/<%= producto.id? producto.id: id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="admin__form">
+                        <form action="/admin/products/edit_product/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="admin__form">
                             <div class="col">
                                 <div class="form__field">
                                     <label for="">Nombre del producto</label>
@@ -36,8 +36,12 @@
                                 </div>
                                 <div class="form__field">
                                     <label for="">Categoría</label>
-                                    <input type="text" name="categoria"
-                                        class="input__admin" value="<%= locals.old && old.categoria ? old.categoria : producto.categoria %>" />
+                                    <select name="categoria" id="category" class="input__admin">
+                                        <option value="" hidden selected>Elegí la categoría</option>
+                                        <% categories.forEach(({id,name}) => { %>
+                                         <option value="<%= id %>" <%= id === producto.categoryId  && 'selected' %>   ><%= name %></option>
+                                        <% }) %>
+                                    </select>
                                         <p class="form__error"><%= locals.errors && errors.categoria ? errors.categoria.msg : null %></p>
                                 </div>
                                 <div class="form__field">
@@ -50,10 +54,10 @@
                                 <div class="row">
 
                                     <label for="">Sí<input type="radio" name="destacado" value="true"
-                                            class="radio__admin" <%= producto.destacado === "true" && 'checked'
+                                            class="radio__admin" <%= producto.destacado == 1 && 'checked'
                                             %>/></label>
                                     <label for="">No<input type="radio" name="destacado" value="false"
-                                            class="radio__admin" <%= producto.destacado === "false" && 'checked'
+                                            class="radio__admin" <%= producto.destacado == 0 && 'checked'
                                             %>/></label>
                                 </div>
                                 <div class="form__field">
@@ -112,7 +116,7 @@
                                         </div>
                                     </div>
                                     <div class="form__field">
-                                    <label for="">Cargar imagen del producto</label>
+                                    <label for="">Cargar imagen del producto(opcional)</label>
                                     <input type="file" name="imagen" class="input__admin" multiple />
                                     <p class="form__error"><%= locals.errors && errors.imagen ? errors.imagen.msg : null %></p>
                                 </div>
