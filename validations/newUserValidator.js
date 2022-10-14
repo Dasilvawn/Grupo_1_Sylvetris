@@ -1,4 +1,5 @@
 const { check, body } = require("express-validator");
+const db = require("../database/models");
 const users = require("../data/db").loadUsers();
 module.exports = [
   check("name")
@@ -31,11 +32,17 @@ module.exports = [
     .isEmail()
     .withMessage("*Debe ser un email válido")
     .bail()
-    .custom((value, { req }) => {
-      let user = users.find((user) => user.email === value.trim());
-      return !!!user;
-    })
-    .withMessage("*El email ya se encuentra registrado"),
+    .custom((value) => {
+      return db.User.findOne({
+        where: {
+          email: value,
+        },
+      }).then((user) => {
+        if (user) {
+          return Promise.reject("Este email ya está registrado");
+        }
+      });
+    }),
 
   check("password")
     .notEmpty()
@@ -60,58 +67,39 @@ module.exports = [
     })
     .withMessage("Las contraseñas no coinciden"),
 
-    check("phone")
-    .notEmpty()
-    .withMessage("*Requerido")
-    .bail()
-    .isNumeric()
-    .withMessage("*Solo numeros")
-    .bail()
-    .isMobilePhone()
-    .withMessage("*Formato invalido"),
+  check("phone")
+  .matches(/^[0-9+]*$|^NULL$/)
+  .withMessage("Solo numeros"),
 
-  check("dni")
-    .notEmpty()
-    .withMessage("*Requerido")
-    .bail()
-    .isNumeric()
-    .withMessage("Solo numeros")
-    .bail()
-    .isLength({
-      min: 7,
-      max: 8,
-    })
-    .withMessage("*Formato invalido"),
+  body("dni")
+  .matches(/^[0-9]*$|^NULL$/)
+  .withMessage("Solo numeros"),
 
   check("address")
-    .notEmpty()
-    .withMessage("*Requerido")
-    .bail()
-    .isAlphanumeric("es-ES", { ignore: " " })
-    .withMessage("*Solo letras y números"),
+  .matches(/^[A-Z0-9a-zÁÉÍÓÚáéíóúñÑ ]+$|^ *$/g)
+  .withMessage("*Solo letras y numeros"),
 
-  //body("floor").isAlphanumeric().withMessage("*Formato invalido"),
-
-  //check("dpto").isAlphanumeric().withMessage("*Formato invalido"),
-
+  /* body("floor")
+  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú][0-9]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .withMessage("*Solo letras y numeros"),
+ */
+  /* check("dpto")
+  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú][0-9]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .withMessage("*Solo letras y numeros"), */
+  
+  check("country")
+  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .withMessage("*Solo letras"),
+  
   check("state")
-    .notEmpty()
-    .withMessage("*Requerido")
-    .bail()
-    .isAlpha("es-ES", { ignore: " " })
-    .withMessage("*Solo letras"),
+  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .withMessage("*Solo letras"),
 
   check("city")
-    .notEmpty()
-    .withMessage("*Requerido")
-    .bail()
-    .isAlpha("es-ES", { ignore: " " })
-    .withMessage("*Solo letras"),
+  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .withMessage("*Solo letras"),
 
   check("cp")
-    .notEmpty()
-    .withMessage("*Requerido")
-    .bail()
-    .isNumeric()
-    .withMessage("Solo números"),
+  .matches(/^[0-9]*$|^NULL$/)
+  .withMessage("Solo numeros"),
 ];
