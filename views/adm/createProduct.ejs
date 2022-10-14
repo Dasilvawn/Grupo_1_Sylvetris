@@ -38,8 +38,12 @@
                                 </div>
                                 <div class="form__field">
                                     <label for="">Categoría</label>
-                                    <input type="text" name="categoria" 
-                                    class="input__admin" value="<%= locals.old && old.categoria ? old.categoria : null %>" />
+                                    <select name="categoria" id="category" class="input__admin">
+                                        <option value="" hidden selected>Elegí la categoría</option>
+                                        <% categories.forEach(({id,name}) => { %>
+                                         <option value="<%= id %>"><%= name %></option>
+                                        <% }) %>
+                                    </select>
                                     <p class="form__error"><%= locals.errors && errors.categoria ? errors.categoria.msg : null %></p>
                                 </div>
                                 <div class="form__field">
