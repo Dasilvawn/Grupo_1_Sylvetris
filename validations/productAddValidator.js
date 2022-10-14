@@ -31,15 +31,7 @@ module.exports = [
     .withMessage("Debe tener entre 5 y 20 caracteres"),
   //mensaje de error de slug
 
-  check("categoria")
-    .notEmpty()
-    .withMessage("*Requerido")
-    .bail()
-    .isLength({
-      min: 5,
-      max: 50,
-    })
-    .withMessage("La categoria debe tener entre 5 y 20 caracteres"),
+  check("categoria").notEmpty().withMessage("*Requerido"),
   check("stock")
     .notEmpty()
     .withMessage("*Requerido")
