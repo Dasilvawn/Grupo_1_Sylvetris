@@ -8,7 +8,7 @@
     <!-- ----------Fin de header----------- -->
     <!-- ----------Inicio de main----------- -->
     <main class="home-section" id="add__products">
-      <%- include('../partials/navbarAdmin', {user:userAdmin}) %>
+      <%- include('../partials/navbarAdmin') %>
       <section class="login__main__container admin__form__container">
         <h1>EDITAR USUARIO</h1>
 
@@ -43,8 +43,8 @@
               <label for="rol">Rol</label>
               <select name="rol" id="rol" class="input__admin" >
                
-                <option value="usuario" <%= user.rol === "usuario" && 'selected' %> >Usuario</option>
-                <option value="admin" <%= user.rol === "admin" && 'selected' %>>Administrador</option>
+                <option value=2 <%= user.rolId === 2 && 'selected' %> >Usuario</option>
+                <option value=1 <%= user.rolId === 1 && 'selected' %>>Administrador</option>
                
             </select>
             </div>
@@ -62,27 +62,27 @@
             </div>
             <div class="form__field">
               <label for="">Dirección</label>
-              <input type="text" name="address" class="input__admin" value="<%= locals.old && old.address ? old.address : user.address %>"/>
+              <input type="text" name="address" class="input__admin" value="<%= locals.old && old.address ? old.address : user.address[0].address %>"/>
               <p class="form__error"><%= locals.errors && errors.address ? errors.address.msg : null%></p>
             </div>
             <div class="form__field">
               <label for="">Pais</label>
-              <input type="text" name="country" class="input__admin" value="<%= locals.old && old.country ? old.country : user.country %>"/>
+              <input type="text" name="country" class="input__admin" value="<%= locals.old && old.country ? old.country : user.address[0].country %>"/>
               <p class="form__error"><%= locals.errors && errors.country ? errors.country.msg : null%></p>
             </div>
             <div class="form__field">
               <label for="">Provincia</label>
-              <input type="text" name="state" class="input__admin" value="<%= locals.old && old.state ? old.state : user.state %>"/>
+              <input type="text" name="state" class="input__admin" value="<%= locals.old && old.state ? old.state : user.address[0].state %>"/>
               <p class="form__error"><%= locals.errors && errors.state ? errors.state.msg : null%></p>
             </div>
             <div class="form__field">
               <label for="">Ciudad</label>
-              <input type="text" name="city" class="input__admin" value="<%= locals.old && old.city ? old.city : user.city %>"/>
+              <input type="text" name="city" class="input__admin" value="<%= locals.old && old.city ? old.city : user.address[0].city %>"/>
               <p class="form__error"><%= locals.errors && errors.city ? errors.city.msg : null%></p>
             </div>
             <div class="form__field">
               <label for="">Codigo Postal</label>
-              <input type="number" name="cp" class="input__admin" value="<%= locals.old && old.cp ? old.cp : user.cp %>"/>
+              <input type="number" name="cp" class="input__admin" value="<%= locals.old && old.cp ? old.cp : user.address[0].cp %>"/>
               <p class="form__error"><%= locals.errors && errors.cp ? errors.cp.msg : null%></p>
             </div>
 
