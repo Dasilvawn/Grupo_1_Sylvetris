@@ -8,7 +8,7 @@
     <!-- ----------Fin de header----------- -->
     <!-- ----------Inicio de main----------- -->
     <section class="home-section">
-      <%- include('../partials/navbarAdmin', {user:user}) %>
+      <%- include('../partials/navbarAdmin') %>
 
       <table class="responsive-table">
         <div class="admin__products__header">
@@ -28,7 +28,7 @@
             <th scope="col">Apellido</th>
             <th scope="col">Email</th>
             <th scope="col">Rol</th>
-            <th scope="col">Ciudad</th>
+          
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -39,13 +39,13 @@
           <tr>
             <td data-title="Id"><%= user.id %></td>
             <td scope="row">
-              <img width="50" height="50" src="/images/avatars/<%= user.image[0] %>" alt="" style="border-radius: 50% ;" />
+              <img width="50" height="50" src="/images/avatars/<%= user.avatar %>" alt="" style="border-radius: 50% ;" />
             </td>
             <td data-title="name"><%= user.name %></td>
             <td data-title="lastname"><%= user.lastname %></td>
             <td data-title="email"><%= user.email %></td>
-            <td data-title="rol"><%= user.rol %></td>
-            <td data-title="Descripcion"><%= user.city %></td>
+            <td data-title="rol"><%= user.rol.name %></td>
+           
             <td data-title="Acciones">
               <a href="/admin/users/edit_user/<%= user.id %>"
                 ><button class="btn__editar">
