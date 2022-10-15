@@ -16,7 +16,7 @@ module.exports = {
   productDetail: (req, res) => {
     const id = req.params.id;
     let product = db.Product.findByPk(id, {
-      include: ["images"],
+      include: ["images", "category"],
     });
     let productsByFeatured = db.Product.findAll({
       include: ["images"],
@@ -26,7 +26,7 @@ module.exports = {
     });
     Promise.all([product, productsByFeatured]).then(
       ([product, productsByFeatured]) => {
-        res.render("./products/search", {
+        res.render("./products/productDetail", {
           title: `Sylvestris | ${product.name}`,
           product,
           formatPrice,

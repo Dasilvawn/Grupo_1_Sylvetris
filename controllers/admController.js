@@ -1,4 +1,4 @@
-const {loadProducts, storeProducts} = require('../data/productsModule');
+/* const {loadProducts, storeProducts} = require('../data/productsModule');
 const { nextTick } = require('process');
 const fs = require("fs");
 const path = require("path");
@@ -150,5 +150,5 @@ module.exports = {
     });
   },
 };
-
+ */
   

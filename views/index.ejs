@@ -17,22 +17,48 @@
           <button class="home__section__banner--btn">Comprar online</button>
         </section>
         <section class="home__section__categorias home_sec_margin">
-          <% categorias.forEach(categoria=> { %>
+         
             
             <article class="home__section__categorias__card">
-                <a href="/productos/<%= categoria.name %> ">
+                <a href="/productos/categoria/1 ">
                 <h3>
-                  <%= categoria.name %>
+                  Suculentas
                 </h3>
                 <picture class="home__section__categorias__card--img">
-                  <source srcset=<%=categoria.img1 %>
+                  <source srcset='/images/categorias/cat1.webp'
                   media="(min-width:1440px)"
                   />
-                  <img src=<%=categoria.img2 %> alt=<%= categoria.name %> />
+                  <img src='/images/categorias/cat1.jpg' alt='suculentas' />
                 </picture>
               </a>
               </article>
-            <% }) %>
+            <article class="home__section__categorias__card">
+                <a href="/productos/categoria/3 ">
+                <h3>
+                  Plantas
+                </h3>
+                <picture class="home__section__categorias__card--img">
+                  <source srcset='/images/categorias/cat2.webp'
+                  media="(min-width:1440px)"
+                  />
+                  <img src='/images/categorias/cat2.jpg' alt='plantas' />
+                </picture>
+              </a>
+              </article>
+            <article class="home__section__categorias__card">
+                <a href="/productos/categoria/2 ">
+                <h3>
+                  Captus
+                </h3>
+                <picture class="home__section__categorias__card--img">
+                  <source srcset='/images/categorias/cat3.webp'
+                  media="(min-width:1440px)"
+                  />
+                  <img src='/images/categorias/cat3.jpg' alt='captus' />
+                </picture>
+              </a>
+              </article>
+          
         </section>
         <%- include('./partials/carrusel', {productsByFeatured: productsByFeatured}) %> 
           <section class="home__section__about home_sec_margin">

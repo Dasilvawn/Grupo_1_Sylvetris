@@ -8,7 +8,7 @@ const formatPrice = ( value) => {
         maximumFractionDigits: 2,
     })
     //lo pasamos de euros a pesos
-    return formatter.format( value * 300) ; //$2,500.00
+    return formatter.format( value ) ; //$2,500.00
 }
 
 module.exports ={

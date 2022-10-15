@@ -97,15 +97,18 @@
   max-width: 350px;
   overflow: hidden;
   position: relative;
+  
 }
 .home__section__categorias__card--img {
   height: auto;
   width: 100%;
+  
 }
 .home__section__categorias__card--img img {
   object-fit: fill;
   transition: all 0.4s ease;
   width: 100%;
+  display:block;
 }
 .home__section__categorias__card--img img:hover {
   cursor: pointer;

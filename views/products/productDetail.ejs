@@ -12,7 +12,7 @@
     <main class="producto__main__container">
       <nav class="producto_main_section_nav">
         <div class="producto_main_section_ruta">
-          <a href="/">Inicio</a>&nbsp/&nbsp<a href="/productos/<%= product.categoria %>"><%= product.categoria %></a
+          <a href="/">Inicio</a>&nbsp/&nbsp<a href="/productos/categoria/<%= product.categoryId %>"><%= product.category.name %></a
           >&nbsp/&nbsp<a href="/productos/detalle/<%= product.id %>"><%= product.nombre %></a>
         </div>
       </nav>
@@ -21,7 +21,7 @@
         <div class="producto__section__izquierda">
           <div class="producto__section__categorias__article--img">
             <img
-              src="/images/products/<%= product.imagen[0] %>"
+              src="/images/products/<%= product.images[0].filename %>"
               alt="<%= product.nombre %>"
             />
           </div>
