@@ -12,31 +12,33 @@
         <h2 id="profile_title" class="home__title">Mi perfil</h2>
         <div class="profile__main__container">
           <%- include('../partials/menuProfile') %>
+
           <article class="profile__main__right">
             <h3>MIS DATOS</h3>
             <div class="profile__main__right__container">
               <div class="profile__main__right__avatar">
-                <% if (userLogin.social_provider === "google") { %>
-                <img src="<%= userLogin.avatar %>" alt="avatar" />
-                <% }else{ %>
                 <img
                   src="/images/avatars/<%= userLogin.avatar %>"
                   alt="avatar"
                 />
-                <% } %>
               </div>
 
               <div class="profile__main__right__info">
                 <h4>Información de Contacto</h4>
-                <p style="text-transform: capitalize;"><%= userLogin.name %> <%= userLogin.lastname %></p>
+                <p style="text-transform: capitalize">
+                  <%= userLogin.name %> <%= userLogin.lastname %>
+                </p>
                 <p><%= userLogin.email %></p>
                 <div class="profile__main__right__action">
                   <a href="/usuario/perfil/cambiar_nombre"
                     ><i class="bx bx-edit"></i>Editar</a
                   >
+                  <% if (!userLogin.social_provider) { %>
                   <a href="/usuario/perfil/cambiar_password"
                     ><i class="bx bx-edit"></i>Cambiar contraseña</a
                   >
+
+                  <% } %>
                 </div>
               </div>
             </div>

@@ -16,7 +16,7 @@
                         
                         <article class="profile__main__right">
                             <h3>MI DIRECCION</h3>
-                            <% if (locals.user?.address) { %>
+                            <% if (locals.user?.address[0]) { %>
                                 <div class="profile__main__right__info">
                                     <h4>Dirección de envío</h4>
                                     <p>
@@ -28,12 +28,12 @@
                                     <p>Tel: <%= user.phone %>
                                     </p>
                                     <p>
-                                        <%= user.address %>
-                                            <%= user.floor && ", piso " + user.floor %>
-                                                <%= user.dpto && ', dpto. ' + user.dpto %>
+                                        <%= user.address[0].address %>
+                                            <%= user.address[0].floor && ", piso " + user.address[0].floor %>
+                                                <%= user.address[0].dpto && ', dpto. ' + user.address[0].dpto %>
                                     </p>
                                     <p>
-                                        <%= user.city && user.city + ", " %> <%= user.state && user.state + ", " %>, <%= user.cp && "CP " + user.cp %>
+                                        <%= user.address[0].city && user.address[0].city + ", " %> <%= user.address[0].state && user.address[0].state + ", " %> <%= user.address[0].cp && "CP " + user.address[0].cp %>
                                     </p>
                                     <div class="profile__main__right__action">
                                         <a href="/usuario/perfil/cambiar_direccion"><i class='bx bx-edit'></i>Editar</a>
