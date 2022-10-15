@@ -3,7 +3,6 @@ const bcryptjs = require("bcryptjs");
 const fs = require("fs").promises;
 const db = require("../database/models");
 
-
 module.exports = {
   login: (req, res) => {
     return res.render("users/login", {
@@ -107,7 +106,7 @@ module.exports = {
           user,
         });
       })
-      .catch((err)=>console.log(err));
+      .catch((err) => console.log(err));
   },
   rename: async (req, res) => {
     const id = req.session.userLogin?.id;
@@ -116,58 +115,54 @@ module.exports = {
         return res.render("users/rename", {
           title: "Sylvestris | Cambiar nombre",
           user,
-      });
-    })
-    .catch((err)=>console.log(err));
+        });
+      })
+      .catch((err) => console.log(err));
   },
 
   putRename: async (req, res) => {
-
     let errors = validationResult(req); // traigo los errores del validador
     const id = req.session.userLogin.id; // cargo el id de la session
 
-
     if (errors.isEmpty()) {
       // traigo la los datos del formulario
-      try{
-      const { name, lastname } = req.body;
+      try {
+        const { name, lastname } = req.body;
 
-      // traigo la imagen de multer
-      const [image] = req.files.map((file) => file.filename);
+        // traigo la imagen de multer
+        const [image] = req.files.map((file) => file.filename);
 
-      // genero un nuevo array con el usuario modificado
-      let user = await db.User.findByPk(id);
-      user.name = name.trim();
-      user.lastname = lastname.trim();
-      
-      
-      
-      //si se envia un nuevo avatar, se borra el anterior
-      if(image){
-        fs.unlink(`./public/images/avatars/${user.avatar}`);
-        user.avatar = image ;
-      }else{
-        user.avatar = user.avatar;
-      }
+        // genero un nuevo array con el usuario modificado
+        let user = await db.User.findByPk(id);
+        user.name = name.trim();
+        user.lastname = lastname.trim();
 
-      await user.save();
+        //si se envia un nuevo avatar, se borra el anterior
+        if (image) {
+          fs.unlink(`./public/images/avatars/${user.avatar}`);
+          user.avatar = image;
+        } else {
+          user.avatar = user.avatar;
+        }
 
-      // guardo en session los datos actualizados
-      req.session.userLogin = {
-        ...req.session.userLogin,
-        name: user.name,
-        lastname: user.lastname,
-        iconNavbar: user.name.split(" ")[0]?.charAt(0),
-        avatar: user.avatar,
-      };
+        await user.save();
 
-      //actualizo la cookie
-      req.cookies.sylvestris &&
-        res.cookie("sylvestris", req.session.userLogin, {
-          maxAge: 1000 * 60 * 60 * 24,
-        });
+        // guardo en session los datos actualizados
+        req.session.userLogin = {
+          ...req.session.userLogin,
+          name: user.name,
+          lastname: user.lastname,
+          iconNavbar: user.name.split(" ")[0]?.charAt(0),
+          avatar: user.avatar,
+        };
+
+        //actualizo la cookie
+        req.cookies.sylvestris &&
+          res.cookie("sylvestris", req.session.userLogin, {
+            maxAge: 1000 * 60 * 60 * 24,
+          });
         res.redirect("/usuario/perfil");
-      }catch(error){
+      } catch (error) {
         console.log(error);
       }
     } else {
@@ -178,9 +173,9 @@ module.exports = {
             old: req.body,
             errors: errors.mapped(),
             user,
-        });
-      })
-      .catch((err) => console.log(err));
+          });
+        })
+        .catch((err) => console.log(err));
     }
   },
   change_password: (req, res) => {
@@ -190,14 +185,14 @@ module.exports = {
         return res.render("users/change_password", {
           title: "Sylvestris | Cambiar contraseña",
           user,
-      });
-    })
-    .catch((err) => console.log(err));
+        });
+      })
+      .catch((err) => console.log(err));
   },
   putChange_password: (req, res) => {
     const id = req.session.userLogin.id;
     let errors = validationResult(req);
-    
+
     if (errors.isEmpty()) {
       let { password } = req.body;
       db.User.update(
@@ -214,51 +209,49 @@ module.exports = {
           res.redirect("/usuario/perfil");
         })
         .catch((err) => console.log(err));
-      } else {
-        db.User.findByPk(id)
-          .then((user) => {
-            return res.render("users/change_password", {
-              title: "Sylvestris | Cambiar contraseña",
-              old: req.body,
-              errors: errors.mapped(),
-              user,
+    } else {
+      db.User.findByPk(id)
+        .then((user) => {
+          return res.render("users/change_password", {
+            title: "Sylvestris | Cambiar contraseña",
+            old: req.body,
+            errors: errors.mapped(),
+            user,
           });
-      })
-      .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
     }
   },
   address: (req, res) => {
     const id = req.session.userLogin?.id;
     db.User.findByPk(id, {
-      include: ['address']
+      include: ["address"],
     })
       .then((user) => {
-
-       
         return res.render("users/address", {
           title: "Sylvestris | Mi direccion",
           user,
-      });
-    })
-    .catch((err) => console.log(err));
+        });
+      })
+      .catch((err) => console.log(err));
   },
   change_address: (req, res) => {
     const id = req.session.userLogin?.id;
     db.User.findByPk(id, {
-      include: ["address"]
+      include: ["address"],
     })
-    .then((user) => {
-      return res.render("users/change_address", {
-        title: "Sylvestris | Cambiar direccion",
-        user,
-      });
-    })
-    .catch((err) => console.log(err));
+      .then((user) => {
+        return res.render("users/change_address", {
+          title: "Sylvestris | Cambiar direccion",
+          user,
+        });
+      })
+      .catch((err) => console.log(err));
   },
   putChange_address: (req, res) => {
     let id = req.session.userLogin.id;
     let errors = validationResult(req);
-    
+
     if (errors.isEmpty()) {
       // guardo en session los datos actualizados
       let {
@@ -300,25 +293,27 @@ module.exports = {
           },
         }
       ).then(() => {
-        db.Address.update({
-          address: address.trim(),
-          floor: floor ? floor.trim() : null,
-          dpto: dpto ? dpto.trim() : null,
-          state: state.trim(),
-          city: city.trim(),
-          cp,
-        },{
-          where: {
-            userId: req.session.userLogin.id,
+        db.Address.update(
+          {
+            address: address.trim(),
+            floor: floor ? floor.trim() : null,
+            dpto: dpto ? dpto.trim() : null,
+            state: state.trim(),
+            city: city.trim(),
+            cp,
           },
-        }
-      ).then(() => {
-        res.redirect(`/usuario/perfil/direccion`);
-      });
+          {
+            where: {
+              userId: req.session.userLogin.id,
+            },
+          }
+        ).then(() => {
+          res.redirect(`/usuario/perfil/direccion`);
+        });
       });
     } else {
       db.User.findByPk(id, {
-        include: ["address"]
+        include: ["address"],
       })
         .then((user) => {
           return res.render("users/change_address", {
@@ -326,35 +321,14 @@ module.exports = {
             old: req.body,
             errors: errors.mapped(),
             user,
-        });
-      })
-      .catch((err) => console.log(err));
+          });
+        })
+        .catch((err) => console.log(err));
     }
   },
   logout: (req, res) => {
     req.session.destroy();
     res.cookie("sylvestris", null, { maxAge: -1 });
     return res.redirect("/");
-  },
-  
-  
-  googleSignin: async (req, res = response) => {
-    const firstLetterName = req.session.passport.user.name.split(" ")[0]?.charAt(0);
-    
-    req.session.userLogin = {
-      id: req.session.passport.user.id,
-      name: req.session.passport.user.name,
-      lastname: req.session.passport.user.lastname,
-      email: req.session.passport.user.email,
-      id_social: req.session.passport.user.id_social,
-      rol: 2,
-      social_provider: req.session.passport.user.social_provider,
-      avatar: req.session.passport.user.avatar,
-      iconNavbar: firstLetterName,
-    };
-    res.cookie("sylvestris", req.session.userLogin, {
-      maxAge: 1000 * 60 * 60 * 24,
-    });
-    res.redirect("/");
   },
 };

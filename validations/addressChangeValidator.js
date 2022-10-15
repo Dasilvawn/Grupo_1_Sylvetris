@@ -1,5 +1,5 @@
-const { check, body } = require("express-validator");
-const users = require("../data/db").loadUsers();
+const { check } = require("express-validator");
+
 module.exports = [
   check("name")
     .notEmpty()
