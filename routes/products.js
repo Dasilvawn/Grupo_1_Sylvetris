@@ -14,7 +14,7 @@ router.get("/", products);
 router.get("/carrito", productCart);
 
 /*por catogoria */
-router.get("/:categoria", productCategory);
+router.get("/categoria/:id", productCategory);
 
 /* un producto */
 router.get("/detalle/:id", productDetail);

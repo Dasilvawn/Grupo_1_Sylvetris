@@ -1,7 +1,7 @@
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
-const { loadUsers, storeUsers } = require("../data/db");
 const db = require("../database/models");
+const { response } = require("express");
 
 module.exports = {
   login: (req, res) => {
@@ -98,60 +98,56 @@ module.exports = {
     }
   },
   profile: (req, res) => {
-    const users = loadUsers();
     const id = req.session.userLogin?.id;
-    const user = users.find((user) => user.id === +id);
-    return res.render("users/profile", {
-      title: "Sylvestris | Mi perfil",
-      user,
-    });
+    db.User.findByPk(id)
+      .then((user) => {
+        return res.render("users/profile", {
+          title: "Sylvestris | Mi perfil",
+          user,
+        });
+      })
+      .catch((err)=>console.log(err));
+  },
+  rename: async (req, res) => {
+    const id = req.session.userLogin?.id;
+    db.User.findByPk(id)
+      .then((user) => {
+        return res.render("users/rename", {
+          title: "Sylvestris | Cambiar nombre",
+          user,
+      });
+    })
+    .catch((err)=>console.log(err));
   },
 
-  rename: (req, res) => {
-    const users = loadUsers();
-    const id = req.session.userLogin.id;
-    const user = users.find((user) => user.id === +id);
-    return res.render("users/rename", {
-      title: "Sylvestris | Cambiar nombre",
-      user,
-    });
-  },
-
-  putRename: (req, res) => {
-    const users = loadUsers(); // cargo los usarios de json
-    const id = req.session.userLogin.id; // cargo el id de la session
-    const user = users.find((user) => user.id === +id); // busco al usuario a modificar
+  putRename: async (req, res) => {
 
     let errors = validationResult(req); // traigo los errores del validador
+    const id = req.session.userLogin.id; // cargo el id de la session
+
 
     if (errors.isEmpty()) {
       // traigo la los datos del formulario
-      let { name, lastname } = req.body;
+      try{
+      const { name, lastname } = req.body;
 
       // traigo la imagen de multer
-      let image = req.files.map((file) => file.filename);
+      const [image] = req.files.map((file) => file.filename);
 
       // genero un nuevo array con el usuario modificado
-      const usersModify = users.map((user) => {
-        if (user.id === +id) {
-          return {
-            ...user,
-            name,
-            lastname,
-            image: image ? image : user.image[0],
-          };
-        } else {
-          return user;
-        }
-      });
+      let user = await db.User.findByPk(id);
+      user.name = name.trim();
+      user.lastname = lastname.trim();
+      user.avatar = image ? image : user.avatar;
+      await user.save();
 
       // guardo en session los datos actualizados
       req.session.userLogin = {
         ...req.session.userLogin,
-        name,
-        lastname,
-        iconNavbar: name.split(" ")[0]?.charAt(0),
-        image: image ? image : user.image[0],
+        name: user.name,
+        lastname: user.lastname,
+        iconNavbar: user.name.split(" ")[0]?.charAt(0),
+        avatar: user.avatar,
       };
 
       //actualizo la cookie
@@ -159,88 +155,97 @@ module.exports = {
         res.cookie("sylvestris", req.session.userLogin, {
           maxAge: 1000 * 60 * 60 * 24,
         });
-
-      // actualizo el json
-      storeUsers(usersModify);
-      return res.redirect("/usuario/perfil");
+        res.redirect("/usuario/perfil");
+      }catch(error){
+        console.log(error);
+      }
     } else {
-      return res.render("users/rename", {
-        title: "Sylvestris | Cambiar nombre",
-        old: req.body,
-        errors: errors.mapped(),
-        user,
-      });
+      db.User.findByPk(id)
+        .then((user) => {
+          return res.render("users/rename", {
+            title: "Sylvestris | Cambiar nombre",
+            old: req.body,
+            errors: errors.mapped(),
+            user,
+        });
+      })
+      .catch((err) => console.log(err));
     }
   },
-
   change_password: (req, res) => {
-    const users = loadUsers();
     const id = req.session.userLogin?.id;
-    const user = users.find((user) => user.id === +id);
-    return res.render("users/change_password", {
-      title: "Sylvestris | Cambiar contraseña",
-      user,
-      session: req.session,
-    });
+    db.User.findByPk(id)
+      .then((user) => {
+        return res.render("users/change_password", {
+          title: "Sylvestris | Cambiar contraseña",
+          user,
+      });
+    })
+    .catch((err) => console.log(err));
   },
   putChange_password: (req, res) => {
-    const users = loadUsers();
     const id = req.session.userLogin.id;
-    const user = users.find((user) => user.id === +id);
-
     let errors = validationResult(req);
-
+    
     if (errors.isEmpty()) {
       let { password } = req.body;
-
-      const userModify = users.map((user) => {
-        if (user.id === +id) {
-          return {
-            ...user,
-            password: bcryptjs.hashSync(password, 12),
-          };
-        } else {
-          return user;
+      db.User.update(
+        {
+          password: bcryptjs.hashSync(password, 12),
+        },
+        {
+          where: {
+            id: req.session.userLogin.id,
+          },
         }
-      });
-      // no hay cambios en la session ni en la cookie, solo en el json
-      storeUsers(userModify);
-      return res.redirect("/usuario/perfil");
-    } else {
-      return res.render("users/change_password", {
-        title: "Sylvestris | Cambiar contraseña",
-        old: req.body,
-        errors: errors.mapped(),
-        user,
-      });
+      )
+        .then(() => {
+          res.redirect("/usuario/perfil");
+        })
+        .catch((err) => console.log(err));
+      } else {
+        db.User.findByPk(id)
+          .then((user) => {
+            return res.render("users/change_password", {
+              title: "Sylvestris | Cambiar contraseña",
+              old: req.body,
+              errors: errors.mapped(),
+              user,
+          });
+      })
+      .catch((err) => console.log(err));
     }
   },
   address: (req, res) => {
-    const users = loadUsers();
-    const id = req.session.userLogin.id;
-    const user = users.find((user) => user.id === +id);
-    return res.render("users/address", {
-      title: "Sylvestris | Mi direccion",
-      user,
-    });
+    const id = req.session.userLogin?.id;
+    db.User.findByPk(id, {
+      include: ['address']
+    })
+      .then((user) => {
+        return res.render("users/address", {
+          title: "Sylvestris | Mi direccion",
+          user,
+      });
+    })
+    .catch((err) => console.log(err));
   },
   change_address: (req, res) => {
-    const users = loadUsers();
     const id = req.session.userLogin?.id;
-    const user = users.find((user) => user.id === +id);
-    return res.render("users/change_address", {
-      title: "Sylvestris | Cambiar direccion",
-      user,
-    });
+    db.User.findByPk(id)
+    .then((user) => {
+      return res.render("users/change_address", {
+        title: "Sylvestris | Cambiar direccion",
+        user,
+      });
+    })
+    .catch((err) => console.log(err));
   },
   putChange_address: (req, res) => {
-    const users = loadUsers();
-    const id = req.session.userLogin.id;
-    const user = users.find((user) => user.id === +id);
-
+    let id = req.session.userLogin.id;
     let errors = validationResult(req);
-
+    
     if (errors.isEmpty()) {
+      // guardo en session los datos actualizados
       let {
         name,
         lastname,
@@ -254,38 +259,10 @@ module.exports = {
         cp,
       } = req.body;
 
-      const userModify = users.map((user) => {
-        if (user.id === +id) {
-          return {
-            ...user,
-            name: name.trim(),
-            lastname: lastname.trim(),
-            phone: phone.trim(),
-            dni,
-            address: address.trim(),
-            floor: floor ? floor.trim() : "",
-            dpto: dpto ? dpto.trim() : "",
-            state: state.trim(),
-            city: city.trim(),
-            cp,
-          };
-        } else {
-          return user;
-        }
-      });
-      // guardo en session los datos actualizados
       req.session.userLogin = {
         ...req.session.userLogin,
         name,
         lastname,
-        phone,
-        dni,
-        address,
-        floor,
-        dpto,
-        state,
-        city,
-        cp,
         iconNavbar: name.split(" ")[0]?.charAt(0),
       };
 
@@ -295,15 +272,46 @@ module.exports = {
           maxAge: 1000 * 60 * 60 * 24,
         });
 
-      storeUsers(userModify);
-      return res.redirect(`/usuario/perfil/direccion`);
-    } else {
-      return res.render("users/change_address", {
-        title: "Sylvestris | Cambiar direccion",
-        old: req.body,
-        errors: errors.mapped(),
-        user,
+      db.User.update(
+        {
+          name: name.trim(),
+          lastname: lastname.trim(),
+          phone: phone.trim(),
+          dni,
+        },
+        {
+          where: {
+            id: req.session.userLogin.id,
+          },
+        }
+      ).then(() => {
+        db.Address.update({
+          address: address.trim(),
+          floor: floor ? floor.trim() : null,
+          dpto: dpto ? dpto.trim() : null,
+          state: state.trim(),
+          city: city.trim(),
+          cp,
+        },{
+          where: {
+            userId: req.session.userLogin.id,
+          },
+        }
+      ).then(() => {
+        res.redirect(`/usuario/perfil/direccion`);
       });
+      });
+    } else {
+      db.User.findByPk(id)
+        .then((user) => {
+          return res.render("users/rename", {
+            title: "Sylvestris | Cambiar direccion",
+            old: req.body,
+            errors: errors.mapped(),
+            user,
+        });
+      })
+      .catch((err) => console.log(err));
     }
   },
   logout: (req, res) => {
