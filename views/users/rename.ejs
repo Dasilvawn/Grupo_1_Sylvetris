@@ -21,12 +21,12 @@
                         <h4>Ingresa tus nuevos datos</h4>
                     <div class="input__profile">
                         <label for="">Nombre/s</label>
-                        <input type="text" name="name"value="<%= locals.old && old.name ? old.name : null %>" >
+                        <input type="text" name="name"value="<%= locals.old && old.name ? old.name : user.name %>" >
                         <p class="form__error error_profile"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
                     </div>
                     <div class="input__profile">
                         <label for="">Apellido</label>
-                        <input type="text" name="lastname" value="<%= locals.old && old.lastname ? old.lastname : null %>" >
+                        <input type="text" name="lastname" value="<%= locals.old && old.lastname ? old.lastname : user.lastname %>" >
                         <p class="form__error error_profile"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
                     </div>
                     <div class="input__profile">

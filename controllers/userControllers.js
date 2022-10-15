@@ -1,7 +1,8 @@
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
+const fs = require("fs").promises;
 const db = require("../database/models");
-const { response } = require("express");
+
 
 module.exports = {
   login: (req, res) => {
@@ -138,7 +139,17 @@ module.exports = {
       let user = await db.User.findByPk(id);
       user.name = name.trim();
       user.lastname = lastname.trim();
-      user.avatar = image ? image : user.avatar;
+      
+      
+      
+      //si se envia un nuevo avatar, se borra el anterior
+      if(image){
+        fs.unlink(`./public/images/avatars/${user.avatar}`);
+        user.avatar = image ;
+      }else{
+        user.avatar = user.avatar;
+      }
+
       await user.save();
 
       // guardo en session los datos actualizados
