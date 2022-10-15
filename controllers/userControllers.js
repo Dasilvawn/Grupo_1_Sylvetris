@@ -222,6 +222,8 @@ module.exports = {
       include: ['address']
     })
       .then((user) => {
+
+       
         return res.render("users/address", {
           title: "Sylvestris | Mi direccion",
           user,
@@ -231,7 +233,9 @@ module.exports = {
   },
   change_address: (req, res) => {
     const id = req.session.userLogin?.id;
-    db.User.findByPk(id)
+    db.User.findByPk(id, {
+      include: ["address"]
+    })
     .then((user) => {
       return res.render("users/change_address", {
         title: "Sylvestris | Cambiar direccion",
@@ -302,9 +306,11 @@ module.exports = {
       });
       });
     } else {
-      db.User.findByPk(id)
+      db.User.findByPk(id, {
+        include: ["address"]
+      })
         .then((user) => {
-          return res.render("users/rename", {
+          return res.render("users/change_address", {
             title: "Sylvestris | Cambiar direccion",
             old: req.body,
             errors: errors.mapped(),

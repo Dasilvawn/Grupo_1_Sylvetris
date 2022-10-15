@@ -47,36 +47,36 @@
                     <h4>Dirección de envío</h4>
                     <div class="input__profile">
                         <label for="">Dirección</label>
-                        <input type="text" name="address"  value="<%= locals.old && old.address ? old.address : user.address %>">
+                        <input type="text" name="address"  value="<%= locals.old && old.address ? old.address : user.address[0].address %>">
                         <p class="form__error error_profile"><%= locals.errors && errors.address ? errors.address.msg : null%></p>
                     </div>
                     <div class="row" style="margin-top:0px ; width: 100%;">
                         <div class="input__profile">
-                            <label for="">Piso</label>
-                            <input type="text" name="floor"  value="<%= locals.old && old.floor ? old.floor : user.floor %>">
+                            <label for="">Piso(opcional)</label>
+                            <input type="text" name="floor"  value="<%= locals.old && old.floor ? old.floor : user.address[0].floor %>">
                             <p class="form__error error_profile"><%= locals.errors && errors.floor ? errors.floor.msg : null%></p>
                         </div>
                         <div class="input__profile">
-                            <label for="">Dpto.</label>
-                            <input type="tel" name="dpto" value="<%= locals.old && old.dpto ? old.dpto : user.dpto %>">  
+                            <label for="">Dpto.(opcional)</label>
+                            <input type="tel" name="dpto" value="<%= locals.old && old.dpto ? old.dpto : user.address[0].dpto %>">  
                             <p class="form__error error_profile"><%= locals.errors && errors.dpto ? errors.dpto.msg : null%></p>
                         </div>
 
                     </div>
                     <div class="input__profile">
                         <label for="">Provincia</label>
-                        <input type="text" name="state"  value="<%= locals.old && old.state ? old.state : user.state %>">
+                        <input type="text" name="state"  value="<%= locals.old && old.state ? old.state : user.address[0].state %>">
                         <p class="form__error error_profile"><%= locals.errors && errors.state ? errors.state.msg : null%></p>
                     </div>
                     <div class="input__profile">
                         <label for="">Ciudad</label>
-                        <input type="text" name="city"   value="<%= locals.old && old.city ? old.city : user.city %>">
+                        <input type="text" name="city"   value="<%= locals.old && old.city ? old.city : user.address[0].city %>">
                         <p class="form__error error_profile"><%= locals.errors && errors.city ? errors.city.msg : null%></p>
                     </div>
                     <div class="input__profile">
                         <label for="">Código postal</label>
-                        <input type="number" name="cp"  value="<%= locals.old && old.cp ? old.cp : user.cp %>">
-                        <p class="form__error error_profile"><%= locals.errors && errors.dni ? errors.dni.msg : null%></p>
+                        <input type="number" name="cp"  value="<%= locals.old && old.cp ? old.cp : user.address[0].cp %>">
+                        <p class="form__error error_profile"><%= locals.errors && errors.cp ? errors.cp.msg : null%></p>
                     </div>
                     <button class="registrarse__button profile__btn" type="submit">Enviar</button>
                 </div>
