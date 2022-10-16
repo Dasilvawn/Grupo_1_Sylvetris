@@ -2,7 +2,7 @@ module.exports = {
   googleSignin: async (req, res = response) => {
     const firstLetterName = req.session.passport.user.name
       .split(" ")[0]
-      ?.charAt(0);
+      .charAt(0);
 
     req.session.userLogin = {
       id: req.session.passport.user.id,

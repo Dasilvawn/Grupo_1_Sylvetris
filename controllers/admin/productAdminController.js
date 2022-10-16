@@ -76,11 +76,16 @@ module.exports = {
         })
         .catch((error) => console.log(error));
     } else {
-      return res.render("adm/createProduct", {
-        title: "Sylvestris | Crear Producto",
-        errors: errors.mapped(),
-        old: req.body,
+
+      db.Category.findAll().then((categories) => {
+        return res.render("./adm/createProduct", {
+          title: "Sylvestris | Crear producto",
+          categories,
+          errors: errors.mapped(),
+          old: req.body,
+        });
       });
+     
     }
   },
 
