@@ -27,7 +27,3 @@
   Me gusta todo lo relacionado con la tecnología y más si es aplicada a los vehículos de combustión interna o autos eléctricos, cuando puedo me gusta viajar, conocer nuevos lugares y mi deporte favorito es el futbol.
   Estoy aprendiendo programación porque siento mucha curiosidad por el detras de escena, por aprender como se hacen todas esas herramientas que tanto usamos día a día y también porque me permitiría tener un trabajo estable y un ingreso por encima de la media.
 
-  - **Marcos Sanhueza** :
-
-  Hola soy Marcos, tengo 22 años y vivo en Cutral Có, provincia de Neuquen.
-  Siempre me gustó dibujar cosas que se me venian a la mente, lo puse en practica proyectando diseños de viviendas y espacios públicos durante un tiempo, senti la felcidad de ver proyectos hecho realidad. y hace poco me entere de otra manera de crear: programando, y quiero hacerlo de la mejor manera para una vez mas poder hacer realidad el producto de mi imaginación.
