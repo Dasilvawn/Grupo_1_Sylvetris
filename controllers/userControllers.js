@@ -1,7 +1,8 @@
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
-const fs = require("fs").promises;
+const fs = require("fs");
 const db = require("../database/models");
+const path = require("path");
 
 module.exports = {
   login: (req, res) => {
@@ -123,8 +124,12 @@ module.exports = {
   putRename: async (req, res) => {
     let errors = validationResult(req); // traigo los errores del validador
     const id = req.session.userLogin.id; // cargo el id de la session
+    
+    
+    //return res.send (req.files)
+    
 
-    if (errors.isEmpty()) {
+    if (errors.isEmpty() && !req.fileValidationError) {
       // traigo la los datos del formulario
       try {
         const { name, lastname } = req.body;
@@ -132,14 +137,17 @@ module.exports = {
         // traigo la imagen de multer
         const [image] = req.files.map((file) => file.filename);
 
+
         // genero un nuevo array con el usuario modificado
         let user = await db.User.findByPk(id);
         user.name = name.trim();
         user.lastname = lastname.trim();
 
         //si se envia un nuevo avatar, se borra el anterior
+
+        const file = path.join(__dirname,`../public/images/avatars/${user.avatar}` )
         if (image) {
-          fs.unlink(`./public/images/avatars/${user.avatar}`);
+          fs.existsSync(file) && fs.unlinkSync(`./public/images/avatars/${user.avatar}`);
           user.avatar = image;
         } else {
           user.avatar = user.avatar;
@@ -172,10 +180,11 @@ module.exports = {
             title: "Sylvestris | Cambiar nombre",
             old: req.body,
             errors: errors.mapped(),
+            fileError : req.fileValidationError,
             user,
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err.message));
     }
   },
   change_password: (req, res) => {
@@ -216,6 +225,7 @@ module.exports = {
             title: "Sylvestris | Cambiar contraseña",
             old: req.body,
             errors: errors.mapped(),
+           
             user,
           });
         })

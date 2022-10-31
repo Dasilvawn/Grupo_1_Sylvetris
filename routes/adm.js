@@ -24,8 +24,8 @@ const {
 } = require("../controllers/admin/userAdminController");
 const adminUserCheck = require("../middlewares/adminUserCheck");
 const {
-  uploadImageProduct,
-  uploadImageCreateProduct,
+  uploadImageProduct, uploadImageAvatar,
+
 } = require("../middlewares/uploadFile");
 const editUserValidator = require("../validations/editUserValidator");
 const newUserValidator = require("../validations/newUserValidator");
@@ -42,7 +42,7 @@ router.get("/products", adminUserCheck, getProducts);
 router.get("/products/create_product", adminUserCheck, getCreateProduct);
 router.post(
   "/products/create_product",
-  uploadImageCreateProduct.array("imagen", 2),
+  uploadImageProduct.array("imagen", 2),
   productValidator,
   postCreateProducts
 );
@@ -50,7 +50,7 @@ router.post(
 router.get("/products/edit_product/:id", adminUserCheck, getEditProducts);
 router.put(
   "/products/edit_product/:id",
-  uploadImageCreateProduct.array("imagen", 2),
+  uploadImageProduct.array("imagen", 2),
   productsEditValidator,
   putEditProducts
 );
@@ -63,7 +63,7 @@ router.get("/users", adminUserCheck, getUsers);
 router.get("/users/create_user", adminUserCheck, getCreateUsers);
 router.post(
   "/users/create_user",
-  uploadImageProduct.array("image", 1),
+  uploadImageAvatar.array("image", 1),
   newUserValidator,
   postCreateUsers
 );

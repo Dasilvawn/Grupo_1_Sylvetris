@@ -18,8 +18,8 @@
       </section>
       <section class="products__section__products home_sec_margin">
         <h2 class="home__title capitalize">
-          <% if (locals.categoria) { %> <%= categoria %> <% } else { %> "Nuestros
-          productos" <% } %>
+          <% if (locals.categoria) { %> <%= categoria %> <% } else { %>
+          "Nuestros productos" <% } %>
         </h2>
 
         <div class="products__section__grid">
@@ -32,11 +32,21 @@
                   src="/images/products/<%= product.images[0].filename %>"
                   alt="<%= product.nombre %>"
                 />
+                <% if (product.images[1]) { %>
                 <img
                   class="product__card__img__2"
                   src="/images/products/<%= product.images[1].filename %> "
                   alt="<%= product.nombre %>"
                 />
+
+                <% }else{ %>
+                <img
+                  class="product__card__img__2"
+                  src="/images/products/<%= product.images[0].filename %> "
+                  alt="<%= product.nombre %>"
+                />
+
+                <% } %>
               </div>
             </a>
             <div class="product__card__text">
