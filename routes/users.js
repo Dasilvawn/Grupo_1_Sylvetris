@@ -17,7 +17,7 @@ const {
 } = require("../controllers/userControllers");
 const privateRoute = require("../middlewares/privateRoute");
 const publicRoute = require("../middlewares/publicRoute");
-const { uploadImageProduct } = require("../middlewares/uploadFile");
+const {  uploadImageAvatar } = require("../middlewares/uploadFile");
 const addressChangeValidator = require("../validations/addressChangeValidator");
 const editUserProfileValidator = require("../validations/editUserProfileValidator");
 const loginValidator = require("../validations/loginValidator");
@@ -36,8 +36,8 @@ router.get("/perfil", privateRoute, profile);
 router.get("/perfil/cambiar_nombre",  privateRoute, rename);
 router.put(
   "/perfil/cambiar_nombre",
-  uploadImageProduct.array("image", 1),
- editUserProfileValidator,
+  uploadImageAvatar.array("image", 1),
+  editUserProfileValidator,
   putRename
 );
 

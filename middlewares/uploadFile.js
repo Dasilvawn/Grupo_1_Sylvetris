@@ -1,36 +1,48 @@
-const path = require('path');
-const multer = require('multer');
 
-const storageImageProduct = multer.diskStorage({
+const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
+
+const createStorage = (entityOrFolderName = "products") => {
+  const folder = path.join(__dirname, `../public/images/${entityOrFolderName}`);
+
+  /* Si la carpeta no existe la crea */
+  if (!fs.existsSync(folder)) {
+    fs.mkdirSync(folder);
+  }
+
+  const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, './public/images/avatars')
+      callback(null, `./public/images/${entityOrFolderName}`);
     },
     filename: (req, file, callback) => {
-        callback(null, 'avatar_' + Date.now() + path.extname(file.originalname))
-        /* callback(null,`product-${Date.now()}${path.extname(file.originalname)}`) */
-    }
-});
-
-const uploadImageProduct = multer({
-    storage: storageImageProduct
-});
-
-const storageImageCreateProduct = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../public/images/products'));
+      callback(
+        null,
+        `${entityOrFolderName}-${Date.now()}-${file.originalname}`
+      );
     },
-    filename: (req, file, cb) => {
-        console.log(file);
-        const newFilename = 'image_product_' + Date.now() + path.extname(file.originalname);
-        cb(null, newFilename);
-    }
-});
+  });
 
-const uploadImageCreateProduct = multer({
-    storage: storageImageCreateProduct
-});
+  const fileFilter = (req, file, callback) => {
+    if (!/image/.test(file.mimetype)) {
+      req.fileValidationError = "Archivo invalido";
+
+      return callback(null, false);
+    }
+   
+    callback(null, true);
+  };
+
+  const uploads = {};
+  uploads[entityOrFolderName] = multer({
+    storage,
+    fileFilter,
+  });
+
+  return uploads[entityOrFolderName];
+};
 
 module.exports = {
-    uploadImageProduct,
-    uploadImageCreateProduct
-}
+  uploadImageProduct: createStorage("products"),
+  uploadImageAvatar: createStorage("avatars"),
+};
