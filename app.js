@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
 
 var passport = require('passport');
 
@@ -19,6 +20,8 @@ var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var admRouter = require('./routes/adm');
 var authRouter = require('./routes/auth');
+const userApiRouter = require('./routes/user-api')
+const authApiRouter = require('./routes/auth-api')
 
 
 var app = express();
@@ -51,6 +54,8 @@ app.use('/productos', productsRouter);
 app.use('/usuario', usersRouter);
 app.use('/admin', admRouter);
 app.use('/auth', authRouter);
+app.use('/api/users', userApiRouter);
+app.use('/api/auth', authApiRouter);
 
 
 // catch 404 and forward to error handler
