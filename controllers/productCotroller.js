@@ -17,8 +17,7 @@ module.exports = {
 
       // console.log (offset);     
   }
-  }
-};      
+  };      
       const Productos= await db.product.finAll({
         include:[{
           association: 'images',
