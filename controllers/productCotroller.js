@@ -4,8 +4,18 @@ const { formatPrice } = require("../utils/moneda");
 
 module.exports = {
   products: async (req, res) => {
+    const products = loadProducts();
     try {
-      const product = await db.product.finAll();
+      const{page = 1, limit= 5, offset= 0} = req.query()
+
+      limit = +limit > 10 ? 10 : +10;
+
+      page = +page <= 0 || isNaN(page) ? 1 : +page;
+      page-=1;
+
+      offset = page * limit;
+
+      const Productos= await db.product.finAll({limit, offset});
       return res.status(200).json({
         ok:true,
         status:200,
@@ -15,7 +25,8 @@ module.exports = {
       sendJsoinError(error,res)
     }
   },
-  //   const products = loadProducts();
+
+    
 
   //   return res.render("products/products", {
   //     title: "Sylvestris | Productos",
