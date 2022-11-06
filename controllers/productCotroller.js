@@ -15,6 +15,21 @@ module.exports = {
 
       offset = page * limit;
 
+      console.log (offset);
+
+      const options = {
+        include:[{
+          association: '';
+          attributes: {
+            excluide: ['']
+          }
+        }]
+        attributes: {
+          exclude: ['updatedAt', 'cratedAt'],
+          include: [[literal'']];
+        }
+      } 
+
       const Productos= await db.product.finAll({limit, offset});
       return res.status(200).json({
         ok:true,
@@ -22,7 +37,7 @@ module.exports = {
         data:this.products,
       })      
     } catch (error) {
-      sendJsoinError(error,res)
+      sendJsonError(error,res)
     }
   },
 
