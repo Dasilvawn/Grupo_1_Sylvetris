@@ -15,31 +15,32 @@ module.exports = {
 
       offset = page * limit;
 
-      console.log (offset);
-
-      const options = {
+      // console.log (offset);     
+  }
+  }
+};      
+      const Productos= await db.product.finAll({
         include:[{
-          association: '';
-          attributes: {
-            excluide: ['']
-          }
-        }],
+          association: 'images',
         attributes: {
-          exclude: ['updatedAt', 'cratedAt'],
-          include: [[literal'']]
+            incluide: [[ literal(`CONCAT('${req.protocol}://${req.get("host")}/product/image/', images.nombre)`),
+            'imageUrl' ]]
         }
-      } 
-
-      const Productos= await db.product.finAll({limit, offset});
+      }],
+      attributes: {
+        exclude: ['updatedAt', 'cratedAt'],
+        include: []
+      }}
+      );
       return res.status(200).json({
         ok:true,
         status:200,
         data:this.products,
-      })      
-    } catch (error) {
+      });
+     catch (error) {
       sendJsonError(error,res)
     }
-  },
+  
 
     
 
@@ -63,7 +64,7 @@ module.exports = {
       productsByFeatured,
     });
   },
-  productCategory: (req, res) => {
+  productCategory : (req, res) => {
     const products = loadProducts();
 
     const categoria = req.params.categoria;
