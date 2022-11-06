@@ -1,16 +1,28 @@
+const { decodeBase64 } = require("bcryptjs");
 const { loadProducts } = require("../data/db");
 const { formatPrice } = require("../utils/moneda");
 
 module.exports = {
-  products: (req, res) => {
-    const products = loadProducts();
-
-    return res.render("products/products", {
-      title: "Sylvestris | Productos",
-      products,
-      formatPrice,
-    });
+  products: async (req, res) => {
+    try {
+      const product = await db.product.finAll();
+      return res.status(200).json({
+        ok:true,
+        status:200,
+        data:this.products,
+      })      
+    } catch (error) {
+      sendJsoinError(error,res)
+    }
   },
+  //   const products = loadProducts();
+
+  //   return res.render("products/products", {
+  //     title: "Sylvestris | Productos",
+  //     products,
+  //     formatPrice,
+  //   });
+  // },
 
   productDetail: (req, res) => {
     const products = loadProducts();
