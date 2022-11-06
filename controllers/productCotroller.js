@@ -23,10 +23,10 @@ module.exports = {
           attributes: {
             excluide: ['']
           }
-        }]
+        }],
         attributes: {
           exclude: ['updatedAt', 'cratedAt'],
-          include: [[literal'']];
+          include: [[literal'']]
         }
       } 
 
