@@ -16,27 +16,42 @@ module.exports = {
       offset = page * limit;
 
       // console.log (offset);     
-  }
-  };      
-      const Productos= await db.product.finAll({
+      
+      const {count, rows:Products} = await db.product.findAndCountAll({
+        limit,
+          offset,
         include:[{
           association: 'images',
         attributes: {
-            incluide: [[ literal(`CONCAT('${req.protocol}://${req.get("host")}/product/image/', images.nombre)`),
-            'imageUrl' ]]
+            include: [[ literal(`CONCAT('${req.protocol}://${req.get("host")}/product/image/', images.nombre)`),
+            'nombre' ]],
         }
+      },{
+         association: "category",
+         attributes: {
+          exclude: ['updatedAt', 'cratedAt'],
+         }
       }],
       attributes: {
-        exclude: ['updatedAt', 'cratedAt'],
-        include: []
-      }}
-      );
+        exclude: ['updatedAt', 'cratedAt', 'deleteAt'],
+      },     
+    }),
+
+    const ExistPrev = git 
+
       return res.status(200).json({
-        ok:true,
-        status:200,
+        meta:{
+          ok:true,
+          status:200,
+        },
+        data:{
+          totalProducts : count,
+          prev:`${req.protocol}://${req.get('host')}${req.baseUrl}?page=${1}`,
+          next:`${req.protocol}://${req.get('host')}${req.baseUrl}?page=${2}`,
         data:this.products,
+        }         
       });
-     catch (error) {
+    } catch (error) {
       sendJsonError(error,res)
     }
   
