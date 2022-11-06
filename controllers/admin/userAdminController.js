@@ -91,6 +91,11 @@ module.exports = {
       let errors = validationResult(req);
 
       if (errors.isEmpty()) {
+        
+        let editUser = await db.User.findByPk(req.params.id, {
+          include: ["address"],
+        });
+        
         const {
           name,
           lastname,
@@ -105,15 +110,13 @@ module.exports = {
           phone,
           dni,
         } = req.body;
-        let editUser = await db.User.findByPk(req.params.id, {
-          include: ["address"],
-        });
+        
         let editAddress = await db.Address.findByPk(
           (id = editUser.address[0].id)
         );
         let [image] = req.files.map((file) => file.filename);
 
-        editUser.name = name.trim();
+        editUser.name = name ? name.trim() : editAddress?.name;
         editUser.lastname = lastname.trim();
         editUser.email = email.trim();
         editUser.password = bcryptjs.hashSync(password, 12);
