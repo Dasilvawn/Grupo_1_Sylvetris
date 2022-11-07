@@ -25,19 +25,28 @@ const createStorage = (entityOrFolderName = "products") => {
     },
   });
 
-  const fileFilter = (req, file, cb) => {
-    if (/image/.test(file.mimetype)) {
-      cb(null, true);
-  } else {
-      return cb(new MulterError('LIMIT_UNEXPECTED_FILE'), false);
-  }
+  const fileFilter = (req, file, callback) => {
+
+    if(entityOrFolderName === "products"){
+      if(req.files?.length > 2){
+      req.fileValidationError = "Cantidad maxima 2 archivos";
+      return callback(null,false)
+      }
+    }
+
+    if (!/image/.test(file.mimetype)) {
+      req.fileValidationError = "Archivo invalido";
+
+      return callback(null, false);
+    }
+   
+    callback(null, true);
   };
 
   const uploads = {};
   uploads[entityOrFolderName] = multer({
     storage,
     fileFilter,
-    limits: { fileSize: 2000000, files: 1 }, 
   });
 
   return uploads[entityOrFolderName];

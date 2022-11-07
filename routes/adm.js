@@ -42,7 +42,7 @@ router.get("/products", adminUserCheck, getProducts);
 router.get("/products/create_product", adminUserCheck, getCreateProduct);
 router.post(
   "/products/create_product",
-  uploadImageProduct.array("imagen", 2),
+  uploadImageProduct.array("imagen"),
   productValidator,
   postCreateProducts
 );
@@ -50,7 +50,7 @@ router.post(
 router.get("/products/edit_product/:id", adminUserCheck, getEditProducts);
 router.put(
   "/products/edit_product/:id",
-  uploadImageProduct.array("imagen", 2),
+  uploadImageProduct.array("imagen"),
   productsEditValidator,
   putEditProducts
 );

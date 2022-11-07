@@ -13,11 +13,11 @@ const postUserApiValidation = [
     tokenCheck,
     //name
     check("name", "El nombre es obligatorio").notEmpty(),
-    check("name", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/),
+    check("name", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/),
     check("name", "Como mínimo 2 caracteres").isLength({min: 2,}),
     //lastname
     check("lastname", "El apellido es obligatorio").notEmpty(),
-    check("lastname", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/),
+    check("lastname", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/),
     check("lastname", "Como mínimo 2 caracteres").isLength({min: 2,}),
     //email
     check("email", "El email es obligatorio").notEmpty(),
@@ -33,11 +33,11 @@ const postUserApiValidation = [
     //address
     check("address", "Solo números y letras").matches(/^[A-Z0-9a-zÁÉÍÓÚáéíóúñÑ ]+$|^ *$/g),
     //country
-    check("country", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+    check("country", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
     //state
-    check("state", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+    check("state", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
     //city
-    check("city", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+    check("city", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
      //cp
     check("cp", "Solo números").matches(/^[0-9+]*$|^NULL$/),
     
@@ -51,9 +51,9 @@ const putUserApiValidation = [
     check("id", "No es un ID válido").isNumeric(),
     check("id").custom(existUserById),
     //name
-     check("name", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+     check("name", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
     //lastname
-     check("lastname", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+     check("lastname", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
      //phone
      check("phone", "Solo números").matches(/^[0-9+]*$|^NULL$/),
      //dni
@@ -61,11 +61,11 @@ const putUserApiValidation = [
      //address
      check("address", "Solo números y letras").matches(/^[A-Z0-9a-zÁÉÍÓÚáéíóúñÑ ]+$|^ *$/g),
      //country
-     check("country", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+     check("country", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
      //state
-     check("state", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+     check("state", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
      //city
-     check("city", "Solo letras").matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
+     check("city", "Solo letras").matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/),
       //cp
      check("cp", "Solo números").matches(/^[0-9+]*$|^NULL$/),
    

@@ -6,7 +6,7 @@ module.exports = [
     .notEmpty()
     .withMessage("*El nombre es obligatorio")
     .bail()
-    .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/)
+    .matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/)
     .withMessage("*Solo letras")
     .bail()
     .isLength({
@@ -17,7 +17,7 @@ module.exports = [
     .notEmpty()
     .withMessage("*El apellido es obligatorio")
     .bail()
-    .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/)
+    .matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/)
     .withMessage("*Solo letras")
     .bail()
     .isLength({
@@ -88,15 +88,15 @@ module.exports = [
   .withMessage("*Solo letras y numeros"), */
   
   check("country")
-  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
   .withMessage("*Solo letras"),
   
   check("state")
-  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
   .withMessage("*Solo letras"),
 
   check("city")
-  .matches(/^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
+  .matches(/^[ÁÉÍÓÚA-Za-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$|^ *$/)
   .withMessage("*Solo letras"),
 
   check("cp")
