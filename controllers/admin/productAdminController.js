@@ -34,8 +34,8 @@ module.exports = {
       }],
       attributes: {
         exclude: ['updatedAt', 'cratedAt', 'deleteAt'],
-      },     
-    }),
+      }
+    });
 
     const ExistPrev = git 
 
@@ -50,10 +50,10 @@ module.exports = {
           next:`${req.protocol}://${req.get('host')}${req.baseUrl}?page=${2}`,
         data:this.products,
         }         
-      });
-    } catch (error) {
+      })
+    }catch (error) {
       sendJsonError(error,res)
-    }
+    };
   
 
     
@@ -65,7 +65,7 @@ module.exports = {
   //   });
   // },
 
-  productDetail: (req, res) => {
+   productDetail: (req, res) => {
     const products = loadProducts();
 
     const product = products.find((product) => product.id === +req.params.id);
@@ -77,7 +77,7 @@ module.exports = {
       formatPrice,
       productsByFeatured,
     });
-  },
+  };
   productCategory : (req, res) => {
     const products = loadProducts();
 
@@ -93,10 +93,11 @@ module.exports = {
       formatPrice,
       categoria,
     });
-  },
-  productCart: (req, res) => {
+  };
+  productCart : (req, res) => {
     return res.render("products/productCart", {
       title: "Sylvestris | Carrito",
     });
-  },
-};
+  }
+  }
+}
