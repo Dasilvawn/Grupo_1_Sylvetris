@@ -1,225 +1,102 @@
-const { validationResult } = require("express-validator");
-const db = require("../../database/models");
-const fs = require("fs").promises;
-
+const { decodeBase64 } = require("bcryptjs");
+const { loadProducts } = require("../data/db");
+const { formatPrice } = require("../utils/moneda");
 
 module.exports = {
-  getProducts: (req, res) => {
-    
-    db.Product.findAll({
-      include: ["images", "category"]
-    })
-    .then((productos) => {
-      return res.render("./adm/products", {
-        title: "Sylvestris | Lista de Productos",
-        productos,
-      });
-    });
-  },
-
-  getCreateProduct: (req, res) => {
-   
-    db.Category.findAll().then((categories) => {
-      return res.render("./adm/createProduct", {
-        title: "Sylvestris | Crear producto",
-        categories,
-      });
-    });
-  },
-  postCreateProducts: (req, res) => {
-    
-    let errors = validationResult(req);
-    if (errors.isEmpty()) {
-      const {
-        nombre,
-        sub_titulo,
-        slug,
-        categoria,
-        stock,
-        destacado,
-        descripcion,
-        descripcion_altura,
-        descripcion_maceta,
-        precio,
-        cuidados,
-        agua,
-        luz,
-      } = req.body;
-      db.Product.create({
-        nombre: nombre.trim(),
-        sub_titulo: sub_titulo.trim(),
-        slug: slug.trim(),
-        categoryId: categoria,
-        stock: +stock,
-        destacado: destacado === "true" ? true : false,
-        descripcion: descripcion.trim(),
-        descripcion_altura: descripcion_altura.trim(),
-        descripcion_maceta: descripcion_maceta.trim(),
-        precio: +precio,
-        cuidados: cuidados.trim(),
-        agua: +agua,
-        luz: +luz,
-      })
-        .then((product) => {
-          if (req.files.length) {
-            let images = req.files.map(({ filename }) => {
-              return {
-                filename,
-                productId: product.id,
-              };
-            });
-            db.Image.bulkCreate(images, {
-              validate: true,
-            }).then((result) => console.log(result));
-          }
-          return res.redirect("/admin/products");
-        })
-        .catch((error) => console.log(error));
-    } else {
-
-      db.Category.findAll().then((categories) => {
-        return res.render("./adm/createProduct", {
-          title: "Sylvestris | Crear producto",
-          categories,
-          errors: errors.mapped(),
-          old: req.body,
-        });
-      });
-     
-    }
-  },
-
-  getEditProducts: (req, res) => {
-   
-
-    const producto = db.Product.findByPk(req.params.id, {
-      include: ["images"],
-    });
-    const categories = db.Category.findAll();
-
-    Promise.all([producto, categories])
-
-      .then(([producto, categories]) => {
-        return res.render("adm/editProduct", {
-          title: "Sylvestris | Editar producto",
-          producto,
-          categories,
-        });
-      })
-      .catch((error) => console.log(error));
-  },
-
-  putEditProducts: async (req, res) => {
-   
-
-    let errors = validationResult(req);
-
-    if (errors.isEmpty()) {
-      try {
-        const {
-          nombre,
-          sub_titulo,
-          slug,
-          categoria,
-          stock,
-          destacado,
-          descripcion,
-          descripcion_altura,
-          descripcion_maceta,
-          precio,
-          cuidados,
-          agua,
-          luz,
-        } = req.body;
-
-        let producto = await db.Product.findByPk(req.params.id, {
-          include: ["images"],
-        });
-
-        producto.nombre = nombre.trim();
-        producto.sub_titulo = sub_titulo.trim();
-        producto.slug = slug.trim();
-        producto.categoryId = categoria;
-        producto.stock = +stock;
-        producto.destacado = destacado;
-        producto.descripcion = descripcion.trim();
-        producto.descripcion_altura = descripcion_altura.trim();
-        producto.descripcion_maceta = descripcion_maceta.trim();
-        producto.precio = +precio;
-        producto.cuidados = cuidados.trim();
-        producto.agua = +agua;
-        producto.luz = +luz;
-
-        await producto.save();
-
-        // si se cargan nuevas imagenes
-        if (req.files.length) {
-          let imagesNew = req.files.map(({ filename }) => {
-            return {
-              filename,
-              productId: producto.id,
-            };
-          });
-
-          // Se borran las images anteriores
-          producto.images.forEach(async (image) => {
-            fs.unlink(`./public/images/products/${image.filename}`);
-
-            await db.Image.destroy({
-              where: {
-                filename: image.filename,
-              },
-            });
-          });
-
-          // guardo en db las nuevas imagenes
-          await db.Image.bulkCreate(imagesNew);
-        }
-        return res.redirect("/admin/products");
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      const producto = db.Product.findByPk(req.params.id, {
-        include: ["images"],
-      });
-      const categories = db.Category.findAll();
-
-      Promise.all([producto, categories])
-
-        .then(([producto, categories]) => {
-          return res.render("adm/editProduct", {
-            title: "Sylvestris | Editar producto",
-            producto,
-            categories,
-            errors: errors.mapped(),
-            old: req.body,
-          });
-        })
-        .catch((error) => console.log(error));
-    }
-  },
-  deleteProducts: async (req, res) => {
+  products: async (req, res) => {
+    const products = loadProducts();
     try {
-      const productDelete = await db.Product.findByPk(req.params.id, {
-        include: ["images"],
+      const{page = 1, limit= 5, offset= 0} = req.query()
+
+      limit = +limit > 10 ? 10 : +10;
+
+      page = +page <= 0 || isNaN(page) ? 1 : +page;
+      page-=1;
+
+      offset = page * limit;
+
+      // console.log (offset);     
+      
+      const {count, rows:Products} = await db.product.findAndCountAll({
+        limit,
+          offset,
+        include:[{
+          association: 'images',
+        attributes: {
+            include: [[ literal(`CONCAT('${req.protocol}://${req.get("host")}/product/image/', images.nombre)`),
+            'nombre' ]],
+        }
+      },{
+         association: "category",
+         attributes: {
+          exclude: ['updatedAt', 'cratedAt'],
+         }
+      }],
+      attributes: {
+        exclude: ['updatedAt', 'cratedAt', 'deleteAt'],
+      },     
+    }),
+
+    const ExistPrev = git 
+
+      return res.status(200).json({
+        meta:{
+          ok:true,
+          status:200,
+        },
+        data:{
+          totalProducts : count,
+          prev:`${req.protocol}://${req.get('host')}${req.baseUrl}?page=${1}`,
+          next:`${req.protocol}://${req.get('host')}${req.baseUrl}?page=${2}`,
+        data:this.products,
+        }         
       });
-
-      productDelete.images.forEach(async (image) => {
-        fs.unlink(`./public/images/products/${image.filename}`);
-
-        await db.Image.destroy({
-          where: {
-            filename: image.filename,
-          },
-        });
-      });
-
-      await productDelete.destroy();
-
-      return res.redirect("/admin/products");
     } catch (error) {
-      console.log(error);
+      sendJsonError(error,res)
     }
+  
+
+    
+
+  //   return res.render("products/products", {
+  //     title: "Sylvestris | Productos",
+  //     products,
+  //     formatPrice,
+  //   });
+  // },
+
+  productDetail: (req, res) => {
+    const products = loadProducts();
+
+    const product = products.find((product) => product.id === +req.params.id);
+    const productsByFeatured = products.filter((product) => product.destacado);
+
+    return res.render("products/productDetail", {
+      title: `Sylvestris | ${product.name}`,
+      product,
+      formatPrice,
+      productsByFeatured,
+    });
+  },
+  productCategory : (req, res) => {
+    const products = loadProducts();
+
+    const categoria = req.params.categoria;
+
+    const productsByCategory = products.filter(
+      (product) => product.categoria === categoria
+    );
+
+    return res.render("products/categories", {
+      title: `Sylvestris | ${categoria}`,
+      products: productsByCategory,
+      formatPrice,
+      categoria,
+    });
+  },
+  productCart: (req, res) => {
+    return res.render("products/productCart", {
+      title: "Sylvestris | Carrito",
+    });
   },
 };
