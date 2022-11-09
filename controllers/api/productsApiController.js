@@ -38,7 +38,21 @@ module.exports = {
       }
     });
 
-    const ExistPrev = git 
+    const existPrev = page > 0 && offset <= count
+    const existNext = Math.floor ( count/limit )  >= ( page +1 ) && limit !== count
+
+    let urlPrev=null;
+    let urlNext=null;
+
+    if(existNext){
+        urlNext= `${req.protocol}://${req.get('host')}${req.baseUrl}?page=${page + 2}`
+    }
+    
+    if (existPrev) {
+        urlPrev = `${req.protocol}://${req.get("host")}${
+          req.baseUrl
+        }?page=${page}${urlQuery}`;
+      }
 
       return res.status(200).json({
         meta:{
@@ -47,8 +61,8 @@ module.exports = {
         },
         data:{
           totalProducts : count,
-          prev:`${req.protocol}://${req.get('host')}${req.baseUrl}?page=${1}`,
-          next:`${req.protocol}://${req.get('host')}${req.baseUrl}?page=${2}`,
+          prev: urlPrev,
+          next: urlNext,
         data:this.products,
         }         
       })
