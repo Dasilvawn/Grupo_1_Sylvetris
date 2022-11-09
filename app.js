@@ -56,7 +56,7 @@ app.use('/admin', admRouter);
 app.use('/auth', authRouter);
 app.use('/api/users', userApiRouter);
 app.use('/api/auth', authApiRouter);
-app.use('api/products', productsApiRouter);
+app.use('api/', productsApiRouter);
 
 
 // catch 404 and forward to error handler
