@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getUsersApi, getUserApi, postUsersApi } = require("../controllers/api/userApiController");
+const { getApi, getApi, postsApi } = require("../controllers/api/productsApiController");
 const adminUserCheck = require("../middlewares/adminUserCheck");
 const { errorsCheck } = require("../middlewares/errorsCheck");
 const { tokenCheck } = require("../middlewares/tokenCheck");
