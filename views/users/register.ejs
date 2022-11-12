@@ -14,37 +14,86 @@
           <p>¿Ya tienes un perfil personal?</p>
           <a href="/usuario/login">Iniciar Sesión</a>
         </div>
-        <form action="/usuario/register" method="POST" novalidate>
+        <form
+          action="/usuario/register"
+          method="POST"
+          novalidate
+          id="register_form"
+        >
           <div class="form__field">
-            <label for="name">Nombre/s</label>
-            <input type="text" id="name" name="name" value="<%= locals.old && old.name ? old.name : null %>"/>
-            <p class="form__error"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
+            <label for="register_name">Nombre/s</label>
+            <input
+              type="text"
+              id="register_name"
+              name="name"
+              value="<%= locals.old && old.name ? old.name : null %>"
+            />
+            <p class="form__error">
+              <%= locals.errors && errors.name ? errors.name.msg : null%>
+            </p>
+            <p class="form__error" id="errorfirstName"></p>
           </div>
 
           <div class="form__field">
-            <label for="lastname">Apellido</label>
-            <input type="text" id="lastname" name="lastname" value="<%= locals.old && old.lastname ? old.lastname : null %>"/>
-            <p class="form__error"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
+            <label for="register_lastname">Apellido</label>
+            <input
+              type="text"
+              id="register_lastname"
+              name="lastname"
+              value="<%= locals.old && old.lastname ? old.lastname : null %>"
+            />
+            <p class="form__error">
+              <%= locals.errors && errors.lastname ? errors.lastname.msg :
+              null%>
+            </p>
+            <p class="form__error" id="errorlastName"></p>
           </div>
           <div class="form__field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="<%= locals.old && old.email ? old.email : null %>"/>
-            <p class="form__error"><%= locals.errors && errors.email ? errors.email.msg : null%></p>
+            <label for="register_email">Email</label>
+            <input
+              type="email"
+              id="register_email"
+              name="email"
+              value="<%= locals.old && old.email ? old.email : null %>"
+            />
+            <p class="form__error">
+              <%= locals.errors && errors.email ? errors.email.msg : null%>
+            </p>
+            <p class="form__error" id="errorEmail"></p>
           </div>
           <div class="form__field">
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" />
-            <p class="form__error"><%= locals.errors && errors.password ? errors.password.msg : null%>
+            <label for="register_password">Contraseña</label>
+            <input type="password" id="register_password" name="password" />
+            <p class="form__error">
+              <%= locals.errors && errors.password ? errors.password.msg :
+              null%>
+            </p>
+            <p
+              id="errorPassword"
+              style="
+                color: red;
+                font-size: 12px;
+                margin-top: -15px;
+                text-align: center;
+              "
+            ></p>
           </div>
           <div class="form__field">
-            <label for="password2">Repetir contraseña</label>
-            <input type="password" id="password2" name="password2" />
-           <p class="form__error"><%= locals.errors && errors.password2 ? errors.password2.msg : null%></p> 
+            <label for="register_password2">Repetir contraseña</label>
+            <input type="password" id="register_password2" name="password2" />
+            <p class="form__error">
+              <%= locals.errors && errors.password2 ? errors.password2.msg :
+              null%>
+            </p>
+            <p class="form__error" id="errorPassword2"></p>
           </div>
-          <button class="registrarse__button" type="submit">Registrarse</button>
+          <p id="errorForm" style="color: red"></p>
+          <button class="registrarse__button" type="submit" id="register_btn">
+            Registrarse
+          </button>
         </form>
         <p id="register__Google">O Regístrate con</p>
-        <a href="/auth/google" style=" display:block; width: 100%">
+        <a href="/auth/google" style="display: block; width: 100%">
           <button class="google__button">
             <img src="/images/iconos/google.png" alt="icono google" /> Google
           </button>
@@ -55,5 +104,6 @@
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/miniFooter') %>
     <!-- ----------Fin de footer----------- -->
+    <script src="/js/users/register.js"></script>
   </body>
 </html>
