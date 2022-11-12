@@ -6,25 +6,25 @@ function selector(element) {
 window.addEventListener("load", () => {
   //Id de cada campo y del formulario
   let 	
-  	register_name 		= selector("register_name"),
-    register_lastname 	= selector("register_lastname"),
-    register_email 		= selector("register_email"),
-    register_password 	= selector("register_password"),
-    register_password2	= selector("register_password2"),
-    register_form 		= selector("register_form"),
+  	register_name 			= selector("register_name"),
+    register_lastname 		= selector("register_lastname"),
+    register_email 			= selector("register_email"),
+    register_password 		= selector("register_password"),
+    register_password2		= selector("register_password2"),
+    register_form 			= selector("register_form"),
     //Errores
-    errorName 			= selector("errorfirstName"),
-    errorlastName 		= selector("errorlastName"),
-    errorEmail 			= selector("errorEmail"),
-    errorPass 			= selector("errorPassword"),
-    errorPass2 			= selector("errorPassword2"),
-    errorForm 			= selector("errorForm"),
+    errorName 				= selector("errorfirstName"),
+    errorlastName 			= selector("errorlastName"),
+    errorEmail 				= selector("errorEmail"),
+    errorPass 				= selector("errorPassword"),
+    errorPass2 				= selector("errorPassword2"),
+    errorForm 				= selector("errorForm"),
     //botón
-    register_btn 		= selector("register_btn"),
+    register_btn 			= selector("register_btn"),
     //Expresiones regulares
-    regExAlpha 			= /^[a-zA-Z\sñáéíóúü ]{3,}$/,
-    regExEmail 			= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-    regExPassword 		= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[#$@!%&*?]).{8,}/;
+    regExAlpha 				= /^[a-zA-Z\sñáéíóúü ]{3,}$/,
+    regExEmail 				= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    regExPassword 			= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[#$@!%&*?]).{8,}/;
 
   //manejo de errores
   function trueError(error_field, msg) {
