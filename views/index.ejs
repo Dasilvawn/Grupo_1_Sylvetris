@@ -2,7 +2,7 @@
 <html lang="es">
 <%- include('./partials/head') %>
 
-<body class="body">
+<body class="body" id="body__home">
     <!-- ----------Inicio de header----------- -->
     <%- include('./partials/header') %>
     <!-- ----------Fin de header----------- -->
@@ -10,6 +10,9 @@
     <main class="home__main__container">
         <section class="home__section__banner home_sec_margin">
           <div class="home__section__banner-bg-dark"></div>
+          <video autoplay muted loop id="myVideo">
+            <source src="/video/video2.mp4" type="video/mp4">
+          </video>
           <picture class="home__section__banner__img-logo">
             <source srcset="./images/logo/banner_logo.png" media="(min-width:700px)" />
             <img src="./images/logo/logo_banner_mobile.png" alt="logo banner mobile" />
@@ -118,6 +121,7 @@
     <!-- ----------Fin de main----------- -->
     <!-- ----------Inicio de footer----------- -->
     <%- include('./partials/footer') %>
+    <%- include('./partials/scripts') %>
     <!-- ----------Fin de footer----------- -->
 </body>
 
