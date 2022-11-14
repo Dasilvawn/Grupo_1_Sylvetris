@@ -13,8 +13,8 @@
     <main class="products__main__container">
       <section class="products__section__banner home_sec_margin">
         <div class="home__section__banner-bg-dark"></div>
-        <h1>TODO LO QUE CRECE EN NUESTRO VIVERO</h1>
-        <p>Cuidamos las plantas desde el vivero a tu hogar</p>
+        <h1 class="gs_reveal">TODO LO QUE CRECE EN NUESTRO VIVERO</h1>
+        <p class="gs_reveal">Cuidamos las plantas desde el vivero a tu hogar</p>
       </section>
       <section class="products__section__products home_sec_margin">
         <h2 class="home__title capitalize">
@@ -24,7 +24,7 @@
 
         <div class="products__section__grid">
           <% products.forEach(product => { %>
-          <article class="product__card__container">
+          <article class="product__card__container gs_reveal">
             <a href="/productos/detalle/<%= product.id %>">
               <div class="product__card__img">
                 <img
@@ -54,6 +54,7 @@
 
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
 
     <!-- ----------Fin de footer----------- -->
   </body>

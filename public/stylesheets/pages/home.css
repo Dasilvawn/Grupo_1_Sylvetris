@@ -40,8 +40,8 @@
 .home__section__banner {
   align-items: center;
   background-attachment: fixed;
-  background-image: url(../../images/banners/banner.png);
-  background-position: top center;
+  *background-image: url(../../images/banners/banner.png);
+  *background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -287,6 +287,7 @@
 .home__section__about__description {
   color: var(--color-brown);
   text-align: center;
+  position: relative;
 }
 .home__section__about__text__container {
   align-items: center;
@@ -310,6 +311,12 @@
   overflow: hidden;
   width: 100%;
 }
+.home__section__about__description_bg{
+  background-color: var(--color-dark-green);
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
 .home__section__about__img__container img {
   width: 100%;
   display: block;
@@ -322,6 +329,7 @@
   justify-content: center;
   min-height: 490px;
   z-index: 2;
+ 
 }
 .home__section__about__text__container.offer h2 {
   color: var(--color-white);
