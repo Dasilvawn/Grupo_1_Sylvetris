@@ -2,10 +2,9 @@ const db = require("../../database/models");
 const bcryptjs = require("bcryptjs");
 const newUserValidator = require("../../validations/newUserValidator");
 
+  const getApiProducts  = async (req, res) =>{
+    
 
-module.exports = {
-  products: async (req, res) => {
-    const products = loadProducts();
     try {
       const{page = 1, limit= 5, offset= 0} = req.query()
 
@@ -15,13 +14,13 @@ module.exports = {
       page-=1;
 
       offset = page * limit;
-
+      return res.send
       // console.log (offset);     
       
       const {count, rows:Products} = await db.product.findAndCountAll({
         limit,
           offset,
-        include:[{
+        include:[{ 
           association: 'images',
         attributes: {
             include: [[ literal(`CONCAT('${req.protocol}://${req.get("host")}/product/image/', images.nombre)`),
@@ -69,5 +68,26 @@ module.exports = {
     }catch (error) {
       sendJsonError(error,res)
     };
-  }}
-   
+  }
+  const getApiProduct  = async (req, res) =>{
+
+  }
+  const postApiProduct  = async (req, res) =>{
+
+  }
+  const putApiProduct  = async (req, res) =>{
+
+  }
+  const deleteApiProduct  = async (req, res) =>{
+
+  } 
+
+
+  module.exports= {
+    getApiProducts,
+    getApiProduct,
+    postApiProduct,
+    putApiProduct,
+    deleteApiProduct,
+    }
+  
