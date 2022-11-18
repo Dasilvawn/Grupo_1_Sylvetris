@@ -35,7 +35,7 @@ const getUsersApi = async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(200).json({
+    return res.status(500).json({
       meta: {
         ok: false,
         status: 500,

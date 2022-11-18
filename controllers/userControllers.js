@@ -13,7 +13,7 @@ module.exports = {
   postLogin: (req, res) => {
     /////////////////////Login db/////////////////////////
     let errors = validationResult(req);
-
+    //return res.send(errors.mapped());
     if (errors.isEmpty()) {
       db.User.findOne({
         where: {
@@ -55,7 +55,7 @@ module.exports = {
   postRegister: (req, res) => {
     //////////////////////////Register DB//////////////////////////////
     let errors = validationResult(req);
-
+    
     if (errors.isEmpty()) {
       let { name, lastname, email, password } = req.body;
       db.User.create({
@@ -124,10 +124,8 @@ module.exports = {
   putRename: async (req, res) => {
     let errors = validationResult(req); // traigo los errores del validador
     const id = req.session.userLogin.id; // cargo el id de la session
-    
-    
+
     //return res.send (req.files)
-    
 
     if (errors.isEmpty() && !req.fileValidationError) {
       // traigo la los datos del formulario
@@ -137,7 +135,6 @@ module.exports = {
         // traigo la imagen de multer
         const [image] = req.files.map((file) => file.filename);
 
-
         // genero un nuevo array con el usuario modificado
         let user = await db.User.findByPk(id);
         user.name = name.trim();
@@ -145,9 +142,13 @@ module.exports = {
 
         //si se envia un nuevo avatar, se borra el anterior
 
-        const file = path.join(__dirname,`../public/images/avatars/${user.avatar}` )
+        const file = path.join(
+          __dirname,
+          `../public/images/avatars/${user.avatar}`
+        );
         if (image) {
-          fs.existsSync(file) && fs.unlinkSync(`./public/images/avatars/${user.avatar}`);
+          fs.existsSync(file) &&
+            fs.unlinkSync(`./public/images/avatars/${user.avatar}`);
           user.avatar = image;
         } else {
           user.avatar = user.avatar;
@@ -180,7 +181,7 @@ module.exports = {
             title: "Sylvestris | Cambiar nombre",
             old: req.body,
             errors: errors.mapped(),
-            fileError : req.fileValidationError,
+            fileError: req.fileValidationError,
             user,
           });
         })
@@ -225,7 +226,7 @@ module.exports = {
             title: "Sylvestris | Cambiar contraseña",
             old: req.body,
             errors: errors.mapped(),
-           
+
             user,
           });
         })
