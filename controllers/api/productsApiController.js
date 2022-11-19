@@ -6,7 +6,7 @@ const newUserValidator = require("../../validations/newUserValidator");
 
     try { 
       const products = await db.Product.findAll({      
-        attributes : ['id' ]
+        attributes : ['id','nombre','sub_titulo','slug','stock','destacado','descripcion','precio','cuidados'],
       });
        res.status(200).json({
         meta: {
