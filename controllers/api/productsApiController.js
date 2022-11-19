@@ -2,57 +2,30 @@ const db = require("../../database/models");
 const bcryptjs = require("bcryptjs");
 const newUserValidator = require("../../validations/newUserValidator");
 
-  const getApiProducts  = async (req, res) =>{
-   
+  const getApiProducts  = async (req, res) => {  
 
-    try {
-   
-      const product = await db.Product.findAll({
-        
-            attributes: ['id', 'name', 'lastname', 'email']
+    try { 
+      const products = await db.Product.findAll({      
+        attributes : ['id' ]
       });
-  
-      const productsResp = product.map(product => {
-        return {
-          ...product.dataValues,
-          urlData: `${req.protocol}://${req.get("host")}${req.baseUrl}/${product.id}`,
-        }
-      })
-  
-      return res.status(200).json({
+       res.status(200).json({
         meta: {
           ok: true,
           status: 200,
-          count: users.length
+          count: products.length ,//count: Devuelve el número total de objetos de una colección de propiedades del elemento web.
         },
-        data: {
-          
-        products: userResp
+        data: {products
         },
       });
+   
     } catch (error) {
-      return res.status(200).json({
-        meta: {
+      return res.status(500).json({ 
           ok: false,
           status: 500,
-          msg: error.message,
-        },
-      });
-    }
-    // try{
-    //     const products = await db.products.findAll({
-
-    //       attributes: ['id', 'name', 'lastname', 'email']
-    //     });
-
-    //     return res.send('holalala')
-          
-    //   }catch (err){
-    //     console.log(err)
-    //   }
-       
-    
-  }
+          msg: 'comuniquese con el Administrador del sitio'
+     });
+    }  
+  } 
   
   const getApiProduct  = async (req, res) =>{
   //  return res.send('geApiProducts')
