@@ -109,26 +109,19 @@ const newUserValidator = require("../../validations/newUserValidator");
   const putApiProduct  = async (req, res) =>{
     // return res.send('put')  
     try {
-      const product = await db.Product.findByPk(id, {
+      const product = await db.Product.findByPk(id.query {
         include: [
           {
-            association: "images",
             attributes: {
-              exclude: ["createdAt", "updatedAt", "deletedAt"],
-            },
-          },
-          {
-            association: "category",
-            attributes: {
-              exclude: ["createdAt", "updatedAt", "deletedAt"],
-            },
-          },
-        ],
-      });
+              exclude: ["createdAt", 
+                        "updatedAt", 
+                        "deletedAt"],
+              },
+            }],
+          });
 
       product.name = name?.trim() || product.name;
       product.price = +price || product.price;
-      product.discount = +discount || product.discount;
       product.description = description?.trim() || product.description;
       product.categoryId = +categoryId || product.categoryId;
 
@@ -207,7 +200,48 @@ const newUserValidator = require("../../validations/newUserValidator");
   
 
   const deleteApiProduct  = async (req, res) =>{
-    return res.send('delete')
+    
+
+      // const { id } = req.params; /* product id */
+      // try {
+      //  /*  await db.Image.destroy({ where: { productId: id } });
+      //   await db.Product.destroy({ where: { id } }); */
+      //   const options = {
+      //     include: [
+      //       {
+      //         association: "images",
+      //         attributes: {
+      //           exclude: ["createdAt", "updatedAt", "deletedAt"],
+      //         },
+      //       },
+      //       {
+      //         association: "category",
+      //         attributes: {
+      //           exclude: ["createdAt", "updatedAt", "deletedAt"],
+      //         },
+      //       },
+      //     ],
+      //   }
+      //   const product = await db.Product.findByPk(id,options );
+  
+        
+      //   product.images.forEach(async (img) => {
+      //     await img.destroy();
+      //     unlinkSync(
+      //       path.join(__dirname, `../../public/images/products/${img.file}`)
+      //       );
+      //     });
+      //     await product.destroy()
+          
+      //   res.status(200).json({
+      //     ok:true,
+      //     status:200,
+      //     msg:'Producto eliminado'
+      //   })
+      // } catch (error) {
+      //   sendJsonError(error, res);
+      // }
+    
   } 
 
 
