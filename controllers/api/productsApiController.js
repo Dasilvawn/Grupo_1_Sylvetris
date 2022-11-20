@@ -144,46 +144,41 @@ const newUserValidator = require("../../validations/newUserValidator");
 
   const deleteApiProduct  = async (req, res) =>{
     
+            try {
+           
+            await db.Product.destroy({ where: { id } }); 
+                             
+            const options = {
+              include: [
+                {
+                  // association: "images",
+                  attributes: {
+                    exclude: ["createdAt", "updatedAt", "deletedAt"],
+                  },
+                },
+                {
+                  // association: "category",
+                  attributes: {
+                    exclude: ["createdAt", "updatedAt", "deletedAt"],
+                  },
+                },
+              ],
+            }
+            const product = await db.Product.findByPk(id,options );
 
-      // const { id } = req.params; /* product id */
-      // try {
-      //  /*  await db.Image.destroy({ where: { productId: id } });
-      //   await db.Product.destroy({ where: { id } }); */
-      //   const options = {
-      //     include: [
-      //       {
-      //         association: "images",
-      //         attributes: {
-      //           exclude: ["createdAt", "updatedAt", "deletedAt"],
-      //         },
-      //       },
-      //       {
-      //         association: "category",
-      //         attributes: {
-      //           exclude: ["createdAt", "updatedAt", "deletedAt"],
-      //         },
-      //       },
-      //     ],
-      //   }
-      //   const product = await db.Product.findByPk(id,options );
-  
-        
-      //   product.images.forEach(async (img) => {
-      //     await img.destroy();
-      //     unlinkSync(
-      //       path.join(__dirname, `../../public/images/products/${img.file}`)
-      //       );
-      //     });
-      //     await product.destroy()
-          
-      //   res.status(200).json({
-      //     ok:true,
-      //     status:200,
-      //     msg:'Producto eliminado'
-      //   })
-      // } catch (error) {
-      //   sendJsonError(error, res);
-      // }
+         res.status(200).json({
+          ok:true,
+          status:200,
+          msg:'Producto eliminado'
+        })
+
+            } catch (error) {
+              return res.status(500).json({ 
+                ok: false,
+                status: 500,
+                msg: 'comuniquese con el Administrador del sitio'
+                })
+                          }
     
   } 
 
