@@ -151,13 +151,7 @@ const newUserValidator = require("../../validations/newUserValidator");
             const options = {
               include: [
                 {
-                  // association: "images",
-                  attributes: {
-                    exclude: ["createdAt", "updatedAt", "deletedAt"],
-                  },
-                },
-                {
-                  // association: "category",
+                  association: "categoryId",
                   attributes: {
                     exclude: ["createdAt", "updatedAt", "deletedAt"],
                   },
