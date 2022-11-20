@@ -106,98 +106,41 @@ const newUserValidator = require("../../validations/newUserValidator");
    }
 
   }
-  const putApiProduct  = async (req, res) =>{
-    // return res.send('put')  
-    try {
-      const product = await db.Product.findByPk(id.query {
-        include: [
-          {
-            attributes: {
-              exclude: ["createdAt", 
-                        "updatedAt", 
-                        "deletedAt"],
-              },
-            }],
-          });
 
-      product.name = name?.trim() || product.name;
-      product.price = +price || product.price;
-      product.description = description?.trim() || product.description;
-      product.categoryId = +categoryId || product.categoryId;
 
-      await product.save();
-
-      if (+deletePreviousImages === 1) {
-        product.images.forEach(async (img) => {
-          await img.destroy();
-          unlinkSync(
-            path.join(__dirname, `../../public/images/products/${img.file}`)
-          );
+   const putApiProduct  = async (req, res) =>{
+     // return res.send('put')  
+ 
+        try {
+          const product = await db.Product.findByPk(req.params.id, { //params o query?
+            include:[
+              { 
+              attributes: { 
+              exclude: ["createdAt", "updatedAt", "deletedAt"]
+             }} 
+          ]  // desp de esto no va product.nombre=nombre...???
         });
-      }
+        product.nombre = nombre ?.trim() || product.nombre;
+        product.precio = +precio || product.precio;
+        product.descripcion = descripcion?.trim() || product.descripcion;
+        product.categoryId = +categoryId || product.categoryId;
 
-      if (req.files?.length) {
-        const images = req.files.map((file) => {
-          return {
-            file: file.filename,
-            productId: product.id,
-        }}
-        );
+        await product.save(); //guardamos el elemento secundario 
 
-        await db.Image.bulkCreate(images);
-      }
+        res.status(200).json({
+                ok: true,
+                status: 200,
+                data: await product.reload()  //provocará que el navegador muestre de nuevo la página actual, haciendo una recarga de la misma en la que te encuentres en este momento.
+        })
 
-      res.status(200).json({
-        ok: true,
-        status: 200,
-        /* data: await product.reload() */
-        url: `${req.protocol}://${req.get("host")}/products/${product.id}`,
-      });
-    } catch (error) {
-      sendJsonError(error, res);
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // try { 
-    //   const product = await db.Product.findByPk(req.params.id, {      
-    //     attributes : {
-    //       exclude:[
-    //           'createdAt',
-    //           'updatedAt',
-    //           'deletedAt'
-    //       ],
-    //     },
-    //   });
-    //    res.status(200).json({
-    //     meta: {
-    //       ok: true,
-    //       status: 200,
-    //       //  count: product ,//count: Devuelve el número total de objetos de una colección de propiedades del elemento web.
-    //     },
-    //     data:{ product 
-    //     }    
-    //   });
-   
-    // } catch (error) {
-    //   return res.status(500).json({ 
-    //       ok: false,
-    //       status: 500,
-    //       msg: 'comuniquese con el Administrador del sitio'
-    //  });
-    // }  
-  
+        } catch (error) {
+        return res.status(500).json({ 
+        ok: false,
+        status: 500,
+        msg: 'comuniquese con el Administrador del sitio'
+        })
+        }
+   }
 
   const deleteApiProduct  = async (req, res) =>{
     
