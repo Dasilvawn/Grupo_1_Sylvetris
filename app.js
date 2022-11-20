@@ -20,15 +20,14 @@ var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var admRouter = require('./routes/adm');
 var authRouter = require('./routes/auth');
-<<<<<<< HEAD
+
 const userApiRouter = require('./routes/user-api');
 const authApiRouter = require('./routes/auth-api');
-const categoryApiRouter =require('./routes/category-api');
-=======
+const categoryApiRouter =require('./routes/category-api')
+
 const userApiRouter = require('./routes/user-api')
 const authApiRouter = require('./routes/auth-api')
 const categoryApiRouter = require('./routes/category-api')
->>>>>>> e8d9ccb189578f3546caffd123fe128dad9c4b65
 
 
 var app = express();
@@ -63,12 +62,8 @@ app.use('/admin', admRouter);
 app.use('/auth', authRouter);
 app.use('/api/users', userApiRouter);
 app.use('/api/auth', authApiRouter);
-<<<<<<< HEAD
 app.use('/api/category', categoryApiRouter );
 
-=======
-app.use('/api/category', categoryApiRouter);
->>>>>>> e8d9ccb189578f3546caffd123fe128dad9c4b65
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
