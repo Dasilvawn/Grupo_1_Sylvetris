@@ -40,8 +40,8 @@
 .home__section__banner {
   align-items: center;
   background-attachment: fixed;
-  background-image: url(../../images/banners/banner.png);
-  background-position: top center;
+  *background-image: url(../../images/banners/banner.png);
+  *background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -97,6 +97,8 @@
   max-width: 350px;
   overflow: hidden;
   position: relative;
+  box-shadow: 2px 6px 8px #ccc;
+  border-radius: 15px;
   
 }
 .home__section__categorias__card--img {
@@ -166,12 +168,15 @@
   position: relative;
 }
 .home__section__destacados__products__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  *display: flex;
+  *justify-content: space-between;
+  *align-items: center;
   width: 100%;
   gap: 1rem;
-  overflow-y: scroll;
+  
+ 
+ 
+ 
 }
 .home__section__destacados__products__container::-webkit-scrollbar {
   display: none;
@@ -180,15 +185,19 @@
 /* Estas clases pertenecen a 1 producto individual */
 .product__card {
   text-align: center;
-  max-width: 500px;
-  min-width: 300px;
-
+  *max-width: 500px;
+  *min-width: 300px;
   height: auto;
+ 
+ 
+ 
 }
 .product__card__img_container {
-  max-width: 650px;
+  *max-width: 650px;
   width: 100%;
   background-color: #fff;
+  box-shadow: 3px 7px 10px #ccc, -3px -3px 5px #ccc;
+  border-radius: 15px;
 }
 .product__card__img_container:hover {
   cursor: grabbing;
@@ -261,7 +270,7 @@
     margin: 0 2.5rem;
   }
   .product__card {
-    min-width: 450px;
+    *min-width: 450px;
   }
 }
 
@@ -271,10 +280,14 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 2px 6px 8px #ccc;
 }
 .home__section__about__description {
   color: var(--color-brown);
   text-align: center;
+  position: relative;
 }
 .home__section__about__text__container {
   align-items: center;
@@ -298,8 +311,15 @@
   overflow: hidden;
   width: 100%;
 }
+.home__section__about__description_bg{
+  background-color: var(--color-dark-green);
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
 .home__section__about__img__container img {
   width: 100%;
+  display: block;
 }
 .home__section__about__text__container.offer {
   align-items: center;
@@ -309,6 +329,7 @@
   justify-content: center;
   min-height: 490px;
   z-index: 2;
+ 
 }
 .home__section__about__text__container.offer h2 {
   color: var(--color-white);
@@ -441,4 +462,16 @@
   .home__section__instagram h2 i {
     top: 5px;
   }
+}
+#myVideo{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+ z-index: 1;
+}
+
+#swiper_carrousel{
+  padding: 10px;
 }

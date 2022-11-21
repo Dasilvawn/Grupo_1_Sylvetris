@@ -1,30 +1,44 @@
 <section class="home__section__destacados home_sec_margin">
   <h2 class="home__title">Productos destacados</h2>
   <div class="home__section__destacados__products__container">
-    <% productsByFeatured.forEach(product => { %>
+    <div class="swiper" id="swiper_carrousel">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <% productsByFeatured.forEach(product => { %>
 
-    <article class="product__card">
-      <a href="/productos/detalle/<%= product.id %> ">
-        <div class="product__card__img_container">
-          <img
-            src="/images/products/<%= product.images[0].filename %>"
-            alt="<%= product.nombre %>"
-          />
+        <div class="swiper-slide">
+          <article class="product__card">
+            <a href="/productos/detalle/<%= product.id %> ">
+              <div class="product__card__img_container">
+                <img
+                  src="/images/products/<%= product.images[0].filename %>"
+                  alt="<%= product.nombre %>"
+                />
+              </div>
+            </a>
+            <div class="product__card__info">
+              <h4><%= product.nombre %></h4>
+              <p><%= formatPrice(product.precio) %></p>
+            </div>
+          </article>
         </div>
-      </a>
-      <div class="product__card__info">
-        <h4><%= product.nombre %></h4>
-        <p><%= formatPrice(product.precio)  %></p>
-      </div>
-    </article>
-    <% }) %>
+        <% }) %>
 
-    <i class="fa-solid fa-circle-arrow-left"></i>
-    <i class="fa-solid fa-circle-arrow-right"></i>
+        <span
+          class="swiper-pagination-bullet swiper-pagination-bullet-active"
+          aria-current="true"
+        ></span>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev" style="color: #a05841"></div>
+      <div class="swiper-button-next" style="color: #a05841"></div>
+
+      <!-- If we need scrollbar -->
+      <!--  <div class="swiper-scrollbar"></div> -->
+    </div>
   </div>
-  <ul class="slider__puntos">
-    <li class="slider__punto activo"></li>
-    <li class="slider__punto"></li>
-    <li class="slider__punto"></li>
-  </ul>
 </section>

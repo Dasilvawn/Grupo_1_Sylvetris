@@ -12,60 +12,92 @@
     <main class="producto__main__container">
       <nav class="producto_main_section_nav">
         <div class="producto_main_section_ruta">
-          <a href="/">Inicio</a>&nbsp/&nbsp<a href="/productos/categoria/<%= product.categoryId %>"><%= product.category.name %></a
-          >&nbsp/&nbsp<a href="/productos/detalle/<%= product.id %>"><%= product.nombre %></a>
+          <a href="/">Inicio</a>&nbsp/&nbsp<a
+            href="/productos/categoria/<%= product.categoryId %>"
+            ><%= product.category.name %></a
+          >&nbsp/&nbsp<a href="/productos/detalle/<%= product.id %>"
+            ><%= product.nombre %></a
+          >
         </div>
       </nav>
 
       <section class="producto__section__categorias">
         <div class="producto__section__izquierda">
-          <div class="producto__section__categorias__article--img">
-            <img
-              src="/images/products/<%= product.images[0].filename %>"
-              alt="<%= product.nombre %>"
-            />
+          <div class="swiper" id="swiper_product_datail">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="producto__section__categorias__article--img">
+                  <img
+                    src="/images/products/<%= product.images[0].filename %>"
+                    alt="<%= product.nombre %>"
+                  />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="producto__section__categorias__article--img">
+                  <img
+                    src="/images/products/<%= product.images[1].filename %>"
+                    alt="<%= product.nombre %>"
+                  />
+                </div>
+              </div>
+
+              <span
+                class="swiper-pagination-bullet swiper-pagination-bullet-active"
+                aria-current="true"
+              ></span>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev" style="color: #a05841"></div>
+            <div class="swiper-button-next" style="color: #a05841"></div>
+
+            <!-- If we need scrollbar -->
+            <!--  <div class="swiper-scrollbar"></div> -->
           </div>
-          <p>
-            <%= product.cuidados %>
-          </p>
+          <p><%= product.cuidados %></p>
         </div>
         <div class="producto__section__derecha">
-          <h1><%= product.nombre %></h1>
-          <p class="smart">SKU: 00<%= product.id %></p>
+          <h1 id="product_title"><%= product.nombre %></h1>
+          <p id="product_id" class="smart">ID: 00<%= product.id %></p>
           <div class="producto__precio">
-            <p class="smart">Precio</p>
-            <h4><%= formatPrice( product.precio ) %></h4>
+            <p id="product_text_price" class="smart">Precio</p>
+            <h4 id="product_price"><%= formatPrice( product.precio ) %></h4>
           </div>
 
           <p class="smart">CANTIDAD:</p>
           <div class="producto__cantidad">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button id="product_subtract">-</button>
+            <span id="product_quantity">1</span>
+            <button id="product_add">+</button>
           </div>
           <div class="producto__section__categorias__button">
-            <button class="button_agregar">Agregar al carrito</button>
+            <button id="cart_add" class="button_agregar">Agregar al carrito</button>
             <button class="button_favoritos">
               <img src="/images/iconos/icono_favorito.png" alt="fav" />
             </button>
           </div>
           <button class="button__compra">Realizar Compra</button>
           <h4 class="detalles">DETALLES DEL PRODUCTO</h4>
-          <p class="detalles">
-            <%= product.descripcion %>
-          </p>
+          <p class="detalles"><%= product.descripcion %></p>
           <h5><%= product.descripcion_altura %></h5>
           <h5><%= product.descripcion_maceta %></h5>
         </div>
       </section>
 
-      <%- include('../partials/carrusel', {productsByFeatured: productsByFeatured}) %>
+      <%- include('../partials/carrusel', {productsByFeatured:
+      productsByFeatured}) %>
     </main>
     <!-- ----------Fin de main----------- -->
 
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/footer') %>
-
+    <%- include('../partials/scripts') %>
+    <script src="/js/cart/cart.js" ></script>
 
     <!-- ----------Fin de footer----------- -->
   </body>

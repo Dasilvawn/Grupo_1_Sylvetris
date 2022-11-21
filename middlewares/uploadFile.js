@@ -2,6 +2,7 @@
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
+const { MulterError } = require("multer");
 
 const createStorage = (entityOrFolderName = "products") => {
   const folder = path.join(__dirname, `../public/images/${entityOrFolderName}`);
@@ -18,12 +19,21 @@ const createStorage = (entityOrFolderName = "products") => {
     filename: (req, file, callback) => {
       callback(
         null,
-        `${entityOrFolderName}-${Date.now()}-${file.originalname}`
+        /* `${entityOrFolderName}-${Date.now()}-${file.originalname}` */
+        `${entityOrFolderName}-${Date.now()}${path.extname(file.originalname)}`
       );
     },
   });
 
   const fileFilter = (req, file, callback) => {
+
+    if(entityOrFolderName === "products"){
+      if(req.files?.length > 2){
+      req.fileValidationError = "Cantidad maxima 2 archivos";
+      return callback(null,false)
+      }
+    }
+
     if (!/image/.test(file.mimetype)) {
       req.fileValidationError = "Archivo invalido";
 

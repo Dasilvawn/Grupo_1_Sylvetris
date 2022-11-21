@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+const path = require("path");
 const db = require("../../database/models");
 const fs = require("fs").promises;
 
@@ -27,9 +28,26 @@ module.exports = {
     });
   },
   postCreateProducts: (req, res) => {
-    
-    let errors = validationResult(req);
-    if (errors.isEmpty()) {
+    const errors = validationResult(req);
+    let errorsMapped = errors?.mapped() || {};
+
+    if (req.fileValidationError) {
+      errorsMapped = {
+        ...errorsMapped,
+        imagen: { msg: req.fileValidationError },
+      };
+
+      Promise.all(
+        req.files.map(({ filename }) =>
+          fs.unlink(
+            path.join(__dirname, `../../public/images/products/${filename}`)
+          )
+        )
+      );
+    }
+
+    //return res.send(errorsMapped)
+    if (errors.isEmpty() && Object.entries(errorsMapped).length === 0) {
       const {
         nombre,
         sub_titulo,
@@ -76,16 +94,14 @@ module.exports = {
         })
         .catch((error) => console.log(error));
     } else {
-
       db.Category.findAll().then((categories) => {
         return res.render("./adm/createProduct", {
           title: "Sylvestris | Crear producto",
           categories,
-          errors: errors.mapped(),
+          errors: errorsMapped,
           old: req.body,
         });
       });
-     
     }
   },
 
@@ -112,9 +128,25 @@ module.exports = {
   putEditProducts: async (req, res) => {
    
 
-    let errors = validationResult(req);
+    const errors = validationResult(req);
+    let errorsMapped = errors?.mapped() || {};
 
-    if (errors.isEmpty()) {
+    if (req.fileValidationError) {
+      errorsMapped = {
+        ...errorsMapped,
+        imagen: { msg: req.fileValidationError },
+      };
+
+      Promise.all(
+        req.files.map(({ filename }) =>
+          fs.unlink(
+            path.join(__dirname, `../../public/images/products/${filename}`)
+          )
+        )
+      );
+    }
+
+    if (errors.isEmpty() && Object.entries(errorsMapped).length === 0) {
       try {
         const {
           nombre,

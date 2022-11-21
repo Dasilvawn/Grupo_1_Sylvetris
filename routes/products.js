@@ -4,7 +4,8 @@ const {
   productDetail,
   productCart,
   products,
-  productCategory
+  productCategory,
+  productApiDetail
 } = require("../controllers/productCotroller");
 
 /* /productos */
@@ -18,6 +19,9 @@ router.get("/categoria/:id", productCategory);
 
 /* un producto */
 router.get("/detalle/:id", productDetail);
+
+
+router.get("/api/detalle/:id", productApiDetail);
 
 
 

@@ -7,172 +7,25 @@
 
     <%- include('../partials/header') %>
 
-   
-
     <!-- *******************Fin de header ******************************* -->
     <!-- ***************** INICIO DEL MAIN  ***************************** -->
     <main class="carrito_main_container">
-     
-
       <section class="carrito_main_izquierda">
-       
-
         <div class="carrito_main_titulo">
           <h3>Mi Carrito</h3>
-          
         </div>
         <hr />
-        <article class="carrito_main_articulo_planta">
-          <div class="planta">
-            <img
-              src="/images/products/begonia-rex-rondeau_1.png"
-              alt="Bagonia Rondeau"
-            />
-          </div>
+        <div id="cart_empty_container"></div>
 
-          <div class="carrito_main_columna">
-            <div class="carrito_main_fila">
-              <p>Bagonia Rondeau</p>
-              <p>X</p>
-            </div>
-
-            <div class="carrito_main_fila">
-              <div class="carrito_main_boton_articulo">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
-              </div>
-              <p>$18,99</p>
-            </div>
-
-            <div class="carrito_main_fila">
-              <p>Unid. $18,99</p>
-            </div>
-          </div>
-          
-          
-          <div class="carrito_main_columna_big">
-            <div class="carrito_main_fila">
-              <p>Bagonia Rondeau</p>
-              <div class="carrito_main_boton_articulo">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
-              </div>
-              <p>$18,99</p>
-              <p>X</p>
-            </div>
-            <div class="carrito_main_fila">
-              <p>Unid. $18,99</p>
-            </div>
-          </div> 
-        </article>
-
-        <!--  -->
-
-        <article class="carrito_main_articulo_planta">
-          <div class="planta">
-            <img
-              src="/images/products/aeonium-diplocyclum_1.png"
-              alt="Aeonium diplocyclum"
-            />
-          </div>
-
-          <div class="carrito_main_columna">
-            <div class="carrito_main_fila">
-              <p>Aeonium diplocyclum</p>
-              <p>X</p>
-            </div>
-
-            <div class="carrito_main_fila">
-              <div class="carrito_main_boton_articulo">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
-              </div>
-              <p>$18,99</p>
-            </div>
-
-            <div class="carrito_main_fila">
-              <p>Unid. $18,99</p>
-            </div>
-          </div>
-          
-          
-          <div class="carrito_main_columna_big">
-            <div class="carrito_main_fila">
-              <p>Aeonium diplocyclum</p>
-              <div class="carrito_main_boton_articulo">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
-              </div>
-              <p>$18,99</p>
-              <p>X</p>
-            </div>
-            <div class="carrito_main_fila">
-              <p>Unid. $18,99</p>
-            </div>
-          </div> 
-        </article>  
-
-        <!--  -->
-       
+        <div id="products_cart"></div>
       </section>
 
-      <section class="carrito_main_finish_container">
-        
-
-        <div class="carrito_main_titulo">
-          <h3>Resumen del pedido</h3>
-         
-        </div>
-
-        <hr class="hr" />
-
-      
-
-        <div class="carrito_main_subtotal">
-          <p>Subtotal</p>
-          <p>$37,98</p>
-    
-        </div>
-
-        <div class="carrito_main_envio">
-          <p>Envio</p>
-          <p>GRATIS</p>
-          
-        </div>
-      
-        <div class="carrito_main_promocion">
-         
-          <form action="promocion" method="post">
-            <label for="promocion">Coloque su código promocional</label>
-            <input type="promocion" name="promocion" id="" />
-          </form>
-        </div>
-
-        <hr class="hr" />
-
-        <div class="carrito_main_total">
-          <p>TOTAL</p>
-          <p>$37,98</p>
-        </div>
-
-        
-
-        <div class="carrito_main_boton_finalizarcompra">
-          <button>Finalizar la compra</button>
-        </div>
-
-     
-      </section>
+      <div id="cart_resume"></div>
     </main>
     <!-- ********************* FIN DEL MAIN  **************************** -->
     <!-- ********************** INICIO DEL FOOTER *********************** -->
 
-    <%- include('../partials/footer') %>
-
- 
+    <%- include('../partials/footer') %> <%- include('../partials/scripts') %>
+    <script src="/js/cart/productCart.js"></script>
   </body>
-</html> 
+</html>

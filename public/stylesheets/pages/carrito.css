@@ -277,3 +277,11 @@
     margin-left: 90px;
   } 
 }
+
+#cart_empty{
+  padding: 50px;
+  text-align: center;
+}
+.delete_product{
+  cursor: pointer;
+}

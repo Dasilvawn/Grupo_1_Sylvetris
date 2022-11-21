@@ -74,6 +74,7 @@
   .header__nav__right__icon_container ul {
     display: flex;
     gap: 20px;
+    position: relative;
   }
 }
 @media (min-width: 1024px) {
@@ -227,4 +228,21 @@
   border: none;
   color: var(--color-brown);
   font-size: 25px;
+}
+
+.number_cart{
+color: var(--color-white);
+position: absolute;
+bottom: 2px;
+right: 10px;
+}
+.number_cart.mobile{
+color: white;
+position: absolute;
+bottom: 4px;
+right: 7px;
+}
+
+.cart_m_number{
+  position: relative;
 }
