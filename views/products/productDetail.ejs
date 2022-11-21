@@ -62,21 +62,21 @@
           <p><%= product.cuidados %></p>
         </div>
         <div class="producto__section__derecha">
-          <h1><%= product.nombre %></h1>
-          <p class="smart">SKU: 00<%= product.id %></p>
+          <h1 id="product_title"><%= product.nombre %></h1>
+          <p id="product_id" class="smart">ID: 00<%= product.id %></p>
           <div class="producto__precio">
-            <p class="smart">Precio</p>
-            <h4><%= formatPrice( product.precio ) %></h4>
+            <p id="product_text_price" class="smart">Precio</p>
+            <h4 id="product_price"><%= formatPrice( product.precio ) %></h4>
           </div>
 
           <p class="smart">CANTIDAD:</p>
           <div class="producto__cantidad">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button id="product_subtract">-</button>
+            <span id="product_quantity">1</span>
+            <button id="product_add">+</button>
           </div>
           <div class="producto__section__categorias__button">
-            <button class="button_agregar">Agregar al carrito</button>
+            <button id="cart_add" class="button_agregar">Agregar al carrito</button>
             <button class="button_favoritos">
               <img src="/images/iconos/icono_favorito.png" alt="fav" />
             </button>
@@ -97,6 +97,7 @@
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/footer') %>
     <%- include('../partials/scripts') %>
+    <script src="/js/cart/cart.js" ></script>
 
     <!-- ----------Fin de footer----------- -->
   </body>
