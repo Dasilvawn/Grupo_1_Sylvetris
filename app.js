@@ -22,6 +22,7 @@ var admRouter = require('./routes/adm');
 var authRouter = require('./routes/auth');
 const userApiRouter = require('./routes/user-api')
 const authApiRouter = require('./routes/auth-api')
+const categoryApiRouter = require('./routes/category-api')
 
 
 var app = express();
@@ -56,7 +57,7 @@ app.use('/admin', admRouter);
 app.use('/auth', authRouter);
 app.use('/api/users', userApiRouter);
 app.use('/api/auth', authApiRouter);
-
+app.use('/api/category', categoryApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
