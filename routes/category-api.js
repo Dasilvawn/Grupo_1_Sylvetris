@@ -9,7 +9,7 @@ const { tokenCheck } = require("../middlewares/tokenCheck");
 router.get("/", tokenCheck, getCategoriesApi,); //funciona sin el tocken
 router.get("/:id",tokenCheck ,getCategoryApi);
 router.post("/",  postCategoryApi); // uploadImageAvatar.array("avatar", 1), lo saque porque no me levantaba el server
-router.put("/:id", tokenCheck,  putCategoryApi);
-router.delete("/:id", tokenCheck,  deleteCategoryApi);
+router.put("/:id",  putCategoryApi);
+router.delete("/:id",  deleteCategoryApi);
 
 module.exports = router;
