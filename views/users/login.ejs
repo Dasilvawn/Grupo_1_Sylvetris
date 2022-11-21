@@ -18,19 +18,34 @@
         <form action="" method="POST" novalidate>
           <div class="form__field">
             <label for="">Email</label>
-            <input type="email" name="email" />
+            <input 
+            type="email"
+            id="login_email" 
+            name="email" 
+            value="<%= locals.old && old.email ? old.email : null %>"
+            />
             <p class="form__error">
               <%= locals.errors && errors.email ? errors.email.msg : null %>
+            </p>
+            <p 
+            id="errorEmail">
             </p>
           </div>
 
           <div class="form__field">
             <label for="">Contraseña</label>
-            <input type="password" name="password" id=/>
+            <input 
+            type="password" 
+            name="password" 
+            id= "login_password"
+            />
             <p class="form__error">
               <%= locals.errors && errors.password ? errors.password.msg : null
               %>
             </p>
+            <p 
+            id = "errorPassword"> 
+             </p>
           </div>
 
           <div class="login_main_recordarme">
@@ -55,5 +70,6 @@
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/miniFooter') %>
     <!-- ----------Fin de footer----------- -->
+    <script src="/js/users/login.js"></script>
   </body>
 </html>
