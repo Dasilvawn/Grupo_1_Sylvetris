@@ -1,132 +1,178 @@
 const { validationResult } = require("express-validator");
 const db = require("../../database/models");
+const bcryptjs = require("bcryptjs");
+const path = require("path");
+const fs = require("fs");
 
-const getCategoriesApi = (req, res) => {
-  db.Category.findAll()
-    .then(([categories]) => {
-      return res.status(200).json({
-        meta: {
-          ok: true,
-          status: 200,
-          count: categories.length,
-        },
-        data: {
-          categories,
-        },
-      });
-    })
-    .catch((error) => console.log(error));
-};
-const getCreateCategory = (req, res) => {
-  const id = req.session.userLogin?.id;
-  let categories = db.Category.findAll();
-  let user = db.User.findByPk(id);
+const getCategoriesApi = async (req,res) =>{
+  try {
+   
+    const categories = await db.Category.findAll({
+      
+          attributes: ['id', 'name']
+    });
 
-  Promise.all([categories, user])
-    .then(([categories, user]) => {
-      return res.status(200).json({
-        meta: {
-          ok: true,
-          status: 200,
-          count: categories.length,
-        },
-        data: {
-          categories,
-        },
-      });
-    })
-    .catch((error) => console.log(error));
-};
-const postCreateCategoryApi = (req, res) => {
-  let errors = validationResult(req);
-
-  if (errors.isEmpty()) {
-    db.Category.create({
-      name: req.body.name.trim(),
-    })
-      .then((category) => {
-        res.redirect("/admin/categories");
-      })
-      .catch((error) => console.log(error));
-  } else {
     return res.status(200).json({
       meta: {
         ok: true,
         status: 200,
-        count: categories.length,
+        count: categories.length
       },
       data: {
-        errors: errors.mapped(),
-        old: req.body,
+        categories
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      meta: {
+        ok: false,
+        status: 500,
+        msg: error.message,
       },
     });
   }
-};
-const getEditCategoryApi = (req, res) => {
-  const id = req.session.userLogin?.id;
-  let category = db.Category.findByPk(req.params.id);
-  let user = db.User.findByPk(id);
+}
 
-  Promise.all([category, user])
-    .then(([category, user]) => {
-      return res.status(200).json({
-        meta: {
-          ok: true,
-          status: 200,
-          count: categories.length,
-        },
-        data: {
-          category,
-        },
-      });
-    })
-    .catch((error) => console.log(error));
-};
-
-const putEditCategoryApi = (req, res) => {
-  let errors = validationResult(req);
-
-  if (errors.isEmpty()) {
-    db.Category.update(
-      {
-        name: req.body.name.trim(),
+const getCategoryApi = async (req,res) =>{
+  try {
+   
+    const category = await db.Category.findByPk(req.params.id,{
+        attributes:{ 
+          exclude: ['createdAt', 'updatedAt']
+        }
+           
+          
+    });
+    
+    return res.status(200).json({
+      meta: {
+        ok: true,
+        status: 200,
       },
-      {
-        where: {
-          id: req.params.id,
-        },
+      data: {
+        category
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      meta: {
+        ok: false,
+        status: 500,
+        msg: error.message,
+      },
+    });
+  }
+}
+
+const postCategoryApi = async (req,res) =>{
+//  return res.send('hoola')
+  try {
+
+    const {
+      id,
+      name
+    } = req.body;
+
+    // let [image] = req.files.map((file) => file.filename);
+
+    let newCategory = await db.Category.create({
+      id: id,
+      name: name.trim(),
+       
+    })
+
+
+    return res.status(201).json({
+      ok: true,
+      status: 201,
+      data: {
+      category: {id : newCategory.id },
+      
       }
-    )
-      .then((category) => {
-        res.redirect("/admin/categories");
-      })
-      .catch((error) => console.log(error));
-  } else {
-    return res.status(200).json({
+    });
+    
+  } catch (error) {
+    
+    return res.status(500).json({
       meta: {
-        ok: true,
-        status: 200,
-        count: categories.length,
-      },
-      data: {
-        errors: errors.mapped(),
-        old: req.body,
+        ok: false,
+        status: 500,
+        msg: error.message,
       },
     });
   }
-};
-const deleteCategoryApi = (req, res) => {
-  db.Category.destroy({
-    where: { id: req.params.id },
-  });
-  res.redirect("/admin/categories");
-};
+}
 
-module.exports = {
-  getCategoriesApi,
-  getCreateCategory,
-  postCreateCategoryApi,
-  getEditCategoryApi,
-  putEditCategoryApi,
-  deleteCategoryApi,
-};
+const putCategoryApi = async (req,res) =>{
+  //  return res.send('put')  
+ 
+   try {
+    const category = await db.Category.findByPk(req.query.id, { //params, body o query?
+      include:[
+        { 
+        attributes: { 
+        exclude: ["createdAt", "updatedAt"]
+       }} 
+    ]  // desp de esto no va product.nombre=nombre...???
+  });
+  category.nombre = nombre ?.trim() || category.nombre;
+ 
+
+  await category.save(); //guardamos el elemento secundario 
+
+  res.status(200).json({
+          ok: true,
+          status: 200,
+          data: await category.reload()  //provocará que el navegador muestre de nuevo la página actual, haciendo una recarga de la misma en la que te encuentres en este momento.
+  })
+
+  } catch (error) {
+  return res.status(500).json({ 
+  ok: false,
+  status: 500,
+  msg: 'comuniquese con el Administrador del sitio'
+  })
+  }
+}
+
+const deleteCategoryApi = async (req,res) =>{
+  // return res.send('delete') 
+  try {
+           
+    await db.Category.destroy({ where: { id } }); 
+                     
+    const options = {
+      include: [
+        {
+          association: "categoryId",
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
+          },
+        },
+      ],
+    }
+    const category = await db.Category.findByPk(id,options );
+
+ res.status(200).json({
+  ok:true,
+  status:200,
+  msg:'Categoria eliminada'
+})
+
+    } catch (error) {
+      return res.status(500).json({ 
+        ok: false,
+        status: 500,
+        msg: 'comuniquese con el Administrador del sitio'
+        })
+                  }
+
+}
+  
+  module.exports = {
+    getCategoriesApi,
+    getCategoryApi,
+    postCategoryApi,
+    putCategoryApi,
+    deleteCategoryApi,
+  };

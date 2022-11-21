@@ -13,17 +13,15 @@ const session = require('express-session');
 const localsUserCheck = require('./middlewares/localsUserCheck');
 const cookieCheck = require('./middlewares/cookieCheck');
 
-
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var admRouter = require('./routes/adm');
 var authRouter = require('./routes/auth');
-const userApiRouter = require('./routes/user-api')
-const authApiRouter = require('./routes/auth-api')
-const categoryApiRouter = require('./routes/category-api')
 
+const userApiRouter = require('./routes/user-api');
+const authApiRouter = require('./routes/auth-api');
+const categoryApiRouter =require('./routes/category-api')
 
 var app = express();
 
@@ -55,9 +53,11 @@ app.use('/productos', productsRouter);
 app.use('/usuario', usersRouter);
 app.use('/admin', admRouter);
 app.use('/auth', authRouter);
+
 app.use('/api/users', userApiRouter);
 app.use('/api/auth', authApiRouter);
-app.use('/api/category', categoryApiRouter);
+app.use('/api/category', categoryApiRouter );
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
