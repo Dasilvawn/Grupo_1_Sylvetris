@@ -37,19 +37,20 @@
           </div>
 
           <div class="form__field">
-            <label for="">Contraseña</label>
+            <label for="login_password">Contraseña</label>
             <input 
             type="password" 
-            name="password" 
             id= "login_password"
-           
-            />
+            name="password" 
+              />
             <p class="form__error">
               <%= locals.errors && errors.password ? errors.password.msg : null
               %>
             </p>
             <p 
             id = "errorPassword"
+            value="<%= locals.errors && errors.password ? errors.password.msg : null
+            %>"
             style=" 
             color: red;
             font-size: 12px;

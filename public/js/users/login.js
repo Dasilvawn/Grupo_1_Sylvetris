@@ -18,7 +18,7 @@ function selector(element) {
       //botón
       login_btn = selector("login_btn"),
       //Expresiones regulares
-      regExAlpha = /^[a-zA-Z\sñáéíóúü ]{3,}$/,
+      // regExAlpha = /^[a-zA-Z\sñáéíóúü ]{3,}$/,
       regExEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       regExPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[#$@!%&*?]).{8,}/;
   
