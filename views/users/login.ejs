@@ -15,22 +15,48 @@
           <a href="/usuario/register">Registrarse</a>
         </div>
 
-        <form action="" method="POST" novalidate>
+        <form action="/usuario/login"
+        method="POST" 
+        novalidate
+        id="login_form">
+
           <div class="form__field">
             <label for="">Email</label>
-            <input type="email" name="email" />
+            <input 
+            type="email"
+            id="login_email" 
+            name="email" 
+            value="<%= locals.old && old.email ? old.email : null %>"
+            />
             <p class="form__error">
               <%= locals.errors && errors.email ? errors.email.msg : null %>
+            </p>
+            <p 
+            id="errorEmail">
             </p>
           </div>
 
           <div class="form__field">
-            <label for="">Contraseña</label>
-            <input type="password" name="password" id=/>
+            <label for="login_password">Contraseña</label>
+            <input 
+            type="password" 
+            id= "login_password"
+            name="password" 
+              />
             <p class="form__error">
               <%= locals.errors && errors.password ? errors.password.msg : null
               %>
             </p>
+            <p 
+            id = "errorPassword"
+            value="<%= locals.errors && errors.password ? errors.password.msg : null
+            %>"
+            style=" 
+            color: red;
+            font-size: 12px;
+            margin-top: -15px;
+            text-align: center;
+            "></p>
           </div>
 
           <div class="login_main_recordarme">
@@ -40,6 +66,9 @@
             </div>
             <a href="#">¿Olvidaste tu contraseña?</a>
           </div>
+
+          <p id="errorForm" style="color: red"></p>
+
           <button class="registrarse__button" type="submit">Ingresar</button>
         </form>
         <p id="login__Google">O ingresa con</p>
@@ -55,5 +84,6 @@
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/miniFooter') %>
     <!-- ----------Fin de footer----------- -->
+    <script src="/js/users/login.js"></script>
   </body>
 </html>
