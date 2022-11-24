@@ -17,25 +17,28 @@
             <article class="profile__main__right">
                 <h3>Cambiar nombre</h3>
                 <div class="profile__main__right__info__rename">
-                    <form action="/usuario/perfil/cambiar_nombre?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <form action="/usuario/perfil/cambiar_nombre?_method=PUT" method="POST" enctype="multipart/form-data" id="rename_form">
                         <h4>Ingresa tus nuevos datos</h4>
                     <div class="input__profile">
                         <label for="">Nombre/s</label>
-                        <input type="text" name="name"value="<%= locals.old && old.name ? old.name : user.name %>" >
+                        <input type="text" name="name"value="<%= locals.old && old.name ? old.name : user.name %>" id="rename_name" >
                         <p class="form__error error_profile"><%= locals.errors && errors.name ? errors.name.msg : null%></p>
+                        <p class="form__error" id="errorfirstNameProfile"></p>
                     </div>
                     <div class="input__profile">
                         <label for="">Apellido</label>
-                        <input type="text" name="lastname" value="<%= locals.old && old.lastname ? old.lastname : user.lastname %>" >
+                        <input type="text" name="lastname" id="rename_lastname" value="<%= locals.old && old.lastname ? old.lastname : user.lastname %>" >
                         <p class="form__error error_profile"><%= locals.errors && errors.lastname ? errors.lastname.msg : null%></p>
+                        <p class="form__error" id="errorflastnameProfile"></p>
                     </div>
                     <div class="input__profile">
                         <label for="">Nuevo avatar(opcional)</label>
                         <input type="file" name="image" >
                         <p class="form__error error_profile"><%= locals.fileError ? fileError : null%></p>
                     </div>
-                    <button class="registrarse__button profile__btn" type="submit">Cambiar</button>
+                    <button class="registrarse__button profile__btn" id="rename_btn" type="submit">Cambiar</button>
                 </form>
+                <p id="errorFormRename" style="color: red;  text-align: center;"></p>
                 </div>
             </article>
 
@@ -45,6 +48,7 @@
     <!-- ----------Fin de main----------- -->
     <!-- ----------Inicio de footer----------- -->
     <%- include('../partials/footer') %>
+    <script src="/js/users/rename.js"></script>
     <!-- ----------Fin de footer----------- -->
   </body>
 </html>
