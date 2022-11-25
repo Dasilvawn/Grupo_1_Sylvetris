@@ -9,8 +9,8 @@ window.addEventListener("load", () => {
     login_password = selector("login_password"),
     login_form = selector("login_form"),
     //Errores
-    errorEmail = selector("errorEmail"),
-    errorPass = selector("errorPassword"),
+    errorEmail = selector("errorLoginEmail"),
+    errorPass = selector("errorLoginPassword"),
     errorForm = selector("errorForm"),
     //botón
     login_btn = selector("login_btn"),

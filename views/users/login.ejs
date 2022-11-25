@@ -31,9 +31,7 @@
             <p class="form__error">
               <%= locals.errors && errors.email ? errors.email.msg : null %>
             </p>
-            <p 
-            id="errorEmail">
-            </p>
+            <p class="form__error" id="errorLoginEmail"></p>
           </div>
 
           <div class="form__field">
@@ -47,16 +45,7 @@
               <%= locals.errors && errors.password ? errors.password.msg : null
               %>
             </p>
-            <p 
-            id = "errorPassword"
-            value="<%= locals.errors && errors.password ? errors.password.msg : null
-            %>"
-            style=" 
-            color: red;
-            font-size: 12px;
-            margin-top: -15px;
-            text-align: center;
-            "></p>
+            <p class="form__error" id="errorLoginPassword"></p>
           </div>
 
           <div class="login_main_recordarme">
@@ -69,7 +58,7 @@
 
           <p id="errorForm" style="color: red"></p>
 
-          <button class="registrarse__button" type="submit">Ingresar</button>
+          <button class="registrarse__button" type="submit" id="login_btn">Ingresar</button>
         </form>
         <p id="login__Google">O ingresa con</p>
 
