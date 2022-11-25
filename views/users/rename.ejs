@@ -33,8 +33,9 @@
                     </div>
                     <div class="input__profile">
                         <label for="">Nuevo avatar(opcional)</label>
-                        <input type="file" name="image" >
+                        <input type="file" name="image" id="rename_avatar">
                         <p class="form__error error_profile"><%= locals.fileError ? fileError : null%></p>
+                        <p class="form__error" id="errorAvatarProfile"></p>
                     </div>
                     <button class="registrarse__button profile__btn" id="rename_btn" type="submit">Cambiar</button>
                 </form>

@@ -25,7 +25,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, ()=>console.log(`Server running on http://localhost:${port}, Cuenta de prueba: ema@ema.com pass: 123456`));
+server.listen(port, ()=>console.log(`Server running on http://localhost:${port}, Cuenta de prueba: admin@gmail.com.com pass: 123456`));
 server.on('error', onError);
 server.on('listening', onListening);
 

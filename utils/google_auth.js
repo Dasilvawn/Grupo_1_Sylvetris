@@ -31,7 +31,7 @@ passport.use(
           });
           const newAddress = await db.Address.create({
             address: null,
-            dto: null,
+            dpto: null,
             floor: null,
             country: null,
             state: null,

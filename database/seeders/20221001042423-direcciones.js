@@ -3,7 +3,7 @@
 const addresses = [
   {
     address: null,
-    dto: null,
+    dpto: null,
     floor: null,
     country: null,
     state: null,
@@ -14,7 +14,7 @@ const addresses = [
   },
   {
     address: null,
-    dto: null,
+    dpto: null,
     floor: null,
     country: null,
     state: null,

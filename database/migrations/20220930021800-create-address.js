@@ -12,7 +12,7 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
-      dto: {
+      dpto: {
         type: Sequelize.STRING,
       },
       floor: {

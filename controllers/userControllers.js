@@ -124,10 +124,8 @@ module.exports = {
   putRename: async (req, res) => {
     let errors = validationResult(req); // traigo los errores del validador
     const id = req.session.userLogin.id; // cargo el id de la session
-    
-    
+
     //return res.send (req.files)
-    
 
     if (errors.isEmpty() && !req.fileValidationError) {
       // traigo la los datos del formulario
@@ -137,7 +135,6 @@ module.exports = {
         // traigo la imagen de multer
         const [image] = req.files.map((file) => file.filename);
 
-
         // genero un nuevo array con el usuario modificado
         let user = await db.User.findByPk(id);
         user.name = name.trim();
@@ -145,9 +142,19 @@ module.exports = {
 
         //si se envia un nuevo avatar, se borra el anterior
 
-        const file = path.join(__dirname,`../public/images/avatars/${user.avatar}` )
+        const file = path.join(
+          __dirname,
+          `../public/images/avatars/${user.avatar}`
+        );
+        const image_default = path.join(
+          __dirname,
+          `../public/images/avatars/user_default.png`
+        );
         if (image) {
-          fs.existsSync(file) && fs.unlinkSync(`./public/images/avatars/${user.avatar}`);
+          if (file !== image_default) {
+            fs.existsSync(file) &&
+              fs.unlinkSync(`./public/images/avatars/${user.avatar}`);
+          }
           user.avatar = image;
         } else {
           user.avatar = user.avatar;
@@ -180,7 +187,7 @@ module.exports = {
             title: "Sylvestris | Cambiar nombre",
             old: req.body,
             errors: errors.mapped(),
-            fileError : req.fileValidationError,
+            fileError: req.fileValidationError,
             user,
           });
         })
@@ -225,7 +232,7 @@ module.exports = {
             title: "Sylvestris | Cambiar contraseña",
             old: req.body,
             errors: errors.mapped(),
-           
+
             user,
           });
         })
@@ -261,6 +268,8 @@ module.exports = {
   putChange_address: (req, res) => {
     let id = req.session.userLogin.id;
     let errors = validationResult(req);
+
+    console.log(req.body);
 
     if (errors.isEmpty()) {
       // guardo en session los datos actualizados
