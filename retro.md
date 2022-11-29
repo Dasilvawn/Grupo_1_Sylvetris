@@ -12,3 +12,6 @@
 ![retro 1](./images-retros/Retro-Sprint-5.jpg)
 ## Sprint 6:
 ![retro 1](./images-retros/Retro-Sprint-6.jpg)
+## Sprint 7
+![retro 1](./images-retros/Retro%20Sprint%207.jpg)
+
