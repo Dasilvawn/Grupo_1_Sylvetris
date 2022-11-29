@@ -101,34 +101,3 @@ window.addEventListener("load", () => {
   });
 });
 
-/* //let inputImage = document.getElementById("examinar");
-
-rename_avatar.addEventListener("change", function fileValidation() {
-  //var errorAvatarProfile = document.getElementById("errorImage");
-  //var allowefExtensions = /(.jpg|.jpeg|.png|.gif)$/i; //Extensiones permitidas
-
-  var filePath = inputImage.value; //Capturo el valor del input
-  if (!allowefExtensions.exec(filePath)) {
-    //El método exec() ejecuta una busqueda sobre las coincidencias de una expresión regular en una cadena especifica. Devuelve el resultado como array, o null.
-    let error =
-      "Carga un archivo de imagen válido, con las extensiones (.jpg - .jpeg - .png - .gif)";
-    errorAvatarProfile.innerHTML = error;
-    inputImage.value = "";
-    document.getElementById("imagePreview").innerHTML = "";
-    return false;
-  } else {
-    // Image preview
-    if (inputImage.files && inputImage.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        document.getElementById("imagePreview").innerHTML =
-          '<img src="' +
-          e.target.result +
-          '" style="border-radius:50%;border:2px solid var(--bordes);object-fit:cover;object-position:top"/>';
-      };
-      reader.readAsDataURL(inputImage.files[0]);
-      errorAvatarProfile.innerHTML = "";
-    }
-  }
-});
- */

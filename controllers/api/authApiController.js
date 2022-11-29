@@ -41,14 +41,13 @@ const authLoginApi = async(req, res)=>{
           }); 
         }
   
-        const token = await sign({ id, rolId }, process.env.SECRET_KEY_JWT, {
-          expiresIn: "4h",
-        });
+        const token = await sign({ id, rolId }, process.env.SECRET_KEY_JWT, {expiresIn: "9999999h",});
   
         res.status(200).json({
           ok: true,
           status: 200,
           token,
+          id
          /*  urlData: `${req.protocol}://${req.get("host")}${req.baseUrl}/me/${token}`, */
         });
   

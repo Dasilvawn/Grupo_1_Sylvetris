@@ -12,7 +12,7 @@ const getImage = (req, res) => {
 const getUsersApi = async (req, res) => {
   try {
     const users = await db.User.findAll({
-      attributes: ["id", "name", "lastname", "email"],
+      attributes: ["id", "name", "lastname", "email", "avatar", "rolId"],
     });
 
     const userResp = users.map((user) => {
@@ -158,10 +158,9 @@ const putUsersApi = async (req, res) => {
       include: ["address"],
     });
     let editAddress = await db.Address.findByPk((id = editUser.address[0].id));
-    
-    const image = req.file?.filename;
-    const file = `./public/images/avatars/${editUser.avatar}`
 
+    const image = req.file?.filename;
+    const file = `./public/images/avatars/${editUser.avatar}`;
 
     editUser.name = name?.trim() || editUser.name;
     editUser.lastname = lastname?.trim() || editUser.lastname;
@@ -175,7 +174,7 @@ const putUsersApi = async (req, res) => {
     editAddress.state = state?.trim() || editAddress.state;
     editAddress.city = city?.trim() || editAddress.city;
     editAddress.cp = +cp || editAddress.cp;
-    
+
     if (image && fs.existsSync(file)) {
       fs.unlinkSync(file);
     }
@@ -187,7 +186,9 @@ const putUsersApi = async (req, res) => {
       ok: true,
       status: 201,
       data: {
-        urlData: `${req.protocol}://${req.get("host")}${req.baseUrl}/${editUser.id}`,
+        urlData: `${req.protocol}://${req.get("host")}${req.baseUrl}/${
+          editUser.id
+        }`,
       },
     });
   } catch (error) {
@@ -208,7 +209,7 @@ const deleteUsersApi = async (req, res) => {
 
     const addressDelete = await db.Address.findByPk(userDelete.address[0].id);
 
-    const file = `./public/images/avatars/${userDelete.avatar}`
+    const file = `./public/images/avatars/${userDelete.avatar}`;
 
     if (userDelete.avatar !== "user_default.png" && fs.existsSync(file)) {
       fs.unlinkSync(file);
