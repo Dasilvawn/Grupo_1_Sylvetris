@@ -49,26 +49,6 @@ const getApiProduct = async (req, res) => {
 };
 
 const postApiProduct = async (req, res) => {
-  const errors = validationResult(req);
-  let errorsMapped = errors?.mapped() || {};
-
-  if (req.fileValidationError) {
-    errorsMapped = {
-      ...errorsMapped,
-      imagen: { msg: req.fileValidationError },
-    };
-
-    Promise.all(
-      req.files.map(({ filename }) =>
-        fs.unlink(
-          path.join(__dirname, `../../public/images/products/${filename}`)
-        )
-      )
-    );
-  }
-
-  //return res.send(errorsMapped)
-
   const {
     nombre,
     sub_titulo,
@@ -100,7 +80,7 @@ const postApiProduct = async (req, res) => {
       agua: +agua,
       luz: +luz,
     });
-    if (req?.files?.length) {
+    /*  if (req?.files?.length) {
       let images = req.files.map(({ filename }) => {
         return {
           filename,
@@ -110,7 +90,7 @@ const postApiProduct = async (req, res) => {
       await db.Image.bulkCreate(images, {
         validate: true,
       });
-    }
+    } */
     return res.status(200).json({
       meta: {
         ok: true,
@@ -119,7 +99,7 @@ const postApiProduct = async (req, res) => {
       product: createProduct,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).json({
       ok: false,
       status: 500,
@@ -132,52 +112,76 @@ const putApiProduct = async (req, res) => {
   // return res.send('put')
 
   try {
-    const product = await db.Product.findByPk(req.params.id, {
-      //params o query?
-      include: [
-        {
-          attributes: {
-            exclude: ["createdAt", "updatedAt", "deletedAt"],
-          },
-        },
-      ], // desp de esto no va product.nombre=nombre...???
-    });
-    product.nombre = nombre?.trim() || product.nombre;
-    product.precio = +precio || product.precio;
-    product.descripcion = descripcion?.trim() || product.descripcion;
-    product.categoryId = +categoryId || product.categoryId;
+    const {
+      nombre,
+      sub_titulo,
+      slug,
+      categoria,
+      stock,
+      destacado,
+      descripcion,
+      descripcion_altura,
+      descripcion_maceta,
+      precio,
+      cuidados,
+      agua,
+      luz,
+    } = req.body;
 
-    await product.save(); //guardamos el elemento secundario
+    let producto = await db.Product.findByPk(req.params.id);
 
-    res.status(200).json({
-      ok: true,
-      status: 200,
-      data: await product.reload(), //provocará que el navegador muestre de nuevo la página actual, haciendo una recarga de la misma en la que te encuentres en este momento.
+    producto.nombre = nombre.trim();
+    producto.sub_titulo = sub_titulo.trim();
+    producto.slug = slug.trim();
+    producto.categoryId = categoria;
+    producto.stock = +stock;
+    producto.destacado = destacado;
+    producto.descripcion = descripcion.trim();
+    producto.descripcion_altura = descripcion_altura.trim();
+    producto.descripcion_maceta = descripcion_maceta.trim();
+    producto.precio = +precio;
+    producto.cuidados = cuidados.trim();
+    producto.agua = +agua;
+    producto.luz = +luz;
+
+    await producto.save();
+
+    return res.status(200).json({
+      meta: {
+        ok: true,
+        status: 200,
+      },
+      product: await producto.reload(),
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       ok: false,
       status: 500,
-      msg: "comuniquese con el Administrador del sitio",
+      msg: "Comuníquese con el Administrador del sitio",
     });
   }
 };
 
 const deleteApiProduct = async (req, res) => {
   try {
-    await db.Product.destroy({ where: { id } });
+    const productDelete = await db.Product.findByPk(req.params.id, {
+      include: ["images"],
+    });
+    
+    if (productDelete.images.length) {
+      productDelete.images.forEach(async (image) => {
+        fs.unlink(`./public/images/products/${image.filename}`);
 
-    const options = {
-      include: [
-        {
-          association: "categoryId",
-          attributes: {
-            exclude: ["createdAt", "updatedAt", "deletedAt"],
+        await db.Image.destroy({
+          where: {
+            filename: image.filename,
           },
-        },
-      ],
-    };
-    const product = await db.Product.findByPk(id, options);
+        });
+      });
+    }
+
+    await productDelete.destroy();
 
     res.status(200).json({
       ok: true,
