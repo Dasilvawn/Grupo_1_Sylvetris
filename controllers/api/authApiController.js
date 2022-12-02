@@ -47,7 +47,9 @@ const authLoginApi = async(req, res)=>{
           ok: true,
           status: 200,
           token,
-          id
+          id,
+          avatar: user.avatar,
+          name: user.name
          /*  urlData: `${req.protocol}://${req.get("host")}${req.baseUrl}/me/${token}`, */
         });
   

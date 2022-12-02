@@ -1,21 +1,10 @@
+const { validationResult } = require("express-validator");
 const db = require("../../database/models");
-const bcryptjs = require("bcryptjs");
-const newUserValidator = require("../../validations/newUserValidator");
 
 const getApiProducts = async (req, res) => {
   try {
     const products = await db.Product.findAll({
-      attributes: [
-        "id",
-        "nombre",
-        "sub_titulo",
-        "slug",
-        "stock",
-        "destacado",
-        "descripcion",
-        "precio",
-        "cuidados",
-      ],
+      include: ["images", "category"],
     });
     res.status(200).json({
       meta: {
@@ -29,7 +18,7 @@ const getApiProducts = async (req, res) => {
     return res.status(500).json({
       ok: false,
       status: 500,
-      msg: "comuniquese con el Administrador del sitio",
+      msg: "Comuníquese con el Administrador del sitio",
     });
   }
 };
@@ -60,47 +49,81 @@ const getApiProduct = async (req, res) => {
 };
 
 const postApiProduct = async (req, res) => {
-  // return res. send(req.body)
-  try {
-    const {
-      id,
-      nombre,
-      sub_titulo,
-      slug,
-      stock,
-      destacado,
-      descripcion,
-      precio,
-      cuidados,
-    } = req.body;
+  const errors = validationResult(req);
+  let errorsMapped = errors?.mapped() || {};
 
-    let newProduct = await db.Product.create({
-      id: id,
+  if (req.fileValidationError) {
+    errorsMapped = {
+      ...errorsMapped,
+      imagen: { msg: req.fileValidationError },
+    };
+
+    Promise.all(
+      req.files.map(({ filename }) =>
+        fs.unlink(
+          path.join(__dirname, `../../public/images/products/${filename}`)
+        )
+      )
+    );
+  }
+
+  //return res.send(errorsMapped)
+
+  const {
+    nombre,
+    sub_titulo,
+    slug,
+    categoria,
+    stock,
+    destacado,
+    descripcion,
+    descripcion_altura,
+    descripcion_maceta,
+    precio,
+    cuidados,
+    agua,
+    luz,
+  } = req.body;
+  try {
+    const createProduct = await db.Product.create({
       nombre: nombre.trim(),
       sub_titulo: sub_titulo.trim(),
-      slug: slug,
-      stock: stock ? stock : null,
-      destacado: destacado ? destacado : null,
+      slug: slug.trim(),
+      categoryId: categoria,
+      stock: +stock,
+      destacado: destacado === "true" ? true : false,
       descripcion: descripcion.trim(),
-      precio: precio ? precio : null,
+      descripcion_altura: descripcion_altura.trim(),
+      descripcion_maceta: descripcion_maceta.trim(),
+      precio: +precio,
       cuidados: cuidados.trim(),
+      agua: +agua,
+      luz: +luz,
     });
-
-    res.render(200).json({
+    if (req?.files?.length) {
+      let images = req.files.map(({ filename }) => {
+        return {
+          filename,
+          productId: product.id,
+        };
+      });
+      await db.Image.bulkCreate(images, {
+        validate: true,
+      });
+    }
+    return res.status(200).json({
       meta: {
         ok: true,
         status: 200,
-        url: "/api/products",
       },
-      date: {
-        product: { id: newProduct.id },
-      },
+      product: createProduct,
     });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({
       ok: false,
       status: 500,
-      msg: "Comuniquese con el Administrador",
+      msg: "Comuníquese con el Administrador del sitio",
     });
   }
 };
