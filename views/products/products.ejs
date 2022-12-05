@@ -26,37 +26,27 @@
 
         <div class="products__section__grid">
           <% products.forEach(product => { %>
-          <article class="product__card__container gs_reveal">
-            <a href="/productos/detalle/<%= product.id %>">
-              <div class="product__card__img">
-                <img
-                  class="product__card__img__1"
-                  src="<%= product.images[0].filename %>"
-                  alt="<%= product.nombre %>"
-                />
-                <% if (product.images[1]) { %>
-                <img
-                  class="product__card__img__2"
-                  src="/<%= product.images[1].filename %> "
-                  alt="<%= product.nombre %>"
-                />
-
-                <% }else{ %>
-                <img
-                  class="product__card__img__2"
-                  src="<%= product.images[0].filename %> "
-                  alt="<%= product.nombre %>"
-                />
-
-                <% } %>
+            <article class="product__card__container gs_reveal">
+              <a href="/productos/detalle/<%= product.id %>">
+                <div class="product__card__img">
+                  <img
+                    class="product__card__img__1"
+                    src="<%= product.images[0].filename %>"
+                    alt="<%= product.nombre %>"
+                  />
+                  <img
+                    class="product__card__img__2"
+                    src="<%= product.images[1].filename %>"
+                    alt="<%= product.nombre %>"
+                  />
+                </div>
+              </a>
+              <div class="product__card__text">
+                <p><%= product.nombre %></p>
+                <p><%= formatPrice(product.precio) %></p>
               </div>
-            </a>
-            <div class="product__card__text">
-              <p><%= product.nombre %></p>
-              <p><%= formatPrice(product.precio) %></p>
-            </div>
-            <button class="product__card__btn">Agregar al carrito</button>
-          </article>
+             <!--  <button class="product__card__btn">Agregar al carrito</button> -->
+            </article>
           <% }) %>
         </div>
       </section>

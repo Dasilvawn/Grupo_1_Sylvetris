@@ -3,14 +3,13 @@ const { formatPrice } = require("../utils/moneda");
 
 module.exports = {
   products: (req, res) => {
-    db.Product.findAll({ include: ["images"] })
-      .then((products) => {
-        return res.render("./products/products", {
-          title: "Sylvestris | Productos",
-          products,
-          formatPrice,
-        });
+    db.Product.findAll({ include: ["images"] }).then((products) => {
+      return res.render("./products/products", {
+        title: "Sylvestris | Productos",
+        products,
+        formatPrice,
       });
+    });
   },
 
   productDetail: (req, res) => {
@@ -37,13 +36,12 @@ module.exports = {
   },
   productApiDetail: async (req, res) => {
     const id = req.params.id;
-    let product = await  db.Product.findByPk(id, {
+    let product = await db.Product.findByPk(id, {
       include: ["images", "category"],
     });
     return res.status(200).json({
-      product
-    })
-   
+      product,
+    });
   },
   productCategory: (req, res) => {
     db.Product.findAll({
@@ -64,6 +62,24 @@ module.exports = {
   productCart: (req, res) => {
     return res.render("products/productCart", {
       title: "Sylvestris | Carrito",
+    });
+  },
+  checkout: (req, res) => {
+    if (!req.session.userLogin) {
+      return res.redirect("/usuario/login");
+    }
+
+    return res.render("products/checkout", {
+      title: "Sylvestris | Finaliza compra",
+    });
+  },
+  finish: async (req, res) => {
+    const id = req.session.userLogin?.id;
+    const user = await db.User.findByPk(id)
+    
+    return res.render("products/finish", {
+      title: "Sylvestris | Finaliza compra",
+      user
     });
   },
 };

@@ -73,4 +73,39 @@ textarea{
 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
   bottom: 0;
 }
+button{
+  cursor: pointer;
+  transition: all 0.4s;
+}
+button:hover{
+  cursor: pointer;
+  transform: scale(1.01);
+  box-shadow: 2px 2px 5px #444;
+}
+
+.main__checkout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #a05841;
+  padding: 50px 0;
+  min-height: 92vh;
+}
+.main__finish{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #a05841;
+  padding: 50px 0;
+  min-height: 92vh;
+}
+.finish__msg{
+  border: 1px solid #a05841;
+  padding: 50px;
+  text-align: center;
+}
+.finish__msg h1{
+ margin-bottom: 30px;
+}
   

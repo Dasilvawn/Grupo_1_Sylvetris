@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body>
+    <!-- ----------Inicio de header----------- -->
+
+    <%- include('../partials/header') %>
+
+    <!-- *******************Fin de header ******************************* -->
+    <!-- ***************** INICIO DEL MAIN  ***************************** -->
+    <main class="main__finish" >
+      <div class="finish__msg">
+        <h1>Pedido Confirmado</h1>
+        <h3>Muchas gracias <%= user.name %> por elegir nuestros productos</h3>
+        <h3>Su pedido sera entregado en las próximas 48hs</h3>
+      </div>
+    </main>
+    <!-- ********************* FIN DEL MAIN  **************************** -->
+    <!-- ********************** INICIO DEL FOOTER *********************** -->
+
+    <%- include('../partials/footer') %> <%- include('../partials/scripts') %>
+    <script src="/js/cart/checkout.js"></script>
+  </body>
+</html>

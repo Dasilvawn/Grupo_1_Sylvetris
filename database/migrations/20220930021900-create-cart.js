@@ -30,6 +30,9 @@ module.exports = {
       total: {
         type: Sequelize.INTEGER
       },
+      quantity: {
+        type: Sequelize.INTEGER
+      },
       productId: {
         type: Sequelize.INTEGER,
         references : {

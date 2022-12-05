@@ -24,6 +24,7 @@ const userApiRouter = require("./routes/user-api");
 const authApiRouter = require("./routes/auth-api");
 const productsApiRouter = require("./routes/products-api");
 const categoryApiRouter = require("./routes/category-api");
+const checkout = require("./routes/checkout-api");
 const imagesKit = require("./routes/imagesKit");
 
 var app = express();
@@ -73,6 +74,7 @@ app.use("/api/auth", authApiRouter);
 app.use("/api/category", categoryApiRouter);
 app.use("/api/products", productsApiRouter);
 app.use("/api/imageKit", imagesKit);
+app.use("/api/checkout", checkout);
 
 
 

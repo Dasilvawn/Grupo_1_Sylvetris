@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body>
+    <!-- ----------Inicio de header----------- -->
+
+    <%- include('../partials/header') %>
+
+    <!-- *******************Fin de header ******************************* -->
+    <!-- ***************** INICIO DEL MAIN  ***************************** -->
+    <main class="main__checkout" >
+      <h1>Checkout</h1>
+      <div class="carrito_main_container" style="margin-top:0; width: 100%;">
+
+        <section class="carrito_main_izquierda">
+          <div class="carrito_main_titulo">
+            <h3>Mi Pedido</h3>
+          </div>
+          <hr />
+          <div id="cart_empty_container"></div>
+  
+          <div id="products_cart"></div>
+        </section>
+  
+        <div id="cart_resume"></div>
+      </div>
+    </main>
+    <!-- ********************* FIN DEL MAIN  **************************** -->
+    <!-- ********************** INICIO DEL FOOTER *********************** -->
+
+    <%- include('../partials/footer') %> <%- include('../partials/scripts') %>
+    <script src="/js/cart/checkout.js"></script>
+  </body>
+</html>

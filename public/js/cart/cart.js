@@ -2,6 +2,19 @@ function selector(element) {
   return document.getElementById(element);
 }
 
+const formatPrice = ( value) => {
+
+  // Crear formateador
+  const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+  })
+  //lo pasamos de euros a pesos
+  return formatter.format( value ) ; //$2,500.00
+}
+
 let product_title = selector("product_title"),
   product_id = selector("product_id"),
   product_price = selector("product_price"),
@@ -10,7 +23,7 @@ let product_title = selector("product_title"),
   product_add = selector("product_add"),
   cart_add = selector("cart_add"),
   product_text_price = selector("product_text_price");
-products_cart = selector("products_cart");
+  products_cart = selector("products_cart");
 
 // inicializamos el carrito
 let cart = [];
@@ -42,7 +55,7 @@ const addProductToCart = (product) => {
     counter++;
     totalPrice = unitPrice * counter;
     product_quantity.innerHTML = counter;
-    product_price.innerHTML = totalPrice;
+    product_price.innerHTML = formatPrice(totalPrice);
     product_text_price.innerHTML = "Precio total";
   });
 
@@ -51,7 +64,7 @@ const addProductToCart = (product) => {
       counter--;
       totalPrice = unitPrice * counter;
       product_quantity.innerHTML = counter;
-      product_price.innerHTML = totalPrice;
+      product_price.innerHTML = formatPrice(totalPrice);
       product_text_price.innerHTML = "Precio total";
     }
   });
@@ -81,3 +94,5 @@ const setQuantityIconCart = () => {
       quantity_cart[i].innerHTML = quantity;
     }
 };
+
+

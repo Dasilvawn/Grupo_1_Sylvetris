@@ -6,6 +6,7 @@ let products_cart = selector("products_cart");
 let cart_resume = selector("cart_resume");
 let cart_empty = selector("cart_empty_container");
 
+
 const rendeCart = () => {
   let cart = [];
   cart = JSON.parse(localStorage.getItem("carrito"));
@@ -44,7 +45,7 @@ const rendeCart = () => {
           
           <div class="carrito_main_columna_big">
             <div class="carrito_main_fila">
-              <p>Bagonia Rondeau</p>
+              <p>${product.title}</p>
               <div class="carrito_main_boton_articulo">
              
                 <p>Cant. ${product.quantity}</p>
@@ -61,17 +62,17 @@ const rendeCart = () => {
           `;
   });
 };
-const rederCartResume = () => {
+const renderCartResume = () => {
   let localStorageCart = JSON.parse(localStorage.getItem("carrito"));
   let total = 0;
   localStorageCart.forEach((product) => {
-    total = total + +product.price;
+    total = total + (product.price * product.quantity);
   });
 
   cart_resume.innerHTML = `
   <section class="carrito_main_finish_container">
   <div class="carrito_main_titulo">
-    <h3>Resumen del pedido</h3>
+    <h3>Resumen del carrito</h3>
   </div>
 
   <hr class="hr" />
@@ -94,10 +95,16 @@ const rederCartResume = () => {
   </div>
 
   <div class="carrito_main_boton_finalizarcompra">
-    <button>Finalizar la compra</button>
+    <button id="btn_finish">Finalizar la compra</button>
   </div>
 </section>
   `;
+
+  let btn_finish = selector("btn_finish");
+  btn_finish.addEventListener("click", function (e) {
+    console.log('click')
+    window.location.replace("/productos/checkout");
+  })
 };
 const rendeCartEmpty = () => {
   cart_empty.innerHTML = `
@@ -113,7 +120,7 @@ if (!localStorageCart || localStorageCart.length === 0) {
   rendeCartEmpty();
 } else {
   rendeCart();
-  rederCartResume();
+  renderCartResume();
 }
 
 let delete_product = document.querySelectorAll('.delete_product')
@@ -127,4 +134,8 @@ for (let i = 0; i < delete_product.length; i++) {
   });
   
 }
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  console.log(btn_finish)
+});
 

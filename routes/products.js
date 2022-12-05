@@ -5,7 +5,9 @@ const {
   productCart,
   products,
   productCategory,
-  productApiDetail
+  productApiDetail,
+  checkout,
+  finish
 } = require("../controllers/productCotroller");
 
 /* /productos */
@@ -19,6 +21,9 @@ router.get("/categoria/:id", productCategory);
 
 /* un producto */
 router.get("/detalle/:id", productDetail);
+
+router.get("/checkout", checkout);
+router.get("/pedido_confirmado", finish);
 
 
 router.get("/api/detalle/:id", productApiDetail);
