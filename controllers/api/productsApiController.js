@@ -26,7 +26,7 @@ const getApiProduct = async (req, res) => {
   //  return res.send('geApiProducts')
   try {
     const product = await db.Product.findByPk(req.params.id, {
-      include: ["images", "category"]
+      include: ["images", "category"],
     });
     res.status(200).json({
       meta: {
@@ -46,6 +46,8 @@ const getApiProduct = async (req, res) => {
 };
 
 const postApiProduct = async (req, res) => {
+  console.log(req.body);
+
   const {
     nombre,
     sub_titulo,
@@ -57,8 +59,8 @@ const postApiProduct = async (req, res) => {
     descripcion_maceta,
     precio,
     cuidados,
-    agua,
-    luz,
+    image1,
+    image2,
   } = req.body;
   try {
     const createProduct = await db.Product.create({
@@ -72,20 +74,21 @@ const postApiProduct = async (req, res) => {
       descripcion_maceta: descripcion_maceta.trim(),
       precio: +precio,
       cuidados: cuidados.trim(),
-      agua: +agua,
-      luz: +luz,
     });
-    /*  if (req?.files?.length) {
-      let images = req.files.map(({ filename }) => {
-        return {
-          filename,
-          productId: product.id,
-        };
-      });
-      await db.Image.bulkCreate(images, {
-        validate: true,
-      });
-    } */
+
+    const images = [image1, image2];
+
+    let imagesMap = images.map((filename) => {
+      return {
+        filename,
+        productId: createProduct.id,
+      };
+    });
+
+    await db.Image.bulkCreate(imagesMap, {
+      validate: true,
+    });
+
     return res.status(200).json({
       meta: {
         ok: true,
@@ -118,11 +121,13 @@ const putApiProduct = async (req, res) => {
       descripcion_maceta,
       precio,
       cuidados,
-      agua,
-      luz,
+      image1,
+      image2,
     } = req.body;
 
-    let producto = await db.Product.findByPk(req.params.id);
+    let producto = await db.Product.findByPk(req.params.id, {
+      include: ["images"],
+    });
 
     producto.nombre = nombre.trim();
     producto.sub_titulo = sub_titulo.trim();
@@ -134,10 +139,28 @@ const putApiProduct = async (req, res) => {
     producto.descripcion_maceta = descripcion_maceta.trim();
     producto.precio = +precio;
     producto.cuidados = cuidados.trim();
-    producto.agua = +agua;
-    producto.luz = +luz;
-
+  
     await producto.save();
+
+    
+    const images = [image1, image2];
+
+    let imagesMap = images.map((filename) => {
+      return {
+        filename,
+        productId: producto.id,
+      };
+    });
+
+    producto.images.forEach(async (image) => {
+      await db.Image.destroy({
+        where: {
+          filename: image.filename,
+        },
+      });
+    })
+
+    await db.Image.bulkCreate(imagesMap);
 
     return res.status(200).json({
       meta: {
@@ -161,11 +184,9 @@ const deleteApiProduct = async (req, res) => {
     const productDelete = await db.Product.findByPk(req.params.id, {
       include: ["images"],
     });
-    
+
     if (productDelete.images.length) {
       productDelete.images.forEach(async (image) => {
-        fs.unlink(`./public/images/products/${image.filename}`);
-
         await db.Image.destroy({
           where: {
             filename: image.filename,
@@ -191,21 +212,11 @@ const deleteApiProduct = async (req, res) => {
 };
 
 // images
-const getApiProductsImages = async (req, res) => {
-
-}
-const getApiProductImage = async (req, res) => {
-
-}
-const postApiProductImage = async (req, res) => {
-
-}
-const putApiProductImage = async (req, res) => {
-
-}
-const deleteApiProductImage = async (req, res) => {
-
-}
+const getApiProductsImages = async (req, res) => {};
+const getApiProductImage = async (req, res) => {};
+const postApiProductImage = async (req, res) => {};
+const putApiProductImage = async (req, res) => {};
+const deleteApiProductImage = async (req, res) => {};
 
 module.exports = {
   getApiProducts,
@@ -217,5 +228,5 @@ module.exports = {
   getApiProductImage,
   postApiProductImage,
   putApiProductImage,
-  deleteApiProductImage
+  deleteApiProductImage,
 };
