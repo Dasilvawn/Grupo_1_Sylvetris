@@ -16,7 +16,7 @@ const rendeCart = () => {
           <article class="carrito_main_articulo_planta">
           <div class="planta">
             <img
-              src="/images/products/${product.img}"
+              src="${product.img}"
               alt="${product.title}"
             />
           </div>

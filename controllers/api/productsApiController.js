@@ -1,4 +1,3 @@
-const { validationResult } = require("express-validator");
 const db = require("../../database/models");
 
 const getApiProducts = async (req, res) => {
@@ -27,9 +26,7 @@ const getApiProduct = async (req, res) => {
   //  return res.send('geApiProducts')
   try {
     const product = await db.Product.findByPk(req.params.id, {
-      attributes: {
-        exclude: ["createdAt", "updatedAt", "deletedAt"],
-      },
+      include: ["images", "category"]
     });
     res.status(200).json({
       meta: {
@@ -52,7 +49,6 @@ const postApiProduct = async (req, res) => {
   const {
     nombre,
     sub_titulo,
-    slug,
     categoria,
     stock,
     destacado,
@@ -68,7 +64,6 @@ const postApiProduct = async (req, res) => {
     const createProduct = await db.Product.create({
       nombre: nombre.trim(),
       sub_titulo: sub_titulo.trim(),
-      slug: slug.trim(),
       categoryId: categoria,
       stock: +stock,
       destacado: destacado === "true" ? true : false,
@@ -115,7 +110,6 @@ const putApiProduct = async (req, res) => {
     const {
       nombre,
       sub_titulo,
-      slug,
       categoria,
       stock,
       destacado,
@@ -132,7 +126,6 @@ const putApiProduct = async (req, res) => {
 
     producto.nombre = nombre.trim();
     producto.sub_titulo = sub_titulo.trim();
-    producto.slug = slug.trim();
     producto.categoryId = categoria;
     producto.stock = +stock;
     producto.destacado = destacado;
@@ -197,10 +190,32 @@ const deleteApiProduct = async (req, res) => {
   }
 };
 
+// images
+const getApiProductsImages = async (req, res) => {
+
+}
+const getApiProductImage = async (req, res) => {
+
+}
+const postApiProductImage = async (req, res) => {
+
+}
+const putApiProductImage = async (req, res) => {
+
+}
+const deleteApiProductImage = async (req, res) => {
+
+}
+
 module.exports = {
   getApiProducts,
   getApiProduct,
   postApiProduct,
   putApiProduct,
   deleteApiProduct,
+  getApiProductsImages,
+  getApiProductImage,
+  postApiProductImage,
+  putApiProductImage,
+  deleteApiProductImage
 };

@@ -13,7 +13,7 @@
         <% if (userLogin.rol === 1) { %>
             
             <li>
-                <a href="/admin" class="menu_profile"><i class='bx bx-shield-alt-2'></i> Administración</a>
+                <a href='<%= userLogin.url_dashboard %>' class="menu_profile"><i class='bx bx-shield-alt-2'></i> Administración</a>
             </li>
          
         <% } %>

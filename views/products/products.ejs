@@ -31,20 +31,20 @@
               <div class="product__card__img">
                 <img
                   class="product__card__img__1"
-                  src="/images/products/<%= product.images[0].filename %>"
+                  src="<%= product.images[0].filename %>"
                   alt="<%= product.nombre %>"
                 />
                 <% if (product.images[1]) { %>
                 <img
                   class="product__card__img__2"
-                  src="/images/products/<%= product.images[1].filename %> "
+                  src="/<%= product.images[1].filename %> "
                   alt="<%= product.nombre %>"
                 />
 
                 <% }else{ %>
                 <img
                   class="product__card__img__2"
-                  src="/images/products/<%= product.images[0].filename %> "
+                  src="<%= product.images[0].filename %> "
                   alt="<%= product.nombre %>"
                 />
 

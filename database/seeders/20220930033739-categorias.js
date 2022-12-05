@@ -8,7 +8,7 @@ const categories = [
    
   },
   {
-    name: "Captus",
+    name: "Cactus",
     createdAt: new Date(),
     
   },

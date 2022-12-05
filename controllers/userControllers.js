@@ -29,6 +29,7 @@ module.exports = {
           rol: user.rolId,
           avatar: user.avatar,
           iconNavbar: firstLetterName,
+          url_dashboard: process.env.DASHBOARD_URL
         };
         if (req.body.remember) {
           res.cookie("sylvestris", req.session.userLogin, {
@@ -80,6 +81,7 @@ module.exports = {
             rol: user.rolId,
             avatar: user.avatar,
             iconNavbar: user.name.split(" ")[0]?.charAt(0),
+            url_dashboard: process.env.DASHBOARD_URL
           };
 
           res.cookie("sylvestris", req.session.userLogin, {

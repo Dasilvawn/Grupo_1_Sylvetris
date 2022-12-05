@@ -24,6 +24,7 @@ const userApiRouter = require("./routes/user-api");
 const authApiRouter = require("./routes/auth-api");
 const productsApiRouter = require("./routes/products-api");
 const categoryApiRouter = require("./routes/category-api");
+const imagesKit = require("./routes/imagesKit");
 
 var app = express();
 
@@ -47,6 +48,15 @@ app.use(
   })
 );
 
+app.use(function (req, res, next) {
+  //res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use(cookieCheck);
 app.use(localsUserCheck);
 
@@ -62,6 +72,9 @@ app.use("/api/users", userApiRouter);
 app.use("/api/auth", authApiRouter);
 app.use("/api/category", categoryApiRouter);
 app.use("/api/products", productsApiRouter);
+app.use("/api/imageKit", imagesKit);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
