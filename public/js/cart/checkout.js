@@ -170,7 +170,7 @@ const confirmOrder = () => {
     };
   });
 
-  fetch("/api/checkout/cart", {
+  fetch("/api/checkout", {
     method: "POST",
     body: JSON.stringify({
       userId,

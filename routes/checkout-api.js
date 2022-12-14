@@ -1,12 +1,16 @@
 const express = require("express");
-const { postCart } = require("../controllers/api/checkoutApiController");
+const { postOrder, getOrders, getOrder, putOrder, deleteOrder } = require("../controllers/api/checkoutApiController");
 const router = express.Router();
 
 
 /* /api/checkout */
 
 /* todos los productos */
-router.post("/cart", postCart);
+router.get("/", getOrders);
+router.get("/:id", getOrder);
+router.post("/", postOrder);
+router.put("/:id", putOrder);
+router.delete("/:id", deleteOrder);
 
 
 
