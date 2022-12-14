@@ -5,6 +5,7 @@ const path = require("path");
 const fs = require("fs");
 
 const getCategoriesApi = async (req,res) =>{
+ 
   try {
    
     const categories = await db.Category.findAll({
@@ -65,7 +66,7 @@ const getCategoryApi = async (req,res) =>{
 }
 
 const postCategoryApi = async (req,res) =>{
-//  return res.send('hoola')
+  return res.send('hoola')
   try {
 
     const {
