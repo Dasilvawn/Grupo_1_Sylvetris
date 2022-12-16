@@ -14,15 +14,22 @@ module.exports = (sequelize, DataTypes) => {
         as: "carts",
         foreignKey: "orderId",
       });
+      Order.belongsTo(models.User, {
+        as: "user",
+        foreignKey: "userId",
+      });
+
     }
   }
   Order.init({
-    productId: DataTypes.INTEGER,
+   
     status: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    totalOrder: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Order',
+    paranoid : true
   });
   return Order;
 };

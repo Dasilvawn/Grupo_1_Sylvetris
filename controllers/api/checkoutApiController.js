@@ -3,18 +3,34 @@ const db = require("../../database/models");
 const getOrders = async (req, res) => {
   try {
     const orders = await db.Order.findAll({
-      include: ["carts"],
+      include: [
+        {
+          association: "user",
+          attributes: {
+            exclude: [
+              "password",
+              "id_social",
+              "social_provider",
+              "createdAt",
+              "updatedAt",
+            ],
+          },
+        },
+        {
+          association: "carts",
+        },
+      ],
     });
     res.status(200).json({
       meta: {
         ok: true,
         status: 200,
-        count: orders.length, 
+        count: orders.length,
       },
       data: { orders },
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).json({
       ok: false,
       status: 500,
@@ -23,14 +39,31 @@ const getOrders = async (req, res) => {
   }
 };
 const getOrder = async (req, res) => {
-  const {id} = req.params
+  const { id } = req.params;
   try {
-    const order = await db.Order.findByPk(id);
+    const order = await db.Order.findByPk(id, {
+      include: [
+        {
+          association: "user",
+          attributes: {
+            exclude: [
+              "password",
+              "id_social",
+              "social_provider",
+              "createdAt",
+              "updatedAt",
+            ],
+          },
+        },
+        {
+          association: "carts",
+        },
+      ],
+    });
     res.status(200).json({
       meta: {
         ok: true,
         status: 200,
-        
       },
       data: { order },
     });
@@ -44,19 +77,19 @@ const getOrder = async (req, res) => {
 };
 const postOrder = async (req, res) => {
   try {
-    const { userId, products } = req.body;
+    const { userId, totalOrder, products } = req.body;
     const order = await db.Order.create({
       userId,
-      status: 'pending'
+      totalOrder,
+      status: "Pendiente",
     });
 
-    const newOrder = products.map(product => {
+    const newOrder = products.map((product) => {
       return {
         ...product,
         orderId: order.id,
-        
-      }
-    })
+      };
+    });
 
     await db.Cart.bulkCreate(newOrder);
 
@@ -64,7 +97,7 @@ const postOrder = async (req, res) => {
       meta: {
         ok: true,
         status: 200,
-        msg: 'Orden creada!'
+        msg: "Orden creada!",
       },
     });
   } catch (error) {
@@ -77,21 +110,26 @@ const postOrder = async (req, res) => {
   }
 };
 const putOrder = async (req, res) => {
-  const {id} = req.params
-  const {status } = req.body
+  const { id } = req.params;
+  const { status } = req.body;
   try {
-    const order = await db.Order.update(id, {
-      status
-    });
+    await db.Order.update(
+      { status: status },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
     res.status(200).json({
       meta: {
         ok: true,
         status: 200,
-        msg: 'Orden editada con éxito'
+        msg: "Orden editada con éxito",
       },
-      
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       ok: false,
       status: 500,
@@ -105,7 +143,9 @@ const deleteOrder = async (req, res) => {
       include: ["carts"],
     });
 
-    if (order.carts.length) {
+    //return res.send(order)
+
+     if (order.carts.length) {
       order.carts.forEach(async (cart) => {
         await db.Cart.destroy({
           where: {
@@ -113,9 +153,13 @@ const deleteOrder = async (req, res) => {
           },
         });
       });
-    }
+    } 
 
-    await order.destroy();
+    await db.Order.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
 
     res.status(200).json({
       ok: true,
@@ -123,6 +167,7 @@ const deleteOrder = async (req, res) => {
       msg: "Orden eliminada",
     });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({
       ok: false,
       status: 500,
@@ -131,12 +176,10 @@ const deleteOrder = async (req, res) => {
   }
 };
 
-
 module.exports = {
   postOrder,
   getOrders,
   getOrder,
   putOrder,
-  deleteOrder
-
+  deleteOrder,
 };

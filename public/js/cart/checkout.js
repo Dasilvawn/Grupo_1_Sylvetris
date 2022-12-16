@@ -170,10 +170,16 @@ const confirmOrder = () => {
     };
   });
 
+  let totalOrder = 0;
+  localStorageCart.forEach((product) => {
+    totalOrder = totalOrder + product.price * product.quantity;
+  });
+
   fetch("/api/checkout", {
     method: "POST",
     body: JSON.stringify({
       userId,
+      totalOrder,
       products: mapProduct,
     }),
     headers: {

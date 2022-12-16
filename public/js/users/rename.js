@@ -86,7 +86,8 @@ window.addEventListener("load", () => {
     let inputs = rename_form.elements;
 
     for (let i = 0; i < inputs.length - 1; i++) {
-      if (inputs[i].value == "" && inputs[i].name !== "archivo") {
+      console.log(inputs[i].name)
+      if (inputs[i].value == "" && inputs[i].name !== "image") {
         errorForm.innerHTML = "Debes completar todos los campos";
         error = true;
       }
